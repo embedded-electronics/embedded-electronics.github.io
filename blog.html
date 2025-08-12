@@ -1,1 +1,68 @@
-<!-- MODIFY HERE: Add your blog content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog — Embedded Electronics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+<header>
+  <nav class="nav-bar">
+    <img src="assets/logo.png" class="logo" alt="Logo"> <!-- MODIFY HERE -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="ebooks.html">E-Books</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+</header>
+
+<main class="container page">
+  <h1>Technical Blog</h1>
+  <p><!-- MODIFY HERE: Intro to blog -->Thoughtful articles on embedded systems, debugging tips, Linux for embedded, and project writeups.</p>
+
+  <section class="posts-list">
+    <!-- For each blog post, create a separate post page in the repo and set the href to that page (e.g., blog-post-1.html). -->
+    <article class="post-card">
+      <img src="assets/sample.jpg" alt="post image"> <!-- MODIFY HERE -->
+      <h2><!-- MODIFY HERE: Post Title -->How to Optimize Power with Deep Sleep on ESP32</h2>
+      <p class="meta">By Dibyendu • Aug 2025</p> <!-- MODIFY HERE: author/date -->
+      <p><!-- MODIFY HERE: short excerpt -->Tips to reduce power consumption, measurement examples, and code samples for deep sleep.</p>
+      <a class="btn" href="blog-post-esp32-deepsleep.html">Read More</a> <!-- MODIFY HERE: create this file if you use it -->
+    </article>
+
+    <article class="post-card">
+      <img src="assets/sample.jpg" alt="post image">
+      <h2>Reading I²C sensors reliably (retry patterns)</h2>
+      <p class="meta">By Dibyendu • Jul 2025</p>
+      <p>How to handle transient failures and implement robust read routines for slow I²C sensors.</p>
+      <a class="btn" href="blog-post-i2c-retries.html">Read More</a>
+    </article>
+
+    <article class="post-card">
+      <img src="assets/sample.jpg" alt="post image">
+      <h2>PCB layout checklist — 10 common mistakes</h2>
+      <p class="meta">By Dibyendu • Jun 2025</p>
+      <p>A short checklist to ensure your first PCB works on the bench.</p>
+      <a class="btn" href="blog-post-pcb-checklist.html">Read More</a>
+    </article>
+  </section>
+
+  <section class="blog-create-note">
+    <p><!-- MODIFY HERE -->To publish a blog post, create a new HTML file (e.g., blog-post-1.html) in your repo with the same header/footer and paste the full article there. You can also link external Markdown-based engines if you prefer.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Embedded Electronics</p>
+</footer>
+
+</body>
+</html>

@@ -1,1 +1,66 @@
-<!-- MODIFY HERE: Add your contact form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Embedded Electronics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+<header>
+  <nav class="nav-bar">
+    <img src="assets/logo.png" class="logo" alt="Logo"> <!-- MODIFY HERE -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="ebooks.html">E-Books</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+</header>
+
+<main class="container page">
+  <h1>Contact</h1>
+  <p><!-- MODIFY HERE: contact blurb -->Have a question, collaboration opportunity, or request a tutorial? Use the form below or email directly.</p>
+
+  <form id="contact-form" class="contact-form" onsubmit="return submitContact(event)">
+    <label>
+      Your name
+      <input type="text" id="name" required />
+    </label>
+
+    <label>
+      Email
+      <input type="email" id="email" required />
+    </label>
+
+    <label>
+      Subject
+      <input type="text" id="subject" />
+    </label>
+
+    <label>
+      Message
+      <textarea id="message" rows="6" required></textarea>
+    </label>
+
+    <div class="form-row">
+      <button class="btn" type="submit">Send</button>
+      <a class="btn ghost" id="mailto-link" href="mailto:youremail@example.com">Open Email Client</a> <!-- MODIFY HERE: replace email -->
+    </div>
+
+    <p class="muted">Note: This is a static GitHub Pages site. The form opens your email client with content pre-filled. Use Formspree/Getform for backend form handling. <!-- MODIFY HERE: optional instructions --></p>
+  </form>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Embedded Electronics</p>
+</footer>
+
+</body>
+</html>

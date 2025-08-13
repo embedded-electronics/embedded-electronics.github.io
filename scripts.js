@@ -21,97 +21,87 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ----------------- QUIZ LOGIC ----------------- */
-// Quiz Data
-const questions = [
-  { q: "What does CPU stand for?", options: ["Central Processing Unit", "Computer Personal Unit", "Central Power Unit", "Central Process Utility"], answer: 0 },
-  { q: "Which is a microcontroller?", options: ["8051", "Pentium", "Xeon", "Core i7"], answer: 0 },
-  { q: "What is the function of RAM?", options: ["Store data temporarily", "Store data permanently", "Control operations", "Power supply"], answer: 0 }
+/* MODIFY HERE: edit your quiz questions */
+const quizData = [
+  { question: 'Which lines are used by I²C?', options: ['TX/RX', 'SCL & SDA', 'MOSI/MISO'], answer: 'SCL & SDA' },
+  { question: 'ESP8266 is a:', options: ['Motor driver', 'Wi-Fi MCU', 'ADC chip'], answer: 'Wi-Fi MCU' },
+  { question: 'DHT11 measures:', options: ['Light only', 'Temp & Humidity', 'Acceleration'], answer: 'Temp & Humidity' }
 ];
 
-let currentQuestion = 0;
-let score = 0;
-let timerInterval;
+let quizStarted = false;
+let quizTimer = null;
+let timeLeft = 0;
 
-function toggleMenu() {
-  document.getElementById("nav").classList.toggle("open");
-}
+function startQuiz(){
+  if (quizStarted) return;
+  renderQuiz();
+  quizStarted = true;
 
-function startQuiz() {
-  document.getElementById("quiz").innerHTML = "";
-  currentQuestion = 0;
-  score = 0;
-  showQuestion(currentQuestion);
-  document.querySelector(".quiz-navigation").style.display = "flex";
-
-  // Timer setup
-  const timeLimit = parseInt(document.getElementById("quiz-timer").value, 10);
-  if (timeLimit > 0) {
-    document.getElementById("timer").style.display = "block";
-    let timeLeft = timeLimit;
-    timerInterval = setInterval(() => {
+  const sel = document.getElementById('quiz-timer');
+  const secs = sel ? parseInt(sel.value,10) : 0;
+  if (secs > 0){
+    timeLeft = secs;
+    const timerWrap = document.getElementById('timer');
+    if (timerWrap) timerWrap.style.display = 'inline-block';
+    updateTimerDisplay();
+    quizTimer = setInterval(() => {
       timeLeft--;
-      document.getElementById("timer-display").textContent =
-        String(Math.floor(timeLeft / 60)).padStart(2, '0') + ":" + String(timeLeft % 60).padStart(2, '0');
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        handleSubmit();
-      }
+      updateTimerDisplay();
+      if (timeLeft <= 0){ clearInterval(quizTimer); submitQuiz(); }
     }, 1000);
   }
 }
 
-function showQuestion(index) {
-  const q = questions[index];
-  const quizDiv = document.getElementById("quiz");
-  quizDiv.innerHTML = `
-    <div class="question">
-      <p><strong>Q${index + 1}:</strong> ${q.q}</p>
-      ${q.options.map((opt, i) => `
-        <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
-      `).join("")}
-    </div>
-  `;
-
-  document.getElementById("prev-btn").style.display = index === 0 ? "none" : "inline-block";
-  document.getElementById("next-btn").style.display = index === questions.length - 1 ? "none" : "inline-block";
-  document.getElementById("submit-btn").style.display = index === questions.length - 1 ? "inline-block" : "none";
-}
-
-function nextQuestion() {
-  if (currentQuestion < questions.length - 1) {
-    currentQuestion++;
-    showQuestion(currentQuestion);
-  }
-}
-
-function prevQuestion() {
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    showQuestion(currentQuestion);
-  }
-}
-
-function handleSubmit(e) {
-  if (e) e.preventDefault();
-  score = 0;
-  questions.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="q${i}"]:checked`);
-    if (selected && parseInt(selected.value) === q.answer) {
-      score++;
-    }
+function renderQuiz(){
+  const container = document.getElementById('quiz');
+  if (!container) return;
+  container.innerHTML = '';
+  quizData.forEach((q, i) => {
+    const opts = q.options.map(o =>
+      `<label><input type="radio" name="q${i}" value="${escapeHtml(o)}"> ${escapeHtml(o)}</label>`
+    ).join('<br>');
+    container.innerHTML += `<div class="question"><b>Q${i+1}. ${escapeHtml(q.question)}</b>${opts}</div>`;
   });
-  document.getElementById("result").innerHTML = `You scored ${score} / ${questions.length}`;
-  clearInterval(timerInterval);
-  return false;
 }
 
-function resetQuiz() {
-  document.getElementById("quiz").innerHTML = "";
-  document.getElementById("result").innerHTML = "";
-  clearInterval(timerInterval);
+function handleSubmit(e){ e.preventDefault(); submitQuiz(); return false; }
+
+function submitQuiz(){
+  if (quizTimer){ clearInterval(quizTimer); quizTimer = null; }
+  let correct = 0;
+  quizData.forEach((q, i) => {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === q.answer) correct++;
+  });
+  const name = (document.getElementById('quiz-name')?.value || 'Anonymous').trim() || 'Anonymous';
+  const result = document.getElementById('result');
+  if (result){
+    result.innerHTML = `<h3>Result for ${escapeHtml(name)}</h3>
+      <p>Score: <strong>${correct}</strong> / ${quizData.length}</p>`;
+  }
+  // store last attempt locally
+  try {
+    const key = 'ee_quiz_history';
+    const recs = JSON.parse(localStorage.getItem(key) || '[]');
+    recs.push({ name, correct, total: quizData.length, date: new Date().toISOString() });
+    localStorage.setItem(key, JSON.stringify(recs.slice(-25)));
+  } catch(e){}
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+function resetQuiz(){
+  if (quizTimer){ clearInterval(quizTimer); quizTimer = null; }
+  quizStarted = false;
+  const container = document.getElementById('quiz'); if (container) container.innerHTML = '';
+  const result = document.getElementById('result'); if (result) result.innerHTML = '';
+  const timerWrap = document.getElementById('timer'); if (timerWrap) timerWrap.style.display = 'none';
+}
+
+function updateTimerDisplay(){
+  const el = document.getElementById('timer-display'); if (!el) return;
+  const m = String(Math.floor(timeLeft/60)).padStart(2,'0');
+  const s = String(timeLeft%60).padStart(2,'0');
+  el.textContent = `${m}:${s}`;
+}
 
 /* Contact page: open mailto with prefilled content */
 function submitContact(e){
@@ -123,7 +113,7 @@ function submitContact(e){
   if (!name || !email || !msg){ alert('Please fill name, email and message'); return false; }
   const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
   /* MODIFY HERE: replace email below */
-  window.location.href = `mailto:embeddedelectronics.in@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  window.location.href = `mailto:youremail@example.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   return false;
 }
 

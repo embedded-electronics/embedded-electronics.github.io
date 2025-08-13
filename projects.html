@@ -1,75 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — Projects</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Embedded Electronics</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span>  -->
-    </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-    <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a class="active" href="projects.html">Projects</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="ebooks.html">E-Books</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container page">
-  <header class="page-header">
-    <h1>Projects</h1>
-    <p><!-- MODIFY HERE --> Explore beginner-to-advanced embedded builds with schematics and code.</p>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Embedded Electronics</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="ebooks.html">E-Books</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="grid-3">
-    <article class="card project">
-      <img src="assets/sample.jpg" alt="ESP8266 IoT" /> <!-- MODIFY HERE -->
-      <h3><!-- MODIFY HERE --> IoT Temperature Monitor (ESP8266)</h3>
-      <p>Read DHT22 via I²C/SPI, send data to MQTT dashboard.</p> <!-- MODIFY HERE -->
-      <div class="actions">
-        <a class="btn small" href="#">View Guide</a> <!-- MODIFY HERE -->
-        <a class="btn ghost small" href="#">GitHub Code</a> <!-- MODIFY HERE -->
-      </div>
-    </article>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <h1>Embedded Electronics Projects</h1>
+    <p>Explore our collection of electronics projects for beginners and advanced learners.</p>
 
-    <article class="card project">
-      <img src="assets/sample.jpg" alt="Arduino Home Automation" /> <!-- MODIFY HERE -->
-      <h3>Arduino Home Automation</h3>
-      <p>Bluetooth remote control for lights and fan using relays.</p>
-      <div class="actions">
-        <a class="btn small" href="#">View Guide</a> <!-- MODIFY HERE -->
-        <a class="btn ghost small" href="#">GitHub Code</a> <!-- MODIFY HERE -->
+    <div class="card-grid">
+      <!-- MODIFY HERE: Replace sample project details with your own -->
+      <div class="card">
+        <img src="assets/sample.jpg" alt="Project 1" />
+        <h3>Arduino Temperature Logger</h3>
+        <p>Logs temperature data to an SD card using Arduino and DHT11 sensor.</p>
       </div>
-    </article>
 
-    <article class="card project">
-      <img src="assets/sample.jpg" alt="ESP32 Weather" /> <!-- MODIFY HERE -->
-      <h3>ESP32 Weather Station</h3>
-      <p>OLED display, web server, and deep sleep power saving.</p>
-      <div class="actions">
-        <a class="btn small" href="#">View Guide</a> <!-- MODIFY HERE -->
-        <a class="btn ghost small" href="#">GitHub Code</a> <!-- MODIFY HERE -->
+      <div class="card">
+        <img src="assets/sample.jpg" alt="Project 2" />
+        <h3>ESP8266 IoT Switch</h3>
+        <p>Control appliances from anywhere using Wi-Fi-enabled microcontrollers.</p>
       </div>
-    </article>
-  </section>
-</main>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Embedded Electronics</p>
-  </div>
-</footer>
+      <div class="card">
+        <img src="assets/sample.jpg" alt="Project 3" />
+        <h3>Raspberry Pi Weather Station</h3>
+        <p>Measure and display weather parameters on a web dashboard.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Embedded Electronics. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>

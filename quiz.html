@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz - Embedded Electronics</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Electronics — Quiz</title>
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
 </head>
 <body>
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="container header-container">
-      <a href="index.html" class="logo">Embedded Electronics</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="tutorials.html">Tutorials</a></li>
-          <li><a href="ebooks.html">E-Books</a></li>
-          <li><a href="quiz.html" class="active">Quiz</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
+      <!-- <span class="brand-name">Embedded Electronics</span> -->
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="ebooks.html">E-Books</a>
+      <a class="active" href="quiz.html">Quiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container page">
+  <header class="page-header">
+    <h1>MCQ Quiz</h1>
+    <p><!-- MODIFY HERE --> Answer all questions and submit to see your score instantly.</p>
   </header>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="container">
-    <h1>Embedded Systems Quiz</h1>
-    <p>Test your knowledge on embedded systems, microcontrollers, and electronics.</p>
+  <div class="quiz-meta">
+    <label> Name
+      <input id="quiz-name" type="text" placeholder="Your full name" />
+    </label>
+    <label> Time Limit
+      <select id="quiz-timer">
+        <option value="0">No timer</option>
+        <option value="300">5 minutes</option>
+        <option value="600" selected>10 minutes</option> <!-- MODIFY HERE -->
+      </select>
+    </label>
+    <button class="btn" onclick="startQuiz()">Start</button>
+    <div id="timer" class="muted" style="display:none">Time left: <span id="timer-display">00:00</span></div>
+  </div>
 
-    <div id="quiz-container" class="quiz-container">
-      <div id="question-container">
-        <!-- Question text -->
-        <h2 id="question"></h2>
-        <!-- Options -->
-        <div id="options"></div>
-      </div>
-      <button id="next-btn" class="btn">Next</button>
+  <form id="quiz-form" onsubmit="return handleSubmit(event)">
+    <div id="quiz"></div>
+    <div class="actions">
+      <button class="btn" type="submit">Submit</button>
+      <button class="btn ghost" type="button" onclick="resetQuiz()">Reset</button>
     </div>
+  </form>
 
-    <div id="result-container" class="result-container" style="display: none;">
-      <h2>Your Score:</h2>
-      <p id="score"></p>
-      <button onclick="startQuiz()" class="btn">Try Again</button>
-    </div>
-  </main>
+  <div id="result" class="result"></div>
+  <p class="muted">Scores are calculated in your browser. <!-- MODIFY HERE: integrate backend if needed --></p>
+</main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Embedded Electronics. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <script src="questions.js"></script>
-  <script src="scripts.js"></script>
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
+</footer>
 </body>
 </html>

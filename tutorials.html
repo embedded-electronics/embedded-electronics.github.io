@@ -1,70 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — Tutorials</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorials - Embedded Electronics</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span>  -->
-    </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-    <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a class="active" href="tutorials.html">Tutorials</a>
-      <a href="ebooks.html">E-Books</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container page">
-  <header class="page-header">
-    <h1>Tutorials</h1>
-    <p><!-- MODIFY HERE --> Short, practical lessons with code snippets and diagrams.</p>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Embedded Electronics</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="tutorials.html" class="active">Tutorials</a></li>
+          <li><a href="ebooks.html">E-Books</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="grid-3">
-    <article class="card">
-      <h3>Getting Started with Arduino</h3>
-      <p>Install IDE, blink LED, serial monitor basics.</p>
-      <a class="btn small" href="#">Read Tutorial</a> <!-- MODIFY HERE -->
-    </article>
-    <article class="card">
-      <h3>I²C vs SPI — Sensor Interfacing</h3>
-      <p>Bus basics, pullups, sample code patterns.</p>
-      <a class="btn small" href="#">Read Tutorial</a> <!-- MODIFY HERE -->
-    </article>
-    <article class="card">
-      <h3>Intro to FreeRTOS</h3>
-      <p>Tasks, queues, and timing on ESP32/STM32.</p>
-      <a class="btn small" href="#">Read Tutorial</a> <!-- MODIFY HERE -->
-    </article>
-  </section>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <h1>Embedded Electronics Tutorials</h1>
+    <p>Step-by-step tutorials to help you learn microcontrollers, sensors, and embedded systems.</p>
 
-  <aside class="sidebar">
-    <h4>Resources</h4>
-    <ul>
-      <li><a href="#">Toolchains & Drivers</a></li> <!-- MODIFY HERE -->
-      <li><a href="#">Datasheets</a></li> <!-- MODIFY HERE -->
-      <li><a href="#">Simulators</a></li> <!-- MODIFY HERE -->
-    </ul>
-  </aside>
-</main>
+    <div class="card-grid">
+      <div class="card">
+        <img src="assets/sample.jpg" alt="Tutorial 1" />
+        <h3>Getting Started with Arduino</h3>
+        <p>A complete beginner’s guide to programming and using Arduino boards.</p>
+      </div>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Embedded Electronics</p>
-  </div>
-</footer>
+      <div class="card">
+        <img src="assets/sample.jpg" alt="Tutorial 2" />
+        <h3>Understanding I²C Communication</h3>
+        <p>Learn how I²C works and how to interface multiple devices.</p>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample.jpg" alt="Tutorial 3" />
+        <h3>Using ESP32 with MQTT</h3>
+        <p>Send and receive IoT data using the MQTT protocol and ESP32.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Embedded Electronics. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>

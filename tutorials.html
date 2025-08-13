@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tutorials — Embedded Electronics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav class="nav-bar">
+    <img src="assets/logo.png" class="logo" alt="Logo"> <!-- MODIFY HERE: logo -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="tutorials.html" class="active">Tutorials</a></li>
+      <li><a href="ebooks.html">E-Books</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+</header>
+
+<main class="container page">
+  <h1>Tutorials</h1>
+  <p><!-- MODIFY HERE: Short description for tutorials page -->Curated, practical lessons for Embedded Systems — from basics to intermediate topics.</p>
+
+  <section class="tutorial-list">
+    <article class="tutorial-card">
+      <h3>Getting Started with Microcontrollers</h3>
+      <p><!-- MODIFY HERE: Short summary -->Toolchain, programmer, flashing and first blink program (Arduino/AVR).</p>
+      <a class="btn" href="#">Read Tutorial</a> <!-- MODIFY HERE: link to full tutorial -->
+    </article>
+
+    <article class="tutorial-card">
+      <h3>I²C & SPI — Sensor Interfacing</h3>
+      <p><!-- MODIFY HERE -->How to read sensors over I²C and SPI with code examples.</p>
+      <a class="btn" href="#">Read Tutorial</a>
+    </article>
+
+    <article class="tutorial-card">
+      <h3>Intro to RTOS (FreeRTOS)</h3>
+      <p><!-- MODIFY HERE -->Tasks, queues, mutexes — with a practical example on STM32/ESP32.</p>
+      <a class="btn" href="#">Read Tutorial</a>
+    </article>
+
+    <article class="tutorial-card">
+      <h3>PCB Basics & Soldering Tips</h3>
+      <p><!-- MODIFY HERE -->Design files, Gerber tips, and soldering best practices for beginners.</p>
+      <a class="btn" href="#">Read Tutorial</a>
+    </article>
+  </section>
+
+  <aside class="page-sidebar">
+    <h4>Resources</h4>
+    <ul>
+      <li><a href="#">Toolchains & Download Links</a></li> <!-- MODIFY HERE -->
+      <li><a href="#">Parts & Suppliers</a></li>
+      <li><a href="#">Simulator / Emulators</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Embedded Electronics</p>
+</footer>
+
+</body>
+</html>

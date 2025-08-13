@@ -1,137 +1,83 @@
-// Navigation toggle for mobile
+// ===== Menu Toggle (for mobile) =====
 function toggleMenu() {
-  document.getElementById("nav").classList.toggle("open");
+  document.getElementById('nav').classList.toggle('open');
 }
 
-// Footer year
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("year").textContent = new Date().getFullYear();
-});
-
-// Quiz Data — MODIFY HERE
-const quizData = [
-  {
-    question: "What does CPU stand for?",
-    options: ["Central Processing Unit", "Computer Personal Unit", "Central Performance Utility", "Control Processing Unit"],
-    answer: "Central Processing Unit"
-  },
-  {
-    question: "Which language is primarily used for Arduino programming?",
-    options: ["Python", "C/C++", "Java", "Assembly"],
-    answer: "C/C++"
-  },
-  {
-    question: "What is the default baud rate for Arduino Serial Monitor?",
-    options: ["4800", "9600", "115200", "19200"],
-    answer: "9600"
-  }
-];
-
+// ===== Quiz Logic =====
 let currentQuestionIndex = 0;
-let userAnswers = [];
-let timerInterval = null;
+let answers = {};
 
-// Start Quiz
-function startQuiz() {
-  const name = document.getElementById("quiz-name").value.trim();
-  const timeLimit = parseInt(document.getElementById("quiz-timer").value);
+function loadQuestion() {
+  const question = quizQuestions[currentQuestionIndex];
+  const quizElement = document.getElementById("quiz");
 
-  if (!name) {
-    alert("Please enter your name before starting.");
-    return;
-  }
+  let optionsHTML = '';
+  question.options.forEach((option, index) => {
+    const isChecked = answers[currentQuestionIndex] === index ? "checked" : "";
+    optionsHTML += `
+      <label>
+        <input type="radio" name="answer" value="${index}" ${isChecked}>
+        ${option}
+      </label>
+    `;
+  });
 
-  document.querySelector(".quiz-meta").style.display = "none";
-  document.getElementById("quiz-form").style.display = "block";
-  currentQuestionIndex = 0;
-  userAnswers = new Array(quizData.length).fill(null);
-  showQuestion();
-
-  if (timeLimit > 0) {
-    startTimer(timeLimit);
-  }
-}
-
-// Show Question
-function showQuestion() {
-  const quizEl = document.getElementById("quiz-question");
-  const q = quizData[currentQuestionIndex];
-
-  quizEl.innerHTML = `
-    <h2>Question ${currentQuestionIndex + 1} of ${quizData.length}</h2>
-    <p>${q.question}</p>
-    <select id="answer-select">
-      <option value="">Select an answer</option>
-      ${q.options.map(opt => `<option value="${opt}" ${userAnswers[currentQuestionIndex] === opt ? 'selected' : ''}>${opt}</option>`).join("")}
-    </select>
+  quizElement.innerHTML = `
+    <div class="quiz-container">
+      <div class="quiz-question">${question.question}</div>
+      <div class="quiz-options">${optionsHTML}</div>
+      <div class="quiz-nav">
+        <button class="btn" onclick="prevQuestion()" ${currentQuestionIndex === 0 ? "disabled" : ""}>Previous</button>
+        ${currentQuestionIndex === quizQuestions.length - 1
+          ? `<button class="btn" onclick="submitQuiz()">Submit</button>`
+          : `<button class="btn" onclick="nextQuestion()">Next</button>`}
+      </div>
+    </div>
   `;
-
-  document.getElementById("next-btn").style.display = (currentQuestionIndex < quizData.length - 1) ? "inline-block" : "none";
-  document.getElementById("submit-btn").style.display = (currentQuestionIndex === quizData.length - 1) ? "inline-block" : "none";
 }
 
-// Next Question
 function nextQuestion() {
   saveAnswer();
-  if (currentQuestionIndex < quizData.length - 1) {
+  if (currentQuestionIndex < quizQuestions.length - 1) {
     currentQuestionIndex++;
-    showQuestion();
+    loadQuestion();
   }
 }
 
-// Previous Question
 function prevQuestion() {
   saveAnswer();
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
-    showQuestion();
+    loadQuestion();
   }
 }
 
-// Save selected answer
 function saveAnswer() {
-  const selected = document.getElementById("answer-select").value;
-  userAnswers[currentQuestionIndex] = selected || null;
+  const selected = document.querySelector('input[name="answer"]:checked');
+  if (selected) {
+    answers[currentQuestionIndex] = parseInt(selected.value);
+  }
 }
 
-// Submit Quiz
-function handleSubmit(event) {
-  event.preventDefault();
+function submitQuiz() {
   saveAnswer();
-
   let score = 0;
-  quizData.forEach((q, i) => {
-    if (userAnswers[i] === q.answer) {
+  quizQuestions.forEach((q, i) => {
+    if (answers[i] === q.correct) {
       score++;
     }
   });
 
-  document.getElementById("quiz-form").style.display = "none";
-  document.getElementById("result").innerHTML = `<h3>${document.getElementById("quiz-name").value}, you scored ${score} out of ${quizData.length}.</h3>`;
-  stopTimer();
-  return false;
+  document.getElementById("quiz").innerHTML = `
+    <div class="quiz-container">
+      <h2>Your Score: ${score} / ${quizQuestions.length}</h2>
+      <button class="btn" onclick="restartQuiz()">Restart</button>
+    </div>
+  `;
 }
 
-// Timer
-function startTimer(seconds) {
-  const timerDisplay = document.getElementById("timer");
-  const timeSpan = document.getElementById("timer-display");
-  timerDisplay.style.display = "block";
-
-  let remaining = seconds;
-  timerInterval = setInterval(() => {
-    let min = String(Math.floor(remaining / 60)).padStart(2, "0");
-    let sec = String(remaining % 60).padStart(2, "0");
-    timeSpan.textContent = `${min}:${sec}`;
-    if (remaining <= 0) {
-      clearInterval(timerInterval);
-      alert("Time is up!");
-      handleSubmit(new Event("submit"));
-    }
-    remaining--;
-  }, 1000);
-}
-
-function stopTimer() {
-  clearInterval(timerInterval);
+function restartQuiz() {
+  currentQuestionIndex = 0;
+  answers = {};
+  loadQuestion();
 }

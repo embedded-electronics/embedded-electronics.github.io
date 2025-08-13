@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Embedded Electronics — Quiz</title>
   <link rel="stylesheet" href="styles.css" />
   <script defer src="scripts.js"></script>
@@ -11,10 +11,9 @@
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
       <!-- <span class="brand-name">Embedded Electronics</span> -->
     </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
@@ -30,36 +29,25 @@
 <main class="container page">
   <header class="page-header">
     <h1>MCQ Quiz</h1>
-    <p><!-- MODIFY HERE --> Answer each question by selecting from the dropdown. Use Next / Previous to navigate.</p>
+    <p>Answer all questions and submit to see your score instantly.</p>
   </header>
 
-  <div class="quiz-meta">
-    <label> Name:
-      <input id="quiz-name" type="text" placeholder="Your full name" />
-    </label>
-    <label> Time Limit:
-      <select id="quiz-timer">
-        <option value="0">No timer</option>
-        <option value="300">5 minutes</option>
-        <option value="600" selected>10 minutes</option> <!-- MODIFY HERE -->
-      </select>
-    </label>
-    <button class="btn" onclick="startQuiz()">Start</button>
-    <div id="timer" class="muted" style="display:none">Time left: <span id="timer-display">00:00</span></div>
-  </div>
+  <label>
+    Name:
+    <input id="quiz-name" type="text" placeholder="Your full name" />
+  </label>
+  <button class="btn" onclick="startQuiz()">Start Quiz</button>
 
   <form id="quiz-form" onsubmit="return handleSubmit(event)" style="display:none;">
-    <div id="quiz-question"></div>
-
+    <div id="quiz"></div>
     <div class="actions">
-      <button class="btn ghost" type="button" onclick="prevQuestion()">Previous</button>
-      <button id="next-btn" class="btn" type="button" onclick="nextQuestion()">Next</button>
-      <button id="submit-btn" class="btn" type="submit" style="display:none;">Submit</button>
+      <button class="btn" type="button" id="prev-btn" onclick="prevQuestion()">Previous</button>
+      <button class="btn" type="button" id="next-btn" onclick="nextQuestion()">Next</button>
+      <button class="btn" type="submit" id="submit-btn" style="display:none;">Submit</button>
     </div>
   </form>
 
   <div id="result" class="result"></div>
-  <p class="muted">Scores are calculated in your browser. <!-- MODIFY HERE: integrate backend if needed --></p>
 </main>
 
 <footer class="site-footer">

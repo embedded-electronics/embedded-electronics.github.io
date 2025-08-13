@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz — Embedded Electronics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+<header>
+  <nav class="nav-bar">
+    <img src="assets/logo.png" class="logo" alt="Logo"> <!-- MODIFY HERE -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="tutorials.html">Tutorials</a></li>
+      <li><a href="ebooks.html">E-Books</a></li>
+      <li><a href="quiz.html" class="active">Quiz</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+</header>
+
+<main class="container page">
+  <h1>Knowledge Check — MCQ Quiz</h1>
+  <p><!-- MODIFY HERE -->Enter your name, start the quiz and press Submit — you'll get your score instantly.</p>
+
+  <div class="quiz-meta">
+    <label>
+      Your name
+      <input type="text" id="quiz-name" placeholder="Your full name" />
+    </label>
+    <label style="margin-left:20px;">
+      Time limit
+      <select id="quiz-timer">
+        <option value="0">No timer</option>
+        <option value="300">5 minutes</option>
+        <option value="600" selected>10 minutes</option> <!-- MODIFY HERE: default timer -->
+      </select>
+    </label>
+    <button class="btn" id="start-btn" onclick="startQuiz()">Start Quiz</button>
+  </div>
+
+  <div id="timer" class="muted" style="margin-top:8px; display:none;">Time left: <span id="timer-display">00:00</span></div>
+
+  <form id="quiz-form" onsubmit="return handleSubmit(event)" style="margin-top:16px;">
+    <div id="quiz"></div>
+    <div style="margin-top:14px;">
+      <button class="btn" type="submit">Submit</button>
+      <button class="btn ghost" type="button" onclick="resetQuiz()">Reset</button>
+    </div>
+  </form>
+
+  <div id="result" style="margin-top:16px;"></div>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Embedded Electronics</p>
+</footer>
+
+</body>
+</html>

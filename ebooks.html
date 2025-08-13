@@ -3,62 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>E-Books — Embedded Electronics</title>
+  <title>Embedded Electronics — E-Books</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="scripts.js" defer></script>
+  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header>
-  <nav class="nav-bar">
-    <img src="assets/logo.png" class="logo" alt="Logo"> <!-- MODIFY HERE -->
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="tutorials.html">Tutorials</a></li>
-      <li><a href="ebooks.html" class="active">E-Books</a></li>
-      <li><a href="quiz.html">Quiz</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <button class="nav-toggle">☰</button>
-  </nav>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
+      <span class="brand-name">Embedded Electronics</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a class="active" href="ebooks.html">E-Books</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main class="container page">
-  <h1>E-Books & PDFs</h1>
-  <p><!-- MODIFY HERE -->Download free guides, cheat-sheets, and e-books covering microcontrollers, RTOS, PCB design, and IoT.</p>
+  <header class="page-header">
+    <h1>E-Books & PDFs</h1>
+    <p><!-- MODIFY HERE --> Download reference guides, handbooks, and quick sheets.</p>
+  </header>
 
-  <div class="ebook-grid">
-    <article class="ebook-card">
-      <img src="assets/sample.jpg" alt="ebook cover"> <!-- MODIFY HERE -->
-      <h3>Embedded Systems Handbook — Beginner</h3>
-      <p><!-- MODIFY HERE -->A practical beginner guide with examples.</p>
-      <a class="btn" href="assets/ebooks/embedded-handbook.pdf" download>Download PDF</a> <!-- MODIFY HERE: replace PDF link -->
+  <section class="grid-3">
+    <article class="card ebook">
+      <img src="assets/sample.jpg" alt="E-Book Cover" /> <!-- MODIFY HERE -->
+      <h3>Embedded Basics — Starter</h3>
+      <p>Beginner-friendly overview with simple projects.</p>
+      <a class="btn small" href="assets/ebooks/embedded-basics.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
     </article>
 
-    <article class="ebook-card">
-      <img src="assets/sample.jpg" alt="ebook cover">
+    <article class="card ebook">
+      <img src="assets/sample.jpg" alt="E-Book Cover" />
       <h3>Practical IoT with ESP32</h3>
-      <p>Step-by-step IoT projects using ESP32 and MQTT.</p>
-      <a class="btn" href="assets/ebooks/iot-esp32.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
+      <p>MQTT, REST, OTA updates and deep sleep.</p>
+      <a class="btn small" href="assets/ebooks/iot-esp32.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
     </article>
 
-    <article class="ebook-card">
-      <img src="assets/sample.jpg" alt="ebook cover">
-      <h3>PCB Design Quickstart</h3>
-      <p>Basics of PCB layout and Gerber generation.</p>
-      <a class="btn" href="assets/ebooks/pcb-quickstart.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
+    <article class="card ebook">
+      <img src="assets/sample.jpg" alt="E-Book Cover" />
+      <h3>PCB Layout Quickstart</h3>
+      <p>Common pitfalls and a pre-flight checklist.</p>
+      <a class="btn small" href="assets/ebooks/pcb-quickstart.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
     </article>
-  </div>
-
-  <section class="upload-note">
-    <p><!-- MODIFY HERE -->To add more books, upload PDF files into the `assets/ebooks/` folder in your repo and update the download links above.</p>
   </section>
+
+  <p class="muted"><!-- MODIFY HERE --> Add more PDFs to <code>assets/ebooks/</code> and update the links above.</p>
 </main>
 
-<footer>
-  <p>© <span id="year"></span> Embedded Electronics</p>
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
 </footer>
-
 </body>
 </html>

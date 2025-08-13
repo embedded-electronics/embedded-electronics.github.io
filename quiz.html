@@ -12,7 +12,7 @@
   <div class="container">
     <a class="brand" href="index.html">
       <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <span class="brand-name">Embedded Electronics</span>
+      <!-- <span class="brand-name">Embedded Electronics</span> -->
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
@@ -30,14 +30,14 @@
 <main class="container page">
   <header class="page-header">
     <h1>MCQ Quiz</h1>
-    <p><!-- MODIFY HERE --> Answer each question, navigate using Next/Previous, and submit at the end.</p>
+    <p><!-- MODIFY HERE --> Answer all questions and submit to see your score instantly.</p>
   </header>
 
   <div class="quiz-meta">
-    <label>Name:
+    <label> Name
       <input id="quiz-name" type="text" placeholder="Your full name" />
     </label>
-    <label>Time Limit:
+    <label> Time Limit
       <select id="quiz-timer">
         <option value="0">No timer</option>
         <option value="300">5 minutes</option>
@@ -50,10 +50,9 @@
 
   <form id="quiz-form" onsubmit="return handleSubmit(event)">
     <div id="quiz"></div>
-    <div class="quiz-navigation" style="display:none;">
-      <button type="button" id="prev-btn" class="btn ghost" onclick="prevQuestion()">Previous</button>
-      <button type="button" id="next-btn" class="btn" onclick="nextQuestion()">Next</button>
-      <button type="submit" id="submit-btn" class="btn" style="display:none;">Submit</button>
+    <div class="actions">
+      <button class="btn" type="submit">Submit</button>
+      <button class="btn ghost" type="button" onclick="resetQuiz()">Reset</button>
     </div>
   </form>
 

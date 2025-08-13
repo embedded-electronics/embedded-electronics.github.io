@@ -1,68 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — Blog</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Embedded Electronics</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span>  -->
-    </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-    <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="ebooks.html">E-Books</a>
-      <a href="quiz.html">Quiz</a>
-      <a class="active" href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container page">
-  <header class="page-header">
-    <h1>Technical Blog</h1>
-    <p><!-- MODIFY HERE --> Articles, tips, and deep dives on embedded topics.</p>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Embedded Electronics</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="ebooks.html">E-Books</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="grid-3">
-    <article class="card post">
-      <img src="assets/sample.jpg" alt="ESP32 Deep Sleep" /> <!-- MODIFY HERE -->
-      <h3><!-- MODIFY HERE --> ESP32 Deep Sleep: Save Power</h3>
-      <p>Measure, configure and optimize sleep modes with code examples.</p>
-      <a class="btn small" href="blog-post-esp32-deepsleep.html">Read More</a> <!-- MODIFY HERE -->
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <h1>Blog</h1>
+    <p>Read the latest articles and insights on embedded electronics, programming, and microcontrollers.</p>
+
+    <article class="blog-post">
+      <h2>Understanding I²C Communication</h2>
+      <p class="post-date">Published: August 10, 2025</p>
+      <p>I²C (Inter-Integrated Circuit) is a widely used protocol in embedded systems for communication between microcontrollers and peripherals. This article covers its basics, advantages, and common use cases.</p>
+      <a href="#" class="btn">Read More</a>
     </article>
 
-    <article class="card post">
-      <img src="assets/sample.jpg" alt="I2C retries" />
-      <h3>Reliable I²C Reads</h3>
-      <p>Retry patterns and timeouts for flaky sensors.</p>
-      <a class="btn small" href="blog-post-i2c-retries.html">Read More</a> <!-- MODIFY HERE -->
+    <article class="blog-post">
+      <h2>Top 5 Microcontrollers for Beginners</h2>
+      <p class="post-date">Published: August 5, 2025</p>
+      <p>New to embedded systems? This guide highlights five beginner-friendly microcontrollers that you can start experimenting with right away.</p>
+      <a href="#" class="btn">Read More</a>
     </article>
+  </main>
 
-    <article class="card post">
-      <img src="assets/sample.jpg" alt="PCB checklist" />
-      <h3>PCB Checklist: 10 Mistakes</h3>
-      <p>Silkscreen, clearances, decoupling — avoid common errors.</p>
-      <a class="btn small" href="blog-post-pcb-checklist.html">Read More</a> <!-- MODIFY HERE -->
-    </article>
-  </section>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Embedded Electronics. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-  <p class="muted"><!-- MODIFY HERE --> Create one HTML per post (same header/footer) and link them here.</p>
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Embedded Electronics</p>
-  </div>
-</footer>
+  <script src="scripts.js"></script>
 </body>
 </html>

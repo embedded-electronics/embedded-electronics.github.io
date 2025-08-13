@@ -1,34 +1,64 @@
-// ===== Menu Toggle (for mobile) =====
+/* ===== Common JS for All Pages ===== */
+
+/* --- Mobile menu toggle --- */
 function toggleMenu() {
-  document.getElementById('nav').classList.toggle('open');
+  const nav = document.getElementById('nav');
+  if (!nav) return;
+  nav.classList.toggle('open');
 }
 
-// ===== Quiz Logic =====
-let currentQuestionIndex = 0;
-let answers = {};
+/* --- On load: set year & active link --- */
+document.addEventListener('DOMContentLoaded', () => {
+  // Year in footer(s)
+  document.querySelectorAll('#year').forEach(el => el.textContent = new Date().getFullYear());
+  // Active nav highlight
+  const path = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav a').forEach(a => {
+    if (a.getAttribute('href') === path) a.classList.add('active');
+  });
+});
 
-function loadQuestion() {
-  const question = quizQuestions[currentQuestionIndex];
-  const quizElement = document.getElementById("quiz");
+/* ===== Quiz Logic (One question per screen, radio options, no timer) =====
+   Requires a global `quizQuestions` from questions.js
+*/
+let qIndex = 0;
+let userAnswers = {}; // { [index]: optionIndex }
 
-  let optionsHTML = '';
-  question.options.forEach((option, index) => {
-    const isChecked = answers[currentQuestionIndex] === index ? "checked" : "";
-    optionsHTML += `
+/* Start/Init quiz: call on quiz page after DOM ready */
+function initQuiz() {
+  if (!Array.isArray(quizQuestions) || quizQuestions.length === 0) return;
+  qIndex = 0;
+  userAnswers = {};
+  renderQuestion();
+}
+
+/* Render current question */
+function renderQuestion() {
+  const holder = document.getElementById('quiz');
+  if (!holder) return;
+
+  const total = quizQuestions.length;
+  const q = quizQuestions[qIndex];
+
+  // Build options
+  let optionsHtml = '';
+  q.options.forEach((opt, i) => {
+    const checked = userAnswers[qIndex] === i ? 'checked' : '';
+    optionsHtml += `
       <label>
-        <input type="radio" name="answer" value="${index}" ${isChecked}>
-        ${option}
+        <input type="radio" name="answer" value="${i}" ${checked} />
+        ${opt}
       </label>
     `;
   });
 
-  quizElement.innerHTML = `
-    <div class="quiz-container">
-      <div class="quiz-question">${question.question}</div>
-      <div class="quiz-options">${optionsHTML}</div>
+  holder.innerHTML = `
+    <div class="card quiz-card">
+      <div class="quiz-question">Q${qIndex + 1} of ${total}: ${q.question}</div>
+      <div class="quiz-options">${optionsHtml}</div>
       <div class="quiz-nav">
-        <button class="btn" onclick="prevQuestion()" ${currentQuestionIndex === 0 ? "disabled" : ""}>Previous</button>
-        ${currentQuestionIndex === quizQuestions.length - 1
+        <button class="btn ghost" onclick="prevQuestion()" ${qIndex === 0 ? 'disabled' : ''}>Previous</button>
+        ${qIndex === total - 1
           ? `<button class="btn" onclick="submitQuiz()">Submit</button>`
           : `<button class="btn" onclick="nextQuestion()">Next</button>`}
       </div>
@@ -36,48 +66,60 @@ function loadQuestion() {
   `;
 }
 
+/* Save current selection */
+function saveCurrentAnswer() {
+  const picked = document.querySelector('input[name="answer"]:checked');
+  if (picked) userAnswers[qIndex] = parseInt(picked.value, 10);
+}
+
+/* Next / Previous */
 function nextQuestion() {
-  saveAnswer();
-  if (currentQuestionIndex < quizQuestions.length - 1) {
-    currentQuestionIndex++;
-    loadQuestion();
+  saveCurrentAnswer();
+  if (qIndex < quizQuestions.length - 1) {
+    qIndex++;
+    renderQuestion();
   }
 }
-
 function prevQuestion() {
-  saveAnswer();
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    loadQuestion();
+  saveCurrentAnswer();
+  if (qIndex > 0) {
+    qIndex--;
+    renderQuestion();
   }
 }
 
-function saveAnswer() {
-  const selected = document.querySelector('input[name="answer"]:checked');
-  if (selected) {
-    answers[currentQuestionIndex] = parseInt(selected.value);
-  }
-}
-
+/* Submit: compute score & show result */
 function submitQuiz() {
-  saveAnswer();
+  saveCurrentAnswer();
+  const total = quizQuestions.length;
   let score = 0;
   quizQuestions.forEach((q, i) => {
-    if (answers[i] === q.correct) {
-      score++;
-    }
+    if (userAnswers[i] === q.correct) score++;
   });
 
-  document.getElementById("quiz").innerHTML = `
-    <div class="quiz-container">
-      <h2>Your Score: ${score} / ${quizQuestions.length}</h2>
-      <button class="btn" onclick="restartQuiz()">Restart</button>
+  const holder = document.getElementById('quiz');
+  if (!holder) return;
+  holder.innerHTML = `
+    <div class="card quiz-card center">
+      <h2>Your Score</h2>
+      <p class="muted">You answered ${score} out of ${total} correctly.</p>
+      <div class="spacer"></div>
+      <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
     </div>
   `;
 }
 
+/* Restart */
 function restartQuiz() {
-  currentQuestionIndex = 0;
-  answers = {};
-  loadQuestion();
+  qIndex = 0;
+  userAnswers = {};
+  renderQuestion();
 }
+
+/* Expose quiz functions globally (used by inline handlers) */
+window.initQuiz = initQuiz;
+window.nextQuestion = nextQuestion;
+window.prevQuestion = prevQuestion;
+window.submitQuiz = submitQuiz;
+window.restartQuiz = restartQuiz;
+window.toggleMenu = toggleMenu;

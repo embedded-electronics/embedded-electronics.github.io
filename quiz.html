@@ -5,20 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Quiz</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .question-container { display: none; }
-    .question-container.active { display: block; }
-    .actions { margin-top: 20px; }
-    select { width: 100%; padding: 8px; font-size: 16px; }
-  </style>
   <script defer src="scripts.js"></script>
 </head>
 <body>
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
-      <span class="brand-name">Embedded Electronics</span>
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
+      <!-- <span class="brand-name">Embedded Electronics</span> -->
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
@@ -36,69 +30,36 @@
 <main class="container page">
   <header class="page-header">
     <h1>MCQ Quiz</h1>
-    <p>Answer all questions and submit to see your score instantly.</p>
+    <p><!-- MODIFY HERE --> Answer each question by selecting from the dropdown. Use Next / Previous to navigate.</p>
   </header>
 
   <div class="quiz-meta">
-    <label> Name
+    <label> Name:
       <input id="quiz-name" type="text" placeholder="Your full name" />
     </label>
-    <label> Time Limit
+    <label> Time Limit:
       <select id="quiz-timer">
         <option value="0">No timer</option>
         <option value="300">5 minutes</option>
-        <option value="600" selected>10 minutes</option>
+        <option value="600" selected>10 minutes</option> <!-- MODIFY HERE -->
       </select>
     </label>
     <button class="btn" onclick="startQuiz()">Start</button>
     <div id="timer" class="muted" style="display:none">Time left: <span id="timer-display">00:00</span></div>
   </div>
 
-  <form id="quiz-form" onsubmit="return handleSubmit(event)">
-    <div id="quiz">
-      <!-- Questions -->
-      <div class="question-container active">
-        <p>1. In Linux, the command "chmod 755 file" will:</p>
-        <select name="q1">
-          <option value="">-- Select your answer --</option>
-          <option value="A">A) Give read, write, and execute to everyone</option>
-          <option value="B">B) Give read and execute to everyone, write only to the owner</option>
-          <option value="C">C) Deny execution to everyone</option>
-          <option value="D">D) Delete the file</option>
-        </select>
-      </div>
-
-      <div class="question-container">
-        <p>2. Which command is used to list files in Linux?</p>
-        <select name="q2">
-          <option value="">-- Select your answer --</option>
-          <option value="A">A) list</option>
-          <option value="B">B) ls</option>
-          <option value="C">C) show</option>
-          <option value="D">D) dirlist</option>
-        </select>
-      </div>
-
-      <div class="question-container">
-        <p>3. Which protocol is used for secure file transfer?</p>
-        <select name="q3">
-          <option value="">-- Select your answer --</option>
-          <option value="A">A) FTP</option>
-          <option value="B">B) HTTP</option>
-          <option value="C">C) SFTP</option>
-          <option value="D">D) SMTP</option>
-        </select>
-      </div>
-    </div>
+  <form id="quiz-form" onsubmit="return handleSubmit(event)" style="display:none;">
+    <div id="quiz-question"></div>
 
     <div class="actions">
-      <button class="btn" type="button" id="prevBtn" onclick="changeQuestion(-1)" disabled>Previous</button>
-      <button class="btn" type="button" id="nextBtn" onclick="changeQuestion(1)">Next</button>
-      <button class="btn" type="submit" id="submitBtn" style="display:none;">Submit</button>
+      <button class="btn ghost" type="button" onclick="prevQuestion()">Previous</button>
+      <button id="next-btn" class="btn" type="button" onclick="nextQuestion()">Next</button>
+      <button id="submit-btn" class="btn" type="submit" style="display:none;">Submit</button>
     </div>
   </form>
 
   <div id="result" class="result"></div>
+  <p class="muted">Scores are calculated in your browser. <!-- MODIFY HERE: integrate backend if needed --></p>
 </main>
 
 <footer class="site-footer">
@@ -106,35 +67,5 @@
     <p>© <span id="year"></span> Embedded Electronics</p>
   </div>
 </footer>
-
-<script>
-let currentQuestion = 0;
-let questions;
-
-document.addEventListener("DOMContentLoaded", () => {
-  questions = document.querySelectorAll(".question-container");
-  showQuestion(currentQuestion);
-});
-
-function changeQuestion(n) {
-  questions[currentQuestion].classList.remove("active");
-  currentQuestion += n;
-  showQuestion(currentQuestion);
-}
-
-function showQuestion(n) {
-  questions[n].classList.add("active");
-  document.getElementById("prevBtn").disabled = n === 0;
-  document.getElementById("nextBtn").style.display = n === questions.length - 1 ? "none" : "inline-block";
-  document.getElementById("submitBtn").style.display = n === questions.length - 1 ? "inline-block" : "none";
-}
-
-function handleSubmit(e) {
-  e.preventDefault();
-  alert("Quiz submitted!"); // Replace with score calculation
-  return false;
-}
-</script>
-
 </body>
 </html>

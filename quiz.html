@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — Quiz</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz - Embedded Electronics</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="questions.js"></script>
-  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
-      <!-- <span class="brand-name">Embedded Electronics</span> -->
-    </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-    <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="ebooks.html">E-Books</a>
-      <a class="active" href="quiz.html">Quiz</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Embedded Electronics</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="ebooks.html">E-Books</a></li>
+          <li><a href="quiz.html" class="active">Quiz</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<main class="container">
-  <h1>MCQ Quiz</h1>
-  <div id="quiz"></div>
-</main>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <h1>Embedded Systems Quiz</h1>
+    <p>Test your knowledge on embedded systems, microcontrollers, and electronics.</p>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Embedded Electronics</p>
-  </div>
-</footer>
+    <div id="quiz-container" class="quiz-container">
+      <div id="question-container">
+        <!-- Question text -->
+        <h2 id="question"></h2>
+        <!-- Options -->
+        <div id="options"></div>
+      </div>
+      <button id="next-btn" class="btn">Next</button>
+    </div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  loadQuestion();
-</script>
+    <div id="result-container" class="result-container" style="display: none;">
+      <h2>Your Score:</h2>
+      <p id="score"></p>
+      <button onclick="startQuiz()" class="btn">Try Again</button>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Embedded Electronics. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>

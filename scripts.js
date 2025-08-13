@@ -21,86 +21,87 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ----------------- QUIZ LOGIC ----------------- */
-/* MODIFY HERE: edit your quiz questions */
+// Quiz Data
 const quizData = [
-  { question: 'Which lines are used by I²C?', options: ['TX/RX', 'SCL & SDA', 'MOSI/MISO'], answer: 'SCL & SDA' },
-  { question: 'ESP8266 is a:', options: ['Motor driver', 'Wi-Fi MCU', 'ADC chip'], answer: 'Wi-Fi MCU' },
-  { question: 'DHT11 measures:', options: ['Light only', 'Temp & Humidity', 'Acceleration'], answer: 'Temp & Humidity' }
+  {
+    question: "What does CPU stand for?",
+    options: ["Central Processing Unit", "Computer Personal Unit", "Central Performance Utility", "Control Processing Unit"],
+    answer: 0
+  },
+  {
+    question: "Which is a type of microcontroller?",
+    options: ["ATmega328", "Intel i9", "Snapdragon 888", "Ryzen 7"],
+    answer: 0
+  },
+  {
+    question: "What does GPIO stand for?",
+    options: ["General Purpose Input Output", "Global Port Input Output", "General Peripheral Integrated Output", "None of the above"],
+    answer: 0
+  }
 ];
 
-let quizStarted = false;
-let quizTimer = null;
-let timeLeft = 0;
+let currentQuestionIndex = 0;
+let userAnswers = [];
 
-function startQuiz(){
-  if (quizStarted) return;
-  renderQuiz();
-  quizStarted = true;
+function startQuiz() {
+  document.getElementById('timer').style.display = 'block';
+  loadQuestion(currentQuestionIndex);
+}
 
-  const sel = document.getElementById('quiz-timer');
-  const secs = sel ? parseInt(sel.value,10) : 0;
-  if (secs > 0){
-    timeLeft = secs;
-    const timerWrap = document.getElementById('timer');
-    if (timerWrap) timerWrap.style.display = 'inline-block';
-    updateTimerDisplay();
-    quizTimer = setInterval(() => {
-      timeLeft--;
-      updateTimerDisplay();
-      if (timeLeft <= 0){ clearInterval(quizTimer); submitQuiz(); }
-    }, 1000);
+function loadQuestion(index) {
+  const container = document.getElementById('quiz-container');
+  const q = quizData[index];
+  
+  container.innerHTML = `
+    <div class="quiz-slide">
+      <h3>Question ${index + 1} of ${quizData.length}</h3>
+      <p>${q.question}</p>
+      ${q.options.map((opt, i) => `
+        <label>
+          <input type="radio" name="q${index}" value="${i}" ${userAnswers[index] == i ? "checked" : ""} />
+          ${opt}
+        </label>
+      `).join('')}
+    </div>
+  `;
+  
+  // Handle button visibility
+  document.getElementById('prev-btn').disabled = index === 0;
+  document.getElementById('next-btn').style.display = index === quizData.length - 1 ? 'none' : 'inline-block';
+  document.getElementById('submit-btn').style.display = index === quizData.length - 1 ? 'inline-block' : 'none';
+}
+
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestionIndex < quizData.length - 1) {
+    currentQuestionIndex++;
+    loadQuestion(currentQuestionIndex);
   }
 }
 
-function renderQuiz(){
-  const container = document.getElementById('quiz');
-  if (!container) return;
-  container.innerHTML = '';
-  quizData.forEach((q, i) => {
-    const opts = q.options.map(o =>
-      `<label><input type="radio" name="q${i}" value="${escapeHtml(o)}"> ${escapeHtml(o)}</label>`
-    ).join('<br>');
-    container.innerHTML += `<div class="question"><b>Q${i+1}. ${escapeHtml(q.question)}</b>${opts}</div>`;
-  });
-}
-
-function handleSubmit(e){ e.preventDefault(); submitQuiz(); return false; }
-
-function submitQuiz(){
-  if (quizTimer){ clearInterval(quizTimer); quizTimer = null; }
-  let correct = 0;
-  quizData.forEach((q, i) => {
-    const sel = document.querySelector(`input[name="q${i}"]:checked`);
-    if (sel && sel.value === q.answer) correct++;
-  });
-  const name = (document.getElementById('quiz-name')?.value || 'Anonymous').trim() || 'Anonymous';
-  const result = document.getElementById('result');
-  if (result){
-    result.innerHTML = `<h3>Result for ${escapeHtml(name)}</h3>
-      <p>Score: <strong>${correct}</strong> / ${quizData.length}</p>`;
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    loadQuestion(currentQuestionIndex);
   }
-  // store last attempt locally
-  try {
-    const key = 'ee_quiz_history';
-    const recs = JSON.parse(localStorage.getItem(key) || '[]');
-    recs.push({ name, correct, total: quizData.length, date: new Date().toISOString() });
-    localStorage.setItem(key, JSON.stringify(recs.slice(-25)));
-  } catch(e){}
 }
 
-function resetQuiz(){
-  if (quizTimer){ clearInterval(quizTimer); quizTimer = null; }
-  quizStarted = false;
-  const container = document.getElementById('quiz'); if (container) container.innerHTML = '';
-  const result = document.getElementById('result'); if (result) result.innerHTML = '';
-  const timerWrap = document.getElementById('timer'); if (timerWrap) timerWrap.style.display = 'none';
+function saveAnswer() {
+  const selected = document.querySelector(`input[name="q${currentQuestionIndex}"]:checked`);
+  userAnswers[currentQuestionIndex] = selected ? parseInt(selected.value) : null;
 }
 
-function updateTimerDisplay(){
-  const el = document.getElementById('timer-display'); if (!el) return;
-  const m = String(Math.floor(timeLeft/60)).padStart(2,'0');
-  const s = String(timeLeft%60).padStart(2,'0');
-  el.textContent = `${m}:${s}`;
+function handleSubmit(e) {
+  e.preventDefault();
+  saveAnswer();
+  
+  let score = 0;
+  quizData.forEach((q, i) => {
+    if (userAnswers[i] === q.answer) score++;
+  });
+  
+  document.getElementById('result').innerHTML = `<strong>Your score: ${score}/${quizData.length}</strong>`;
 }
 
 /* Contact page: open mailto with prefilled content */

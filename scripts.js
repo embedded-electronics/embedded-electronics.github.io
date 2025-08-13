@@ -126,7 +126,7 @@ function submitContact(e){
   if (!name || !email || !msg){ alert('Please fill name, email and message'); return false; }
   const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
   /* MODIFY HERE: replace email below */
-  window.location.href = `mailto:youremail@example.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  window.location.href = `mailto:embeddedelectronics.in@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   return false;
 }
 

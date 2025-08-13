@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Quiz</title>
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="questions.js"></script>
   <script defer src="scripts.js"></script>
 </head>
 <body>
@@ -14,6 +15,7 @@
       <img src="assets/logo.png" alt="Logo" class="brand-logo" />
       <!-- <span class="brand-name">Embedded Electronics</span> -->
     </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
@@ -26,28 +28,9 @@
   </div>
 </header>
 
-<main class="container page">
-  <header class="page-header">
-    <h1>MCQ Quiz</h1>
-    <p>Answer all questions and submit to see your score instantly.</p>
-  </header>
-
-  <label>
-    Name:
-    <input id="quiz-name" type="text" placeholder="Your full name" />
-  </label>
-  <button class="btn" onclick="startQuiz()">Start Quiz</button>
-
-  <form id="quiz-form" onsubmit="return handleSubmit(event)" style="display:none;">
-    <div id="quiz"></div>
-    <div class="actions">
-      <button class="btn" type="button" id="prev-btn" onclick="prevQuestion()">Previous</button>
-      <button class="btn" type="button" id="next-btn" onclick="nextQuestion()">Next</button>
-      <button class="btn" type="submit" id="submit-btn" style="display:none;">Submit</button>
-    </div>
-  </form>
-
-  <div id="result" class="result"></div>
+<main class="container">
+  <h1>MCQ Quiz</h1>
+  <div id="quiz"></div>
 </main>
 
 <footer class="site-footer">
@@ -55,5 +38,10 @@
     <p>© <span id="year"></span> Embedded Electronics</p>
   </div>
 </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  loadQuestion();
+</script>
 </body>
 </html>

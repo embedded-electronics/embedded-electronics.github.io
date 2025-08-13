@@ -1,44 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embedded Electronics - Home</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="scripts.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Electronics - Home</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-  <nav>
-    <img src="assets/logo.png" class="logo" alt="Logo"> <!-- MODIFY HERE -->
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="tutorials.html">Tutorials</a></li>
-      <li><a href="ebooks.html">E-Books</a></li>
-      <li><a href="quiz.html">Quiz</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <button class="nav-toggle">☰</button>
-  </nav>
-</header>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Embedded Electronics</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="ebooks.html">E-Books</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="hero" style="background-image: url('assets/banner.png');"> <!-- MODIFY HERE -->
-  <h1>Welcome to Embedded Electronics</h1>
-  <p>Learn, build, and innovate with cutting-edge embedded systems.</p>
-  <a href="projects.html" class="btn">Explore Projects</a>
-</section>
+    <!-- Banner Section -->
+    <section class="banner">
+        <img src="banner.jpg" alt="Embedded Electronics Banner">
+        <div class="banner-text">
+            <h1>Welcome to Embedded Electronics</h1>
+            <p><!-- MODIFY HERE -->Your one-stop destination for projects, tutorials, quizzes, and resources in Embedded Systems.</p>
+        </div>
+    </section>
 
-<section class="content">
-  <h2>About Our Work</h2>
-  <p><!-- MODIFY HERE --> We specialize in microcontroller-based systems, IoT, robotics, and more.</p>
-</section>
+    <!-- Intro Section -->
+    <section class="intro">
+        <h2>About Us</h2>
+        <p><!-- MODIFY HERE -->We provide practical resources, tutorials, and projects to help you excel in Embedded Systems, IoT, and Electronics design.</p>
+    </section>
 
-<footer>
-  <p>© 2025 Embedded Electronics</p>
-</footer>
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="card">
+            <h3>Projects</h3>
+            <p>Explore our collection of real-world embedded system projects.</p>
+            <a href="projects.html" class="btn">View Projects</a>
+        </div>
+        <div class="card">
+            <h3>Tutorials</h3>
+            <p>Step-by-step guides on microcontrollers, IoT, and programming.</p>
+            <a href="tutorials.html" class="btn">View Tutorials</a>
+        </div>
+        <div class="card">
+            <h3>Take a Quiz</h3>
+            <p>Test your embedded systems knowledge.</p>
+            <a href="quiz.html" class="btn">Start Quiz</a>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Embedded Electronics. All Rights Reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

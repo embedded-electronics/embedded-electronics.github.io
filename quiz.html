@@ -12,7 +12,7 @@
   <div class="container">
     <a class="brand" href="index.html">
       <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span>  -->
+      <!-- <span class="brand-name">Embedded Electronics</span> -->
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
@@ -30,7 +30,7 @@
 <main class="container page">
   <header class="page-header">
     <h1>MCQ Quiz</h1>
-    <p><!-- MODIFY HERE --> Answer all questions and submit to see your score instantly.</p>
+    <p><!-- MODIFY HERE --> Answer each question and navigate using Next/Previous buttons.</p>
   </header>
 
   <div class="quiz-meta">
@@ -42,6 +42,7 @@
         <option value="0">No timer</option>
         <option value="300">5 minutes</option>
         <option value="600" selected>10 minutes</option> <!-- MODIFY HERE -->
+        <option value="1200" selected>20 minutes</option> <!-- MODIFY HERE -->
       </select>
     </label>
     <button class="btn" onclick="startQuiz()">Start</button>
@@ -49,10 +50,11 @@
   </div>
 
   <form id="quiz-form" onsubmit="return handleSubmit(event)">
-    <div id="quiz"></div>
+    <div id="quiz-container"></div>
     <div class="actions">
-      <button class="btn" type="submit">Submit</button>
-      <button class="btn ghost" type="button" onclick="resetQuiz()">Reset</button>
+      <button class="btn ghost" type="button" id="prev-btn" onclick="prevQuestion()" disabled>Previous</button>
+      <button class="btn" type="button" id="next-btn" onclick="nextQuestion()">Next</button>
+      <button class="btn" type="submit" id="submit-btn" style="display:none;">Submit</button>
     </div>
   </form>
 

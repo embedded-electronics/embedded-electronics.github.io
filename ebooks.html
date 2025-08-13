@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — E-Books</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Books - Embedded Electronics</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span>  -->
-    </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-    <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a class="active" href="ebooks.html">E-Books</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container page">
-  <header class="page-header">
-    <h1>E-Books & PDFs</h1>
-    <p><!-- MODIFY HERE --> Download reference guides, handbooks, and quick sheets.</p>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Embedded Electronics</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
+          <li><a href="ebooks.html" class="active">E-Books</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="grid-3">
-    <article class="card ebook">
-      <img src="assets/sample.jpg" alt="E-Book Cover" /> <!-- MODIFY HERE -->
-      <h3>Embedded Basics — Starter</h3>
-      <p>Beginner-friendly overview with simple projects.</p>
-      <a class="btn small" href="assets/ebooks/embedded-basics.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
-    </article>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+    <h1>Embedded Electronics E-Books</h1>
+    <p>Download free PDF guides and e-books to help you learn embedded systems faster.</p>
 
-    <article class="card ebook">
-      <img src="assets/sample.jpg" alt="E-Book Cover" />
-      <h3>Practical IoT with ESP32</h3>
-      <p>MQTT, REST, OTA updates and deep sleep.</p>
-      <a class="btn small" href="assets/ebooks/iot-esp32.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
-    </article>
+    <div class="card-grid">
+      <div class="card">
+        <img src="assets/sample.jpg" alt="E-Book 1" />
+        <h3>Arduino Programming for Beginners</h3>
+        <p>A complete PDF guide for learning Arduino basics with projects.</p>
+        <a href="#" class="btn">Download</a>
+      </div>
 
-    <article class="card ebook">
-      <img src="assets/sample.jpg" alt="E-Book Cover" />
-      <h3>PCB Layout Quickstart</h3>
-      <p>Common pitfalls and a pre-flight checklist.</p>
-      <a class="btn small" href="assets/ebooks/pcb-quickstart.pdf" download>Download PDF</a> <!-- MODIFY HERE -->
-    </article>
-  </section>
+      <div class="card">
+        <img src="assets/sample.jpg" alt="E-Book 2" />
+        <h3>ESP32 IoT Development</h3>
+        <p>Step-by-step IoT project building with ESP32 microcontroller.</p>
+        <a href="#" class="btn">Download</a>
+      </div>
 
-  <p class="muted"><!-- MODIFY HERE --> Add more PDFs to <code>assets/ebooks/</code> and update the links above.</p>
-</main>
+      <div class="card">
+        <img src="assets/sample.jpg" alt="E-Book 3" />
+        <h3>Microcontroller Communication Protocols</h3>
+        <p>Learn UART, SPI, I²C, and CAN with detailed examples.</p>
+        <a href="#" class="btn">Download</a>
+      </div>
+    </div>
+  </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Embedded Electronics</p>
-  </div>
-</footer>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Embedded Electronics. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>

@@ -3,64 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — Embedded Electronics</title>
+  <title>Embedded Electronics — Contact</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="scripts.js" defer></script>
+  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header>
-  <nav class="nav-bar">
-    <img src="assets/logo.png" class="logo" alt="Logo"> <!-- MODIFY HERE -->
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="tutorials.html">Tutorials</a></li>
-      <li><a href="ebooks.html">E-Books</a></li>
-      <li><a href="quiz.html">Quiz</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-    <button class="nav-toggle">☰</button>
-  </nav>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
+      <span class="brand-name">Embedded Electronics</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="ebooks.html">E-Books</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="blog.html">Blog</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main class="container page">
-  <h1>Contact</h1>
-  <p><!-- MODIFY HERE: contact blurb -->Have a question, collaboration opportunity, or request a tutorial? Use the form below or email directly.</p>
+  <header class="page-header">
+    <h1>Contact</h1>
+    <p><!-- MODIFY HERE --> For collaborations, project help, or training requests, send a message below.</p>
+  </header>
 
-  <form id="contact-form" class="contact-form" onsubmit="return submitContact(event)">
-    <label>
-      Your name
-      <input type="text" id="name" required />
+  <form class="contact-form" onsubmit="return submitContact(event)">
+    <label> Your Name
+      <input id="name" type="text" required />
     </label>
-
-    <label>
-      Email
-      <input type="email" id="email" required />
+    <label> Email
+      <input id="email" type="email" required />
     </label>
-
-    <label>
-      Subject
-      <input type="text" id="subject" />
+    <label> Subject
+      <input id="subject" type="text" placeholder="Let's collaborate" /> <!-- MODIFY HERE -->
     </label>
-
-    <label>
-      Message
+    <label> Message
       <textarea id="message" rows="6" required></textarea>
     </label>
 
-    <div class="form-row">
+    <div class="actions">
       <button class="btn" type="submit">Send</button>
-      <a class="btn ghost" id="mailto-link" href="mailto:youremail@example.com">Open Email Client</a> <!-- MODIFY HERE: replace email -->
+      <a class="btn ghost" id="mailto-link" href="mailto:embeddedelectronics.in@gmail.com">Open Email</a> <!-- MODIFY HERE -->
     </div>
-
-    <p class="muted">Note: This is a static GitHub Pages site. The form opens your email client with content pre-filled. Use Formspree/Getform for backend form handling. <!-- MODIFY HERE: optional instructions --></p>
+    <p class="muted">This static form opens your email client. For backend form handling, use Formspree/Getform. <!-- MODIFY HERE --></p>
   </form>
 </main>
 
-<footer>
-  <p>© <span id="year"></span> Embedded Electronics</p>
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
 </footer>
-
 </body>
 </html>

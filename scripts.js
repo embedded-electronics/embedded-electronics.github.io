@@ -1,153 +1,137 @@
-/* ===== Embedded Electronics — Shared Script ===== */
-
-/* ----------------- MOBILE NAVIGATION ----------------- */
-function toggleMenu(){
-  const nav = document.getElementById('nav');
-  if (!nav) return;
-  const shown = getComputedStyle(nav).display !== 'none';
-  nav.style.display = shown ? 'none' : 'flex';
+// Navigation toggle for mobile
+function toggleMenu() {
+  document.getElementById("nav").classList.toggle("open");
 }
 
-/* ----------------- PAGE LOAD ACTIONS ----------------- */
-document.addEventListener('DOMContentLoaded', () => {
-  // Set current year in all #year elements
-  document.querySelectorAll('#year').forEach(el => el.textContent = new Date().getFullYear());
-
-  // Highlight active nav link based on URL
-  const links = document.querySelectorAll('.nav a');
-  links.forEach(a => {
-    if (a.getAttribute('href') && location.pathname.endsWith(a.getAttribute('href'))) {
-      a.classList.add('active');
-    }
-  });
+// Footer year
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("year").textContent = new Date().getFullYear();
 });
 
-/* ----------------- QUIZ LOGIC ----------------- */
-/* MODIFY HERE: Edit your quiz questions */
+// Quiz Data — MODIFY HERE
 const quizData = [
-  { question: 'Which lines are used by I²C?', options: ['TX/RX', 'SCL & SDA', 'MOSI/MISO'], answer: 'SCL & SDA' },
-  { question: 'ESP8266 is a:', options: ['Motor driver', 'Wi-Fi MCU', 'ADC chip'], answer: 'Wi-Fi MCU' },
-  { question: 'DHT11 measures:', options: ['Light only', 'Temp & Humidity', 'Acceleration'], answer: 'Temp & Humidity' }
+  {
+    question: "What does CPU stand for?",
+    options: ["Central Processing Unit", "Computer Personal Unit", "Central Performance Utility", "Control Processing Unit"],
+    answer: "Central Processing Unit"
+  },
+  {
+    question: "Which language is primarily used for Arduino programming?",
+    options: ["Python", "C/C++", "Java", "Assembly"],
+    answer: "C/C++"
+  },
+  {
+    question: "What is the default baud rate for Arduino Serial Monitor?",
+    options: ["4800", "9600", "115200", "19200"],
+    answer: "9600"
+  }
 ];
 
-let quizStarted = false;
-let quizTimer = null;
-let timeLeft = 0;
+let currentQuestionIndex = 0;
+let userAnswers = [];
+let timerInterval = null;
 
-function startQuiz(){
-  if (quizStarted) return;
-  renderQuiz();
-  quizStarted = true;
+// Start Quiz
+function startQuiz() {
+  const name = document.getElementById("quiz-name").value.trim();
+  const timeLimit = parseInt(document.getElementById("quiz-timer").value);
 
-  const sel = document.getElementById('quiz-timer');
-  const secs = sel ? parseInt(sel.value, 10) : 0;
-  if (secs > 0){
-    timeLeft = secs;
-    const timerWrap = document.getElementById('timer');
-    if (timerWrap) timerWrap.style.display = 'inline-block';
-    updateTimerDisplay();
-    quizTimer = setInterval(() => {
-      timeLeft--;
-      updateTimerDisplay();
-      if (timeLeft <= 0){
-        clearInterval(quizTimer);
-        submitQuiz();
-      }
-    }, 1000);
+  if (!name) {
+    alert("Please enter your name before starting.");
+    return;
+  }
+
+  document.querySelector(".quiz-meta").style.display = "none";
+  document.getElementById("quiz-form").style.display = "block";
+  currentQuestionIndex = 0;
+  userAnswers = new Array(quizData.length).fill(null);
+  showQuestion();
+
+  if (timeLimit > 0) {
+    startTimer(timeLimit);
   }
 }
 
-function renderQuiz(){
-  const container = document.getElementById('quiz');
-  if (!container) return;
-  container.innerHTML = '';
-  quizData.forEach((q, i) => {
-    const opts = q.options.map(o =>
-      `<label><input type="radio" name="q${i}" value="${escapeHtml(o)}"> ${escapeHtml(o)}</label>`
-    ).join('<br>');
-    container.innerHTML += `<div class="question"><b>Q${i+1}. ${escapeHtml(q.question)}</b><br>${opts}</div>`;
-  });
+// Show Question
+function showQuestion() {
+  const quizEl = document.getElementById("quiz-question");
+  const q = quizData[currentQuestionIndex];
+
+  quizEl.innerHTML = `
+    <h2>Question ${currentQuestionIndex + 1} of ${quizData.length}</h2>
+    <p>${q.question}</p>
+    <select id="answer-select">
+      <option value="">Select an answer</option>
+      ${q.options.map(opt => `<option value="${opt}" ${userAnswers[currentQuestionIndex] === opt ? 'selected' : ''}>${opt}</option>`).join("")}
+    </select>
+  `;
+
+  document.getElementById("next-btn").style.display = (currentQuestionIndex < quizData.length - 1) ? "inline-block" : "none";
+  document.getElementById("submit-btn").style.display = (currentQuestionIndex === quizData.length - 1) ? "inline-block" : "none";
 }
 
-function handleSubmit(e){
-  e.preventDefault();
-  submitQuiz();
+// Next Question
+function nextQuestion() {
+  saveAnswer();
+  if (currentQuestionIndex < quizData.length - 1) {
+    currentQuestionIndex++;
+    showQuestion();
+  }
+}
+
+// Previous Question
+function prevQuestion() {
+  saveAnswer();
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    showQuestion();
+  }
+}
+
+// Save selected answer
+function saveAnswer() {
+  const selected = document.getElementById("answer-select").value;
+  userAnswers[currentQuestionIndex] = selected || null;
+}
+
+// Submit Quiz
+function handleSubmit(event) {
+  event.preventDefault();
+  saveAnswer();
+
+  let score = 0;
+  quizData.forEach((q, i) => {
+    if (userAnswers[i] === q.answer) {
+      score++;
+    }
+  });
+
+  document.getElementById("quiz-form").style.display = "none";
+  document.getElementById("result").innerHTML = `<h3>${document.getElementById("quiz-name").value}, you scored ${score} out of ${quizData.length}.</h3>`;
+  stopTimer();
   return false;
 }
 
-function submitQuiz(){
-  if (quizTimer){
-    clearInterval(quizTimer);
-    quizTimer = null;
-  }
-  let correct = 0;
-  quizData.forEach((q, i) => {
-    const sel = document.querySelector(`input[name="q${i}"]:checked`);
-    if (sel && sel.value === q.answer) correct++;
-  });
-  const name = (document.getElementById('quiz-name')?.value || 'Anonymous').trim() || 'Anonymous';
-  const result = document.getElementById('result');
-  if (result){
-    result.innerHTML = `<h3>Result for ${escapeHtml(name)}</h3>
-      <p>Score: <strong>${correct}</strong> / ${quizData.length}</p>`;
-  }
+// Timer
+function startTimer(seconds) {
+  const timerDisplay = document.getElementById("timer");
+  const timeSpan = document.getElementById("timer-display");
+  timerDisplay.style.display = "block";
 
-  // Store last attempts in local storage
-  try {
-    const key = 'ee_quiz_history';
-    const recs = JSON.parse(localStorage.getItem(key) || '[]');
-    recs.push({ name, correct, total: quizData.length, date: new Date().toISOString() });
-    localStorage.setItem(key, JSON.stringify(recs.slice(-25)));
-  } catch(e){}
+  let remaining = seconds;
+  timerInterval = setInterval(() => {
+    let min = String(Math.floor(remaining / 60)).padStart(2, "0");
+    let sec = String(remaining % 60).padStart(2, "0");
+    timeSpan.textContent = `${min}:${sec}`;
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      alert("Time is up!");
+      handleSubmit(new Event("submit"));
+    }
+    remaining--;
+  }, 1000);
 }
 
-function resetQuiz(){
-  if (quizTimer){
-    clearInterval(quizTimer);
-    quizTimer = null;
-  }
-  quizStarted = false;
-  const container = document.getElementById('quiz'); 
-  if (container) container.innerHTML = '';
-  const result = document.getElementById('result'); 
-  if (result) result.innerHTML = '';
-  const timerWrap = document.getElementById('timer'); 
-  if (timerWrap) timerWrap.style.display = 'none';
+function stopTimer() {
+  clearInterval(timerInterval);
 }
-
-function updateTimerDisplay(){
-  const el = document.getElementById('timer-display'); 
-  if (!el) return;
-  const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
-  const s = String(timeLeft % 60).padStart(2, '0');
-  el.textContent = `${m}:${s}`;
-}
-
-/* ----------------- CONTACT FORM ----------------- */
-function submitContact(e){
-  e.preventDefault();
-  const name = document.getElementById('name')?.value.trim() || '';
-  const email = document.getElementById('email')?.value.trim() || '';
-  const subject = document.getElementById('subject')?.value.trim() || 'Website Contact';
-  const msg = document.getElementById('message')?.value.trim() || '';
-  if (!name || !email || !msg){
-    alert('Please fill name, email and message');
-    return false;
-  }
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
-  /* MODIFY HERE: Replace with your email */
-  window.location.href = `mailto:youremail@example.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-  return false;
-}
-
-/* ----------------- UTILITIES ----------------- */
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g, m => ({
-    '&':'&amp;',
-    '<':'&lt;',
-    '>':'&gt;',
-    '"':'&quot;',
-    "'":'&#39;'
-  }[m]));
-}
-

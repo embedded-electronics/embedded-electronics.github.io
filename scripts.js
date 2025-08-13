@@ -22,87 +22,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ----------------- QUIZ LOGIC ----------------- */
 // Quiz Data
-const quizData = [
-  {
-    question: "What does CPU stand for?",
-    options: ["Central Processing Unit", "Computer Personal Unit", "Central Performance Utility", "Control Processing Unit"],
-    answer: 0
-  },
-  {
-    question: "Which is a type of microcontroller?",
-    options: ["ATmega328", "Intel i9", "Snapdragon 888", "Ryzen 7"],
-    answer: 0
-  },
-  {
-    question: "What does GPIO stand for?",
-    options: ["General Purpose Input Output", "Global Port Input Output", "General Peripheral Integrated Output", "None of the above"],
-    answer: 0
-  }
+const questions = [
+  { q: "What does CPU stand for?", options: ["Central Processing Unit", "Computer Personal Unit", "Central Power Unit", "Central Process Utility"], answer: 0 },
+  { q: "Which is a microcontroller?", options: ["8051", "Pentium", "Xeon", "Core i7"], answer: 0 },
+  { q: "What is the function of RAM?", options: ["Store data temporarily", "Store data permanently", "Control operations", "Power supply"], answer: 0 }
 ];
 
-let currentQuestionIndex = 0;
-let userAnswers = [];
+let currentQuestion = 0;
+let score = 0;
+let timerInterval;
 
-function startQuiz() {
-  document.getElementById('timer').style.display = 'block';
-  loadQuestion(currentQuestionIndex);
+function toggleMenu() {
+  document.getElementById("nav").classList.toggle("open");
 }
 
-function loadQuestion(index) {
-  const container = document.getElementById('quiz-container');
-  const q = quizData[index];
-  
-  container.innerHTML = `
-    <div class="quiz-slide">
-      <h3>Question ${index + 1} of ${quizData.length}</h3>
-      <p>${q.question}</p>
+function startQuiz() {
+  document.getElementById("quiz").innerHTML = "";
+  currentQuestion = 0;
+  score = 0;
+  showQuestion(currentQuestion);
+  document.querySelector(".quiz-navigation").style.display = "flex";
+
+  // Timer setup
+  const timeLimit = parseInt(document.getElementById("quiz-timer").value, 10);
+  if (timeLimit > 0) {
+    document.getElementById("timer").style.display = "block";
+    let timeLeft = timeLimit;
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timer-display").textContent =
+        String(Math.floor(timeLeft / 60)).padStart(2, '0') + ":" + String(timeLeft % 60).padStart(2, '0');
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        handleSubmit();
+      }
+    }, 1000);
+  }
+}
+
+function showQuestion(index) {
+  const q = questions[index];
+  const quizDiv = document.getElementById("quiz");
+  quizDiv.innerHTML = `
+    <div class="question">
+      <p><strong>Q${index + 1}:</strong> ${q.q}</p>
       ${q.options.map((opt, i) => `
-        <label>
-          <input type="radio" name="q${index}" value="${i}" ${userAnswers[index] == i ? "checked" : ""} />
-          ${opt}
-        </label>
-      `).join('')}
+        <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
+      `).join("")}
     </div>
   `;
-  
-  // Handle button visibility
-  document.getElementById('prev-btn').disabled = index === 0;
-  document.getElementById('next-btn').style.display = index === quizData.length - 1 ? 'none' : 'inline-block';
-  document.getElementById('submit-btn').style.display = index === quizData.length - 1 ? 'inline-block' : 'none';
+
+  document.getElementById("prev-btn").style.display = index === 0 ? "none" : "inline-block";
+  document.getElementById("next-btn").style.display = index === questions.length - 1 ? "none" : "inline-block";
+  document.getElementById("submit-btn").style.display = index === questions.length - 1 ? "inline-block" : "none";
 }
 
 function nextQuestion() {
-  saveAnswer();
-  if (currentQuestionIndex < quizData.length - 1) {
-    currentQuestionIndex++;
-    loadQuestion(currentQuestionIndex);
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    showQuestion(currentQuestion);
   }
 }
 
 function prevQuestion() {
-  saveAnswer();
-  if (currentQuestionIndex > 0) {
-    currentQuestionIndex--;
-    loadQuestion(currentQuestionIndex);
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    showQuestion(currentQuestion);
   }
 }
 
-function saveAnswer() {
-  const selected = document.querySelector(`input[name="q${currentQuestionIndex}"]:checked`);
-  userAnswers[currentQuestionIndex] = selected ? parseInt(selected.value) : null;
+function handleSubmit(e) {
+  if (e) e.preventDefault();
+  score = 0;
+  questions.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if (selected && parseInt(selected.value) === q.answer) {
+      score++;
+    }
+  });
+  document.getElementById("result").innerHTML = `You scored ${score} / ${questions.length}`;
+  clearInterval(timerInterval);
+  return false;
 }
 
-function handleSubmit(e) {
-  e.preventDefault();
-  saveAnswer();
-  
-  let score = 0;
-  quizData.forEach((q, i) => {
-    if (userAnswers[i] === q.answer) score++;
-  });
-  
-  document.getElementById('result').innerHTML = `<strong>Your score: ${score}/${quizData.length}</strong>`;
+function resetQuiz() {
+  document.getElementById("quiz").innerHTML = "";
+  document.getElementById("result").innerHTML = "";
+  clearInterval(timerInterval);
 }
+
+document.getElementById("year").textContent = new Date().getFullYear();
 
 /* Contact page: open mailto with prefilled content */
 function submitContact(e){

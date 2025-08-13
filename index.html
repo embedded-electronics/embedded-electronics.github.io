@@ -4,27 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Home</title>
-
-  <!-- Global stylesheet (shared) -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Shared scripts (menu, quiz, etc.) -->
   <script defer src="scripts.js"></script>
 </head>
 <body>
-
-<!-- ===== HEADER (shared) ===== -->
 <header class="site-header">
-  <div class="container bar">
+  <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Embedded Electronics logo" class="brand-logo"> <!-- MODIFY HERE: replace logo -->
-      <span class="brand-name">Embedded Electronics</span>
+      <img src="assets/logo.png" alt="Embedded Electronics Logo" class="brand-logo" /> <!-- MODIFY HERE -->
+     <!-- <span class="brand-name">Embedded Electronics</span>  -->
     </a>
-
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-
     <nav id="nav" class="nav">
-      <a href="index.html" class="active">Home</a>
+      <a class="active" href="index.html">Home</a>
       <a href="projects.html">Projects</a>
       <a href="tutorials.html">Tutorials</a>
       <a href="ebooks.html">E-Books</a>
@@ -34,115 +26,46 @@
     </nav>
   </div>
 </header>
-<!-- ===== /HEADER ===== -->
 
-<main class="page container">
-
-  <!-- HERO / BANNER -->
-  <section class="hero card" aria-label="Site hero">
-    <div>
-      <h1>Embedded Electronics</h1>
-      <p class="muted">
-        <!-- MODIFY HERE: Short tagline / description -->
-        Practical projects, tutorials and downloadable resources for embedded systems and IoT.
-      </p>
-
-      <div style="margin-top:12px;">
-        <a class="btn" href="projects.html">Explore Projects</a>
-        <a class="btn ghost" href="tutorials.html">Start Tutorials</a>
-      </div>
+<section class="hero" style="--hero:url('assets/banner.png')"> <!-- MODIFY HERE -->
+  <div class="container">
+    <h1>Learn, Build & Innovate</h1>
+    <p><!-- MODIFY HERE --> Practical projects, tutorials, and tools for microcontrollers, IoT, and embedded systems.</p>
+    <div class="hero-actions">
+      <a class="btn" href="projects.html">Explore Projects</a>
+      <a class="btn" href="tutorials.html">Start Tutorials</a>
+     <!-- <a class="btn ghost" href="tutorials.html">Start Tutorials</a> -->
     </div>
+  </div>
+</section>
 
-    <div>
-      <img src="assets/banner.jpg" alt="Embedded Electronics banner" /> <!-- MODIFY HERE: replace banner (1920×600 recommended) -->
-    </div>
+<main class="container page">
+  <section class="grid-3">
+    <article class="card">
+      <img src="assets/sample.jpg" alt="Projects" /> <!-- MODIFY HERE -->
+      <h3>Projects</h3>
+      <p>Hands-on projects with schematics, code and BOM.</p>
+      <a class="btn small" href="projects.html">View Projects</a>
+    </article>
+    <article class="card">
+      <img src="assets/sample.jpg" alt="Tutorials" /> <!-- MODIFY HERE -->
+      <h3>Tutorials</h3>
+      <p>Step-by-step guides on MCU, sensors, RTOS and more.</p>
+      <a class="btn small" href="tutorials.html">Read Tutorials</a>
+    </article>
+    <article class="card">
+      <img src="assets/sample.jpg" alt="E-Books" /> <!-- MODIFY HERE -->
+      <h3>E-Books</h3>
+      <p>Free PDFs and cheat-sheets for quick reference.</p>
+      <a class="btn small" href="ebooks.html">Download</a>
+    </article>
   </section>
-
-  <!-- QUICK FEATURE CARDS -->
-  <section style="margin-top:18px;" class="grid">
-    <div class="col-4">
-      <div class="card">
-        <h3>Projects</h3>
-        <p><!-- MODIFY HERE: Short description for projects --> Hands-on builds with schematics, code, and BOM.</p>
-        <a class="btn" href="projects.html">View Projects</a>
-      </div>
-    </div>
-
-    <div class="col-4">
-      <div class="card">
-        <h3>Tutorials</h3>
-        <p><!-- MODIFY HERE: Short description for tutorials --> Step-by-step guides: Arduino, ESP32, STM32, sensors and more.</p>
-        <a class="btn" href="tutorials.html">Read Tutorials</a>
-      </div>
-    </div>
-
-    <div class="col-4">
-      <div class="card">
-        <h3>E-Books</h3>
-        <p><!-- MODIFY HERE: Short description for ebooks --> Download reference PDFs and quick cheat-sheets.</p>
-        <a class="btn" href="ebooks.html">Download E-Books</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- LATEST / FEATURED PROJECTS -->
-  <section style="margin-top:18px;">
-    <h2>Featured Projects</h2>
-    <div class="grid">
-      <div class="col-4">
-        <div class="card">
-          <img src="assets/sample.jpg" alt="Project 1" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" /> <!-- MODIFY HERE -->
-          <h4 style="margin-top:10px;">IoT Temperature Monitor</h4>
-          <p class="muted">ESP8266 + DHT22, MQTT dashboard and data logging. <!-- MODIFY HERE --></p>
-          <a class="btn ghost" href="#">View Project</a>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="card">
-          <img src="assets/sample.jpg" alt="Project 2" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" /> <!-- MODIFY HERE -->
-          <h4 style="margin-top:10px;">Arduino Home Automation</h4>
-          <p class="muted">Bluetooth control, relay driver circuits and UI. <!-- MODIFY HERE --></p>
-          <a class="btn ghost" href="#">View Project</a>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="card">
-          <img src="assets/sample.jpg" alt="Project 3" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" /> <!-- MODIFY HERE -->
-          <h4 style="margin-top:10px;">ESP32 Weather Station</h4>
-          <p class="muted">OLED display, webserver and power-saving with deep sleep. <!-- MODIFY HERE --></p>
-          <a class="btn ghost" href="#">View Project</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALL TO ACTION -->
-  <section style="margin-top:22px;" class="card center">
-    <h3>Want to contribute?</h3>
-    <p class="muted">Send us your projects, tutorials or book suggestions — we’ll feature the best ones.</p>
-    <div style="margin-top:10px;">
-      <a class="btn" href="contact.html">Contact Us</a>
-      <a class="btn ghost" href="blog.html">Write a Blog</a>
-    </div>
-  </section>
-
 </main>
 
-<!-- ===== FOOTER (shared) ===== -->
 <footer class="site-footer">
   <div class="container">
-    <p class="muted">© <span id="year"></span> Embedded Electronics. <!-- MODIFY HERE: Add more footer text or links if needed --></p>
+    <p>© <span id="year"></span> Embedded Electronics</p> <!-- MODIFY HERE -->
   </div>
 </footer>
-<!-- ===== /FOOTER ===== -->
-
-<!-- Initialize shared behaviors (active link, year, etc.) -->
-<script>
-  // initQuiz and other functions live in scripts.js — nothing required here for home page
-  // ensure year is set if scripts.js not loaded yet
-  document.querySelectorAll('#year').forEach(el => el.textContent = new Date().getFullYear());
-</script>
 </body>
 </html>

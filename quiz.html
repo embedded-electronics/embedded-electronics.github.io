@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Quiz</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="scripts.js"></script>
+  <script defer src="quiz.js"></script>
 </head>
 <body>
+
+<!-- Header Start -->
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span> -->
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
@@ -26,44 +27,133 @@
     </nav>
   </div>
 </header>
+<!-- Header End -->
 
-<main class="container page">
-  <header class="page-header">
-    <h1>MCQ Quiz</h1>
-    <p><!-- MODIFY HERE --> Answer all questions and submit to see your score instantly.</p>
-  </header>
+<!-- Main Content -->
+<main class="container">
+  <h1>MCQ Quiz</h1>
+  
+  <!-- Select Quiz Set -->
+  <label for="quizSet">Select Quiz Set:</label>
+  <select id="quizSet">
+    <option value="0">Set 1</option>
+    <option value="1">Set 2</option>
+    <option value="2">Set 3</option>
+  </select>
+  <button onclick="loadQuiz()">Load Quiz</button>
 
-  <div class="quiz-meta">
-    <label> Name
-      <input id="quiz-name" type="text" placeholder="Your full name" />
-    </label>
-    <label> Time Limit
-      <select id="quiz-timer">
-        <option value="0">No timer</option>
-        <option value="300">5 minutes</option>
-        <option value="600" selected>10 minutes</option> <!-- MODIFY HERE -->
-      </select>
-    </label>
-    <button class="btn" onclick="startQuiz()">Start</button>
-    <div id="timer" class="muted" style="display:none">Time left: <span id="timer-display">00:00</span></div>
-  </div>
+  <!-- Quiz Questions -->
+  <div id="quizContainer"></div>
 
-  <form id="quiz-form" onsubmit="return handleSubmit(event)">
-    <div id="quiz"></div>
-    <div class="actions">
-      <button class="btn" type="submit">Submit</button>
-      <button class="btn ghost" type="button" onclick="resetQuiz()">Reset</button>
-    </div>
-  </form>
+  <!-- Submit Button -->
+  <button id="submitBtn" onclick="submitQuiz()" style="display:none;">Submit</button>
 
-  <div id="result" class="result"></div>
-  <p class="muted">Scores are calculated in your browser. <!-- MODIFY HERE: integrate backend if needed --></p>
+  <!-- Result -->
+  <div id="result" style="margin-top:20px; font-weight:bold;"></div>
 </main>
 
+<!-- Footer Start -->
 <footer class="site-footer">
   <div class="container">
     <p>© <span id="year"></span> Embedded Electronics</p>
   </div>
 </footer>
+<!-- Footer End -->
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// ===== Multiple Quiz Sets =====
+const quizSets = [
+  // === SET 1 ===
+  const quizSets = {
+  set1: [
+    { question: "Which of the following is a Linux command to list files?", options: ["ls", "cd", "mkdir", "touch"], correct: 0 },
+    { question: "Which microcontroller family is based on ARM Cortex-M?", options: ["STM32", "PIC18F", "AT89C51", "8051"], correct: 0 },
+    { question: "Which header file is required for using printf() in C?", options: ["stdlib.h", "stdio.h", "string.h", "math.h"], correct: 1 },
+    { question: "In RTOS, the smallest unit of execution is called:", options: ["Process", "Thread", "Task", "Program"], correct: 2 },
+    { question: "Which command is used to change directory in Linux?", options: ["ls", "cd", "pwd", "mv"], correct: 1 },
+    { question: "Which protocol is commonly used for programming Arduino boards?", options: ["I2C", "UART", "SPI", "CAN"], correct: 1 },
+    { question: "In C, which operator is used to get the address of a variable?", options: ["&", "*", "%", "#"], correct: 0 },
+    { question: "What is the default priority of a FreeRTOS task?", options: ["0", "1", "2", "Depends on config"], correct: 1 },
+    { question: "Which Linux command shows the current working directory?", options: ["pwd", "ls", "dir", "where"], correct: 0 },
+    { question: "ATmega328P is used in which popular development board?", options: ["Arduino Uno", "STM32 Blue Pill", "Raspberry Pi", "ESP8266"], correct: 0 },
+    { question: "In C, 'int a = 5;' declares a variable of type:", options: ["Integer", "Float", "Character", "Double"], correct: 0 },
+    { question: "In RTOS, 'context switching' means:", options: ["Changing hardware", "Switching between tasks", "Restarting OS", "Updating firmware"], correct: 1 },
+    { question: "Which Linux command is used to view running processes?", options: ["ps", "ls", "cd", "cat"], correct: 0 },
+    { question: "Which microcontroller is commonly used for IoT projects?", options: ["ESP8266", "8051", "Z80", "PIC12"], correct: 0 },
+    { question: "In C, the 'for' loop syntax contains how many parts?", options: ["2", "3", "4", "1"], correct: 1 },
+    { question: "Which FreeRTOS API is used to create a task?", options: ["xTaskCreate()", "vTaskStartScheduler()", "xQueueCreate()", "taskStart()"], correct: 0 },
+    { question: "Which command is used to create a new directory in Linux?", options: ["touch", "mkdir", "newdir", "mkfile"], correct: 1 },
+    { question: "Which memory type is non-volatile in microcontrollers?", options: ["SRAM", "EEPROM", "DRAM", "Cache"], correct: 1 },
+    { question: "In C, which symbol is used for comments?", options: ["// or /* */", "#", "&", "$"], correct: 0 },
+    { question: "In RTOS, ISR stands for:", options: ["Interrupt Service Routine", "Internal System Resource", "Input Serial Register", "Interrupt Stack Register"], correct: 0 },
+    { question: "Which command is used to display file contents in Linux?", options: ["cat", "ls", "show", "read"], correct: 0 },
+    { question: "Raspberry Pi is based on which processor architecture?", options: ["ARM", "x86", "MIPS", "RISC-V"], correct: 0 },
+    { question: "In C, the function strlen() is used to:", options: ["Find string length", "Copy string", "Compare string", "Concatenate string"], correct: 0 },
+    { question: "In RTOS, 'Semaphore' is used for:", options: ["Memory allocation", "Task synchronization", "Code compilation", "File handling"], correct: 1 },
+    { question: "Which command is used to copy files in Linux?", options: ["cp", "mv", "copy", "dup"], correct: 0 },
+    { question: "Which Arduino board has built-in Wi-Fi?", options: ["Arduino Uno", "Arduino Mega", "Arduino Nano 33 IoT", "Arduino Pro Mini"], correct: 2 },
+    { question: "In C, main() function returns:", options: ["void", "char", "int", "float"], correct: 2 },
+    { question: "In FreeRTOS, vTaskDelay() is used to:", options: ["Stop a task forever", "Delay task execution", "Kill a task", "Restart OS"], correct: 1 },
+    { question: "Which Linux command is used to remove a file?", options: ["rm", "delete", "erase", "remove"], correct: 0 },
+    { question: "Which bus is typically used to connect microcontrollers to sensors?", options: ["I2C", "VGA", "PCIe", "HDMI"], correct: 0 }
+  ]
+};
+
+  // === SET 2 ===
+  [
+    { question: "In Arduino, which function runs only once at the start?",
+      options: ["loop()", "setup()", "main()", "start()"], correct: 1 },
+    { question: "Which protocol uses differential signaling and is robust in noisy environments?",
+      options: ["I2C", "UART", "CAN", "SPI"], correct: 2 }
+    // Add up to 30 questions here...
+  ],
+
+  // === SET 3 ===
+  [
+    { question: "Which Linux command lists files in a directory?",
+      options: ["cd", "ls", "pwd", "dir"], correct: 1 },
+    { question: "What is the size of an `int` on most 32-bit microcontrollers?",
+      options: ["2 bytes", "4 bytes", "8 bytes", "Depends on compiler"], correct: 1 }
+    // Add up to 30 questions here...
+  ]
+];
+
+let currentSet = [];
+function loadQuiz() {
+  const setIndex = document.getElementById("quizSet").value;
+  currentSet = quizSets[setIndex];
+
+  const quizContainer = document.getElementById("quizContainer");
+  quizContainer.innerHTML = "";
+
+  currentSet.forEach((q, i) => {
+    const qDiv = document.createElement("div");
+    qDiv.classList.add("question-block");
+    qDiv.innerHTML = `<p><b>Q${i+1}:</b> ${q.question}</p>` +
+      q.options.map((opt, idx) =>
+        `<label><input type="radio" name="q${i}" value="${idx}"> ${opt}</label><br>`
+      ).join("");
+    quizContainer.appendChild(qDiv);
+  });
+
+  document.getElementById("submitBtn").style.display = "block";
+  document.getElementById("result").innerHTML = "";
+}
+
+function submitQuiz() {
+  let score = 0;
+  currentSet.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if (selected && parseInt(selected.value) === q.correct) {
+      score++;
+    }
+  });
+  document.getElementById("result").textContent = 
+    `You scored ${score} out of ${currentSet.length}`;
+}
+</script>
+
 </body>
 </html>

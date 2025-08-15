@@ -44,6 +44,23 @@ function loadQuizSet() {
   });
 }
 
+function renderQuiz() {
+  const container = document.getElementById('quiz');
+  if (!container) return;
+  container.innerHTML = '';
+  quizData.forEach((q, i) => {
+    const opts = q.options.map(o =>
+      `<label><input type="radio" name="q${i}" value="${escapeHtml(o)}"> ${escapeHtml(o)}</label>`
+    ).join('');
+    container.innerHTML += `
+      <div class="quiz-card">
+        <b>Q${i+1}: ${escapeHtml(q.question)}</b>
+        ${opts}
+      </div>
+    `;
+  });
+}
+
 document.getElementById("quizForm").addEventListener("submit", function (e) {
   e.preventDefault();
   const setName = document.getElementById("quizSet").value;

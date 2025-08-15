@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Header Start -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Electronics — Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
 </head>
 <body>
-<header>
-    <h1>Embedded Electronics MCQ Quiz</h1>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="ebooks.html">E-Books</a>
+      <a class="active" href="quiz.html">Quiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
+<!-- Header End -->
 
-<main>
-    <section class="quiz-grid">
-        <div class="quiz-card" onclick="startQuiz(1)">
-            <h3>Quiz Set 1</h3>
-            <p>30 MCQs - Basic Linux</p>
-        </div>
-        <div class="quiz-card" onclick="startQuiz(2)">
-            <h3>Quiz Set 2</h3>
-            <p>30 MCQs - Microcontrollers</p>
-        </div>
-        <div class="quiz-card" onclick="startQuiz(3)">
-            <h3>Quiz Set 3</h3>
-            <p>30 MCQs - C Programming</p>
-        </div>
-        <!-- Add more quiz sets as needed -->
-    </section>
-
-    <section id="quiz-container" class="hidden">
-        <div id="quiz-questions"></div>
-        <button onclick="submitQuiz()">Submit</button>
-        <div id="quiz-result"></div>
-    </section>
+<main class="container">
+  <h1>Quiz Categories</h1>
+  <div class="quiz-grid">
+    <a class="quiz-card" href="quiz-set.html?set=linux">
+      <h2>30 MCQs - Basic Linux</h2>
+    </a>
+    <a class="quiz-card" href="quiz-set.html?set=microcontrollers">
+      <h2>30 MCQs - Microcontrollers</h2>
+    </a>
+    <a class="quiz-card" href="quiz-set.html?set=cprogramming">
+      <h2>30 MCQs - C Programming</h2>
+    </a>
+  </div>
 </main>
 
-<footer>
-    <p>© 2025 Embedded Electronics</p>
+<!-- Footer Start -->
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
 </footer>
-
-<script src="quizData.js"></script>
-<script src="quiz.js"></script>
+<!-- Footer End -->
 </body>
 </html>

@@ -1,5 +1,5 @@
 const quizData = {
-  basic_linux_1 = [
+  basic_linux_1: [
     { question: "What command is used to list files?", options: ["ls", "dir", "list", "files"], answer: "ls" },
     { question: "What is the root directory symbol?", options: ["/", "~", ".", ".."], answer: "/" },
     { question: "Which command is used to change the current directory?", options: ["cd", "chdir", "pwd", "ls"], answer: "cd" },
@@ -50,7 +50,7 @@ const quizData = {
     { question: "Which command is used to show all environment variables?", options: ["env", "set", "export", "vars"], answer: "env" },
     { question: "Which command is used to set environment variables?", options: ["export", "setenv", "envset", "assign"], answer: "export" },
     { question: "Which command is used to display system boot messages?", options: ["dmesg", "bootlog", "syslog", "messages"], answer: "dmesg" }
-]
+  ],
   linux: [
     { question: "What command is used to list files?", options: ["ls", "dir", "list"], answer: "ls" },
     { question: "What is the root directory symbol?", options: ["/", "~", "."], answer: "/" }

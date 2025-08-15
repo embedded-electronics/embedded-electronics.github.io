@@ -144,7 +144,7 @@ const quizData = {
     { question: "Which operator is used to increment a variable by 1?", options: ["++", "+", "+=", "inc"], answer: "++" },
     { question: "Which operator is used to decrement a variable by 1?", options: ["--", "-", "-=", "dec"], answer: "--" },
     { question: "Which function is used to generate a random number?", options: ["rand()", "random()", "genrand()", "randomize()"], answer: "rand()" },
-    { question: "Which header file is required for using malloc() and free()?", options: ["<stdlib.h>", "<stdio.h>", "<string.h>", "<math.h>"], answer: "<stdlib.h>" },
+    { question: "Which header file is required for using malloc() and free()?", options: ["&lt;stdlib.h&gt;", "&lt;stdio.h&gt;", "&lt;string.h&gt;", "&lt;math.h&gt;"], answer: "&lt;stdlib.h&gt;" },
     { question: "Which operator is used to assign a value to a variable?", options: ["=", "==", ":=", "<-"], answer: "=" },
     { question: "What is the purpose of sizeof() operator?", options: ["To get size in bytes", "To count variables", "To check type", "To calculate memory speed"], answer: "To get size in bytes" },
     { question: "Which escape sequence represents a tab space?", options: ["\\t", "\\n", "\\r", "\\b"], answer: "\\t" },

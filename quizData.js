@@ -104,7 +104,6 @@ const quizData = {
     { question: "What is the function of the bootloader?", options: ["Load programs into flash memory", "Reset the microcontroller", "Generate clock", "Manage GPIO"], answer: "Load programs into flash memory" }
 ],
   basic_C_Programming_1: [
-    { question: "Which header file is required for using printf() and scanf() functions?", options: ["&lt;stdio.h&gt;", "&lt;stdlib.h&gt;", "&lt;string.h&gt;", "&lt;math.h&gt;"], answer: "&lt;stdio.h&gt;" },
     { question: "Which function is used to get input from the user in C?", options: ["scanf()", "printf()", "gets()", "puts()"], answer: "scanf()" },
     { question: "What is the default return type of the main() function in C?", options: ["int", "void", "float", "char"], answer: "int" },
     { question: "Which symbol is used to indicate a preprocessor directive?", options: ["#", "$", "@", "&"], answer: "#" },
@@ -144,7 +143,6 @@ const quizData = {
     { question: "Which operator is used to increment a variable by 1?", options: ["++", "+", "+=", "inc"], answer: "++" },
     { question: "Which operator is used to decrement a variable by 1?", options: ["--", "-", "-=", "dec"], answer: "--" },
     { question: "Which function is used to generate a random number?", options: ["rand()", "random()", "genrand()", "randomize()"], answer: "rand()" },
-    { question: "Which header file is required for using malloc() and free()?", options: ["&lt;stdlib.h&gt;", "&lt;stdio.h&gt;", "&lt;string.h&gt;", "&lt;math.h&gt;"], answer: "&lt;stdlib.h&gt;" },
     { question: "Which operator is used to assign a value to a variable?", options: ["=", "==", ":=", "<-"], answer: "=" },
     { question: "What is the purpose of sizeof() operator?", options: ["To get size in bytes", "To count variables", "To check type", "To calculate memory speed"], answer: "To get size in bytes" },
     { question: "Which escape sequence represents a tab space?", options: ["\\t", "\\n", "\\r", "\\b"], answer: "\\t" },
@@ -153,17 +151,7 @@ const quizData = {
     { question: "Which keyword is used for creating type aliases?", options: ["typedef", "alias", "typealias", "newtype"], answer: "typedef" },
     { question: "What is the output of printf(\"%d\", 5 > 2); ?", options: ["1", "0", "True", "False"], answer: "1" },
     { question: "What is the output of printf(\"%d\", 5 == 2); ?", options: ["0", "1", "True", "False"], answer: "0" },
-    { question: "What will be the value of x after x = 5; x += 3; ?", options: ["8", "5", "3", "15"], answer: "8" },
-    { 
-  question: "Which header file is required for using malloc() and free()?",
-  options: [
-    { text: "&lt;stdlib.h&gt;", value: "<stdlib.h>" },
-    { text: "&lt;stdio.h&gt;", value: "<stdio.h>" },
-    { text: "&lt;string.h&gt;", value: "<string.h>" },
-    { text: "&lt;math.h&gt;", value: "<math.h>" }
-  ],
-  answer: "<stdlib.h>"
-}
+    { question: "What will be the value of x after x = 5; x += 3; ?", options: ["8", "5", "3", "15"], answer: "8" }
 ],
   linux: [
     { question: "What command is used to list files?", options: ["ls", "dir", "list"], answer: "ls" },

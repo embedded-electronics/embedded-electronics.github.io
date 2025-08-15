@@ -7,6 +7,11 @@ const quizData = {
     { question: "Which is a popular microcontroller?", options: ["Arduino UNO", "Raspberry Pi", "ESP8266"], answer: "Arduino UNO" }
   ],
   cprogramming: [
-    { question: "Which header file is used for printf?", options: ["<stdio.h>", "<stdlib.h>", "<string.h>"], answer: "<stdio.h>" }
+    { question: "Which header file is used for printf?", options: ["<stdio.h>", "<stdlib.h>", "<string.h>"], answer: "<stdio.h>" },
+    {  
+      question: "What will be the output of the following code?<br><pre>#include &lt;stdio.h&gt;<br>int main() {<br>    printf(\"%d\", 5 + 3);<br>    return 0;<br>}</pre>",
+      options: ["5", "8", "Error"],
+      answer: "8" 
+    }
   ]
 };

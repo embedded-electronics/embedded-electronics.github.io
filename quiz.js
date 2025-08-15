@@ -1,49 +1,35 @@
-let currentQuizSet = [];
-let selectedAnswers = {};
+// Get quiz set from URL
+const params = new URLSearchParams(window.location.search);
+const quizSet = params.get('set');
 
-function startQuiz(setNumber) {
-    const quizSets = {
-        1: quizSet1,
-        2: quizSet2,
-        3: quizSet3
-        // Add more if needed
-    };
+// Load quiz questions from quizData.js
+let questions = quizData[quizSet] || [];
 
-    currentQuizSet = quizSets[setNumber];
-    selectedAnswers = {};
+document.getElementById('quiz-title').textContent = 
+  quizSet ? quizSet.replace(/^\w/, c => c.toUpperCase()) + " Quiz" : "Quiz";
 
-    document.querySelector(".quiz-grid").classList.add("hidden");
-    document.getElementById("quiz-container").classList.remove("hidden");
+const quizContainer = document.getElementById('quiz-container');
+questions.forEach((q, index) => {
+  const qElem = document.createElement('div');
+  qElem.classList.add('quiz-question');
+  qElem.innerHTML = `
+    <p>${index + 1}. ${q.question}</p>
+    ${q.options.map((opt, i) => `
+      <label>
+        <input type="radio" name="q${index}" value="${opt}">
+        ${opt}
+      </label>
+    `).join('')}
+  `;
+  quizContainer.appendChild(qElem);
+});
 
-    const quizQuestionsDiv = document.getElementById("quiz-questions");
-    quizQuestionsDiv.innerHTML = "";
-
-    currentQuizSet.forEach((q, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("quiz-question");
-
-        let optionsHtml = q.options.map((opt, optIndex) => `
-            <label>
-                <input type="radio" name="q${index}" value="${optIndex}">
-                ${opt}
-            </label>
-        `).join("");
-
-        questionDiv.innerHTML = `<h4>Q${index + 1}. ${q.question}</h4>${optionsHtml}`;
-        quizQuestionsDiv.appendChild(questionDiv);
-    });
-}
-
-function submitQuiz() {
-    let score = 0;
-
-    currentQuizSet.forEach((q, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selected && parseInt(selected.value) === q.answer) {
-            score++;
-        }
-    });
-
-    document.getElementById("quiz-result").innerHTML =
-        `<h3>Your Score: ${score} / ${currentQuizSet.length}</h3>`;
-}
+// Submit button handler
+document.getElementById('submit-btn').addEventListener('click', () => {
+  let score = 0;
+  questions.forEach((q, index) => {
+    const selected = document.querySelector(`input[name="q${index}"]:checked`);
+    if (selected && selected.value === q.answer) score++;
+  });
+  document.getElementById('result').textContent = `Your Score: ${score} / ${questions.length}`;
+});

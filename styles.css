@@ -57,61 +57,32 @@ label{display:block;margin:10px 0 4px}
 .muted{color:var(--muted)}
 
 /* Quiz Grid Layout */
-body {
+/* Quiz Container */
+.quiz-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f4f4f4;
-    color: #333;
 }
 
-header {
-    background: #0056b3;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-}
-
-.quiz-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 20px;
-}
-
-.quiz-card {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: 0.2s;
-    text-align: center;
-}
-
-.quiz-card:hover {
-    background: #e8f0fe;
-}
-
-.hidden {
-    display: none;
-}
-
-#quiz-container {
-    padding: 20px;
-}
-
+/* Question Styling */
 .quiz-question {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.quiz-question h4 {
-    margin-bottom: 8px;
+.quiz-question h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
+/* Answer Options */
 .quiz-question label {
-    display: flex;
-    align-items: flex-start; /* Radio button aligns to top of first line */
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Radio button fixed column + text column */
+    align-items: start; /* Align radio to top of text */
     gap: 8px;
     padding: 6px 8px;
     background: #f9f9f9;
@@ -119,28 +90,46 @@ header {
     cursor: pointer;
     transition: background 0.2s;
     text-align: left;
-    width: 100%;             /* Full width for alignment */
-    line-height: 1.4;        /* Better spacing for multi-line answers */
-    word-break: break-word;  /* Prevent overflow for long text */
+    width: 100%;
+    line-height: 1.4;
+    word-break: break-word;
 }
 
 .quiz-question label:hover {
-    background: #eef6ff;
+    background: #ececec;
 }
 
+/* Radio Button Styling */
 .quiz-question input[type="radio"] {
-    margin-top: 3px; /* Keeps radio vertically aligned with first line */
+    margin-top: 3px;
     transform: scale(1.2);
 }
 
-.quiz-question label:hover {
-    background: #eef6ff;
+/* Submit Button */
+.quiz-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #2196f3;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-.quiz-question input[type="radio"] {
-    margin: 0;
-    padding: 0;
-    transform: scale(1.2);
+.quiz-submit:hover {
+    background: #0b7dda;
+}
+
+/* Result Styling */
+.quiz-result {
+    margin-top: 20px;
+    padding: 10px;
+    background: #e8f5e9;
+    border-left: 5px solid #4caf50;
+    border-radius: 5px;
 }
 
 /* Footer */

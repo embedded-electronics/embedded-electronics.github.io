@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- ===== Head ===== -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -7,12 +8,13 @@
   <link rel="stylesheet" href="styles.css" />
   <script defer src="scripts.js"></script>
 </head>
+
 <body>
+<!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span>  -->
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
@@ -27,39 +29,39 @@
   </div>
 </header>
 
-<main class="container page">
-  <header class="page-header">
-    <h1>Contact</h1>
-    <p><!-- MODIFY HERE --> For collaborations, project help, or training requests, send a message below.</p>
-  </header>
-
-  <form class="contact-form" onsubmit="return submitContact(event)">
-    <label> Your Name
-      <input id="name" type="text" required />
-    </label>
-    <label> Email
-      <input id="email" type="email" required />
-    </label>
-    <label> Subject
-      <input id="subject" type="text" placeholder="Let's collaborate" /> <!-- MODIFY HERE -->
-    </label>
-    <label> Message
-      <textarea id="message" rows="6" required></textarea>
-    </label>
-
-    <div class="actions">
-      <button class="btn" type="submit">Send</button>
-      <a class="btn ghost" id="mailto-link" href="mailto:embeddedelectronics.in@gmail.com">Open Email</a> <!-- MODIFY HERE -->
-    </div>
-    <p class="muted">This static form opens your email client. For backend form handling, use Formspree/Getform. <!-- MODIFY HERE --></p>
-  </form>
+<!-- ===== Contact Section ===== -->
+<main class="container" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+  
+  <!-- Left: Google Form -->
+  <section style="flex: 1; min-width: 300px;">
+    <h2>Contact Form</h2>
+    <!-- Replace the src link below with your own Google Form's embed link -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZfVuXEXAMPLEFORM/viewform?embedded=true" 
+      width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </section>
+  
+  <!-- Right: Contact Info -->
+  <section style="flex: 1; min-width: 250px;">
+    <h2>Contact Details</h2>
+    <p><strong>Email:</strong> embeddedelectronics.in@gmail.com</p>
+    <p><strong>Phone:</strong> +91 9547394654</p>
+    <p><strong>Address:</strong> Yelahanka, Bangalore - 560064, India</p>
+    
+    <!-- WhatsApp Chat Button -->
+    <a href="https://wa.me/919547394654" 
+       target="_blank" 
+       style="display:inline-block; padding: 10px 20px; background-color: #25D366; color: white; border-radius: 5px; text-decoration: none;">
+      💬 Chat on WhatsApp
+    </a>
+  </section>
 </main>
 
-<footer class="site-footer">
+<!-- ===== Footer ===== -->
+<footer class="site-footer" style="margin-top: 40px;">
   <div class="container">
     <p>© <span id="year"></span> Embedded Electronics</p>
   </div>
 </footer>
+
 </body>
 </html>
-

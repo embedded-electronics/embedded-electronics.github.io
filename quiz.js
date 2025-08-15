@@ -1,18 +1,22 @@
 const quizSets = {
   set1: [
-    { q: "Which of the following microcontroller architectures is based on ARM Cortex-M?", options: ["STM32", "PIC18F", "AT89C51", "8051"], answer: "STM32" },
-    { q: "Which protocol is commonly used for short-range wireless communication?", options: ["I2C", "UART", "Bluetooth", "CAN"], answer: "Bluetooth" },
-    { q: "In C programming, which header file is needed for printf()?", options: ["stdlib.h", "stdio.h", "string.h", "math.h"], answer: "stdio.h" },
-    // ... add up to 30 questions
+    {
+      q: "Which of the following designed system factors are optimized or enhanced for an embedded application?",
+      options: ["Performance", "Reliability", "Efficiency", "All the above"],
+      answer: "All the above"
+    },
+    {
+      q: "Which of the following are the components of a microcontroller?",
+      options: ["RAM", "ROM", "Timers", "All the above"],
+      answer: "All the above"
+    }
+    // Add up to 30 questions here...
   ],
   set2: [
-    { q: "Which memory is non-volatile?", options: ["SRAM", "DRAM", "EEPROM", "Cache"], answer: "EEPROM" },
-    { q: "What is the default baud rate of Arduino UNO Serial Monitor?", options: ["4800", "9600", "115200", "57600"], answer: "9600" },
-    { q: "Which layer of OSI model deals with IP addressing?", options: ["Transport", "Network", "Data Link", "Application"], answer: "Network" },
-    // ... add up to 30 questions
+    // Add 30 questions here...
   ],
   set3: [
-    // Add your 30 questions for set 3
+    // Add 30 questions here...
   ]
 };
 
@@ -29,11 +33,12 @@ function loadQuizSet() {
       <h3>Q${index + 1}: ${item.q}</h3>
       ${item.options
         .map(opt => `
-          <label>
-            <input type="radio" name="q${index}" value="${opt}" required> ${opt}
-          </label>
+          <div class="quiz-option">
+            <input type="radio" name="q${index}" value="${opt}" required>
+            <label>${opt}</label>
+          </div>
         `)
-        .join("<br>")}
+        .join("")}
     `;
     container.appendChild(div);
   });

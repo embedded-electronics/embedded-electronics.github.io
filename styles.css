@@ -108,12 +108,10 @@ header {
     margin-bottom: 8px;
 }
 
-/* Left-aligned options */
 .quiz-question label {
     display: flex;
-    flex-direction: row;       /* Radio first, then text */
-    align-items: center;       /* Align vertically */
-    justify-content: flex-start; /* Align to left */
+    align-items: flex-start; /* Radio button aligns to top of first line */
+    justify-content: flex-start;
     gap: 8px;
     padding: 6px 8px;
     background: #f9f9f9;
@@ -121,7 +119,18 @@ header {
     cursor: pointer;
     transition: background 0.2s;
     text-align: left;
-    width: fit-content;        /* No full width, fits content */
+    width: 100%;             /* Full width for alignment */
+    line-height: 1.4;        /* Better spacing for multi-line answers */
+    word-break: break-word;  /* Prevent overflow for long text */
+}
+
+.quiz-question label:hover {
+    background: #eef6ff;
+}
+
+.quiz-question input[type="radio"] {
+    margin-top: 3px; /* Keeps radio vertically aligned with first line */
+    transform: scale(1.2);
 }
 
 .quiz-question label:hover {

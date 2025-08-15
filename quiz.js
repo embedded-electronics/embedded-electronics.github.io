@@ -6,6 +6,16 @@ const quizSets = {
       answer: "All the above"
     },
     {
+      q: "Which of the following designed system factors are optimized or enhanced for an embedded application?",
+      options: ["Performance", "Reliability", "Efficiency", "All the above"],
+      answer: "All the above"
+    },
+    {
+      q: "Which of the following designed system factors are optimized or enhanced for an embedded application?",
+      options: ["Performance", "Reliability", "Efficiency", "All the above"],
+      answer: "All the above"
+    },
+    {
       q: "Which of the following are the components of a microcontroller?",
       options: ["RAM", "ROM", "Timers", "All the above"],
       answer: "All the above"

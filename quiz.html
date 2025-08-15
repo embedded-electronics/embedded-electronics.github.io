@@ -1,101 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Embedded Electronics — Quiz</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="quiz.js"></script>
-  <style>
-    .quiz-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 15px;
-    }
-    .quiz-question {
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 8px;
-      background: #fff;
-    }
-    .quiz-question h3 {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    .quiz-option {
-      display: flex;
-      align-items: center;
-      margin-bottom: 5px;
-    }
-    .quiz-option input[type="radio"] {
-      margin-right: 8px;
-    }
-    .btn {
-      background: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .btn:hover {
-      background: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<!-- Header Start -->
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
-    </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-    <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="ebooks.html">E-Books</a>
-      <a class="active" href="quiz.html">Quiz</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+<header>
+    <h1>Embedded Electronics MCQ Quiz</h1>
 </header>
-<!-- Header End -->
 
-<main class="container">
-  <h1>MCQ Quiz</h1>
+<main>
+    <section class="quiz-grid">
+        <div class="quiz-card" onclick="startQuiz(1)">
+            <h3>Quiz Set 1</h3>
+            <p>30 MCQs - Basic Linux</p>
+        </div>
+        <div class="quiz-card" onclick="startQuiz(2)">
+            <h3>Quiz Set 2</h3>
+            <p>30 MCQs - Microcontrollers</p>
+        </div>
+        <div class="quiz-card" onclick="startQuiz(3)">
+            <h3>Quiz Set 3</h3>
+            <p>30 MCQs - C Programming</p>
+        </div>
+        <!-- Add more quiz sets as needed -->
+    </section>
 
-  <!-- Quiz Set Selector -->
-  <div style="margin-bottom: 20px;">
-    <label for="quizSet">Choose Quiz Set:</label>
-    <select id="quizSet" onchange="loadQuizSet()">
-      <option value="set1">Set 1</option>
-      <option value="set2">Set 2</option>
-      <option value="set3">Set 3</option>
-    </select>
-  </div>
-
-  <!-- Quiz Container -->
-  <form id="quizForm">
-    <div id="quizContainer" class="quiz-grid"></div>
-    <button type="submit" class="btn">Submit</button>
-  </form>
-
-  <!-- Result -->
-  <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+    <section id="quiz-container" class="hidden">
+        <div id="quiz-questions"></div>
+        <button onclick="submitQuiz()">Submit</button>
+        <div id="quiz-result"></div>
+    </section>
 </main>
 
-<!-- Footer Start -->
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Embedded Electronics</p>
-  </div>
+<footer>
+    <p>© 2025 Embedded Electronics</p>
 </footer>
-<!-- Footer End -->
 
+<script src="quizData.js"></script>
+<script src="quiz.js"></script>
 </body>
 </html>

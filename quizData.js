@@ -104,7 +104,7 @@ const quizData = {
     { question: "What is the function of the bootloader?", options: ["Load programs into flash memory", "Reset the microcontroller", "Generate clock", "Manage GPIO"], answer: "Load programs into flash memory" }
 ],
   basic_C_Programming_1: [
-    { question: "Which header file is required for using printf() and scanf() functions?", options: ["<stdio.h>", "<stdlib.h>", "<string.h>", "<math.h>"], answer: "<stdio.h>" },
+    { question: "Which header file is required for using printf() and scanf() functions?", options: ["&lt;stdio.h&gt;", "&lt;stdlib.h&gt;", "&lt;string.h&gt;", "&lt;math.h&gt;"], answer: "&lt;stdio.h&gt;" },
     { question: "Which function is used to get input from the user in C?", options: ["scanf()", "printf()", "gets()", "puts()"], answer: "scanf()" },
     { question: "What is the default return type of the main() function in C?", options: ["int", "void", "float", "char"], answer: "int" },
     { question: "Which symbol is used to indicate a preprocessor directive?", options: ["#", "$", "@", "&"], answer: "#" },

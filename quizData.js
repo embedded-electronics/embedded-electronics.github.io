@@ -153,7 +153,17 @@ const quizData = {
     { question: "Which keyword is used for creating type aliases?", options: ["typedef", "alias", "typealias", "newtype"], answer: "typedef" },
     { question: "What is the output of printf(\"%d\", 5 > 2); ?", options: ["1", "0", "True", "False"], answer: "1" },
     { question: "What is the output of printf(\"%d\", 5 == 2); ?", options: ["0", "1", "True", "False"], answer: "0" },
-    { question: "What will be the value of x after x = 5; x += 3; ?", options: ["8", "5", "3", "15"], answer: "8" }
+    { question: "What will be the value of x after x = 5; x += 3; ?", options: ["8", "5", "3", "15"], answer: "8" },
+    { 
+  question: "Which header file is required for using malloc() and free()?",
+  options: [
+    { text: "&lt;stdlib.h&gt;", value: "<stdlib.h>" },
+    { text: "&lt;stdio.h&gt;", value: "<stdio.h>" },
+    { text: "&lt;string.h&gt;", value: "<string.h>" },
+    { text: "&lt;math.h&gt;", value: "<math.h>" }
+  ],
+  answer: "<stdlib.h>"
+}
 ],
   linux: [
     { question: "What command is used to list files?", options: ["ls", "dir", "list"], answer: "ls" },

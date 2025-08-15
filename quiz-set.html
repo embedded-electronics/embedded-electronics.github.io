@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Header Start -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Electronics — Quiz Set</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="quizData.js"></script>
+  <script defer src="quiz.js"></script>
+  <script defer src="scripts.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="ebooks.html">E-Books</a>
+      <a class="active" href="quiz.html">Quiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- Header End -->
+
+<main class="container">
+  <h1 id="quiz-title"></h1>
+  <div id="quiz-container"></div>
+  <button id="submit-btn">Submit Quiz</button>
+  <div id="result"></div>
+</main>
+
+<!-- Footer Start -->
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
+</footer>
+<!-- Footer End -->
+</body>
+</html>

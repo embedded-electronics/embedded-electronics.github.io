@@ -165,9 +165,33 @@
 <script>
 /* Sentences and limits */
 const SENTENCES = {
-  easy: ["The LED is connected to pin thirteen.","Soldering requires a steady hand.","Sensors send data to the MCU."],
-  medium:["The I2C bus uses pull up resistors on SDA and SCL lines.","Debouncing buttons prevents false triggers.","UART frames include start and stop bits."],
-  hard:["An RTOS schedules tasks deterministically under timing constraints.","DMA transfers reduce CPU overhead for high bandwidth peripherals.","Metastability can occur without proper clock domain crossing."]
+  easy: [
+    "Believe in yourself.",
+    "You can do hard things.",
+    "Stay positive and strong.",
+    "Dream big and start small.",
+    "Never give up on hope.",
+    "Small steps lead to success.",
+    "Be kind to yourself today."
+  ],
+  medium: [
+    "Success is the sum of small efforts repeated daily.",
+    "Your only limit is your mind, so think big.",
+    "Stay focused, stay humble, and keep going.",
+    "Great things never come from comfort zones.",
+    "Discipline is the bridge between goals and success.",
+    "When it rains, look for rainbows. When it is dark, look for stars.",
+    "Hard work beats talent when talent doesn’t work hard."
+  ],
+  hard: [
+    "The future belongs to those who believe in the beauty of their dreams.",
+    "Challenges are what make life interesting and overcoming them is what makes life meaningful.",
+    "Don’t watch the clock; do what it does and keep going until you achieve greatness.",
+    "Strength doesn’t come from what you can do. It comes from overcoming the things you once thought you couldn’t.",
+    "The harder you work for something, the greater you will feel when you achieve it.",
+    "Push yourself, because no one else is going to do it for you every single day.",
+    "Success is not final, failure is not fatal: it is the courage to continue that counts."
+  ]
 };
 const TIME_LIMITS = { easy: 60, medium: 45, hard: 30 };
 
@@ -271,3 +295,4 @@ initClock();
 </script>
 </body>
 </html>
+

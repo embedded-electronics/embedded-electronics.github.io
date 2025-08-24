@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Electronics — IQ Test</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Page-scoped polish (keeps global theme intact) */
+    .iq-card{max-width:900px;margin:20px auto;background:#fff;border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,0.06)}
+    .iq-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#eef6ff;border:1px solid #dbeafe;color:#0b66b2;padding:8px 12px;border-radius:999px;font-weight:600}
+    .progress{height:8px;border-radius:6px;background:#e8f0fe;overflow:hidden}
+    .progress>div{height:100%;width:0;background:linear-gradient(90deg,#0ea5e9,#3b82f6);transition:width 0.5s ease}
+    .q-header{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:8px 0 4px}
+    .q-title{font-size:1.05rem;font-weight:700}
+    .q-body{margin-top:8px}
+    .option{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:8px;padding:8px;border-radius:8px;border:1px solid #e6eef5;background:#fbfdff;cursor:pointer}
+    .option:hover{background:#f4f9ff}
+    .option input[type="radio"]{margin-top:3px;transform:scale(1.15)}
+    .optlist{display:grid;gap:8px}
+    .actions{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .btn{background:var(--brand,#0b66b2);color:#fff;border:0;padding:10px 14px;border-radius:10px;text-decoration:none;cursor:pointer;font-weight:600;transition:all .25s}
+    .btn:hover{filter:brightness(.95);transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
+    .btn.ghost{background:#fff;color:var(--brand,#0b66b2);border:1px solid rgba(11,102,178,.25)}
+    .btn[disabled]{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+    .pill{font-size:.92rem;color:#44566c;background:#f4f7fb;border:1px solid #e6eef5;border-radius:999px;padding:6px 10px}
+    .result{margin-top:14px;padding:16px;background:#f1f9f1;border-left:5px solid #4caf50;border-radius:10px}
+    .review{margin-top:18px;display:grid;gap:12px}
+    .card-lite{border:1px solid #e6eef5;background:#fbfdff;border-radius:10px;padding:12px}
+    .correct{color:#1b7f3a;font-weight:700}
+    .wrong{color:#b42318;font-weight:700}
+    .muted{color:#6b7a86}
+    .tiny{font-size:.9rem}
+    kbd{background:#eef2f7;border:1px solid #d7dee7;border-bottom-width:2px;border-radius:6px;padding:2px 6px}
+    .start-screen{text-align:center;padding:30px}
+    @media (max-width:560px){.q-header{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Logo" class="brand-logo" />
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+      <nav id="nav" class="nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="ebooks.html">E-Books</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="blog.html">Blog</a>
+        <a href="typing-game.html">Typing Test</a>
+        <a class="active" href="iq-test.html">IQ Test</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <header class="page-header">
+      <h1>Technical IQ Test</h1>
+      <p class="muted">Twelve mixed questions on logic, series, base conversions, and basic electronics reasoning. You have a total timer. Answer all and submit to see a detailed review.</p>
+    </header>
+
+    <!-- Start Screen -->
+    <section class="iq-card" id="startScreen">
+      <div class="start-screen">
+        <h2>🧠 Ready to test your brain?</h2>
+        <p>Click below to start the 12-minute IQ Test.</p>
+        <button id="startBtn" class="btn">Start Test</button>
+      </div>
+    </section>
+
+    <!-- Quiz Section (hidden until start) -->
+    <section class="iq-card" id="quizSection" style="display:none;">
+      <!-- Controls / Status -->
+      <div class="iq-controls">
+        <span class="badge">⏱ Time left: <span id="timeLeft">12:00</span></span>
+        <span class="pill">Progress: <span id="progressText">1 / 12</span></span>
+        <span class="pill">Selected: <span id="selectedCount">0</span></span>
+        <button id="retakeTop" class="btn ghost" style="margin-left:auto;display:none;">Retake</button>
+      </div>
+      <div class="progress"><div id="timeBar"></div></div>
+
+      <!-- Question -->
+      <div class="q-header">
+        <div class="q-title" id="qTitle">Question</div>
+        <div class="tiny muted" id="qType"></div>
+      </div>
+      <div class="q-body">
+        <div id="qText"></div>
+        <div id="optList" class="optlist" role="radiogroup" aria-labelledby="qTitle"></div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="actions">
+        <button id="prevBtn" class="btn ghost">← Prev</button>
+        <button id="nextBtn" class="btn">Next →</button>
+        <button id="submitBtn" class="btn" style="margin-left:auto;">Submit</button>
+      </div>
+
+      <!-- Result -->
+      <div id="result" class="result" style="display:none;"></div>
+      <div id="review" class="review" style="display:none;"></div>
+    </section>
+
+    <p class="tiny muted">Tip: Use <kbd>←</kbd> and <kbd>→</kbd> arrow keys to move between questions.</p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Embedded Electronics</p>
+    </div>
+  </footer>
+
+<script>
+/* ===================== Question Bank ===================== */
+const QUESTION_BANK = [
+  { type:"Number Series", q:"Find the next number: 2, 6, 12, 20, 30, ?", options:["36","40","42","44"], answer:2, explain:"Differences: +4, +6, +8, +10 … next +12 → 42." },
+  { type:"Pattern / Logic", q:"If A=1, B=2, …, what is the value of CODE?", options:["27","30","32","35"], answer:0, explain:"C(3)+O(15)+D(4)+E(5)=27." },
+  { type:"Binary", q:"What is 1101₂ in decimal?", options:["11","12","13","14"], answer:2, explain:"1101₂ = 8+4+0+1 = 13." },
+  { type:"Hex", q:"What is 0x3A in decimal?", options:["56","57","58","59"], answer:2, explain:"3×16 + 10 = 48 + 10 = 58." },
+  { type:"Ohm’s Law", q:"A 10Ω resistor with 2A current. Voltage?", options:["5V","10V","15V","20V"], answer:3, explain:"V = I×R = 20V." },
+  { type:"Units", q:"Which unit measures electrical capacitance?", options:["Henry","Ohm","Farad","Tesla"], answer:2, explain:"Capacitance is measured in Farads (F)." },
+  { type:"Logic Gates", q:"For inputs A=1, B=0, what is A XOR B?", options:["0","1","Undefined","Same as AND"], answer:1, explain:"XOR outputs 1 when inputs are different." },
+  { type:"Logic / DeMorgan", q:"¬(A ∧ B) is equivalent to:", options:["¬A ∧ ¬B","A ∨ B","¬A ∨ ¬B","A ∧ ¬B"], answer:2, explain:"De Morgan: ¬(A∧B) = ¬A ∨ ¬B." },
+  { type:"Series (Squares)", q:"1, 4, 9, 16, 25, ?", options:["30","32","35","36"], answer:3, explain:"Squares → 6²=36." },
+  { type:"Ratio / Timing", q:"A loop runs in 4ms on CPU A and 2ms on CPU B. Speedup?", options:["1.5×","2×","3×","4×"], answer:1, explain:"4/2=2×." },
+  { type:"Base Conversion", q:"Convert decimal 25 to binary.", options:["11000","11001","11010","11100"], answer:1, explain:"25 = 11001₂." },
+  { type:"Resistors", q:"Two 10Ω resistors in parallel. Req?", options:["5Ω","10Ω","20Ω","30Ω"], answer:0, explain:"10||10 = 5Ω." }
+].map(q => ({...q, id: 'q'+Math.random().toString(36).slice(2,9)}));
+
+/* ===================== Settings ===================== */
+const TOTAL_QUESTIONS = 12;
+const TOTAL_SECONDS   = 12 * 60;
+
+/* ===================== State ===================== */
+let picked = [];
+let index = 0;
+let answers = {};
+let timer = null;
+let timeLeft = TOTAL_SECONDS;
+
+/* ===================== Elements ===================== */
+const $qTitle=document.getElementById('qTitle');const $qText=document.getElementById('qText');const $qType=document.getElementById('qType');
+const $optList=document.getElementById('optList');const $prev=document.getElementById('prevBtn');const $next=document.getElementById('nextBtn');
+const $submit=document.getElementById('submitBtn');const $retakeTop=document.getElementById('retakeTop');
+const $timeLeft=document.getElementById('timeLeft');const $timeBar=document.getElementById('timeBar');const $progressText=document.getElementById('progressText');
+const $selectedCount=document.getElementById('selectedCount');const $result=document.getElementById('result');const $review=document.getElementById('review');
+
+/* ===================== Helpers ===================== */
+function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function pad(n){return String(n).padStart(2,'0');}
+function toMMSS(s){return `${pad(Math.floor(s/60))}:${pad(s%60)}`;}
+
+/* ===================== Core ===================== */
+function newTest(){
+  picked=shuffle(QUESTION_BANK).slice(0,TOTAL_QUESTIONS);
+  index=0;answers={};timeLeft=TOTAL_SECONDS;
+  $result.style.display='none';$review.style.display='none';$retakeTop.style.display='none';
+  $submit.disabled=false;$next.disabled=false;$prev.disabled=true;
+  render();if(timer) clearInterval(timer);timer=setInterval(tick,1000);updateTop();
+  document.getElementById('startScreen').style.display='none';
+  document.getElementById('quizSection').style.display='block';
+}
+
+function render(){
+  const q=picked[index];$qTitle.textContent=`Question ${index+1}`;$qType.textContent=q.type||'';$qText.textContent=q.q;$optList.innerHTML='';
+  q.options.forEach((opt,i)=>{const id=`${q.id}_opt_${i}`;const label=document.createElement('label');label.className='option';label.setAttribute('for',id);
+    const radio=document.createElement('input');radio.type='radio';radio.name=q.id;radio.id=id;radio.value=i;radio.checked=answers[q.id]===i;
+    radio.addEventListener('change',()=>{answers[q.id]=i;updateTop();$next.disabled=(index===picked.length-1)?true:false;});
+    const span=document.createElement('span');span.textContent=opt;label.appendChild(radio);label.appendChild(span);$optList.appendChild(label);});
+  $prev.disabled=index===0;$next.disabled=(index===picked.length-1)||(answers[q.id]===undefined&&index<picked.length-1);
+  $submit.disabled=!isAllAnswered();updateTop();
+}
+function isAllAnswered(){return picked.every(q=>answers[q.id]!==undefined);}
+function updateTop(){const answeredCount=Object.keys(answers).length;$progressText.textContent=`${index+1} / ${picked.length}`;
+  $selectedCount.textContent=answeredCount;$timeLeft.textContent=toMMSS(timeLeft);$timeBar.style.width=`${(timeLeft/TOTAL_SECONDS)*100}%`;}
+function tick(){if(timeLeft<=0){clearInterval(timer);timer=null;submit();return;}timeLeft--;updateTop();}
+function nextQ(){if(index<picked.length-1){index++;render();}}
+function prevQ(){if(index>0){index--;render();}}
+function score(){let correct=0;picked.forEach(q=>{if(answers[q.id]===q.answer) correct++;});return correct;}
+function submit(){ $prev.disabled=true;$next.disabled=true;$submit.disabled=true;if(timer){clearInterval(timer);timer=null;}
+  const got=score();const total=picked.length;const pct=Math.round((got/total)*100);
+  $result.style.display='block';$result.innerHTML=`<h3>Result</h3><p><strong>Score:</strong> ${got} / ${total} (${pct}%)</p>
+    <p class="muted tiny">Time used: ${toMMSS(TOTAL_SECONDS-timeLeft)}</p>
+    <p>${pct>=75?"Great job!":"Keep practicing—review below."}</p>`;$review.innerHTML='';
+  picked.forEach((q,idx)=>{const user=answers[q.id];const ok=user===q.answer;const div=document.createElement('div');div.className='card-lite';
+    div.innerHTML=`<div style="display:flex;justify-content:space-between;margin-bottom:6px"><strong>Q${idx+1}. ${q.type}</strong>
+    <span class="${ok?'correct':'wrong'}">${ok?'Correct':'Wrong'}</span></div><div>${escapeHtml(q.q)}</div>
+    <div class="tiny" style="margin-top:6px">Your: <strong>${escapeHtml(q.options[user]??'(none)')}</strong><br/>
+    Correct: <strong>${escapeHtml(q.options[q.answer])}</strong></div><div class="tiny muted" style="margin-top:6px">${escapeHtml(q.explain||'')}</div>`;$review.appendChild(div);});
+  $review.style.display='grid';$retakeTop.style.display='inline-flex';}
+function retake(){newTest();}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m]));}
+
+/* ===================== Events ===================== */
+document.getElementById('nextBtn').addEventListener('click',nextQ);
+document.getElementById('prevBtn').addEventListener('click',prevQ);
+document.getElementById('submitBtn').addEventListener('click',submit);
+document.getElementById('retakeTop').addEventListener('click',retake);
+document.getElementById('startBtn').addEventListener('click',newTest);
+window.addEventListener('keydown',(e)=>{if($submit.disabled) return;if(e.key==='ArrowRight'){e.preventDefault();nextQ();}if(e.key==='ArrowLeft'){e.preventDefault();prevQ();}});
+</script>
+</body>
+</html>

@@ -556,7 +556,7 @@ medium_linux_1: [
     options: ["who", "users", "id", "log"], 
     answer: "who" 
   }
-];
+],
   medium_microcontrollers_1: [
   { question: "Which bus is primarily used to connect CPU and peripherals in a microcontroller?", options: ["Data Bus", "Control Bus", "Address Bus", "All of the above"], answer: "All of the above" },
   { question: "Which type of memory in a microcontroller is non-volatile?", options: ["RAM", "ROM", "Cache", "Register"], answer: "ROM" },
@@ -588,7 +588,7 @@ medium_linux_1: [
   { question: "What is the main advantage of using DMA (Direct Memory Access)?", options: ["Faster I/O data transfer", "Simpler programming", "Reduced memory usage", "Higher clock speed"], answer: "Faster I/O data transfer" },
   { question: "Which bit in the status register indicates a carry?", options: ["Z (Zero)", "C (Carry)", "N (Negative)", "O (Overflow)"], answer: "C (Carry)" },
   { question: "What is the role of the Accumulator in microcontrollers?", options: ["Store program code", "Store arithmetic results", "Control I/O", "Store addresses"], answer: "Store arithmetic results" }
-];
+],
 medium_cprogramming_1: [
   { 
     question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int a = 5, b = 2;<br>   printf(\"%d\", a / b);<br>   return 0;<br>}</pre>", 
@@ -735,7 +735,7 @@ medium_cprogramming_1: [
     options: ["const", "static", "volatile", "register"], 
     answer: "volatile" 
   }
-];
+],
 advanced_linux_1: [
   { question: "Which system call is used to create a new process in Linux?", options: ["fork()", "exec()", "clone()", "spawn()"], answer: "fork()" },
   { question: "Which command is used to display all open files and processes using them?", options: ["lsof", "lsproc", "openfiles", "fstat"], answer: "lsof" },
@@ -767,7 +767,7 @@ advanced_linux_1: [
   { question: "Which file lists mounted filesystems?", options: ["/etc/mtab", "/proc/mounts", "/etc/fstab", "All of the above"], answer: "All of the above" },
   { question: "Which Linux command is used for benchmarking disk performance?", options: ["dd", "hdparm", "fio", "All of the above"], answer: "All of the above" },
   { question: "Which command displays NUMA (Non-Uniform Memory Access) configuration?", options: ["numactl --hardware", "lscpu", "dmidecode", "lstopo"], answer: "numactl --hardware" }
-];
+],
 advanced_microcontrollers_1: [
   { question: "Which architecture is most commonly used in ARM Cortex-M microcontrollers?", options: ["Harvard", "Von Neumann", "Modified Harvard", "RISC-V"], answer: "Harvard" },
   { question: "In microcontrollers, what does ISP stand for?", options: ["In-System Programming", "Internal Serial Processing", "Input Signal Processing", "Interrupt Service Protocol"], answer: "In-System Programming" },
@@ -799,7 +799,7 @@ advanced_microcontrollers_1: [
   { question: "What is the role of boundary scan in microcontrollers?", options: ["Testing I/O pins", "Managing interrupts", "Debugging SRAM", "Measuring clock frequency"], answer: "Testing I/O pins" },
   { question: "In ARM, what does CMSIS provide?", options: ["Standard API for peripherals", "Compiler optimization", "Flash programming utility", "Power management"], answer: "Standard API for peripherals" },
   { question: "Which protocol is most suitable for long-distance robust communication in microcontrollers?", options: ["CAN", "I2C", "SPI", "UART"], answer: "CAN" }
-];
+],
 advanced_cprogramming_1: [
   { question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    int x = 5;<br>    printf(\"%d\", x++ + ++x);<br>}</pre>", options: ["11", "12", "Undefined Behavior", "10"], answer: "Undefined Behavior" },
   { question: "What will be printed?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    char *p = \"Hello\";<br>    printf(\"%c\", *&p[1]);<br>}</pre>", options: ["H", "e", "l", "Undefined Behavior"], answer: "e" },

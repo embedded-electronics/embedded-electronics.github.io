@@ -405,14 +405,431 @@ const quizData = {
   answer: "8" 
   }
 ],
-  linux: [
-    { question: "What command is used to list files?", options: ["ls", "dir", "list"], answer: "ls" },
-    { question: "What is the root directory symbol?", options: ["/", "~", "."], answer: "/" }
-  ],
-  microcontrollers: [
-    { question: "Which is a popular microcontroller?", options: ["Arduino UNO", "Raspberry Pi", "ESP8266"], answer: "Arduino UNO" }
-  ],
-  cprogramming: [
-    { question: "Which header file is used for printf?", options: ["<stdio.h>", "<stdlib.h>", "<string.h>"], answer: "<stdio.h>" }
-  ]
+medium_linux_1: [
+  { 
+    question: "What will be the output of the following command?<br><pre>echo $((10 / 3))</pre>", 
+    options: ["3.33", "3", "3.0", "Error"], 
+    answer: "3" 
+  },
+  { 
+    question: "Which command shows the current runlevel of the system?", 
+    options: ["who -r", "runlevel", "init", "level"], 
+    answer: "runlevel" 
+  },
+  { 
+    question: "What will the following command display?<br><pre>ls -l | grep '^d'</pre>", 
+    options: ["All files", "Hidden files", "Directories only", "Executable files"], 
+    answer: "Directories only" 
+  },
+  { 
+    question: "Which command is used to display disk usage in human-readable format?", 
+    options: ["du -h", "df -h", "ls -lh", "disk -h"], 
+    answer: "du -h" 
+  },
+  { 
+    question: "What is the purpose of the command?<br><pre>chmod 755 file.sh</pre>", 
+    options: ["Read-only for all", "Full access for owner, read/execute for others", "Execute only for all", "No permissions"], 
+    answer: "Full access for owner, read/execute for others" 
+  },
+  { 
+    question: "Which command displays only the 1st column of the /etc/passwd file?", 
+    options: ["cut -d: -f1 /etc/passwd", "awk '{print $1}' /etc/passwd", "head -1 /etc/passwd", "grep -c /etc/passwd"], 
+    answer: "cut -d: -f1 /etc/passwd" 
+  },
+  { 
+    question: "What does the following command do?<br><pre>ps aux | grep ssh</pre>", 
+    options: ["Starts ssh", "Kills ssh process", "Lists ssh-related processes", "Opens ssh configuration"], 
+    answer: "Lists ssh-related processes" 
+  },
+  { 
+    question: "Which command will kill a process by its name?", 
+    options: ["kill", "killall", "endproc", "pskill"], 
+    answer: "killall" 
+  },
+  { 
+    question: "Which command is used to extract a tar.gz file?", 
+    options: ["tar -xvzf file.tar.gz", "gzip -d file.tar.gz", "unzip file.tar.gz", "untar file.tar.gz"], 
+    answer: "tar -xvzf file.tar.gz" 
+  },
+  { 
+    question: "What does the command do?<br><pre>df -h /home</pre>", 
+    options: ["Shows RAM usage", "Shows disk usage of /home", "Shows CPU usage", "Shows only hidden files"], 
+    answer: "Shows disk usage of /home" 
+  },
+  { 
+    question: "Which command is used to switch to another user account?", 
+    options: ["switch", "login", "su", "changeuser"], 
+    answer: "su" 
+  },
+  { 
+    question: "What is the meaning of `.` (dot) in Linux file path?", 
+    options: ["Root directory", "Home directory", "Current directory", "Parent directory"], 
+    answer: "Current directory" 
+  },
+  { 
+    question: "What will the following command do?<br><pre>find / -name '*.conf'</pre>", 
+    options: ["Finds all .conf files from root", "Deletes all .conf files", "Edits all .conf files", "Copies .conf files"], 
+    answer: "Finds all .conf files from root" 
+  },
+  { 
+    question: "Which command is used to check network connectivity?", 
+    options: ["ping", "ifconfig", "netstat", "ip route"], 
+    answer: "ping" 
+  },
+  { 
+    question: "What is the effect of the following command?<br><pre>history | tail -5</pre>", 
+    options: ["Clears history", "Shows last 5 commands", "Deletes last 5 commands", "Shows 5 oldest commands"], 
+    answer: "Shows last 5 commands" 
+  },
+  { 
+    question: "Which command is used to create an empty file?", 
+    options: ["empty", "newfile", "touch", "create"], 
+    answer: "touch" 
+  },
+  { 
+    question: "What is the output of?<br><pre>uname -r</pre>", 
+    options: ["Kernel name", "Kernel release version", "OS type", "System uptime"], 
+    answer: "Kernel release version" 
+  },
+  { 
+    question: "Which command is used to mount a filesystem?", 
+    options: ["mount", "umount", "attach", "diskmount"], 
+    answer: "mount" 
+  },
+  { 
+    question: "What does the `tail -n 20 file.txt` command do?", 
+    options: ["Shows first 20 lines", "Shows last 20 lines", "Deletes first 20 lines", "Deletes last 20 lines"], 
+    answer: "Shows last 20 lines" 
+  },
+  { 
+    question: "Which command shows memory usage?", 
+    options: ["free -h", "top -m", "df -m", "memstat"], 
+    answer: "free -h" 
+  },
+  { 
+    question: "Which command finds files modified in the last 7 days?", 
+    options: ["find / -mtime -7", "find / -type f -7", "ls -mtime 7", "grep -7 /"], 
+    answer: "find / -mtime -7" 
+  },
+  { 
+    question: "What does the command do?<br><pre>sort -r file.txt</pre>", 
+    options: ["Sorts ascending", "Sorts descending", "Removes duplicates", "Counts words"], 
+    answer: "Sorts descending" 
+  },
+  { 
+    question: "Which command is used to count number of lines in a file?", 
+    options: ["count file.txt", "wc -l file.txt", "lines file.txt", "nl file.txt"], 
+    answer: "wc -l file.txt" 
+  },
+  { 
+    question: "What does the command do?<br><pre>grep -i error logfile.txt</pre>", 
+    options: ["Case-sensitive search for 'error'", "Case-insensitive search for 'error'", "Deletes 'error'", "Replaces 'error'"], 
+    answer: "Case-insensitive search for 'error'" 
+  },
+  { 
+    question: "Which command compresses files using bzip2?", 
+    options: ["bzip file", "bz2 file", "bzip2 file", "tar -bz file"], 
+    answer: "bzip2 file" 
+  },
+  { 
+    question: "What will happen with this command?<br><pre>head -n 15 file.txt</pre>", 
+    options: ["Shows last 15 lines", "Shows first 15 lines", "Deletes first 15 lines", "Deletes last 15 lines"], 
+    answer: "Shows first 15 lines" 
+  },
+  { 
+    question: "Which command shows the PATH environment variable?", 
+    options: ["echo $PATH", "show PATH", "env PATH", "print PATH"], 
+    answer: "echo $PATH" 
+  },
+  { 
+    question: "Which command lists hidden files?", 
+    options: ["ls -h", "ls -a", "ls -l", "ls --hidden"], 
+    answer: "ls -a" 
+  },
+  { 
+    question: "What does the command do?<br><pre>crontab -e</pre>", 
+    options: ["Edit cron jobs", "List cron jobs", "Delete cron jobs", "Run all cron jobs"], 
+    answer: "Edit cron jobs" 
+  },
+  { 
+    question: "Which command shows the current logged-in users?", 
+    options: ["who", "users", "id", "log"], 
+    answer: "who" 
+  }
+];
+  medium_microcontrollers_1: [
+  { question: "Which bus is primarily used to connect CPU and peripherals in a microcontroller?", options: ["Data Bus", "Control Bus", "Address Bus", "All of the above"], answer: "All of the above" },
+  { question: "Which type of memory in a microcontroller is non-volatile?", options: ["RAM", "ROM", "Cache", "Register"], answer: "ROM" },
+  { question: "What is the purpose of the watchdog timer in a microcontroller?", options: ["Increase speed", "Prevent system hang", "Store data", "Control I/O"], answer: "Prevent system hang" },
+  { question: "Which interrupt has the highest priority in most microcontrollers?", options: ["Reset", "External Interrupt", "Timer Interrupt", "Software Interrupt"], answer: "Reset" },
+  { question: "Which instruction is used to stop the CPU until the next interrupt?", options: ["WAIT", "SLEEP", "NOP", "HALT"], answer: "HALT" },
+  { question: "Which microcontroller family is widely used in Arduino boards?", options: ["8051", "AVR", "PIC", "ARM Cortex-M"], answer: "AVR" },
+  { question: "Which of the following is a Harvard architecture microcontroller?", options: ["8051", "PIC", "8085", "8086"], answer: "PIC" },
+  { question: "What is the typical clock source for microcontrollers?", options: ["XTAL oscillator", "RC oscillator", "External clock", "All of the above"], answer: "All of the above" },
+  { question: "Which register usually stores the return address after an interrupt?", options: ["Stack", "Program Counter", "Accumulator", "Instruction Register"], answer: "Stack" },
+  { question: "What is the function of an ADC in microcontrollers?", options: ["Convert digital to analog", "Convert analog to digital", "Amplify signals", "Generate PWM"], answer: "Convert analog to digital" },
+  { question: "PWM is mainly used for:", options: ["Motor control", "Signal amplification", "Data storage", "Clock synchronization"], answer: "Motor control" },
+  { question: "Which microcontroller feature allows handling multiple tasks efficiently?", options: ["GPIO", "Timers", "Interrupts", "Registers"], answer: "Interrupts" },
+  { question: "Which type of memory is used to store microcontroller programs?", options: ["EEPROM", "SRAM", "ROM/Flash", "Register"], answer: "ROM/Flash" },
+  { question: "What does ISP stand for in microcontrollers?", options: ["In-System Programming", "Internal Serial Protocol", "Input Signal Processing", "Instruction Set Program"], answer: "In-System Programming" },
+  { question: "What is the size of an 8051 microcontroller's internal RAM?", options: ["128 bytes", "256 bytes", "512 bytes", "1 KB"], answer: "128 bytes" },
+  { question: "Which peripheral is used for serial communication?", options: ["ADC", "UART", "PWM", "GPIO"], answer: "UART" },
+  { question: "Which type of timer generates precise delays?", options: ["Watchdog timer", "Hardware timer", "System timer", "Real-time clock"], answer: "Hardware timer" },
+  { question: "What is the bit size of PIC16 microcontrollers?", options: ["4-bit", "8-bit", "16-bit", "32-bit"], answer: "8-bit" },
+  { question: "What does the I2C protocol use for communication?", options: ["2 lines: SDA and SCL", "3 lines: MISO, MOSI, SCK", "1 line", "4 lines"], answer: "2 lines: SDA and SCL" },
+  { question: "Which communication protocol is full-duplex?", options: ["I2C", "SPI", "UART", "CAN"], answer: "SPI" },
+  { question: "Which instruction is used to return from an interrupt?", options: ["RET", "IRET", "JMP", "CALL"], answer: "IRET" },
+  { question: "What is the maximum number of interrupt sources in a standard 8051?", options: ["2", "3", "5", "7"], answer: "5" },
+  { question: "Which clock cycle does the 8051 take to execute most instructions?", options: ["1 cycle", "2 cycles", "12 cycles", "24 cycles"], answer: "12 cycles" },
+  { question: "Which bus width determines the maximum addressable memory?", options: ["Data bus", "Address bus", "Control bus", "Clock bus"], answer: "Address bus" },
+  { question: "What is the purpose of pull-up resistors in microcontrollers?", options: ["Reduce power", "Prevent floating inputs", "Increase speed", "Amplify signals"], answer: "Prevent floating inputs" },
+  { question: "Which microcontroller is ARM Cortex-M based?", options: ["STM32", "8051", "PIC16", "ATmega328"], answer: "STM32" },
+  { question: "Which register in the microcontroller holds the instruction currently being executed?", options: ["Program Counter", "Instruction Register", "Accumulator", "Status Register"], answer: "Instruction Register" },
+  { question: "What is the main advantage of using DMA (Direct Memory Access)?", options: ["Faster I/O data transfer", "Simpler programming", "Reduced memory usage", "Higher clock speed"], answer: "Faster I/O data transfer" },
+  { question: "Which bit in the status register indicates a carry?", options: ["Z (Zero)", "C (Carry)", "N (Negative)", "O (Overflow)"], answer: "C (Carry)" },
+  { question: "What is the role of the Accumulator in microcontrollers?", options: ["Store program code", "Store arithmetic results", "Control I/O", "Store addresses"], answer: "Store arithmetic results" }
+];
+medium_cprogramming_1: [
+  { 
+    question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int a = 5, b = 2;<br>   printf(\"%d\", a / b);<br>   return 0;<br>}</pre>", 
+    options: ["2.5", "2", "5", "Error"], 
+    answer: "2" 
+  },
+  { 
+    question: "Which operator has the highest precedence in C?", 
+    options: ["*", "()", "++", "&&"], 
+    answer: "()" 
+  },
+  { 
+    question: "What will the following code print?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   printf(\"%c\", 'A' + 3);<br>   return 0;<br>}</pre>", 
+    options: ["A", "B", "C", "D"], 
+    answer: "D" 
+  },
+  { 
+    question: "Which of the following is not a valid storage class specifier in C?", 
+    options: ["auto", "extern", "static", "public"], 
+    answer: "public" 
+  },
+  { 
+    question: "What will this program print?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int a = 10;<br>   if(a = 0)<br>      printf(\"True\");<br>   else<br>      printf(\"False\");<br>}</pre>", 
+    options: ["True", "False", "Error", "No Output"], 
+    answer: "False" 
+  },
+  { 
+    question: "Which function is used to compare two strings in C?", 
+    options: ["strcopy()", "strcmp()", "strcat()", "strlen()"], 
+    answer: "strcmp()" 
+  },
+  { 
+    question: "What will be the size of the array?<br><pre>int arr[10];</pre>", 
+    options: ["10", "20", "40", "Depends on compiler"], 
+    answer: "10" 
+  },
+  { 
+    question: "Which type of function in C does not return any value?", 
+    options: ["int", "float", "void", "char"], 
+    answer: "void" 
+  },
+  { 
+    question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int x=5;<br>   printf(\"%d\", ++x * x++);<br>   return 0;<br>}</pre>", 
+    options: ["36", "30", "Compiler Dependent", "Error"], 
+    answer: "Compiler Dependent" 
+  },
+  { 
+    question: "Which keyword is used to define constants in C?", 
+    options: ["const", "constant", "fixed", "#define"], 
+    answer: "const" 
+  },
+  { 
+    question: "Which operator is used to access members of a structure through a pointer?", 
+    options: [".", "->", "::", "*"], 
+    answer: "->" 
+  },
+  { 
+    question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   char str[] = \"Hello\";<br>   printf(\"%d\", sizeof(str));<br>   return 0;<br>}</pre>", 
+    options: ["5", "6", "7", "Error"], 
+    answer: "6" 
+  },
+  { 
+    question: "Which header file is required for file handling functions in C?", 
+    options: ["&lt;file.h&gt;", "&lt;stdio.h&gt;", "&lt;stdlib.h&gt;", "&lt;string.h&gt;"], 
+    answer: "&lt;stdio.h&gt;" 
+  },
+  { 
+    question: "What is the default return type of main() in C (C99 standard)?", 
+    options: ["int", "void", "char", "float"], 
+    answer: "int" 
+  },
+  { 
+    question: "What will this code print?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int arr[] = {1,2,3,4};<br>   printf(\"%d\", *(arr+2));<br>}</pre>", 
+    options: ["1", "2", "3", "4"], 
+    answer: "3" 
+  },
+  { 
+    question: "Which function is used to allocate memory for multiple blocks in C?", 
+    options: ["malloc()", "calloc()", "realloc()", "alloc()"], 
+    answer: "calloc()" 
+  },
+  { 
+    question: "Which keyword is used to exit from a loop in C?", 
+    options: ["exit", "return", "break", "continue"], 
+    answer: "break" 
+  },
+  { 
+    question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   printf(\"%d\", sizeof(3.14));<br>}</pre>", 
+    options: ["2", "4", "8", "Compiler Dependent"], 
+    answer: "8" 
+  },
+  { 
+    question: "Which function is used to copy one string to another in C?", 
+    options: ["strcpy()", "strcat()", "strdup()", "strcmp()"], 
+    answer: "strcpy()" 
+  },
+  { 
+    question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int x=5;<br>   if(x==5 &amp;&amp; x&gt;2)<br>      printf(\"Yes\");<br>   else<br>      printf(\"No\");<br>}</pre>", 
+    options: ["Yes", "No", "Error", "Garbage"], 
+    answer: "Yes" 
+  },
+  { 
+    question: "Which of the following is not a loop in C?", 
+    options: ["for", "while", "do-while", "repeat"], 
+    answer: "repeat" 
+  },
+  { 
+    question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int a=2;<br>   printf(\"%d\", a++ + ++a);<br>}</pre>", 
+    options: ["5", "6", "7", "Compiler Dependent"], 
+    answer: "Compiler Dependent" 
+  },
+  { 
+    question: "Which keyword is used to prevent modification of a variable?", 
+    options: ["const", "static", "volatile", "extern"], 
+    answer: "const" 
+  },
+  { 
+    question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   char c = 'Z';<br>   printf(\"%d\", c);<br>}</pre>", 
+    options: ["90", "122", "Z", "Error"], 
+    answer: "90" 
+  },
+  { 
+    question: "Which header file provides mathematical functions like sqrt() and pow()?", 
+    options: ["&lt;math.h&gt;", "&lt;stdio.h&gt;", "&lt;stdlib.h&gt;", "&lt;string.h&gt;"], 
+    answer: "&lt;math.h&gt;" 
+  },
+  { 
+    question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int x=10;<br>   printf(\"%d\", x==10?100:200);<br>}</pre>", 
+    options: ["10", "100", "200", "Error"], 
+    answer: "100" 
+  },
+  { 
+    question: "Which of the following cannot be a pointer type in C?", 
+    options: ["int*", "float*", "void*", "structure*"], 
+    answer: "structure*" 
+  },
+  { 
+    question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   char str[10] = \"ABC\";<br>   printf(\"%d\", strlen(str));<br>}</pre>", 
+    options: ["2", "3", "10", "Error"], 
+    answer: "3" 
+  },
+  { 
+    question: "Which type qualifier is used to indicate a variable may change unexpectedly?", 
+    options: ["const", "static", "volatile", "register"], 
+    answer: "volatile" 
+  }
+];
+advanced_linux_1: [
+  { question: "Which system call is used to create a new process in Linux?", options: ["fork()", "exec()", "clone()", "spawn()"], answer: "fork()" },
+  { question: "Which command is used to display all open files and processes using them?", options: ["lsof", "lsproc", "openfiles", "fstat"], answer: "lsof" },
+  { question: "Which scheduler is the default for most Linux distributions?", options: ["CFS (Completely Fair Scheduler)", "FIFO", "Round Robin", "O(1) Scheduler"], answer: "CFS (Completely Fair Scheduler)" },
+  { question: "Which command is used to trace system calls made by a process?", options: ["strace", "ltrace", "trace", "syscall"], answer: "strace" },
+  { question: "Which Linux command displays the routing table?", options: ["route -n", "netstat -r", "ip route show", "All of the above"], answer: "All of the above" },
+  { question: "What does the 'nice' command in Linux control?", options: ["Process scheduling priority", "Process memory allocation", "Process file handles", "Process ownership"], answer: "Process scheduling priority" },
+  { question: "Which signal is sent by default when using the kill command?", options: ["SIGTERM", "SIGKILL", "SIGHUP", "SIGSTOP"], answer: "SIGTERM" },
+  { question: "Which filesystem supports journaling?", options: ["ext3", "ext2", "FAT32", "ISO9660"], answer: "ext3" },
+  { question: "Which system call is used to replace the current process image with a new one?", options: ["exec()", "fork()", "clone()", "wait()"], answer: "exec()" },
+  { question: "Which file in Linux contains user account information?", options: ["/etc/passwd", "/etc/shadow", "/etc/group", "/etc/accounts"], answer: "/etc/passwd" },
+  { question: "Which Linux command can monitor real-time system performance (CPU, Memory, Processes)?", options: ["top", "vmstat", "htop", "All of the above"], answer: "All of the above" },
+  { question: "Which command is used to capture and analyze network packets?", options: ["tcpdump", "netcat", "ping", "dig"], answer: "tcpdump" },
+  { question: "Which command can change the priority of a running process?", options: ["renice", "nice", "chprio", "setpri"], answer: "renice" },
+  { question: "Which command is used to check SELinux status?", options: ["sestatus", "getenforce", "selinux-status", "chkconfig selinux"], answer: "sestatus" },
+  { question: "What does the command `ulimit -n` configure?", options: ["Max number of open files per process", "Max memory size", "Max process priority", "Max number of processes"], answer: "Max number of open files per process" },
+  { question: "Which command shows detailed I/O statistics of devices?", options: ["iostat", "vmstat", "iotop", "sar"], answer: "iostat" },
+  { question: "Which command is used to display inode usage?", options: ["df -i", "ls -i", "du -i", "stat -i"], answer: "df -i" },
+  { question: "Which directory contains device files in Linux?", options: ["/dev", "/proc", "/sys", "/etc"], answer: "/dev" },
+  { question: "Which command displays kernel messages?", options: ["dmesg", "syslog", "journalctl -k", "All of the above"], answer: "All of the above" },
+  { question: "Which command is used to list all environment variables?", options: ["env", "set", "printenv", "All of the above"], answer: "All of the above" },
+  { question: "Which Linux command is used for disk partitioning?", options: ["fdisk", "parted", "gdisk", "All of the above"], answer: "All of the above" },
+  { question: "Which command displays the shared library dependencies of a program?", options: ["ldd", "nm", "objdump", "ldconfig"], answer: "ldd" },
+  { question: "Which Linux command is used to manage system services?", options: ["systemctl", "service", "init.d", "All of the above"], answer: "All of the above" },
+  { question: "Which filesystem is optimized for flash drives?", options: ["F2FS", "ext4", "XFS", "NTFS"], answer: "F2FS" },
+  { question: "Which file contains Linux kernel boot parameters?", options: ["/etc/default/grub", "/boot/grub/grub.cfg", "/proc/cmdline", "All of the above"], answer: "All of the above" },
+  { question: "Which Linux command is used to monitor live disk activity per process?", options: ["iotop", "iostat", "sar -d", "df"], answer: "iotop" },
+  { question: "Which scheduling policy is best for real-time processes?", options: ["SCHED_FIFO", "SCHED_OTHER", "SCHED_BATCH", "SCHED_IDLE"], answer: "SCHED_FIFO" },
+  { question: "Which file lists mounted filesystems?", options: ["/etc/mtab", "/proc/mounts", "/etc/fstab", "All of the above"], answer: "All of the above" },
+  { question: "Which Linux command is used for benchmarking disk performance?", options: ["dd", "hdparm", "fio", "All of the above"], answer: "All of the above" },
+  { question: "Which command displays NUMA (Non-Uniform Memory Access) configuration?", options: ["numactl --hardware", "lscpu", "dmidecode", "lstopo"], answer: "numactl --hardware" }
+];
+advanced_microcontrollers_1: [
+  { question: "Which architecture is most commonly used in ARM Cortex-M microcontrollers?", options: ["Harvard", "Von Neumann", "Modified Harvard", "RISC-V"], answer: "Harvard" },
+  { question: "In microcontrollers, what does ISP stand for?", options: ["In-System Programming", "Internal Serial Processing", "Input Signal Processing", "Interrupt Service Protocol"], answer: "In-System Programming" },
+  { question: "Which bus is responsible for transferring data between CPU and peripherals?", options: ["Data Bus", "Control Bus", "Address Bus", "Peripheral Bus"], answer: "Data Bus" },
+  { question: "What is the main function of JTAG in microcontrollers?", options: ["Debugging", "Power Supply", "Clock Generation", "Memory Allocation"], answer: "Debugging" },
+  { question: "Which type of memory is typically used to store the bootloader?", options: ["Flash", "EEPROM", "SRAM", "ROM"], answer: "Flash" },
+  { question: "What is the purpose of the Watchdog Timer?", options: ["To reset system on software failure", "To generate PWM signals", "To control ADC speed", "To manage I2C bus"], answer: "To reset system on software failure" },
+  { question: "In ARM Cortex-M, which mode is entered during an exception?", options: ["Handler Mode", "Thread Mode", "Sleep Mode", "Privileged Mode"], answer: "Handler Mode" },
+  { question: "What does NVIC stand for in ARM Cortex microcontrollers?", options: ["Nested Vectored Interrupt Controller", "Non-Volatile Interrupt Controller", "Network Virtual Interface Control", "Normalized Vector Index Control"], answer: "Nested Vectored Interrupt Controller" },
+  { question: "Which instruction is used to return from an interrupt in ARM?", options: ["BX LR", "MOV PC, LR", "POP {PC}", "LDR PC, [SP]"], answer: "BX LR" },
+  { question: "Which peripheral is used to measure input signal frequency?", options: ["Timer/Counter", "ADC", "PWM", "DAC"], answer: "Timer/Counter" },
+  { question: "What is the size of the program counter in a 32-bit microcontroller?", options: ["32-bit", "16-bit", "64-bit", "8-bit"], answer: "32-bit" },
+  { question: "In microcontrollers, DMA is mainly used to:", options: ["Transfer data without CPU involvement", "Handle interrupts faster", "Manage I/O devices", "Control power modes"], answer: "Transfer data without CPU involvement" },
+  { question: "Which type of ADC is fastest in microcontrollers?", options: ["Flash ADC", "Successive Approximation ADC", "Dual Slope ADC", "Sigma-Delta ADC"], answer: "Flash ADC" },
+  { question: "What is the function of PLL in microcontrollers?", options: ["Clock Frequency Multiplication", "Voltage Regulation", "Memory Management", "Signal Filtering"], answer: "Clock Frequency Multiplication" },
+  { question: "In ARM, what is the Thumb instruction set?", options: ["16-bit compressed instructions", "32-bit enhanced instructions", "64-bit DSP instructions", "Special DMA instructions"], answer: "16-bit compressed instructions" },
+  { question: "Which microcontroller peripheral supports I2C communication?", options: ["TWI", "SPI", "USART", "CAN"], answer: "TWI" },
+  { question: "What is the primary difference between Harvard and Von Neumann architectures?", options: ["Separate memory for code and data", "Separate buses for address and data", "Clock speed difference", "Interrupt handling"], answer: "Separate memory for code and data" },
+  { question: "Which ARM register stores the return address after an exception?", options: ["LR", "PC", "SP", "CPSR"], answer: "LR" },
+  { question: "What is the maximum bit-width of GPIO registers in typical ARM Cortex-M?", options: ["32-bit", "16-bit", "8-bit", "64-bit"], answer: "32-bit" },
+  { question: "Which bus in ARM Cortex-M connects CPU to high-speed peripherals?", options: ["AHB", "APB", "I2C", "CAN"], answer: "AHB" },
+  { question: "Which low-power mode keeps RAM contents but stops CPU in ARM?", options: ["Sleep Mode", "Deep Sleep", "Shutdown", "Reset"], answer: "Sleep Mode" },
+  { question: "In microcontrollers, what is bit-banding?", options: ["Mapping bits to specific memory addresses", "Expanding instruction size", "Compressing code in Flash", "Fast multiplication"], answer: "Mapping bits to specific memory addresses" },
+  { question: "What is the role of Systick Timer in ARM Cortex-M?", options: ["Generate periodic interrupts", "Reset watchdog", "Manage DMA transfers", "Control PLL"], answer: "Generate periodic interrupts" },
+  { question: "In CAN protocol, what ensures data integrity?", options: ["CRC Field", "Start Bit", "Arbitration Field", "ACK Slot"], answer: "CRC Field" },
+  { question: "Which microcontroller communication is half-duplex by default?", options: ["UART", "SPI", "I2C", "CAN"], answer: "UART" },
+  { question: "Which ARM exception has the highest priority?", options: ["Reset", "NMI", "HardFault", "SysTick"], answer: "Reset" },
+  { question: "What is the maximum addressable memory space in a 16-bit microcontroller?", options: ["64 KB", "128 KB", "32 KB", "256 KB"], answer: "64 KB" },
+  { question: "What is the role of boundary scan in microcontrollers?", options: ["Testing I/O pins", "Managing interrupts", "Debugging SRAM", "Measuring clock frequency"], answer: "Testing I/O pins" },
+  { question: "In ARM, what does CMSIS provide?", options: ["Standard API for peripherals", "Compiler optimization", "Flash programming utility", "Power management"], answer: "Standard API for peripherals" },
+  { question: "Which protocol is most suitable for long-distance robust communication in microcontrollers?", options: ["CAN", "I2C", "SPI", "UART"], answer: "CAN" }
+];
+advanced_cprogramming_1: [
+  { question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    int x = 5;<br>    printf(\"%d\", x++ + ++x);<br>}</pre>", options: ["11", "12", "Undefined Behavior", "10"], answer: "Undefined Behavior" },
+  { question: "What will be printed?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    char *p = \"Hello\";<br>    printf(\"%c\", *&p[1]);<br>}</pre>", options: ["H", "e", "l", "Undefined Behavior"], answer: "e" },
+  { question: "What will happen?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    const int x = 10;<br>    int *ptr = (int*)&x;<br>    *ptr = 20;<br>    printf(\"%d\", x);<br>}</pre>", options: ["10", "20", "Compiler Error", "Undefined Behavior"], answer: "Undefined Behavior" },
+  { question: "Which of the following is not a storage class in C?", options: ["auto", "static", "register", "sealed"], answer: "sealed" },
+  { question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>#define square(x) x*x<br>int main(){<br>    printf(\"%d\", square(5+1));<br>}</pre>", options: ["36", "11", "30", "Compiler Error"], answer: "11" },
+  { question: "What is the size of an empty struct in C (GCC)?", options: ["0", "1", "Depends on Compiler", "Undefined"], answer: "1" },
+  { question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    int a=5;<br>    printf(\"%d %d\", a, ++a + a++);<br>}</pre>", options: ["5 12", "5 11", "5 10", "Undefined Behavior"], answer: "Undefined Behavior" },
+  { question: "What is the return type of malloc() in C?", options: ["void", "void*", "int*", "depends on usage"], answer: "void*" },
+  { question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>void test(){<br>    static int x=0;<br>    printf(\"%d \", x++);<br>}<br>int main(){<br>    for(int i=0;i<5;i++) test();<br>}</pre>", options: ["0 1 2 3 4", "0 0 0 0 0", "1 2 3 4 5", "Compiler Error"], answer: "0 1 2 3 4" },
+  { question: "Which type of pointer arithmetic is not allowed?", options: ["Increment", "Decrement", "Addition", "Multiplication"], answer: "Multiplication" },
+  { question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    char *str = \"C Programming\";<br>    printf(\"%c\", *&str[3]);<br>}</pre>", options: ["P", "o", "g", "m"], answer: "g" },
+  { question: "Which keyword is used to stop recursion?", options: ["break", "stop", "exit", "None of the above"], answer: "None of the above" },
+  { question: "What will happen?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    int arr[5];<br>    printf(\"%d\", arr[0]);<br>}</pre>", options: ["0", "Garbage Value", "Error", "Segfault"], answer: "Garbage Value" },
+  { question: "Which statement is true about `volatile` keyword?", options: ["It prevents compiler optimization", "It makes variable constant", "It frees memory automatically", "It ensures variable is shared"], answer: "It prevents compiler optimization" },
+  { question: "What will be output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    printf(\"%d\", sizeof('A'));<br>}</pre>", options: ["1", "2", "4", "Depends on Compiler"], answer: "4" },
+  { question: "Which operator cannot be overloaded in C?", options: ["+", "[]", "->", "Overloading not allowed"], answer: "Overloading not allowed" },
+  { question: "What is dangling pointer?", options: ["Pointer not assigned", "Pointer pointing to freed memory", "Pointer initialized to NULL", "Pointer to const"], answer: "Pointer pointing to freed memory" },
+  { question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   char str[] = \"abc\";<br>   char *p = str;<br>   p[1] = 'z';<br>   printf(\"%s\", str);<br>}</pre>", options: ["abc", "azc", "zzc", "Segfault"], answer: "azc" },
+  { question: "Which feature is not in C?", options: ["Function Pointers", "Bit Fields", "Templates", "Dynamic Memory"], answer: "Templates" },
+  { question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    int x=10;<br>    if(x=0)<br>        printf(\"Hello\");<br>    else<br>        printf(\"World\");<br>}</pre>", options: ["Hello", "World", "Compiler Error", "Undefined"], answer: "World" },
+  { question: "What is returned by `printf()` on success?", options: ["0", "1", "Number of characters printed", "Nothing"], answer: "Number of characters printed" },
+  { question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>   int a=5, b=2;<br>   float c = a/b;<br>   printf(\"%.2f\", c);<br>}</pre>", options: ["2.50", "2.00", "2.25", "Error"], answer: "2.00" },
+  { question: "Which is not a valid type qualifier in C?", options: ["const", "volatile", "mutable", "restrict"], answer: "mutable" },
+  { question: "Which function is used to move file pointer?", options: ["fmove()", "fseek()", "fpos()", "frealloc()"], answer: "fseek()" },
+  { question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    int arr[] = {1,2,3,4};<br>    printf(\"%d\", 2[arr]);<br>}</pre>", options: ["2", "3", "Error", "Undefined"], answer: "3" },
+  { question: "What is the result of left shift operator on signed negative numbers?", options: ["Undefined Behavior", "Shifts with sign extension", "Always 0", "Compiler Error"], answer: "Undefined Behavior" },
+  { question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>#define call(x,y) x##y<br>int main(){<br>    int ab=10;<br>    printf(\"%d\", call(a,b));<br>}</pre>", options: ["ab", "10", "Compiler Error", "Undefined"], answer: "10" },
+  { question: "Which function is used to allocate zero-initialized memory?", options: ["malloc()", "calloc()", "realloc()", "zalloc()"], answer: "calloc()" },
+  { question: "What is the output?<br><pre>#include &lt;stdio.h&gt;<br>int main(){<br>    char *p = \"Hello\";<br>    *(p+1) = 'a';<br>    printf(\"%s\", p);<br>}</pre>", options: ["Hallo", "Hello", "Segfault", "Haalo"], answer: "Segfault" },
+  { question: "Which of the following is not a valid preprocessor directive?", options: ["#include", "#define", "#pragma", "#method"], answer: "#method" }
+]
 };

@@ -398,6 +398,11 @@ const quizData = {
     question: "What will be printed?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    printf(\"%d\", 4 | 1);\n}</pre>", 
     options: ["1", "4", "5", "Error"], 
     answer: "5" 
+  },
+  {  
+  question: "What will be the output of the following code?<br><pre>#include &lt;stdio.h&gt;<br>int main() {<br>    printf(\"%d\", 5 + 3);<br>    return 0;<br>}</pre>",
+  options: ["5", "8", "Error"],
+  answer: "8" 
   }
 ],
   linux: [
@@ -408,11 +413,6 @@ const quizData = {
     { question: "Which is a popular microcontroller?", options: ["Arduino UNO", "Raspberry Pi", "ESP8266"], answer: "Arduino UNO" }
   ],
   cprogramming: [
-    { question: "Which header file is used for printf?", options: ["<stdio.h>", "<stdlib.h>", "<string.h>"], answer: "<stdio.h>" },
-    {  
-      question: "What will be the output of the following code?<br><pre>#include &lt;stdio.h&gt;<br>int main() {<br>    printf(\"%d\", 5 + 3);<br>    return 0;<br>}</pre>",
-      options: ["5", "8", "Error"],
-      answer: "8" 
-    }
+    { question: "Which header file is used for printf?", options: ["<stdio.h>", "<stdlib.h>", "<string.h>"], answer: "<stdio.h>" }
   ]
 };

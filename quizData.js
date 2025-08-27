@@ -62,7 +62,6 @@ const quizData = {
     { question: "Which flag indicates arithmetic overflow?", options: ["Overflow flag", "Carry flag", "Zero flag", "Sign flag"], answer: "Overflow flag" },
     { question: "Which register holds the address of the next instruction?", options: ["Program Counter", "Stack Pointer", "Instruction Register", "Base Register"], answer: "Program Counter" },
     { question: "Which memory stores variables during execution?", options: ["RAM", "ROM", "Flash", "EEPROM"], answer: "RAM" },
-    { question: "Which instruction is used to stop program execution until an interrupt occurs?", options: ["Sleep", "NOP", "HALT", "WAIT"], answer: "Sleep" }
 ],
   basic_C_Programming_1: [
     { question: "Which function is used to get input from the user in C?", options: ["scanf()", "printf()", "gets()", "puts()"], answer: "scanf()" },

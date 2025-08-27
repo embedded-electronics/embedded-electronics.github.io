@@ -189,6 +189,217 @@ const quizData = {
     { question: "Which function is used to close a file in C?", options: ["fclose()", "close()", "endfile()", "exit()"], answer: "fclose()" },
     { question: "Which symbol is used to represent a single-line comment in C?", options: ["//", "/*", "#", "--"], answer: "//" }
   ],
+  basic_linux_3: [
+  { question: "Which command is used to list files in a directory?", options: ["ls", "dir", "list", "show"], answer: "ls" },
+  { question: "Which command is used to display the present working directory?", options: ["pwd", "cwd", "where", "dir"], answer: "pwd" },
+  { question: "Which command is used to change the current directory?", options: ["cd", "pwd", "chdir", "move"], answer: "cd" },
+  { question: "Which command is used to create a new directory?", options: ["mkdir", "makedir", "newdir", "dircreate"], answer: "mkdir" },
+  { question: "Which command is used to remove an empty directory?", options: ["rmdir", "removedir", "deldir", "rm -d"], answer: "rmdir" },
+  { question: "Which command is used to remove a file?", options: ["rm", "del", "erase", "remove"], answer: "rm" },
+  { question: "Which command is used to display the contents of a file?", options: ["cat", "show", "print", "display"], answer: "cat" },
+  { question: "Which command is used to view file content page by page?", options: ["less", "cat", "view", "head"], answer: "less" },
+  { question: "Which command is used to show the first 10 lines of a file?", options: ["head", "top", "start", "begin"], answer: "head" },
+  { question: "Which command is used to show the last 10 lines of a file?", options: ["tail", "end", "bottom", "last"], answer: "tail" },
+  { question: "Which command is used to copy files in Linux?", options: ["cp", "copy", "cfile", "duplicate"], answer: "cp" },
+  { question: "Which command is used to move or rename a file?", options: ["mv", "move", "rename", "shift"], answer: "mv" },
+  { question: "Which command is used to search for text in a file?", options: ["grep", "find", "search", "locate"], answer: "grep" },
+  { question: "Which command is used to count words, lines, and characters in a file?", options: ["wc", "count", "lines", "stats"], answer: "wc" },
+  { question: "Which command is used to display the manual pages of a command?", options: ["man", "help", "info", "doc"], answer: "man" },
+  { question: "Which command is used to show the running processes?", options: ["ps", "jobs", "proc", "list"], answer: "ps" },
+  { question: "Which command is used to terminate a process by PID?", options: ["kill", "end", "terminate", "stop"], answer: "kill" },
+  { question: "Which command is used to display disk usage of files?", options: ["du", "df", "diskuse", "usage"], answer: "du" },
+  { question: "Which command is used to display free disk space?", options: ["df", "du", "space", "disk"], answer: "df" },
+  { question: "Which command is used to change file permissions?", options: ["chmod", "chperm", "perm", "setperm"], answer: "chmod" },
+  { question: "Which command is used to change the group ownership of a file?", options: ["chgrp", "chown", "group", "setgrp"], answer: "chgrp" },
+  { question: "Which command is used to display the calendar?", options: ["cal", "date", "time", "clock"], answer: "cal" },
+  { question: "Which command is used to display the current date and time?", options: ["date", "time", "datetime", "clock"], answer: "date" },
+  { question: "Which command is used to display system uptime?", options: ["uptime", "who", "sysinfo", "status"], answer: "uptime" },
+  { question: "Which command is used to display currently logged in users?", options: ["who", "users", "log", "w"], answer: "who" },
+  { question: "Which command is used to display all environment variables?", options: ["printenv", "env", "showenv", "getenviron"], answer: "printenv" },
+  { question: "Which command is used to set an environment variable?", options: ["export", "setenv", "environ", "set"], answer: "export" },
+  { question: "Which command is used to display the path of a command?", options: ["which", "where", "find", "locate"], answer: "which" },
+  { question: "Which command is used to display all mounted filesystems?", options: ["mount", "df", "lsblk", "showmnt"], answer: "mount" },
+  { question: "Which command is used to shut down the system immediately?", options: ["shutdown -h now", "halt", "poweroff", "init 0"], answer: "shutdown -h now" }
+],
+  basic_microcontrollers_3: [
+  { question: "Which type of memory in a microcontroller is non-volatile?", options: ["RAM", "ROM", "Cache", "Register"], answer: "ROM" },
+  { question: "What does EEPROM stand for?", options: ["Electrically Erasable Programmable Read-Only Memory", "Extended Erasable Programmable Read-Only Memory", "Erasable Electronic Programmable ROM", "Efficient Erasable Programmable ROM"], answer: "Electrically Erasable Programmable Read-Only Memory" },
+  { question: "Which microcontroller family is widely used in Arduino boards?", options: ["8051", "PIC", "AVR", "ARM"], answer: "AVR" },
+  { question: "In a microcontroller, the program counter stores:", options: ["Current instruction", "Next instruction address", "Data value", "Stack pointer"], answer: "Next instruction address" },
+  { question: "Which bus carries the data between CPU and memory?", options: ["Address bus", "Data bus", "Control bus", "Serial bus"], answer: "Data bus" },
+  { question: "Which microcontroller family uses PIC architecture?", options: ["Atmel", "Microchip", "Intel", "Texas Instruments"], answer: "Microchip" },
+  { question: "Which communication protocol is half-duplex?", options: ["SPI", "UART", "I2C", "CAN"], answer: "UART" },
+  { question: "The stack in a microcontroller is mainly used for:", options: ["Storing variables", "Storing return addresses", "Storing data permanently", "Debugging"], answer: "Storing return addresses" },
+  { question: "What is the width of the address bus in a 16-bit microcontroller?", options: ["8-bit", "16-bit", "32-bit", "64-bit"], answer: "16-bit" },
+  { question: "Which timer mode continuously counts and rolls over?", options: ["One-shot mode", "PWM mode", "Auto-reload mode", "Counter mode"], answer: "Auto-reload mode" },
+  { question: "Which flag is set when an arithmetic overflow occurs?", options: ["Zero flag", "Carry flag", "Overflow flag", "Sign flag"], answer: "Overflow flag" },
+  { question: "Which microcontroller family is ARM Cortex-M series?", options: ["32-bit", "16-bit", "8-bit", "64-bit"], answer: "32-bit" },
+  { question: "What is the purpose of a watchdog timer in microcontrollers?", options: ["To measure time", "To reset system on fault", "To count instructions", "To generate delays"], answer: "To reset system on fault" },
+  { question: "Which protocol allows multiple devices to communicate over just two wires?", options: ["I2C", "SPI", "UART", "CAN"], answer: "I2C" },
+  { question: "What does ISP stand for in microcontroller programming?", options: ["In-System Programming", "Instruction Set Programming", "Input System Port", "Integrated Software Protocol"], answer: "In-System Programming" },
+  { question: "Which register stores the status of the last executed instruction?", options: ["Accumulator", "Program Counter", "Status Register", "Stack Pointer"], answer: "Status Register" },
+  { question: "Which architecture is Harvard Architecture based on?", options: ["Single memory for data & program", "Separate memory for data & program", "Only ROM-based", "Only RAM-based"], answer: "Separate memory for data & program" },
+  { question: "Which microcontroller family is used in STM32 boards?", options: ["8051", "PIC", "AVR", "ARM"], answer: "ARM" },
+  { question: "In an 8051 microcontroller, which register is used as the accumulator?", options: ["R0", "A", "DPTR", "SP"], answer: "A" },
+  { question: "Which type of interrupt has the highest priority in most microcontrollers?", options: ["External interrupt", "Timer interrupt", "Reset", "Software interrupt"], answer: "Reset" },
+  { question: "What is the function of the ADC in a microcontroller?", options: ["Convert analog to digital signals", "Convert digital to analog signals", "Store analog data", "Store digital data"], answer: "Convert analog to digital signals" },
+  { question: "PWM is commonly used for:", options: ["Voltage regulation", "Speed control", "Signal generation", "All of the above"], answer: "All of the above" },
+  { question: "What is the default clock source in many microcontrollers?", options: ["External crystal", "Internal oscillator", "PLL", "Timer"], answer: "Internal oscillator" },
+  { question: "Which microcontroller family introduced Cortex-M0 and M4 cores?", options: ["Intel", "Microchip", "ARM", "Atmel"], answer: "ARM" },
+  { question: "Which register keeps track of the top of the stack?", options: ["SP", "PC", "LR", "SR"], answer: "SP" },
+  { question: "What is the baud rate in UART communication?", options: ["Data transmission speed", "Clock frequency", "Bus width", "Memory size"], answer: "Data transmission speed" },
+  { question: "Which protocol is widely used in automotive microcontrollers?", options: ["UART", "I2C", "CAN", "SPI"], answer: "CAN" },
+  { question: "Which register stores the address of the next instruction?", options: ["PC", "SP", "IR", "SR"], answer: "PC" },
+  { question: "Which type of memory is used to store the bootloader?", options: ["EEPROM", "RAM", "Flash", "Cache"], answer: "Flash" },
+  { question: "What is the function of the clock in a microcontroller?", options: ["Synchronize operations", "Store data", "Manage power", "Generate interrupts"], answer: "Synchronize operations" }
+],
+  basic_C_Programming_3: [
+  { 
+    question: "What will be the output of the following code?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a = 10;\n    printf(\"%d\", a++);\n    return 0;\n}</pre>", 
+    options: ["9", "10", "11", "Error"], 
+    answer: "10" 
+  },
+  { 
+    question: "What will be printed?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a = 5, b = 2;\n    printf(\"%d\", a % b);\n    return 0;\n}</pre>", 
+    options: ["1", "2", "0", "Error"], 
+    answer: "1" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    printf(\"%c\", 'A' + 1);\n    return 0;\n}</pre>", 
+    options: ["A", "B", "C", "Error"], 
+    answer: "B" 
+  },
+  { 
+    question: "Result of code?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int x = 3;\n    printf(\"%d\", x * x);\n    return 0;\n}</pre>", 
+    options: ["3", "6", "9", "Error"], 
+    answer: "9" 
+  },
+  { 
+    question: "What does this print?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int x = 5;\n    if(x == 5) printf(\"Yes\");\n    else printf(\"No\");\n}</pre>", 
+    options: ["Yes", "No", "Error", "Nothing"], 
+    answer: "Yes" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int arr[3] = {1,2,3};\n    printf(\"%d\", arr[1]);\n}</pre>", 
+    options: ["1", "2", "3", "Error"], 
+    answer: "2" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    char str[] = \"Hello\";\n    printf(\"%s\", str);\n}</pre>", 
+    options: ["Hello", "H", "Error", "Null"], 
+    answer: "Hello" 
+  },
+  { 
+    question: "Result?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a = 2, b = 3;\n    printf(\"%d\", a & b);\n}</pre>", 
+    options: ["0", "1", "2", "3"], 
+    answer: "2" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a = 5;\n    printf(\"%d\", ++a);\n}</pre>", 
+    options: ["4", "5", "6", "Error"], 
+    answer: "6" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    printf(\"%d\", sizeof(int));\n}</pre>", 
+    options: ["2", "4", "8", "Depends on system"], 
+    answer: "Depends on system" 
+  },
+  { 
+    question: "What will this code print?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int x = 10;\n    printf(\"%d\", x/3);\n}</pre>", 
+    options: ["3", "3.3", "Error", "10"], 
+    answer: "3" 
+  },
+  { 
+    question: "Result?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    float x = 7/2;\n    printf(\"%.1f\", x);\n}</pre>", 
+    options: ["3.0", "3.5", "3.2", "Error"], 
+    answer: "3.0" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int x = 0;\n    if(x)\n        printf(\"True\");\n    else\n        printf(\"False\");\n}</pre>", 
+    options: ["True", "False", "Error", "Nothing"], 
+    answer: "False" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int x = 4;\n    printf(\"%d\", x >> 1);\n}</pre>", 
+    options: ["2", "4", "8", "Error"], 
+    answer: "2" 
+  },
+  { 
+    question: "Result?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a = 5, b = 10;\n    printf(\"%d\", a > b);\n}</pre>", 
+    options: ["1", "0", "5", "10"], 
+    answer: "0" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int x;\n    printf(\"%d\", x);\n}</pre>", 
+    options: ["Garbage value", "0", "Error", "Undefined"], 
+    answer: "Garbage value" 
+  },
+  { 
+    question: "What will print?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a = 5, b = 2;\n    printf(\"%d\", a / b);\n}</pre>", 
+    options: ["2", "2.5", "3", "Error"], 
+    answer: "2" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    char c = 'Z';\n    printf(\"%d\", c);\n}</pre>", 
+    options: ["90", "65", "122", "Error"], 
+    answer: "90" 
+  },
+  { 
+    question: "Result?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    printf(\"%d\", 5 == 5);\n}</pre>", 
+    options: ["1", "0", "True", "Error"], 
+    answer: "1" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int arr[5] = {0};\n    printf(\"%d\", arr[3]);\n}</pre>", 
+    options: ["0", "3", "Garbage", "Error"], 
+    answer: "0" 
+  },
+  { 
+    question: "What will be the output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int i;\n    for(i=0; i<3; i++){\n        printf(\"%d\", i);\n    }\n}</pre>", 
+    options: ["012", "123", "Error", "0 1 2"], 
+    answer: "012" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int i=1;\n    while(i<3){\n        printf(\"%d\", i);\n        i++;\n    }\n}</pre>", 
+    options: ["12", "123", "0 1 2", "Error"], 
+    answer: "12" 
+  },
+  { 
+    question: "Result?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a=1;\n    do{\n        printf(\"%d\", a);\n        a++;\n    }while(a<3);\n}</pre>", 
+    options: ["1", "12", "123", "Error"], 
+    answer: "12" 
+  },
+  { 
+    question: "What will print?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a=2, b=3;\n    printf(\"%d\", a==2 && b==3);\n}</pre>", 
+    options: ["1", "0", "True", "Error"], 
+    answer: "1" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int x = 1;\n    x += 5;\n    printf(\"%d\", x);\n}</pre>", 
+    options: ["1", "5", "6", "Error"], 
+    answer: "6" 
+  },
+  { 
+    question: "Result?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    char str[5] = \"Hi\";\n    printf(\"%s\", str);\n}</pre>", 
+    options: ["Hi", "Error", "Garbage", "Hi\\0"], 
+    answer: "Hi" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    int a = 5;\n    int *p = &a;\n    printf(\"%d\", *p);\n}</pre>", 
+    options: ["Address of a", "5", "Error", "Garbage"], 
+    answer: "5" 
+  },
+  { 
+    question: "Output?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    printf(\"%d\", 4 & 1);\n}</pre>", 
+    options: ["0", "1", "2", "4"], 
+    answer: "0" 
+  },
+  { 
+    question: "What will be printed?<br><pre>#include &lt;stdio.h&gt;\nint main(){\n    printf(\"%d\", 4 | 1);\n}</pre>", 
+    options: ["1", "4", "5", "Error"], 
+    answer: "5" 
+  }
+],
   linux: [
     { question: "What command is used to list files?", options: ["ls", "dir", "list"], answer: "ls" },
     { question: "What is the root directory symbol?", options: ["/", "~", "."], answer: "/" }

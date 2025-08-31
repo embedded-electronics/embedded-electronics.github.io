@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Header Start -->
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introduction to Embedded Electronics: The Heart of Modern Devices — Embedded Electronics Blog</title>
+
+  <!-- SEO basics -->
+  <meta name="description" content="Learn the basics of Embedded Electronics, its key components, applications, and how to get started with microcontrollers and IoT projects." />
+  <meta name="keywords" content="Embedded Systems, IoT, Microcontrollers, Linux, C Programming, RTOS, PCB Design, Embedded Electronics Basics, Introduction" />
+  <link rel="canonical" href="https://embedded-electronics.github.io/blog-introduction-to-embedded-electronics.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Introduction to Embedded Electronics: The Heart of Modern Devices" />
+  <meta property="og:description" content="Discover what embedded electronics are, the key components, and why they power modern innovation." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://embedded-electronics.github.io/blog-introduction-to-embedded-electronics.html" />
+  <meta property="og:image" content="assets/blog/embedded-intro-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Introduction to Embedded Electronics: The Heart of Modern Devices" />
+  <meta name="twitter:description" content="Discover what embedded electronics are, the key components, and why they power modern innovation." />
+  <meta name="twitter:image" content="assets/blog/embedded-intro-cover.png" />
+
   <link rel="stylesheet" href="styles.css" />
   <script defer src="scripts.js"></script>
 </head>
@@ -12,8 +28,7 @@
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo" class="brand-logo" /> <!-- MODIFY HERE -->
-      <!-- <span class="brand-name">Embedded Electronics</span>  -->
+      <img src="assets/logo.png" alt="Embedded Electronics Logo" class="brand-logo" />
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
@@ -30,71 +45,142 @@
   </div>
 </header>
 
-<!-- Header End -->
+<main class="container">
+  <article class="blog-post" id="post">
+    <h1>Introduction to Embedded Electronics: The Heart of Modern Devices</h1>
 
-  <!-- Main content -->
-  <main class="container">
-    <article class="blog-post">
-      <h1>Introduction to Embedded Electronics: The Heart of Modern Devices</h1>
-      <p><strong>Published on:</strong> <span id="year"></span> | <strong>Author:</strong> Dibyendu Barman</p>
+    <p class="post-meta">
+      <span><strong>Published:</strong> <time id="published"></time></span>
+      <span>•</span>
+      <span><strong>Last Updated:</strong> <time id="updated"></time></span>
+      <span>•</span>
+      <span><strong>Author:</strong> Dibyendu Barman</span>
+      <span>•</span>
+      <span><strong>Reading Time:</strong> <span id="readTime">—</span></span>
+    </p>
 
-      <section>
-        <h2>What is Embedded Electronics?</h2>
-        <p>Embedded electronics refers to <strong>specialized computing systems</strong> built into larger devices to perform dedicated tasks. Unlike general-purpose computers, embedded systems are <strong>designed for specific applications</strong>, such as controlling a motor, monitoring sensors, or managing communication protocols.</p>
-        <p>Examples include <strong>smart home devices, wearable gadgets, automotive controllers, IoT sensors, and robotics systems</strong>.</p>
-      </section>
+    <p aria-label="Post tags">
+      <span class="tag">Embedded Systems</span>
+      <span class="tag">IoT</span>
+      <span class="tag">Electronics</span>
+    </p>
 
-      <section>
-        <h2>Key Components of an Embedded System</h2>
-        <ul>
-          <li><strong>Microcontroller / Microprocessor:</strong> The “brain” of the system, often an MCU like Arduino, ESP32, or STM32, executes the programmed logic.</li>
-          <li><strong>Sensors:</strong> Devices that measure physical parameters such as temperature, humidity, light, or motion.</li>
-          <li><strong>Actuators:</strong> Components like motors, LEDs, or relays that perform actions based on sensor inputs.</li>
-          <li><strong>Communication Interfaces:</strong> Protocols like I²C, SPI, UART, or Wi-Fi allow devices to communicate with other systems.</li>
-          <li><strong>Power Supply:</strong> Embedded devices often run on battery or DC power optimized for low energy consumption.</li>
-        </ul>
-      </section>
+    <img class="hero" src="assets/blog/embedded-intro-cover.png" alt="Embedded electronics concept illustration" />
 
-      <section>
-        <h2>Applications of Embedded Electronics</h2>
-        <ul>
-          <li><strong>Home Automation:</strong> Smart lighting, thermostats, and security systems.</li>
-          <li><strong>Healthcare Devices:</strong> Heart rate monitors, insulin pumps, and wearable trackers.</li>
-          <li><strong>Automotive Industry:</strong> Engine control units, parking sensors, and infotainment systems.</li>
-          <li><strong>Industrial Automation:</strong> Conveyor control, robotic arms, and environmental monitoring.</li>
-          <li><strong>IoT Projects:</strong> Smart sensors connected to the internet for real-time data.</li>
-        </ul>
-      </section>
+    <nav class="toc" id="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol id="tocList"></ol>
+    </nav>
 
-      <section>
-        <h2>Why Learn Embedded Electronics?</h2>
-        <p>Embedded electronics is at the <strong>core of innovation</strong> in technology. Learning it allows you to:</p>
-        <ul>
-          <li>Build <strong>smart gadgets</strong> and <strong>custom devices</strong>.</li>
-          <li>Understand <strong>hardware-software integration</strong>.</li>
-          <li>Explore careers in <strong>IoT, robotics, automation, and consumer electronics</strong>.</li>
-        </ul>
-      </section>
+    <section>
+      <h2>What is Embedded Electronics?</h2>
+      <p>Embedded electronics refers to <strong>specialized computing systems</strong> built into larger devices to perform dedicated tasks. Unlike general-purpose computers, embedded systems are <strong>designed for specific applications</strong>, such as controlling a motor, monitoring sensors, or managing communication protocols.</p>
+      <p>Examples include <strong>smart home devices, wearable gadgets, automotive controllers, IoT sensors, and robotics systems</strong>.</p>
+    </section>
 
-      <section>
-        <h2>Getting Started</h2>
-        <ol>
-          <li>Start with <strong>basic microcontroller kits</strong> like Arduino or ESP32.</li>
-          <li>Learn to interface <strong>sensors and actuators</strong>.</li>
-          <li>Understand <strong>communication protocols</strong>.</li>
-          <li>Practice <strong>small projects</strong>, then gradually move to complex IoT or automation systems.</li>
-        </ol>
-        <p><em>Embedded electronics is a field where <strong>creativity meets engineering</strong>, allowing you to bring ideas to life.</em></p>
-      </section>
-    </article>
-  </main>
+    <section>
+      <h2>Key Components of an Embedded System</h2>
+      <ul>
+        <li><strong>Microcontroller / Microprocessor:</strong> The “brain” of the system, often an MCU like Arduino, ESP32, or STM32, executes the programmed logic.</li>
+        <li><strong>Sensors:</strong> Devices that measure physical parameters such as temperature, humidity, light, or motion.</li>
+        <li><strong>Actuators:</strong> Components like motors, LEDs, or relays that perform actions based on sensor inputs.</li>
+        <li><strong>Communication Interfaces:</strong> Protocols like I²C, SPI, UART, or Wi-Fi allow devices to communicate with other systems.</li>
+        <li><strong>Power Supply:</strong> Embedded devices often run on battery or DC power optimized for low energy consumption.</li>
+      </ul>
+    </section>
 
-<!-- Footer Start -->
- <footer class="site-footer">
+    <section>
+      <h2>Applications of Embedded Electronics</h2>
+      <ul>
+        <li><strong>Home Automation:</strong> Smart lighting, thermostats, and security systems.</li>
+        <li><strong>Healthcare Devices:</strong> Heart rate monitors, insulin pumps, and wearable trackers.</li>
+        <li><strong>Automotive Industry:</strong> Engine control units, parking sensors, and infotainment systems.</li>
+        <li><strong>Industrial Automation:</strong> Conveyor control, robotic arms, and environmental monitoring.</li>
+        <li><strong>IoT Projects:</strong> Smart sensors connected to the internet for real-time data.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why Learn Embedded Electronics?</h2>
+      <p>Embedded electronics is at the <strong>core of innovation</strong> in technology. Learning it allows you to:</p>
+      <ul>
+        <li>Build <strong>smart gadgets</strong> and <strong>custom devices</strong>.</li>
+        <li>Understand <strong>hardware-software integration</strong>.</li>
+        <li>Explore careers in <strong>IoT, robotics, automation, and consumer electronics</strong>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Getting Started</h2>
+      <ol>
+        <li>Start with <strong>basic microcontroller kits</strong> like Arduino or ESP32.</li>
+        <li>Learn to interface <strong>sensors and actuators</strong>.</li>
+        <li>Understand <strong>communication protocols</strong>.</li>
+        <li>Practice <strong>small projects</strong>, then gradually move to complex IoT or automation systems.</li>
+      </ol>
+      <p><em>Embedded electronics is a field where <strong>creativity meets engineering</strong>, allowing you to bring ideas to life.</em></p>
+    </section>
+
+    <div class="share" aria-label="Share this post">
+      <a id="shareLinkedIn" target="_blank" rel="noopener">Share on LinkedIn</a>
+      <a id="shareTwitter" target="_blank" rel="noopener">Share on X</a>
+      <a id="shareWhatsApp" target="_blank" rel="noopener">Share on WhatsApp</a>
+    </div>
+
+    <div class="author-box">
+      <img class="author-avatar" src="assets/author-dibyendu.jpg" alt="Dibyendu Barman" onerror="this.style.display='none'" />
+      <div>
+        <p><strong>Dibyendu Barman</strong> — Embedded Systems Engineer. Writes about Linux, IoT, Microcontrollers, and real-world projects at <em>Embedded Electronics</em>.</p>
+        <p>Follow for weekly tutorials, quizzes & project ideas.</p>
+      </div>
+    </div>
+
+    <nav class="nav-pager" aria-label="Post navigation">
+      <a href="blog.html">← Back to Blog</a>
+      <a href="blog-next.html">Next Post →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
   <div class="container">
     <p>© <span id="year"></span> Embedded Electronics</p>
   </div>
 </footer>
-<!-- Footer End -->
+
+<script>
+(function(){
+  const IST_OFFSET_MIN = 330;
+  const now = new Date();
+  function fmt(d){ return new Intl.DateTimeFormat('en-GB', { day:'2-digit', month:'short', year:'numeric' }).format(d); }
+  function toIST(d){ return new Date(d.getTime() + (IST_OFFSET_MIN + d.getTimezoneOffset())*60000); }
+  const todayIST = toIST(now);
+  document.getElementById('year').textContent = todayIST.getFullYear();
+  document.getElementById('published').textContent = fmt(todayIST);
+  document.getElementById('updated').textContent = fmt(todayIST);
+  const post = document.getElementById('post');
+  const words = post.innerText.trim().split(/\s+/).length;
+  const mins = Math.max(1, Math.round(words/200));
+  document.getElementById('readTime').textContent = mins + ' min read';
+  function slug(s){ return s.toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').slice(0,80); }
+  const headings = post.querySelectorAll('h2, h3');
+  headings.forEach(h => { if(!h.id){ h.id = slug(h.textContent); } });
+  const tocList = document.getElementById('tocList');
+  if(tocList){ let currentOl = document.createElement('ol'); let lastH2Item = null;
+    headings.forEach(h => { const li = document.createElement('li'); const a = document.createElement('a');
+      a.href = '#' + h.id; a.textContent = h.textContent; li.appendChild(a);
+      if(h.tagName === 'H2'){ tocList.appendChild(li); lastH2Item = li; currentOl = document.createElement('ol'); lastH2Item.appendChild(currentOl); }
+      else if(lastH2Item){ currentOl.appendChild(li); }
+    }); }
+  const url = encodeURIComponent('https://embedded-electronics.github.io/blog-introduction-to-embedded-electronics.html');
+  const title = encodeURIComponent('Introduction to Embedded Electronics: The Heart of Modern Devices');
+  const li = document.getElementById('shareLinkedIn');
+  const tw = document.getElementById('shareTwitter');
+  const wa = document.getElementById('shareWhatsApp');
+  if(li) li.href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+  if(tw) tw.href = `https://x.com/intent/tweet?url=${url}&text=${title}`;
+  if(wa) wa.href = `https://wa.me/?text=${title}%20-%20${url}`;
+})();
+</script>
 </body>
 </html>

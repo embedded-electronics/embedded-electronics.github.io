@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{POST_TITLE}} — Embedded Electronics Blog</title>
+
+  <!-- SEO -->
+  <meta name="description" content="{{POST_DESCRIPTION}}" />
+  <meta name="keywords" content="Embedded Systems, IoT, Microcontrollers, Electronics, {{POST_KEYWORDS}}" />
+  <link rel="canonical" href="https://embedded-electronics.github.io/{{POST_SLUG}}.html" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="{{POST_TITLE}}" />
+  <meta property="og:description" content="{{POST_DESCRIPTION}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://embedded-electronics.github.io/{{POST_SLUG}}.html" />
+  <meta property="og:image" content="assets/blogs/{{COVER_IMAGE}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{POST_TITLE}}" />
+  <meta name="twitter:description" content="{{POST_DESCRIPTION}}" />
+  <meta name="twitter:image" content="assets/blogs/{{COVER_IMAGE}}" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Embedded Electronics Logo" class="brand-logo" />
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="ebooks.html">E-Books</a>
+      <a href="quiz.html">Quiz</a>
+      <a class="active" href="blog.html">Blog</a>
+      <a href="typing-game.html">Typing Test</a>
+      <a href="iq-test.html">IQ Test</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <article class="blog-post" id="post">
+    <h1>{{POST_TITLE}}</h1>
+
+    <p class="post-meta">
+      <span><strong>Published:</strong> <time id="published"></time></span>
+      <span>•</span>
+      <span><strong>Last Updated:</strong> <time id="updated"></time></span>
+      <span>•</span>
+      <span><strong>Author:</strong> Dibyendu Barman</span>
+      <span>•</span>
+      <span><strong>Reading Time:</strong> <span id="readTime">—</span></span>
+    </p>
+
+    <p aria-label="Post tags">
+      <span class="tag">Embedded Systems</span>
+      <span class="tag">IoT</span>
+      <span class="tag">Electronics</span>
+      <!-- add more tags if needed -->
+    </p>
+
+    <nav class="toc" id="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol id="tocList"></ol>
+    </nav>
+
+    <!-- ✅ Blog Content Starts -->
+    <section>
+      <h2>Introduction</h2>
+      <p>{{INTRO_PARAGRAPH}}</p>
+    </section>
+
+    <section>
+      <h2>Key Section</h2>
+      <p>{{YOUR_CONTENT}}</p>
+      <ul>
+        <li>Point 1</li>
+        <li>Point 2</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Conclusion</h2>
+      <p>{{CLOSING_PARAGRAPH}}</p>
+    </section>
+    <!-- ✅ Blog Content Ends -->
+
+    <div class="share" aria-label="Share this post">
+      <a id="shareLinkedIn" target="_blank" rel="noopener">Share on LinkedIn</a>
+      <a id="shareTwitter" target="_blank" rel="noopener">Share on X</a>
+      <a id="shareWhatsApp" target="_blank" rel="noopener">Share on WhatsApp</a>
+    </div>
+
+    <div class="author-box">
+      <img class="author-avatar" src="assets/author-dibyendu.jpg" alt="Dibyendu Barman" onerror="this.style.display='none'" />
+      <div>
+        <p><strong>Dibyendu Barman</strong> — Embedded Systems Engineer. Writes about Linux, IoT, Microcontrollers, and real-world projects at <em>Embedded Electronics</em>.</p>
+        <p>Follow for weekly tutorials, quizzes & project ideas.</p>
+      </div>
+    </div>
+
+    <nav class="nav-pager" aria-label="Post navigation">
+      <a href="blog.html">← Back to Blog</a>
+      <a href="{{NEXT_POST}}.html">Next Post →</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const IST_OFFSET_MIN = 330;
+  const now = new Date();
+  function fmt(d){ return new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(d); }
+  function toIST(d){ return new Date(d.getTime() + (IST_OFFSET_MIN + d.getTimezoneOffset())*60000); }
+  const todayIST = toIST(now);
+  document.getElementById('year').textContent = todayIST.getFullYear();
+  document.getElementById('published').textContent = fmt(todayIST);
+  document.getElementById('updated').textContent = fmt(todayIST);
+
+  // Auto calculate read time
+  const post = document.getElementById('post');
+  const words = post.innerText.trim().split(/\s+/).length;
+  const mins = Math.max(1, Math.round(words/200));
+  document.getElementById('readTime').textContent = mins + ' min read';
+
+  // Generate TOC
+  function slug(s){ return s.toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').slice(0,80); }
+  const headings = post.querySelectorAll('h2, h3');
+  const tocList = document.getElementById('tocList');
+  if(tocList){
+    let currentOl = document.createElement('ol');
+    let lastH2Item = null;
+    headings.forEach(h => {
+      if(!h.id){ h.id = slug(h.textContent); }
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + h.id; a.textContent = h.textContent;
+      li.appendChild(a);
+      if(h.tagName === 'H2'){
+        tocList.appendChild(li);
+        lastH2Item = li;
+        currentOl = document.createElement('ol');
+        lastH2Item.appendChild(currentOl);
+      } else if(lastH2Item){
+        currentOl.appendChild(li);
+      }
+    });
+  }
+
+  // Social sharing
+  const url = encodeURIComponent(window.location.href);
+  const title = encodeURIComponent(document.title);
+  const li = document.getElementById('shareLinkedIn');
+  const tw = document.getElementById('shareTwitter');
+  const wa = document.getElementById('shareWhatsApp');
+  if(li) li.href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+  if(tw) tw.href = `https://x.com/intent/tweet?url=${url}&text=${title}`;
+  if(wa) wa.href = `https://wa.me/?text=${title}%20-%20${url}`;
+})();
+</script>
+</body>
+</html>

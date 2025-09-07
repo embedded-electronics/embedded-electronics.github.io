@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embedded Electronics — FAQ</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* FAQ accordion styles */
+    .faq-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .faq-question {
+      background: #0a3d62;
+      color: #fff;
+      padding: 15px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .faq-answer {
+      display: none;
+      padding: 15px;
+      background: #f9f9f9;
+      line-height: 1.6;
+    }
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Logo" class="brand-logo" />
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+      <nav id="nav" class="nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="ebooks.html">E-Books</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="blog.html">Blog</a>
+        <a href="typing-game.html">Typing Test</a>
+        <a href="iq-test.html">IQ Test</a>
+        <a class="active" href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== FAQ Section ===== -->
+  <main class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What is Embedded Electronics?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Embedded Electronics is a learning platform that provides tutorials, projects, e-books, and quizzes 
+        focused on Embedded Systems, IoT, and Electronics for students and professionals.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How can I take the Typing Test?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Go to the Typing Test page from the navigation menu. Select a difficulty, start the timer, 
+        and type the displayed sentence. Results will show your speed and accuracy.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Do you provide free resources?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Yes! We provide free tutorials, projects, and quizzes. You can also access our e-books 
+        and practice tests to strengthen your knowledge.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How can I contact you?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Visit our <a href="contact.html">Contact Page</a> where you will find a form, 
+        email address, phone number, and WhatsApp support link.
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer" style="margin-top: 40px;">
+    <div class="container">
+      <p>© <span id="year"></span> Embedded Electronics</p>
+    </div>
+  </footer>
+
+  <!-- Accordion Script -->
+  <script>
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>

@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Linux Shell Scripting</title>
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
   <style>
+    /* ===== Video Grid Section ===== */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -41,7 +43,7 @@
       margin-bottom: 10px;
     }
 
-    /* Buttons */
+    /* ===== Buttons Section ===== */
     .buttons {
       text-align: center;
       margin-top: 30px;
@@ -59,10 +61,22 @@
     .buttons a:hover {
       background: #e64a19;
     }
+
+    /* ===== Page Header Styling ===== */
+    .page h1 {
+      color: #222;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .page p {
+      color: #555;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- ===== Header ===== -->
   <header class="site-header">
     <div class="container">
       <a class="brand" href="index.html">
@@ -85,7 +99,7 @@
     </div>
   </header>
 
-  <!-- Main Section -->
+  <!-- ===== Main Section ===== -->
   <main class="container page">
     <h1>🎓 Linux Shell Scripting Video Tutorials</h1>
     <p>Learn Linux shell scripting step-by-step from basics to advanced through free YouTube tutorials.</p>
@@ -139,7 +153,7 @@
         </div>
       </article>
 
-        <article class="video-card">
+      <article class="video-card">
         <iframe src="https://www.youtube.com/embed/YpFtZSnLaLA" allowfullscreen></iframe>
         <div class="content">
           <h3>Episode 7: Functions in Shell Scripting</h3>
@@ -147,7 +161,7 @@
         </div>
       </article>
 
-        <article class="video-card">
+      <article class="video-card">
         <iframe src="https://www.youtube.com/embed/ejyMbh9ButQ" allowfullscreen></iframe>
         <div class="content">
           <h3>Episode 8: Case Statements in Shell Scripting</h3>
@@ -155,7 +169,7 @@
         </div>
       </article>
 
-        <article class="video-card">
+      <article class="video-card">
         <iframe src="https://www.youtube.com/embed/CmXUq_HcIB8" allowfullscreen></iframe>
         <div class="content">
           <h3>Episode 9: Input and Output in Shell Scripting</h3>
@@ -179,7 +193,7 @@
         </div>
       </article>
 
-       <article class="video-card">
+      <article class="video-card">
         <iframe src="https://www.youtube.com/embed/NSBN8_ETWzQ" allowfullscreen></iframe>
         <div class="content">
           <h3>Episode 12: Arrays in Shell Scripting</h3>
@@ -187,7 +201,7 @@
         </div>
       </article>
 
-       <article class="video-card">
+      <article class="video-card">
         <iframe src="https://www.youtube.com/embed/QWqzsG1URBg" allowfullscreen></iframe>
         <div class="content">
           <h3>Episode 13: Error Handling in Shell Scripting</h3>
@@ -195,7 +209,7 @@
         </div>
       </article>
 
-       <article class="video-card">
+      <article class="video-card">
         <iframe src="https://www.youtube.com/embed/y-9QJ8IzULQ" allowfullscreen></iframe>
         <div class="content">
           <h3>Episode 14: Debugging Shell Scripts</h3>
@@ -218,20 +232,11 @@
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container">
       <p>© <span id="year"></span> Embedded Electronics</p>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    function toggleMenu() {
-      document.getElementById("nav").classList.toggle("open");
-    }
-  </script>
 </body>
 </html>
-

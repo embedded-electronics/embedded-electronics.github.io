@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Electronics — Number System Converter</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background: #f4f7fb;
+      font-family: "Segoe UI", Roboto, sans-serif;
+    }
+    .converter-card {
+      max-width: 820px; margin: 2rem auto;
+      background:#fff; border-radius:16px; padding:24px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    .converter-card:hover {
+      box-shadow:0 12px 28px rgba(0,0,0,0.12);
+    }
+    .converter-controls {
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:16px;
+    }
+    input, select {
+      padding:8px 12px; border-radius:10px; border:1px solid #dbe3ec; outline:none;
+      font-size:1rem; flex:1;
+    }
+    button.btn {
+      background:linear-gradient(135deg,#3b82f6,#2563eb);
+      color:white; border:none;
+      padding:8px 18px; border-radius:8px;
+      font-weight:600; cursor:pointer;
+      transition:all 0.2s;
+    }
+    button.btn:hover { background:linear-gradient(135deg,#2563eb,#1d4ed8);}
+    button.btn.secondary {
+      background:#fff; color:#2563eb; border:1px solid #2563eb;
+    }
+    button.btn.secondary:hover { background:#f0f6ff;}
+    .result {
+      margin-top:16px; padding:16px;
+      border-left:5px solid #4caf50;
+      background:#eafbea; border-radius:10px;
+      display:none;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Logo" class="brand-logo" />
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="ebooks.html">E-Books</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="blog.html">Blog</a>
+        <a class="active" href="calculator.html">Converter</a>
+        <a href="typing-game.html">Typing Test</a>
+        <a href="interview.html">Interview</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container page">
+  <header class="page-header">
+    <h1>Number System Converter</h1>
+    <p class="muted-sm">Convert numbers between Binary, Octal, Decimal, and Hexadecimal instantly.</p>
+  </header>
+
+  <section class="converter-card">
+    <div class="converter-controls">
+      <input type="text" id="inputNumber" placeholder="Enter number…">
+      <select id="sourceSystem">
+        <option value="binary">Binary</option>
+        <option value="octal">Octal</option>
+        <option value="decimal" selected>Decimal</option>
+        <option value="hex">Hexadecimal</option>
+      </select>
+      <select id="targetSystem">
+        <option value="binary">Binary</option>
+        <option value="octal">Octal</option>
+        <option value="decimal" selected>Decimal</option>
+        <option value="hex">Hexadecimal</option>
+      </select>
+      <button class="btn" id="convertBtn">Convert</button>
+      <button class="btn secondary" id="resetBtn" disabled>Reset</button>
+    </div>
+    <div id="result" class="result"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
+</footer>
+
+<script>
+const inputNumber = document.getElementById('inputNumber');
+const sourceSystem = document.getElementById('sourceSystem');
+const targetSystem = document.getElementById('targetSystem');
+const convertBtn = document.getElementById('convertBtn');
+const resetBtn = document.getElementById('resetBtn');
+const resultDiv = document.getElementById('result');
+
+function convertNumber() {
+  const input = inputNumber.value.trim();
+  const from = sourceSystem.value;
+  const to = targetSystem.value;
+  if(!input) {
+    resultDiv.style.display='block';
+    resultDiv.textContent='⚠️ Please enter a number!';
+    return;
+  }
+  let decimalValue;
+  try {
+    switch(from){
+      case 'binary':
+        if(!/^[01]+$/.test(input)) throw 'Invalid binary number';
+        decimalValue=parseInt(input,2); break;
+      case 'octal':
+        if(!/^[0-7]+$/.test(input)) throw 'Invalid octal number';
+        decimalValue=parseInt(input,8); break;
+      case 'decimal':
+        if(!/^\d+$/.test(input)) throw 'Invalid decimal number';
+        decimalValue=parseInt(input,10); break;
+      case 'hex':
+        if(!/^[0-9a-fA-F]+$/.test(input)) throw 'Invalid hexadecimal number';
+        decimalValue=parseInt(input,16); break;
+    }
+    let converted;
+    switch(to){
+      case 'binary': converted=decimalValue.toString(2); break;
+      case 'octal': converted=decimalValue.toString(8); break;
+      case 'decimal': converted=decimalValue.toString(10); break;
+      case 'hex': converted=decimalValue.toString(16).toUpperCase(); break;
+    }
+    resultDiv.style.display='block';
+    resultDiv.innerHTML=`<strong>${input}</strong> (${from}) = <strong>${converted}</strong> (${to})`;
+    resetBtn.disabled=false;
+  } catch(err){
+    resultDiv.style.display='block';
+    resultDiv.textContent='⚠️ ' + err;
+  }
+}
+
+convertBtn.addEventListener('click',convertNumber);
+resetBtn.addEventListener('click',()=>{
+  inputNumber.value='';
+  resultDiv.style.display='none';
+  resetBtn.disabled=true;
+});
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function toggleMenu(){
+  document.getElementById('nav').classList.toggle('show');
+}
+</script>
+</body>
+</html>

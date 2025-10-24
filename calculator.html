@@ -3,47 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — Number System Converter</title>
+  <title>Embedded Electronics — Number System & Bitwise Calculator</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      background: #f4f7fb;
-      font-family: "Segoe UI", Roboto, sans-serif;
-    }
-    .converter-card {
-      max-width: 820px; margin: 2rem auto;
-      background:#fff; border-radius:16px; padding:24px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-    }
-    .converter-card:hover {
-      box-shadow:0 12px 28px rgba(0,0,0,0.12);
-    }
-    .converter-controls {
-      display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:16px;
-    }
-    input, select {
-      padding:8px 12px; border-radius:10px; border:1px solid #dbe3ec; outline:none;
-      font-size:1rem; flex:1;
-    }
-    button.btn {
-      background:linear-gradient(135deg,#3b82f6,#2563eb);
-      color:white; border:none;
-      padding:8px 18px; border-radius:8px;
-      font-weight:600; cursor:pointer;
-      transition:all 0.2s;
-    }
-    button.btn:hover { background:linear-gradient(135deg,#2563eb,#1d4ed8);}
-    button.btn.secondary {
-      background:#fff; color:#2563eb; border:1px solid #2563eb;
-    }
-    button.btn.secondary:hover { background:#f0f6ff;}
-    .result {
-      margin-top:16px; padding:16px;
-      border-left:5px solid #4caf50;
-      background:#eafbea; border-radius:10px;
-      display:none;
-    }
+    body {background:#f4f7fb; font-family:"Segoe UI", Roboto, sans-serif;}
+    .converter-card {max-width:820px; margin:2rem auto; background:#fff; border-radius:16px; padding:24px; box-shadow:0 6px 20px rgba(0,0,0,0.08); transition:all 0.3s;}
+    .converter-card:hover {box-shadow:0 12px 28px rgba(0,0,0,0.12);}
+    .converter-controls {display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:16px;}
+    input, select {padding:8px 12px; border-radius:10px; border:1px solid #dbe3ec; outline:none; font-size:1rem; flex:1;}
+    button.btn {background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; border:none; padding:8px 18px; border-radius:8px; font-weight:600; cursor:pointer; transition:all 0.2s;}
+    button.btn:hover {background:linear-gradient(135deg,#2563eb,#1d4ed8);}
+    button.btn.secondary {background:#fff; color:#2563eb; border:1px solid #2563eb;}
+    button.btn.secondary:hover {background:#f0f6ff;}
+    .result {margin-top:16px; padding:16px; border-left:5px solid #4caf50; background:#eafbea; border-radius:10px; display:none;}
+    h2 {margin-bottom:12px; color:#0b66b2;}
+    .section-divider {height:2px; background:#e0e6ed; margin:24px 0;}
   </style>
 </head>
 <body>
@@ -68,11 +42,13 @@
 
 <main class="container page">
   <header class="page-header">
-    <h1>Number System Converter</h1>
-    <p class="muted-sm">Convert numbers between Binary, Octal, Decimal, and Hexadecimal instantly.</p>
+    <h1>Embedded Systems Calculator</h1>
+    <p class="muted-sm">Convert numbers, perform bitwise operations, and explore advanced number system conversions.</p>
   </header>
 
+  <!-- Number System Converter -->
   <section class="converter-card">
+    <h2>Number System Converter</h2>
     <div class="converter-controls">
       <input type="text" id="inputNumber" placeholder="Enter number…">
       <select id="sourceSystem">
@@ -92,6 +68,65 @@
     </div>
     <div id="result" class="result"></div>
   </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Bitwise Operations -->
+  <section class="converter-card">
+    <h2>Bitwise Operations</h2>
+    <div class="converter-controls">
+      <input type="text" id="bitInput1" placeholder="First number">
+      <input type="text" id="bitInput2" placeholder="Second number (optional for NOT)">
+      <select id="bitOperation">
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+        <option value="XOR">XOR</option>
+        <option value="NOT">NOT</option>
+        <option value="LSHIFT">Left Shift</option>
+        <option value="RSHIFT">Right Shift</option>
+      </select>
+      <select id="bitSystem">
+        <option value="binary">Binary</option>
+        <option value="decimal" selected>Decimal</option>
+        <option value="hex">Hexadecimal</option>
+      </select>
+      <button class="btn" id="bitCalcBtn">Compute</button>
+      <button class="btn secondary" id="bitResetBtn" disabled>Reset</button>
+    </div>
+    <div id="bitResult" class="result"></div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Two's Complement / Gray Code -->
+  <section class="converter-card">
+    <h2>Two's Complement & Gray Code</h2>
+    <div class="converter-controls">
+      <input type="text" id="twInput" placeholder="Enter number (Decimal)">
+      <button class="btn" id="twCompBtn">Two's Complement (8-bit)</button>
+      <button class="btn" id="grayBtn">Convert to Gray Code</button>
+    </div>
+    <div id="twResult" class="result"></div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Memory Conversion -->
+  <section class="converter-card">
+    <h2>Memory Conversion</h2>
+    <div class="converter-controls">
+      <input type="number" id="memInput" placeholder="Enter value">
+      <select id="memUnit">
+        <option value="bits">Bits</option>
+        <option value="bytes">Bytes</option>
+        <option value="kb">KB</option>
+        <option value="mb">MB</option>
+      </select>
+      <button class="btn" id="memConvertBtn">Convert</button>
+    </div>
+    <div id="memResult" class="result"></div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -101,6 +136,11 @@
 </footer>
 
 <script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function toggleMenu(){ document.getElementById('nav').classList.toggle('show'); }
+
+/* ===== Number System Converter ===== */
 const inputNumber = document.getElementById('inputNumber');
 const sourceSystem = document.getElementById('sourceSystem');
 const targetSystem = document.getElementById('targetSystem');
@@ -108,58 +148,109 @@ const convertBtn = document.getElementById('convertBtn');
 const resetBtn = document.getElementById('resetBtn');
 const resultDiv = document.getElementById('result');
 
-function convertNumber() {
+convertBtn.addEventListener('click',()=>{
   const input = inputNumber.value.trim();
-  const from = sourceSystem.value;
-  const to = targetSystem.value;
-  if(!input) {
-    resultDiv.style.display='block';
-    resultDiv.textContent='⚠️ Please enter a number!';
-    return;
-  }
-  let decimalValue;
-  try {
+  const from = sourceSystem.value, to = targetSystem.value;
+  if(!input){ resultDiv.style.display='block'; resultDiv.textContent='⚠️ Enter a number!'; return;}
+  let dec;
+  try{
     switch(from){
-      case 'binary':
-        if(!/^[01]+$/.test(input)) throw 'Invalid binary number';
-        decimalValue=parseInt(input,2); break;
-      case 'octal':
-        if(!/^[0-7]+$/.test(input)) throw 'Invalid octal number';
-        decimalValue=parseInt(input,8); break;
-      case 'decimal':
-        if(!/^\d+$/.test(input)) throw 'Invalid decimal number';
-        decimalValue=parseInt(input,10); break;
-      case 'hex':
-        if(!/^[0-9a-fA-F]+$/.test(input)) throw 'Invalid hexadecimal number';
-        decimalValue=parseInt(input,16); break;
+      case 'binary': if(!/^[01]+$/.test(input)) throw 'Invalid binary'; dec=parseInt(input,2); break;
+      case 'octal': if(!/^[0-7]+$/.test(input)) throw 'Invalid octal'; dec=parseInt(input,8); break;
+      case 'decimal': if(!/^\d+$/.test(input)) throw 'Invalid decimal'; dec=parseInt(input,10); break;
+      case 'hex': if(!/^[0-9a-fA-F]+$/.test(input)) throw 'Invalid hex'; dec=parseInt(input,16); break;
     }
-    let converted;
+    let conv;
     switch(to){
-      case 'binary': converted=decimalValue.toString(2); break;
-      case 'octal': converted=decimalValue.toString(8); break;
-      case 'decimal': converted=decimalValue.toString(10); break;
-      case 'hex': converted=decimalValue.toString(16).toUpperCase(); break;
+      case 'binary': conv=dec.toString(2); break;
+      case 'octal': conv=dec.toString(8); break;
+      case 'decimal': conv=dec.toString(10); break;
+      case 'hex': conv=dec.toString(16).toUpperCase(); break;
     }
     resultDiv.style.display='block';
-    resultDiv.innerHTML=`<strong>${input}</strong> (${from}) = <strong>${converted}</strong> (${to})`;
+    resultDiv.innerHTML=`<strong>${input}</strong> (${from}) = <strong>${conv}</strong> (${to})`;
     resetBtn.disabled=false;
-  } catch(err){
-    resultDiv.style.display='block';
-    resultDiv.textContent='⚠️ ' + err;
-  }
-}
-
-convertBtn.addEventListener('click',convertNumber);
-resetBtn.addEventListener('click',()=>{
-  inputNumber.value='';
-  resultDiv.style.display='none';
-  resetBtn.disabled=true;
+  } catch(e){ resultDiv.style.display='block'; resultDiv.textContent='⚠️ '+e;}
 });
-document.getElementById('year').textContent = new Date().getFullYear();
 
-function toggleMenu(){
-  document.getElementById('nav').classList.toggle('show');
+resetBtn.addEventListener('click',()=>{
+  inputNumber.value=''; resultDiv.style.display='none'; resetBtn.disabled=true;
+});
+
+/* ===== Bitwise Operations ===== */
+const bitInput1 = document.getElementById('bitInput1');
+const bitInput2 = document.getElementById('bitInput2');
+const bitOperation = document.getElementById('bitOperation');
+const bitSystem = document.getElementById('bitSystem');
+const bitCalcBtn = document.getElementById('bitCalcBtn');
+const bitResetBtn = document.getElementById('bitResetBtn');
+const bitResult = document.getElementById('bitResult');
+
+bitCalcBtn.addEventListener('click',()=>{
+  let a = parseInt(bitInput1.value), b = parseInt(bitInput2.value), op = bitOperation.value;
+  if(isNaN(a)){ bitResult.textContent='⚠️ Enter first number!'; bitResult.style.display='block'; return;}
+  let res;
+  switch(op){
+    case 'AND': res = a & b; break;
+    case 'OR': res = a | b; break;
+    case 'XOR': res = a ^ b; break;
+    case 'NOT': res = ~a; break;
+    case 'LSHIFT': res = a << b; break;
+    case 'RSHIFT': res = a >> b; break;
+  }
+  if(bitSystem.value==='binary') res=res.toString(2);
+  else if(bitSystem.value==='hex') res=res.toString(16).toUpperCase();
+  bitResult.style.display='block';
+  bitResult.innerHTML=`Result: <strong>${res}</strong> (${bitSystem.value})`;
+  bitResetBtn.disabled=false;
+});
+bitResetBtn.addEventListener('click',()=>{bitInput1.value=bitInput2.value=''; bitResult.style.display='none'; bitResetBtn.disabled=true;});
+
+/* ===== Two's Complement & Gray Code ===== */
+const twInput = document.getElementById('twInput');
+const twCompBtn = document.getElementById('twCompBtn');
+const grayBtn = document.getElementById('grayBtn');
+const twResult = document.getElementById('twResult');
+
+function toTwosComplement(num, bits=8){ 
+  return (num>=0?num:(Math.pow(2,bits)+num)).toString(2).padStart(bits,'0'); 
 }
+
+function toGrayCode(num){ return (num ^ (num>>1)).toString(2); }
+
+twCompBtn.addEventListener('click',()=>{
+  let n=parseInt(twInput.value); 
+  if(isNaN(n)){twResult.style.display='block'; twResult.textContent='⚠️ Enter number!'; return;}
+  twResult.style.display='block';
+  twResult.innerHTML=`Decimal ${n} → Two's Complement (8-bit): <strong>${toTwosComplement(n)}</strong>`;
+});
+
+grayBtn.addEventListener('click',()=>{
+  let n=parseInt(twInput.value);
+  if(isNaN(n)){twResult.style.display='block'; twResult.textContent='⚠️ Enter number!'; return;}
+  twResult.style.display='block';
+  twResult.innerHTML=`Decimal ${n} → Gray Code: <strong>${toGrayCode(n)}</strong>`;
+});
+
+/* ===== Memory Conversion ===== */
+const memInput = document.getElementById('memInput');
+const memUnit = document.getElementById('memUnit');
+const memConvertBtn = document.getElementById('memConvertBtn');
+const memResult = document.getElementById('memResult');
+
+memConvertBtn.addEventListener('click',()=>{
+  let val = parseFloat(memInput.value);
+  if(isNaN(val)){ memResult.style.display='block'; memResult.textContent='⚠️ Enter value!'; return;}
+  let bits=0, bytes=0, kb=0, mb=0;
+  switch(memUnit.value){
+    case 'bits': bits=val; bytes=val/8; kb=bytes/1024; mb=kb/1024; break;
+    case 'bytes': bytes=val; bits=val*8; kb=val/1024; mb=kb/1024; break;
+    case 'kb': kb=val; bytes=val*1024; bits=bytes*8; mb=val/1024; break;
+    case 'mb': mb=val; kb=val*1024; bytes=kb*1024; bits=bytes*8; break;
+  }
+  memResult.style.display='block';
+  memResult.innerHTML=`Bits: <strong>${bits}</strong>, Bytes: <strong>${bytes}</strong>, KB: <strong>${kb}</strong>, MB: <strong>${mb}</strong>`;
+});
 </script>
 </body>
 </html>

@@ -76,9 +76,8 @@
       </div>
     </section>
 
-    <!-- Quiz Section (hidden until start) -->
+    <!-- Quiz Section -->
     <section class="iq-card" id="quizSection" style="display:none;">
-      <!-- Controls / Status -->
       <div class="iq-controls">
         <span class="badge">⏱ Time left: <span id="timeLeft">20:00</span></span>
         <span class="pill">Progress: <span id="progressText">1 / 20</span></span>
@@ -87,7 +86,6 @@
       </div>
       <div class="progress"><div id="timeBar"></div></div>
 
-      <!-- Question -->
       <div class="q-header">
         <div class="q-title" id="qTitle">Question</div>
         <div class="tiny muted" id="qType"></div>
@@ -97,14 +95,12 @@
         <div id="optList" class="optlist" role="radiogroup" aria-labelledby="qTitle"></div>
       </div>
 
-      <!-- Navigation -->
       <div class="actions">
         <button id="prevBtn" class="btn ghost">← Prev</button>
         <button id="nextBtn" class="btn">Next →</button>
         <button id="submitBtn" class="btn" style="margin-left:auto;">Submit</button>
       </div>
 
-      <!-- Result -->
       <div id="result" class="result" style="display:none;"></div>
       <div id="review" class="review" style="display:none;"></div>
     </section>
@@ -119,102 +115,96 @@
     </div>
   </footer>
 
-<script>
-/* ===================== Question Bank ===================== */
-const QUESTION_BANK = [
-  { "type":"Number Series", "q":"Find the next number: 3, 9, 27, 81, ?", "options":["162","243","324","405"], "answer":1, "explain":"Each term is multiplied by 3 → next is 81×3=243." },
-  { "type":"Pattern / Logic", "q":"If A=1, Z=26, what is the value of DATA?", "options":["26","27","30","35"], "answer":2, "explain":"D(4)+A(1)+T(20)+A(1)=26." },
-  { "type":"Binary", "q":"What is 10110₂ in decimal?", "options":["20","21","22","23"], "answer":2, "explain":"10110₂ = 16+0+4+2+0 = 22." },
-  { "type":"Hex", "q":"What is 0x7F in decimal?", "options":["124","125","126","127"], "answer":3, "explain":"7×16 + 15 = 112 + 15 = 127." },
-  { "type":"Ohm’s Law", "q":"A 5Ω resistor has 10V across it. Current?", "options":["1A","2A","3A","5A"], "answer":1, "explain":"I = V/R = 10/5 = 2A." },
-  { "type":"Units", "q":"Which unit measures inductance?", "options":["Farad","Tesla","Henry","Ohm"], "answer":2, "explain":"Inductance is measured in Henry (H)." },
-  { "type":"Logic Gates", "q":"For inputs A=1, B=1, what is A NAND B?", "options":["0","1","2","Undefined"], "answer":1, "explain":"A∧B=1, so NAND = NOT(1) = 0." },
-  { "type":"Logic / DeMorgan", "q":"¬(A ∨ B) is equivalent to:", "options":["¬A ∨ ¬B","¬A ∧ ¬B","A ∧ B","A ∨ ¬B"], "answer":1, "explain":"De Morgan: ¬(A∨B) = ¬A ∧ ¬B." },
-  { "type":"Series (Cubes)", "q":"1, 8, 27, 64, ?", "options":["100","121","125","150"], "answer":2, "explain":"Cubes → 5³=125." },
-  { "type":"Timing / Speedup", "q":"A program takes 12s on CPU A and 6s on CPU B. Speedup?", "options":["1.5×","2×","3×","4×"], "answer":1, "explain":"12/6 = 2×." },
-  { "type":"Base Conversion", "q":"Convert decimal 50 to binary.", "options":["110010","110011","110100","110101"], "answer":0, "explain":"50 = 110010₂." },
-  { "type":"Resistors", "q":"Two 20Ω resistors in parallel. Req?", "options":["5Ω","10Ω","15Ω","20Ω"], "answer":1, "explain":"20||20 = 10Ω." },
-  { "type":"Capacitors", "q":"Two 10µF capacitors in series. Ceq?", "options":["5µF","10µF","15µF","20µF"], "answer":0, "explain":"1/Ceq=1/10+1/10 → Ceq=5µF." },
-  { "type":"Digital Electronics", "q":"How many flip-flops are needed to build a 4-bit counter?", "options":["2","3","4","5"], "answer":2, "explain":"1 flip-flop per bit → 4-bit counter needs 4 FFs." },
-  { "type":"Networking", "q":"Which protocol is connection-oriented?", "options":["UDP","IP","TCP","HTTP"], "answer":2, "explain":"TCP is connection-oriented; UDP is connectionless." },
-  { "type":"Programming / C", "q":"What is sizeof(int) in most 32-bit systems?", "options":["2 bytes","4 bytes","6 bytes","8 bytes"], "answer":1, "explain":"On 32-bit, int = 4 bytes." },
-  { "type":"Operating System", "q":"Which scheduling algorithm is preemptive?", "options":["FCFS","SJF","Round Robin","FIFO"], "answer":2, "explain":"Round Robin is preemptive." },
-  { "type":"Math / Probability", "q":"A coin is tossed 3 times. Probability of exactly 2 heads?", "options":["1/4","3/8","1/2","5/8"], "answer":1, "explain":"Ways=3 (HHT, HTH, THH). Total=8. → 3/8." },
-  { "type":"Electronics", "q":"A diode allows current flow in:", "options":["Forward bias","Reverse bias","Both","Neither"], "answer":0, "explain":"Diodes conduct in forward bias." },
-  { "type":"Control Systems", "q":"Laplace transform of 1 is:", "options":["1/s","s","e^-s","1"], "answer":0, "explain":"L{1} = 1/s." }
-].map(q => ({...q, id: 'q'+Math.random().toString(36).slice(2,9)}));
+  <!-- ===== Added navigation toggle fix ===== -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("show");
+    }
+  </script>
 
-/* ===================== Settings ===================== */
-const TOTAL_QUESTIONS = 20;
-const TOTAL_SECONDS   = 20 * 60;
+  <!-- ===== Main Quiz Logic ===== -->
+  <script>
+  const QUESTION_BANK = [
+    { "type":"Number Series", "q":"Find the next number: 3, 9, 27, 81, ?", "options":["162","243","324","405"], "answer":1, "explain":"Each term is multiplied by 3 → next is 81×3=243." },
+    { "type":"Pattern / Logic", "q":"If A=1, Z=26, what is the value of DATA?", "options":["26","27","30","35"], "answer":2, "explain":"D(4)+A(1)+T(20)+A(1)=26." },
+    { "type":"Binary", "q":"What is 10110₂ in decimal?", "options":["20","21","22","23"], "answer":2, "explain":"10110₂ = 16+0+4+2+0 = 22." },
+    { "type":"Hex", "q":"What is 0x7F in decimal?", "options":["124","125","126","127"], "answer":3, "explain":"7×16 + 15 = 112 + 15 = 127." },
+    { "type":"Ohm’s Law", "q":"A 5Ω resistor has 10V across it. Current?", "options":["1A","2A","3A","5A"], "answer":1, "explain":"I = V/R = 10/5 = 2A." },
+    { "type":"Units", "q":"Which unit measures inductance?", "options":["Farad","Tesla","Henry","Ohm"], "answer":2, "explain":"Inductance is measured in Henry (H)." },
+    { "type":"Logic Gates", "q":"For inputs A=1, B=1, what is A NAND B?", "options":["0","1","2","Undefined"], "answer":1, "explain":"A∧B=1, so NAND = NOT(1) = 0." },
+    { "type":"Logic / DeMorgan", "q":"¬(A ∨ B) is equivalent to:", "options":["¬A ∨ ¬B","¬A ∧ ¬B","A ∧ B","A ∨ ¬B"], "answer":1, "explain":"De Morgan: ¬(A∨B) = ¬A ∧ ¬B." },
+    { "type":"Series (Cubes)", "q":"1, 8, 27, 64, ?", "options":["100","121","125","150"], "answer":2, "explain":"Cubes → 5³=125." },
+    { "type":"Timing / Speedup", "q":"A program takes 12s on CPU A and 6s on CPU B. Speedup?", "options":["1.5×","2×","3×","4×"], "answer":1, "explain":"12/6 = 2×." },
+    { "type":"Base Conversion", "q":"Convert decimal 50 to binary.", "options":["110010","110011","110100","110101"], "answer":0, "explain":"50 = 110010₂." },
+    { "type":"Resistors", "q":"Two 20Ω resistors in parallel. Req?", "options":["5Ω","10Ω","15Ω","20Ω"], "answer":1, "explain":"20||20 = 10Ω." },
+    { "type":"Capacitors", "q":"Two 10µF capacitors in series. Ceq?", "options":["5µF","10µF","15µF","20µF"], "answer":0, "explain":"1/Ceq=1/10+1/10 → Ceq=5µF." },
+    { "type":"Digital Electronics", "q":"How many flip-flops are needed to build a 4-bit counter?", "options":["2","3","4","5"], "answer":2, "explain":"1 flip-flop per bit → 4-bit counter needs 4 FFs." },
+    { "type":"Networking", "q":"Which protocol is connection-oriented?", "options":["UDP","IP","TCP","HTTP"], "answer":2, "explain":"TCP is connection-oriented; UDP is connectionless." },
+    { "type":"Programming / C", "q":"What is sizeof(int) in most 32-bit systems?", "options":["2 bytes","4 bytes","6 bytes","8 bytes"], "answer":1, "explain":"On 32-bit, int = 4 bytes." },
+    { "type":"Operating System", "q":"Which scheduling algorithm is preemptive?", "options":["FCFS","SJF","Round Robin","FIFO"], "answer":2, "explain":"Round Robin is preemptive." },
+    { "type":"Math / Probability", "q":"A coin is tossed 3 times. Probability of exactly 2 heads?", "options":["1/4","3/8","1/2","5/8"], "answer":1, "explain":"Ways=3 (HHT, HTH, THH). Total=8 → 3/8." },
+    { "type":"Electronics", "q":"A diode allows current flow in:", "options":["Forward bias","Reverse bias","Both","Neither"], "answer":0, "explain":"Diodes conduct in forward bias." },
+    { "type":"Control Systems", "q":"Laplace transform of 1 is:", "options":["1/s","s","e^-s","1"], "answer":0, "explain":"L{1} = 1/s." }
+  ].map(q => ({...q, id: 'q'+Math.random().toString(36).slice(2,9)}));
 
-/* ===================== State ===================== */
-let picked = [];
-let index = 0;
-let answers = {};
-let timer = null;
-let timeLeft = TOTAL_SECONDS;
+  const TOTAL_QUESTIONS = 20;
+  const TOTAL_SECONDS   = 20 * 60;
+  let picked = [], index = 0, answers = {}, timer = null, timeLeft = TOTAL_SECONDS;
 
-/* ===================== Elements ===================== */
-const $qTitle=document.getElementById('qTitle');const $qText=document.getElementById('qText');const $qType=document.getElementById('qType');
-const $optList=document.getElementById('optList');const $prev=document.getElementById('prevBtn');const $next=document.getElementById('nextBtn');
-const $submit=document.getElementById('submitBtn');const $retakeTop=document.getElementById('retakeTop');
-const $timeLeft=document.getElementById('timeLeft');const $timeBar=document.getElementById('timeBar');const $progressText=document.getElementById('progressText');
-const $selectedCount=document.getElementById('selectedCount');const $result=document.getElementById('result');const $review=document.getElementById('review');
+  const $qTitle=document.getElementById('qTitle'),$qText=document.getElementById('qText'),$qType=document.getElementById('qType');
+  const $optList=document.getElementById('optList'),$prev=document.getElementById('prevBtn'),$next=document.getElementById('nextBtn');
+  const $submit=document.getElementById('submitBtn'),$retakeTop=document.getElementById('retakeTop');
+  const $timeLeft=document.getElementById('timeLeft'),$timeBar=document.getElementById('timeBar'),$progressText=document.getElementById('progressText');
+  const $selectedCount=document.getElementById('selectedCount'),$result=document.getElementById('result'),$review=document.getElementById('review');
 
-/* ===================== Helpers ===================== */
-function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function pad(n){return String(n).padStart(2,'0');}
-function toMMSS(s){return `${pad(Math.floor(s/60))}:${pad(s%60)}`;}
+  function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+  function pad(n){return String(n).padStart(2,'0');}
+  function toMMSS(s){return `${pad(Math.floor(s/60))}:${pad(s%60)}`;}
 
-/* ===================== Core ===================== */
-function newTest(){
-  picked=shuffle(QUESTION_BANK).slice(0,TOTAL_QUESTIONS);
-  index=0;answers={};timeLeft=TOTAL_SECONDS;
-  $result.style.display='none';$review.style.display='none';$retakeTop.style.display='none';
-  $submit.disabled=false;$next.disabled=false;$prev.disabled=true;
-  render();if(timer) clearInterval(timer);timer=setInterval(tick,1000);updateTop();
-  document.getElementById('startScreen').style.display='none';
-  document.getElementById('quizSection').style.display='block';
-}
+  function newTest(){
+    picked=shuffle(QUESTION_BANK).slice(0,TOTAL_QUESTIONS);
+    index=0;answers={};timeLeft=TOTAL_SECONDS;
+    $result.style.display='none';$review.style.display='none';$retakeTop.style.display='none';
+    $submit.disabled=false;$next.disabled=false;$prev.disabled=true;
+    render();if(timer) clearInterval(timer);timer=setInterval(tick,1000);updateTop();
+    document.getElementById('startScreen').style.display='none';
+    document.getElementById('quizSection').style.display='block';
+  }
 
-function render(){
-  const q=picked[index];$qTitle.textContent=`Question ${index+1}`;$qType.textContent=q.type||'';$qText.textContent=q.q;$optList.innerHTML='';
-  q.options.forEach((opt,i)=>{const id=`${q.id}_opt_${i}`;const label=document.createElement('label');label.className='option';label.setAttribute('for',id);
-    const radio=document.createElement('input');radio.type='radio';radio.name=q.id;radio.id=id;radio.value=i;radio.checked=answers[q.id]===i;
-    radio.addEventListener('change',()=>{answers[q.id]=i;updateTop();$next.disabled=(index===picked.length-1)?true:false;});
-    const span=document.createElement('span');span.textContent=opt;label.appendChild(radio);label.appendChild(span);$optList.appendChild(label);});
-  $prev.disabled=index===0;$next.disabled=(index===picked.length-1)||(answers[q.id]===undefined&&index<picked.length-1);
-  $submit.disabled=!isAllAnswered();updateTop();
-}
-function isAllAnswered(){return picked.every(q=>answers[q.id]!==undefined);}
-function updateTop(){const answeredCount=Object.keys(answers).length;$progressText.textContent=`${index+1} / ${picked.length}`;
-  $selectedCount.textContent=answeredCount;$timeLeft.textContent=toMMSS(timeLeft);$timeBar.style.width=`${(timeLeft/TOTAL_SECONDS)*100}%`;}
-function tick(){if(timeLeft<=0){clearInterval(timer);timer=null;submit();return;}timeLeft--;updateTop();}
-function nextQ(){if(index<picked.length-1){index++;render();}}
-function prevQ(){if(index>0){index--;render();}}
-function score(){let correct=0;picked.forEach(q=>{if(answers[q.id]===q.answer) correct++;});return correct;}
-function submit(){ $prev.disabled=true;$next.disabled=true;$submit.disabled=true;if(timer){clearInterval(timer);timer=null;}
-  const got=score();const total=picked.length;const pct=Math.round((got/total)*100);
-  $result.style.display='block';$result.innerHTML=`<h3>Result</h3><p><strong>Score:</strong> ${got} / ${total} (${pct}%)</p>
-    <p class="muted tiny">Time used: ${toMMSS(TOTAL_SECONDS-timeLeft)}</p>
-    <p>${pct>=75?"Great job!":"Keep practicing—review below."}</p>`;$review.innerHTML='';
-  picked.forEach((q,idx)=>{const user=answers[q.id];const ok=user===q.answer;const div=document.createElement('div');div.className='card-lite';
-    div.innerHTML=`<div style="display:flex;justify-content:space-between;margin-bottom:6px"><strong>Q${idx+1}. ${q.type}</strong>
-    <span class="${ok?'correct':'wrong'}">${ok?'Correct':'Wrong'}</span></div><div>${escapeHtml(q.q)}</div>
-    <div class="tiny" style="margin-top:6px">Your: <strong>${escapeHtml(q.options[user]??'(none)')}</strong><br/>
-    Correct: <strong>${escapeHtml(q.options[q.answer])}</strong></div><div class="tiny muted" style="margin-top:6px">${escapeHtml(q.explain||'')}</div>`;$review.appendChild(div);});
-  $review.style.display='grid';$retakeTop.style.display='inline-flex';}
-function retake(){newTest();}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m]));}
-
-/* ===================== Events ===================== */
-document.getElementById('nextBtn').addEventListener('click',nextQ);
-document.getElementById('prevBtn').addEventListener('click',prevQ);
-document.getElementById('submitBtn').addEventListener('click',submit);
-document.getElementById('retakeTop').addEventListener('click',retake);
-document.getElementById('startBtn').addEventListener('click',newTest);
-window.addEventListener('keydown',(e)=>{if($submit.disabled) return;if(e.key==='ArrowRight'){e.preventDefault();nextQ();}if(e.key==='ArrowLeft'){e.preventDefault();prevQ();}});
-</script>
+  function render(){
+    const q=picked[index];$qTitle.textContent=`Question ${index+1}`;$qType.textContent=q.type||'';$qText.textContent=q.q;$optList.innerHTML='';
+    q.options.forEach((opt,i)=>{const id=`${q.id}_opt_${i}`;const label=document.createElement('label');label.className='option';label.setAttribute('for',id);
+      const radio=document.createElement('input');radio.type='radio';radio.name=q.id;radio.id=id;radio.value=i;radio.checked=answers[q.id]===i;
+      radio.addEventListener('change',()=>{answers[q.id]=i;updateTop();$next.disabled=(index===picked.length-1)?true:false;});
+      const span=document.createElement('span');span.textContent=opt;label.appendChild(radio);label.appendChild(span);$optList.appendChild(label);});
+    $prev.disabled=index===0;$next.disabled=(index===picked.length-1)||(answers[q.id]===undefined&&index<picked.length-1);
+    $submit.disabled=!isAllAnswered();updateTop();
+  }
+  function isAllAnswered(){return picked.every(q=>answers[q.id]!==undefined);}
+  function updateTop(){const answeredCount=Object.keys(answers).length;$progressText.textContent=`${index+1} / ${picked.length}`;
+    $selectedCount.textContent=answeredCount;$timeLeft.textContent=toMMSS(timeLeft);$timeBar.style.width=`${(timeLeft/TOTAL_SECONDS)*100}%`;}
+  function tick(){if(timeLeft<=0){clearInterval(timer);timer=null;submit();return;}timeLeft--;updateTop();}
+  function nextQ(){if(index<picked.length-1){index++;render();}}
+  function prevQ(){if(index>0){index--;render();}}
+  function score(){let correct=0;picked.forEach(q=>{if(answers[q.id]===q.answer) correct++;});return correct;}
+  function submit(){ $prev.disabled=true;$next.disabled=true;$submit.disabled=true;if(timer){clearInterval(timer);timer=null;}
+    const got=score();const total=picked.length;const pct=Math.round((got/total)*100);
+    $result.style.display='block';$result.innerHTML=`<h3>Result</h3><p><strong>Score:</strong> ${got} / ${total} (${pct}%)</p>
+      <p class="muted tiny">Time used: ${toMMSS(TOTAL_SECONDS-timeLeft)}</p>
+      <p>${pct>=70?'🎉 Excellent! You qualify for the Certificate of Achievement.':'Keep practicing and try again! 💪'}</p>`;
+    $retakeTop.style.display='inline-flex';renderReview();}
+  function renderReview(){
+    $review.innerHTML='<h3>Review</h3>';picked.forEach((q,i)=>{const chosen=answers[q.id];const correct=q.answer;
+      const div=document.createElement('div');div.className='card-lite';div.innerHTML=`<div class="tiny muted">Q${i+1}. ${q.type}</div>
+      <div>${q.q}</div><div class="tiny">Your answer: <span class="${chosen===correct?'correct':'wrong'}">
+      ${q.options[chosen]!==undefined?q.options[chosen]:'(no answer)'}</span> | Correct: <span class="correct">${q.options[correct]}</span></div>
+      <div class="tiny muted">Explanation: ${q.explain}</div>`;$review.appendChild(div);});
+    $review.style.display='block';}
+  document.getElementById('startBtn').addEventListener('click',newTest);
+  $next.addEventListener('click',nextQ);$prev.addEventListener('click',prevQ);$submit.addEventListener('click',submit);$retakeTop.addEventListener('click',newTest);
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')prevQ();if(e.key==='ArrowRight')nextQ();});
+  document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>
+

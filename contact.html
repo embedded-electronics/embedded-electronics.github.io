@@ -8,31 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
   <script defer src="scripts.js"></script>
   <!-- Font Awesome for Social Icons -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEswBfg5P5eFw5rXG1a7Mq2Qm9FvR2K7P9sXf6LM8w1xQnQO8aRzYKw==" 
-    crossorigin="anonymous" 
-    referrerpolicy="no-referrer"
-  />
-  <style>
-    /* === FIX: Social Icon Visibility for Light Background === */
-    .social-icons {
-      display: flex;
-      gap: 15px;
-      margin-top: 15px;
-      font-size: 1.6rem;
-    }
-    .social-link {
-      color: #032b44; /* dark blue visible on white background */
-      transition: color 0.3s ease;
-    }
-    .social-link:hover:nth-child(1) { color: #0077b5; } /* LinkedIn */
-    .social-link:hover:nth-child(2) { color: #1877f2; } /* Facebook */
-    .social-link:hover:nth-child(3) { color: #e4405f; } /* Instagram */
-    .social-link:hover:nth-child(4) { color: #ff0000; } /* YouTube */
-    .social-link:hover:nth-child(5) { color: #25D366; } /* WhatsApp */
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -46,8 +22,10 @@
       <nav id="nav" class="nav">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
+        <!-- <a href="course.html">Courses</a> -->
         <a href="ebooks.html">E-Books</a>
         <a href="quiz.html">Quiz</a>
+        <!-- <a href="blog.html">Blog</a> -->
         <a href="typing-game.html">Typing Test</a>
         <a href="interview.html">Interview</a>
         <a href="iq-test.html">IQ Test</a>
@@ -67,6 +45,8 @@
 
     <!-- Right: Info & Social -->
     <section style="flex: 1; min-width: 250px;">
+
+      <!-- About Us Section -->
       <h2>About Us</h2>
       <p>
         Embedded Electronics is a platform for learning, practicing, and growing in the field of 
@@ -74,17 +54,19 @@
         and hands-on learning resources for students and professionals.
       </p>
 
+      <!-- Contact Info -->
       <h2>Contact Details</h2>
       <p><strong>Email:</strong> embeddedelectronics.in@gmail.com</p>
       <p><strong>Phone:</strong> +91 9547394654</p>
       <p><strong>Address:</strong> Yelahanka, Bangalore - 560064, India</p>
 
+      <!-- WhatsApp Chat Button -->
       <a href="https://wa.me/919547394654" target="_blank" style="display:inline-block; padding: 10px 20px; background-color: #25D366; color: white; border-radius: 5px; text-decoration: none; margin-bottom: 15px;">
         💬 Chat on WhatsApp
       </a>
 
-      <!-- Fixed Social Media Icons -->
-      <div class="social-icons">
+      <!-- Social Media Links -->
+      <div class="social-icons" style="margin-top: 15px; font-size: 1.5rem;">
         <a href="https://www.linkedin.com/company/embedded-electronics-tech/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
         <a href="https://www.facebook.com/AdvancedEmbeddedSystem" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/embeddedelectronics.in/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -100,9 +82,5 @@
       <p>© <span id="year"></span> Embedded Electronics</p>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

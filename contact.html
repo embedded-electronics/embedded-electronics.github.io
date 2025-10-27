@@ -5,18 +5,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Contact</title>
-
-  <!-- Font Awesome for Social Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEswBfg5P5eFw5rXG1a7Mq2Qm9FvR2K7P9sXf6LM8w1xQnQO8aRzYKw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
   <link rel="stylesheet" href="styles.css" />
   <script defer src="scripts.js"></script>
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -30,8 +22,10 @@
       <nav id="nav" class="nav">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
+        <!-- <a href="course.html">Courses</a> -->
         <a href="ebooks.html">E-Books</a>
         <a href="quiz.html">Quiz</a>
+        <!-- <a href="blog.html">Blog</a> -->
         <a href="typing-game.html">Typing Test</a>
         <a href="interview.html">Interview</a>
         <a href="iq-test.html">IQ Test</a>
@@ -42,44 +36,37 @@
   </header>
 
   <!-- ===== Contact Section ===== -->
-  <main class="container" style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 30px;">
+  <main class="container" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
     <!-- Left: Google Form -->
-    <section style="flex: 1; min-width: 320px; background:#fff; border-radius:12px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-      <h2 style="color:#032b44;">Contact Form</h2>
-      <iframe 
-        src="https://forms.gle/4aQY38KhHuT3G9Sy9?embedded=true" 
-        width="100%" 
-        height="500" 
-        frameborder="0" 
-        marginheight="0" 
-        marginwidth="0" 
-        style="border-radius:8px;"
-      >Loading…</iframe>
+    <section style="flex: 1; min-width: 300px;">
+      <h2>Contact Form</h2>
+      <iframe src="https://forms.gle/4aQY38KhHuT3G9Sy9?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </section>
 
     <!-- Right: Info & Social -->
-    <section style="flex: 1; min-width: 280px; background:#fff; border-radius:12px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-      <h2 style="color:#032b44;">About Us</h2>
+    <section style="flex: 1; min-width: 250px;">
+
+      <!-- About Us Section -->
+      <h2>About Us</h2>
       <p>
-        <strong>Embedded Electronics</strong> is a platform dedicated to helping learners and professionals
-        grow in the fields of <strong>Embedded Systems, IoT, and Electronics</strong>.  
-        We offer tutorials, projects, quizzes, e-books, and practical resources to strengthen your hands-on knowledge.
+        Embedded Electronics is a platform for learning, practicing, and growing in the field of 
+        Embedded Systems, IoT, and Electronics. We provide tutorials, projects, e-books, quizzes, 
+        and hands-on learning resources for students and professionals.
       </p>
 
-      <h2 style="color:#032b44; margin-top:20px;">Contact Details</h2>
+      <!-- Contact Info -->
+      <h2>Contact Details</h2>
       <p><strong>Email:</strong> embeddedelectronics.in@gmail.com</p>
       <p><strong>Phone:</strong> +91 9547394654</p>
       <p><strong>Address:</strong> Yelahanka, Bangalore - 560064, India</p>
 
       <!-- WhatsApp Chat Button -->
-      <a href="https://wa.me/919547394654" target="_blank"
-        style="display:inline-block; padding: 10px 20px; background-color:#25D366; color:white; border-radius:8px; text-decoration:none; margin:12px 0; font-weight:500;">
-        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      <a href="https://wa.me/919547394654" target="_blank" style="display:inline-block; padding: 10px 20px; background-color: #25D366; color: white; border-radius: 5px; text-decoration: none; margin-bottom: 15px;">
+        💬 Chat on WhatsApp
       </a>
 
       <!-- Social Media Links -->
-      <h3 style="color:#032b44; margin-top:20px;">Follow Us</h3>
-      <div class="social-icons" style="margin-top: 12px; font-size: 1.6rem; justify-content:flex-start;">
+      <div class="social-icons" style="margin-top: 15px; font-size: 1.5rem;">
         <a href="https://www.linkedin.com/company/embedded-electronics-tech/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
         <a href="https://www.facebook.com/AdvancedEmbeddedSystem" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/embeddedelectronics.in/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -90,15 +77,10 @@
   </main>
 
   <!-- ===== Footer ===== -->
-  <footer class="site-footer" style="margin-top:40px;">
+  <footer class="site-footer" style="margin-top: 40px;">
     <div class="container">
       <p>© <span id="year"></span> Embedded Electronics</p>
     </div>
   </footer>
-
-  <script>
-    // Auto year update
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

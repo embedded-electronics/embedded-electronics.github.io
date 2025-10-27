@@ -237,7 +237,8 @@ label { display: block; margin: 10px 0 4px; }
   display: flex;
   gap: 15px;
   margin-top: 10px;
-  justify-content: center;
+  justify-content: flex-start; /* Aligns icons to the left */
+  padding-left: 10px; /* Adds a little spacing from the edge */
 }
 
 /* Default color visible on light backgrounds */

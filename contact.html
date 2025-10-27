@@ -7,8 +7,47 @@
   <title>Embedded Electronics — Contact</title>
   <link rel="stylesheet" href="styles.css" />
   <script defer src="scripts.js"></script>
-  <!-- Font Awesome for Social Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ✅ Font Awesome (Latest & Stable) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-KxQ4N1iO4fM4h7XWZBzQdPXYgMgb44cglIY3VZJYyq+dS9AtXWpCdEjROEfz9N6mK1hL3zTh2JXjzj4hH8NEIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    /* ===== Social Icons Styling ===== */
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: #0b66b2;
+      background: #f4f4f4;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .social-icons a:hover {
+      background: #0b66b2;
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    /* Make icons look centered on smaller screens */
+    @media (max-width: 600px) {
+      .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -65,13 +104,13 @@
         💬 Chat on WhatsApp
       </a>
 
-      <!-- Social Media Links -->
-      <div class="social-icons" style="margin-top: 15px; font-size: 1.5rem;">
-        <a href="https://www.linkedin.com/company/embedded-electronics-tech/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.facebook.com/AdvancedEmbeddedSystem" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/embeddedelectronics.in/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/channel/UCZ3oNzzRCjrCEYEEbbStM5A" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
-        <a href="https://whatsapp.com/channel/0029VbAnrL29WtCAT7e7JX1B" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+      <!-- ✅ Social Media Links (Fixed Icons) -->
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/company/embedded-electronics-tech/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/AdvancedEmbeddedSystem" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/embeddedelectronics.in/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCZ3oNzzRCjrCEYEEbbStM5A" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://whatsapp.com/channel/0029VbAnrL29WtCAT7e7JX1B" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
     </section>
   </main>
@@ -82,5 +121,10 @@
       <p>© <span id="year"></span> Embedded Electronics</p>
     </div>
   </footer>
+
+  <script>
+    // Auto-update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -486,6 +486,388 @@ const interviewData = {
     { question: "What is default case in switch?", answer: "It executes when none of the case labels match." },
     { question: "What is infinite recursion?", answer: "When a recursive function never reaches a base condition, causing stack overflow." },
     { question: "What is modular header file?", answer: "Custom header files created by users to include reusable functions and macros." }
+  ],
+  // ===== Basic C++ Programming — Set 1 =====
+  basic_cpp_programming_1: [
+    {
+      question: "What is the difference between C and C++?",
+      answer: "C is a procedural programming language, while C++ supports both procedural and object-oriented programming paradigms."
+    },
+    {
+      question: "What are classes and objects in C++?",
+      answer: "A class is a user-defined data type that defines properties and behaviors, while an object is an instance of a class."
+    },
+    {
+      question: "What is encapsulation in C++?",
+      answer: "Encapsulation is the bundling of data and functions that operate on that data within a single unit, i.e., a class."
+    },
+    {
+      question: "What is inheritance in C++?",
+      answer: "Inheritance allows one class to acquire the properties and behaviors of another class, promoting code reusability."
+    },
+    {
+      question: "What is polymorphism?",
+      answer: "Polymorphism allows one interface to be used for different data types or functions — achieved through function overloading and overriding."
+    },
+    {
+      question: "What is function overloading?",
+      answer: "Function overloading allows multiple functions with the same name but different parameters."
+    },
+    {
+      question: "What is operator overloading?",
+      answer: "Operator overloading allows defining custom behavior for operators (like +, -, =) for user-defined types."
+    },
+    {
+      question: "What is a constructor?",
+      answer: "A constructor is a special function automatically called when an object is created, used to initialize data members."
+    },
+    {
+      question: "What is a destructor?",
+      answer: "A destructor is a special function that cleans up resources when an object goes out of scope or is deleted."
+    },
+    {
+      question: "What are access specifiers in C++?",
+      answer: "Access specifiers control access to class members — public, private, and protected."
+    },
+    {
+      question: "What is the difference between struct and class in C++?",
+      answer: "In C++, struct members are public by default, while class members are private by default."
+    },
+    {
+      question: "What is the use of the 'this' pointer?",
+      answer: "The 'this' pointer refers to the current object of the class within its member functions."
+    },
+    {
+      question: "What is a virtual function?",
+      answer: "A virtual function allows derived classes to override a function in a base class to achieve runtime polymorphism."
+    },
+    {
+      question: "What is pure virtual function?",
+      answer: "A pure virtual function is declared with '= 0' in the base class and must be overridden in the derived class."
+    },
+    {
+      question: "What is an abstract class?",
+      answer: "An abstract class is a class that cannot be instantiated directly and contains at least one pure virtual function."
+    },
+    {
+      question: "What is multiple inheritance?",
+      answer: "Multiple inheritance allows a class to inherit from more than one base class."
+    },
+    {
+      question: "What are friend functions?",
+      answer: "Friend functions are non-member functions that have access to the private and protected members of a class."
+    },
+    {
+      question: "What is a copy constructor?",
+      answer: "A copy constructor initializes an object using another object of the same class."
+    },
+    {
+      question: "What is function overriding?",
+      answer: "Function overriding allows a derived class to redefine a base class function with the same signature."
+    },
+    {
+      question: "What is the use of 'namespace' in C++?",
+      answer: "Namespaces prevent name conflicts by organizing code into logical groups."
+    },
+    {
+      question: "What is STL in C++?",
+      answer: "STL (Standard Template Library) provides reusable templates for data structures and algorithms like vector, list, map, etc."
+    },
+    {
+      question: "What is a template in C++?",
+      answer: "Templates allow creating generic functions or classes that can work with any data type."
+    },
+    {
+      question: "What is the difference between deep copy and shallow copy?",
+      answer: "Shallow copy copies only object references; deep copy duplicates the actual objects."
+    },
+    {
+      question: "What is dynamic memory allocation?",
+      answer: "Dynamic memory allocation allows allocating memory at runtime using 'new' and freeing with 'delete'."
+    },
+    {
+      question: "What is the difference between malloc() and new?",
+      answer: "malloc() is a C function that allocates memory; new is a C++ operator that also calls constructors."
+    },
+    {
+      question: "What are inline functions?",
+      answer: "Inline functions reduce function call overhead by inserting code directly where the function is called."
+    },
+    {
+      question: "What is exception handling?",
+      answer: "Exception handling in C++ uses try, catch, and throw blocks to manage runtime errors gracefully."
+    },
+    {
+      question: "What is the use of 'const' keyword?",
+      answer: "'const' is used to define immutable variables or protect data from modification."
+    },
+    {
+      question: "What is a reference variable?",
+      answer: "A reference variable acts as an alias for another variable."
+    },
+    {
+      question: "What is the use of scope resolution operator (::)?",
+      answer: "It is used to define or access class members and global variables outside their scope."
+    }
+  ],
+
+  // ===== Basic C++ Programming — Set 2 =====
+  basic_cpp_programming_2: [
+    {
+      question: "What are the types of polymorphism in C++?",
+      answer: "Compile-time polymorphism (function overloading) and runtime polymorphism (virtual functions)."
+    },
+    {
+      question: "What is function hiding?",
+      answer: "If a derived class function has the same name as a base class function, it hides the base function, even if parameters differ."
+    },
+    {
+      question: "What is an inline constructor?",
+      answer: "A constructor defined inside the class declaration is implicitly inline."
+    },
+    {
+      question: "What is a virtual destructor?",
+      answer: "A virtual destructor ensures derived class destructors are called when deleting an object via a base class pointer."
+    },
+    {
+      question: "What is RTTI in C++?",
+      answer: "RTTI (Run-Time Type Information) provides information about an object’s type during runtime using typeid and dynamic_cast."
+    },
+    {
+      question: "What are static members?",
+      answer: "Static members are shared across all objects of a class, having a single memory instance."
+    },
+    {
+      question: "What is a pointer to an object?",
+      answer: "A pointer to an object allows direct access to members using the arrow operator (->)."
+    },
+    {
+      question: "What is the difference between reference and pointer?",
+      answer: "A reference must be initialized and cannot be null, while a pointer can change and be null."
+    },
+    {
+      question: "What is type casting in C++?",
+      answer: "Type casting converts a variable from one data type to another using static_cast, dynamic_cast, etc."
+    },
+    {
+      question: "What is function template specialization?",
+      answer: "It allows customizing template behavior for specific data types."
+    },
+    {
+      question: "What are smart pointers?",
+      answer: "Smart pointers (unique_ptr, shared_ptr) automatically manage memory to prevent leaks."
+    },
+    {
+      question: "What is an iterator in STL?",
+      answer: "Iterators are objects used to traverse containers like vector, list, and map."
+    },
+    {
+      question: "What is std::vector?",
+      answer: "std::vector is a dynamic array that can resize itself automatically."
+    },
+    {
+      question: "What is the difference between map and unordered_map?",
+      answer: "map stores keys in sorted order, while unordered_map uses hashing for faster access."
+    },
+    {
+      question: "What is a lambda function?",
+      answer: "Lambda functions are anonymous inline functions introduced in C++11."
+    },
+    {
+      question: "What are function pointers?",
+      answer: "Function pointers store the address of a function and can be used to call it dynamically."
+    },
+    {
+      question: "What is the difference between overloading and overriding?",
+      answer: "Overloading happens within a class (same name, different parameters), overriding occurs across inheritance hierarchy."
+    },
+    {
+      question: "What is the use of 'mutable' keyword?",
+      answer: "'mutable' allows modification of a class member even in const objects."
+    },
+    {
+      question: "What is std::string in C++?",
+      answer: "std::string is a class that represents a sequence of characters and provides built-in functions for string manipulation."
+    },
+    {
+      question: "What is std::array?",
+      answer: "std::array is a fixed-size container available in C++11."
+    },
+    {
+      question: "What is the difference between new/delete and malloc/free?",
+      answer: "new/delete call constructors and destructors, while malloc/free only allocate and deallocate raw memory."
+    },
+    {
+      question: "What is an exception specification?",
+      answer: "It specifies what exceptions a function might throw; however, it's deprecated in modern C++."
+    },
+    {
+      question: "What is an initializer list in C++?",
+      answer: "An initializer list is used to initialize class members before the constructor body executes."
+    },
+    {
+      question: "What is move semantics?",
+      answer: "Move semantics optimize performance by transferring resources instead of copying them."
+    },
+    {
+      question: "What are enum classes?",
+      answer: "Enum classes provide strongly-typed enumerations introduced in C++11."
+    },
+    {
+      question: "What is std::unique_ptr?",
+      answer: "unique_ptr represents exclusive ownership of a dynamically allocated object."
+    },
+    {
+      question: "What is std::shared_ptr?",
+      answer: "shared_ptr allows multiple pointers to share ownership of a dynamically allocated object."
+    },
+    {
+      question: "What is the difference between stack and heap memory?",
+      answer: "Stack memory is automatically managed, while heap memory requires manual allocation and deallocation."
+    },
+    {
+      question: "What are references to const?",
+      answer: "They prevent modification of the object being referenced."
+    },
+    {
+      question: "What is the purpose of 'explicit' keyword?",
+      answer: "It prevents implicit conversions during object initialization."
+    },
+    {
+      question: "What is std::pair and std::tuple?",
+      answer: "They are STL containers used to store multiple heterogeneous values together."
+    }
+  ],
+
+  // ===== Basic C++ Programming — Set 3 =====
+  basic_cpp_programming_3: [
+    {
+      question: "What is an abstract base class?",
+      answer: "An abstract base class serves as a parent class and cannot be instantiated directly."
+    },
+    {
+      question: "What are pure virtual destructors?",
+      answer: "They are virtual destructors declared as pure virtual but must still have a definition."
+    },
+    {
+      question: "What are functors in C++?",
+      answer: "Functors are objects that behave like functions using operator()."
+    },
+    {
+      question: "What are macros in C++?",
+      answer: "Macros are preprocessor directives defined using #define for code substitution before compilation."
+    },
+    {
+      question: "What is the difference between compile-time and runtime polymorphism?",
+      answer: "Compile-time polymorphism is achieved through function overloading, while runtime uses virtual functions."
+    },
+    {
+      question: "What is the difference between composition and inheritance?",
+      answer: "Composition involves including objects as class members, while inheritance extends class behavior."
+    },
+    {
+      question: "What are the benefits of using OOP in C++?",
+      answer: "OOP promotes modularity, reusability, and maintainability of code."
+    },
+    {
+      question: "What is the 'override' keyword in C++11?",
+      answer: "It explicitly marks a function as overriding a virtual function from the base class."
+    },
+    {
+      question: "What is the 'final' keyword in C++?",
+      answer: "It prevents further overriding of a virtual function or inheritance from a class."
+    },
+    {
+      question: "What is multiple inheritance ambiguity?",
+      answer: "When two base classes have functions with the same name, it creates ambiguity in the derived class."
+    },
+    {
+      question: "What is the diamond problem?",
+      answer: "It occurs in multiple inheritance when two parent classes inherit from the same grandparent class."
+    },
+    {
+      question: "What is virtual inheritance?",
+      answer: "Virtual inheritance solves the diamond problem by ensuring only one instance of the grandparent class is inherited."
+    },
+    {
+      question: "What is 'auto' keyword in C++?",
+      answer: "It automatically deduces the data type of a variable during compilation."
+    },
+    {
+      question: "What is 'decltype' keyword?",
+      answer: "decltype determines the type of an expression at compile-time."
+    },
+    {
+      question: "What are move constructors?",
+      answer: "Move constructors transfer ownership of resources from one object to another, avoiding deep copies."
+    },
+    {
+      question: "What is std::forward?",
+      answer: "std::forward is used for perfect forwarding of arguments in templates."
+    },
+    {
+      question: "What are constexpr functions?",
+      answer: "constexpr functions are evaluated at compile-time for better performance."
+    },
+    {
+      question: "What is the difference between emplace() and insert() in STL?",
+      answer: "emplace() constructs objects in-place; insert() copies or moves existing objects."
+    },
+    {
+      question: "What is std::deque?",
+      answer: "std::deque (double-ended queue) allows insertion and deletion at both ends efficiently."
+    },
+    {
+      question: "What is std::set?",
+      answer: "std::set is an associative container that stores unique elements in sorted order."
+    },
+    {
+      question: "What is std::multiset?",
+      answer: "std::multiset allows duplicate elements, unlike std::set."
+    },
+    {
+      question: "What is std::map?",
+      answer: "std::map stores key-value pairs in sorted order using balanced trees."
+    },
+    {
+      question: "What is std::unordered_map?",
+      answer: "unordered_map stores key-value pairs using hash tables for faster lookup."
+    },
+    {
+      question: "What are memory leaks in C++?",
+      answer: "Memory leaks occur when dynamically allocated memory is not freed using delete."
+    },
+    {
+      question: "What are dangling pointers?",
+      answer: "Dangling pointers point to memory locations that have been freed or are invalid."
+    },
+    {
+      question: "What are static_cast and dynamic_cast?",
+      answer: "static_cast performs compile-time conversion, while dynamic_cast checks types at runtime."
+    },
+    {
+      question: "What is RAII?",
+      answer: "RAII (Resource Acquisition Is Initialization) ties resource management to object lifetime to prevent leaks."
+    },
+    {
+      question: "What is a singleton class?",
+      answer: "A singleton class ensures only one instance of a class exists during program execution."
+    },
+    {
+      question: "What are design patterns in C++?",
+      answer: "Design patterns are reusable solutions to common software design problems."
+    },
+    {
+      question: "What is the use of 'volatile' keyword?",
+      answer: "'volatile' tells the compiler not to optimize a variable because it can change unexpectedly."
+    },
+    {
+      question: "What is the use of 'static' keyword in C++?",
+      answer: "'static' defines class variables shared among all instances or limits function scope to the current file."
+    },
+    {
+      question: "What are forward declarations?",
+      answer: "Forward declarations declare a class or function before defining it, helping resolve dependencies."
+    }
   ]
-};
 };

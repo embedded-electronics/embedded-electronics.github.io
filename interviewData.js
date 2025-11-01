@@ -1,28 +1,34 @@
+// interviewData.js
 const interviewData = {
-  basic_linux_questions: [
+  basic_embedded_1: [
     {
-      question: "What is the difference between a process and a thread?",
-      answer: "A process is an independent program in execution with its own memory, while a thread is a smaller unit of a process that shares memory space."
+      question: "What is the difference between microprocessor and microcontroller?",
+      answer: "A microprocessor is CPU-based and requires external peripherals, while a microcontroller has CPU, memory, and I/O on a single chip."
     },
     {
-      question: "How do you check running processes in Linux?",
-      answer: "You can use commands like `ps`, `top`, or `htop` to view running processes."
+      question: "What is an ISR (Interrupt Service Routine)?",
+      answer: "An ISR is a special function executed when an interrupt occurs, handling urgent tasks before returning to normal flow."
     },
+    {
+      question: "Explain polling vs interrupts.",
+      answer: "Polling checks device status continuously, wasting CPU time. Interrupts signal the CPU only when needed, improving efficiency."
+    },
+    // ... up to Q50
   ],
-  basic_microcontrollers_questions: [
+
+  medium_embedded_1: [
     {
-      question: "What is the function of a watchdog timer in a microcontroller?",
-      answer: "It resets the system if the software hangs or fails to operate correctly."
+      question: "What is the difference between cooperative and preemptive multitasking?",
+      answer: "In cooperative multitasking, tasks voluntarily yield control; in preemptive multitasking, the scheduler decides when to switch tasks."
     },
-    {
-      question: "What is the difference between Harvard and Von Neumann architectures?",
-      answer: "Harvard has separate memory and buses for data and instructions; Von Neumann uses a single shared memory and bus."
-    },
+    // more Q&A pairs
   ],
-  basic_cprogramming_questions: [
+
+  advanced_embedded_1: [
     {
-      question: "What is the difference between call by value and call by reference?",
-      answer: "Call by value passes a copy of the variable; call by reference passes the actual variable address."
+      question: "Explain memory protection and its role in embedded OS.",
+      answer: "Memory protection prevents one process from accessing another's memory space, improving security and stability."
     },
+    // more advanced Q&As
   ]
 };

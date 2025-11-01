@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Header Start -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Interview Q&A</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="interviewData.js"></script>
-  <script defer src="interview.js"></script>
   <script defer src="scripts.js"></script>
+  <script defer src="interviewData.js"></script>
+  <style>
+    /* Accordion Styling (same as your sample) */
+    .accordion {
+      background-color: #f4f4f4;
+      color: #333;
+      cursor: pointer;
+      padding: 15px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 5px;
+      border-radius: 6px;
+    }
+    .accordion:hover { background-color: #ddd; }
+    .accordion.active { background-color: #0077b6; color: white; }
+    .panel {
+      padding: 10px 15px;
+      display: none;
+      background-color: #fff;
+      margin-bottom: 10px;
+      border-left: 3px solid #0077b6;
+      border-radius: 0 0 6px 6px;
+    }
+  </style>
 </head>
+
 <body>
 <header class="site-header">
   <div class="container">
@@ -18,31 +44,68 @@
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="ebooks.html">E-Books</a>
-        <a href="quiz.html">Quiz</a>
-        <a class="active" href="interview.html">Interview</a>
-        <a href="typing-game.html">Typing Test</a>
-        <a href="iq-test.html">IQ Test</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="ebooks.html">E-Books</a>
+      <a href="quiz.html">Quiz</a>
+      <a class="active" href="interview.html">Interview</a>
+      <a href="typing-game.html">Typing Test</a>
+      <a href="iq-test.html">IQ Test</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
-<!-- Header End -->
 
-<main class="container">
-  <h1 id="interview-title"></h1>
-  <div id="interview-container"></div>
+<main class="container" style="margin-top: 30px;">
+  <h1 id="set-title"></h1>
+  <p>Click on each question to expand and see the answer.</p>
+  <div id="qa-container"></div>
 </main>
 
-<!-- Footer Start -->
-<footer class="site-footer">
+<footer class="site-footer" style="margin-top: 40px;">
   <div class="container">
     <p>© <span id="year"></span> Embedded Electronics</p>
   </div>
 </footer>
-<!-- Footer End -->
+
+<script>
+  // Load Q&A set from URL
+  const params = new URLSearchParams(window.location.search);
+  const setName = params.get('set');
+  const qaList = interviewData[setName] || [];
+
+  // Display title
+  document.getElementById("set-title").textContent =
+    setName ? setName.replace(/_/g, " ").toUpperCase() + " — Interview Q&A" : "Interview Q&A";
+
+  // Create Accordion Elements
+  const container = document.getElementById("qa-container");
+  qaList.forEach((item, i) => {
+    const qBtn = document.createElement("button");
+    qBtn.className = "accordion";
+    qBtn.innerHTML = `Q${i + 1}: ${item.question}`;
+
+    const panel = document.createElement("div");
+    panel.className = "panel";
+    panel.innerHTML = `<p><strong>Answer:</strong> ${item.answer}</p>`;
+
+    container.appendChild(qBtn);
+    container.appendChild(panel);
+  });
+
+  // Accordion functionality
+  setTimeout(() => {
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+  }, 300);
+</script>
+
 </body>
 </html>

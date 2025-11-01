@@ -1,50 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Header Start -->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embedded Electronics — Interview Q&A</title>
+  <title>Embedded Electronics — Interview Preparation</title>
   <link rel="stylesheet" href="styles.css" />
   <script defer src="scripts.js"></script>
-  <style>
-    /* Accordion Styles */
-    .accordion {
-      background-color: #f4f4f4;
-      color: #333;
-      cursor: pointer;
-      padding: 15px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-      margin-bottom: 5px;
-      border-radius: 6px;
-    }
-
-    .accordion:hover {
-      background-color: #ddd;
-    }
-
-    .accordion.active {
-      background-color: #0077b6;
-      color: white;
-    }
-
-    .panel {
-      padding: 10px 15px;
-      display: none;
-      background-color: #fff;
-      margin-bottom: 10px;
-      border-left: 3px solid #0077b6;
-      border-radius: 0 0 6px 6px;
-    }
-  </style>
 </head>
 <body>
-
-<!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
@@ -52,203 +16,75 @@
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
-       <a href="index.html">Home</a>
+        <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <!-- <a href="course.html">Courses</a> -->
         <a href="ebooks.html">E-Books</a>
         <a href="quiz.html">Quiz</a>
         <!-- <a href="blog.html">Blog</a> -->
-        <a href="typing-game.html">Typing Test</a>
         <a class="active" href="interview.html">Interview</a>
+        <a href="typing-game.html">Typing Test</a>
         <a href="iq-test.html">IQ Test</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
+<!-- Header End -->
 
-<!-- ===== Main Interview Section ===== -->
-<main class="container" style="margin-top: 30px;">
-  <h1>Embedded Systems Interview Q&A</h1>
-  <p style="margin-bottom: 20px;">
-    Click on each question to expand and see the answer.
-  </p>
+<!-- ===== Main Interview Categories ===== -->
+<main class="container">
+  <h1>Interview Preparation</h1>
+  <p>Choose your level to start practicing Embedded Systems Interview Q&A.</p>
 
-  <!-- Q1 to Q50 -->
-<button class="accordion">Q1: What is the difference between microprocessor and microcontroller?</button>
-<div class="panel"><p><strong>Answer:</strong> A microprocessor is CPU-based and requires external peripherals, while a microcontroller has CPU, memory, and I/O on a single chip.</p></div>
+  <!-- ===== Basic (Beginner) ===== -->
+  <h2>Basic (Beginner)</h2>
+  <div class="quiz-grid">
+    <a class="quiz-card" href="interview-set.html?set=basic_embedded_1">
+      <h2>Embedded Systems<br>Set-1 (50 Q&A)</h2>
+    </a>
+    <a class="quiz-card" href="interview-set.html?set=basic_linux_1">
+      <h2>Linux System<br>Set-1 (50 Q&A)</h2>
+    </a>
+    <a class="quiz-card" href="interview-set.html?set=basic_cprogramming_1">
+      <h2>C Programming<br>Set-1 (50 Q&A)</h2>
+    </a>
+  </div>
 
-<button class="accordion">Q2: What is an ISR (Interrupt Service Routine)?</button>
-<div class="panel"><p><strong>Answer:</strong> An ISR is a special function executed when an interrupt occurs, handling urgent tasks before returning to normal flow.</p></div>
+  <!-- ===== Intermediate ===== -->
+  <h2>Medium (Intermediate)</h2>
+  <div class="quiz-grid">
+    <a class="quiz-card" href="interview-set.html?set=medium_embedded_1">
+      <h2>Embedded Systems<br>Set-1 (50 Q&A)</h2>
+    </a>
+    <a class="quiz-card" href="interview-set.html?set=medium_linux_1">
+      <h2>Linux System<br>Set-1 (50 Q&A)</h2>
+    </a>
+    <a class="quiz-card" href="interview-set.html?set=medium_cprogramming_1">
+      <h2>C Programming<br>Set-1 (50 Q&A)</h2>
+    </a>
+  </div>
 
-<button class="accordion">Q3: Explain polling vs interrupts.</button>
-<div class="panel"><p><strong>Answer:</strong> Polling checks device status continuously, wasting CPU time. Interrupts signal the CPU only when needed, improving efficiency.</p></div>
-
-<button class="accordion">Q4: What is an RTOS, and why is it used?</button>
-<div class="panel"><p><strong>Answer:</strong> An RTOS ensures predictable scheduling of tasks with deadlines, used in real-time systems like automotive and robotics.</p></div>
-
-<button class="accordion">Q5: What is debouncing in embedded systems?</button>
-<div class="panel"><p><strong>Answer:</strong> Debouncing removes false triggers when mechanical switches bounce during press/release, handled in hardware or software.</p></div>
-
-<button class="accordion">Q6: What is the difference between Harvard and Von Neumann architecture?</button>
-<div class="panel"><p><strong>Answer:</strong> Harvard uses separate memory for data and instructions, enabling parallel access. Von Neumann uses one shared memory, causing bottlenecks.</p></div>
-
-<button class="accordion">Q7: What is the purpose of a watchdog timer?</button>
-<div class="panel"><p><strong>Answer:</strong> A watchdog timer resets the system if the program hangs, improving reliability.</p></div>
-
-<button class="accordion">Q8: Explain volatile vs non-volatile memory.</button>
-<div class="panel"><p><strong>Answer:</strong> Volatile memory (RAM) loses data when power is off, while non-volatile (ROM, Flash) retains data without power.</p></div>
-
-<button class="accordion">Q9: What is endianness?</button>
-<div class="panel"><p><strong>Answer:</strong> Endianness defines byte order in memory. Big-endian stores MSB first; little-endian stores LSB first.</p></div>
-
-<button class="accordion">Q10: What are GPIO pins?</button>
-<div class="panel"><p><strong>Answer:</strong> General Purpose Input/Output pins are used for digital input or output in microcontrollers.</p></div>
-
-<button class="accordion">Q11: What is DMA (Direct Memory Access)?</button>
-<div class="panel"><p><strong>Answer:</strong> DMA allows peripherals to transfer data to/from memory without CPU intervention, improving speed.</p></div>
-
-<button class="accordion">Q12: What is SPI protocol?</button>
-<div class="panel"><p><strong>Answer:</strong> SPI (Serial Peripheral Interface) is a synchronous protocol using MOSI, MISO, SCLK, and SS lines.</p></div>
-
-<button class="accordion">Q13: Explain I2C protocol.</button>
-<div class="panel"><p><strong>Answer:</strong> I2C is a two-wire protocol (SDA, SCL) supporting multiple masters and slaves using addressing.</p></div>
-
-<button class="accordion">Q14: What is UART?</button>
-<div class="panel"><p><strong>Answer:</strong> UART is an asynchronous serial protocol using TX and RX lines for communication.</p></div>
-
-<button class="accordion">Q15: What is the difference between flash and EEPROM?</button>
-<div class="panel"><p><strong>Answer:</strong> Flash memory erases in blocks and is faster; EEPROM erases/writes byte by byte but has longer endurance.</p></div>
-
-<button class="accordion">Q16: What is the function of an oscillator in microcontrollers?</button>
-<div class="panel"><p><strong>Answer:</strong> The oscillator provides the clock signal for timing and synchronization of operations.</p></div>
-
-<button class="accordion">Q17: What is priority inversion?</button>
-<div class="panel"><p><strong>Answer:</strong> Priority inversion happens when a high-priority task is blocked by a lower-priority task holding a shared resource.</p></div>
-
-<button class="accordion">Q18: What is memory-mapped I/O?</button>
-<div class="panel"><p><strong>Answer:</strong> Memory-mapped I/O assigns peripheral registers to memory addresses, allowing CPU to use normal instructions for access.</p></div>
-
-<button class="accordion">Q19: Difference between static and dynamic memory allocation?</button>
-<div class="panel"><p><strong>Answer:</strong> Static allocation is fixed at compile-time; dynamic allocation is done at runtime using malloc/free.</p></div>
-
-<button class="accordion">Q20: What are semaphores?</button>
-<div class="panel"><p><strong>Answer:</strong> Semaphores are synchronization primitives used to control access to shared resources among tasks.</p></div>
-
-<button class="accordion">Q21: What is mutex?</button>
-<div class="panel"><p><strong>Answer:</strong> A mutex (mutual exclusion) ensures only one task accesses a resource at a time, preventing race conditions.</p></div>
-
-<button class="accordion">Q22: What is the stack used for?</button>
-<div class="panel"><p><strong>Answer:</strong> The stack stores function return addresses, local variables, and temporary data during program execution.</p></div>
-
-<button class="accordion">Q23: Explain interrupt latency.</button>
-<div class="panel"><p><strong>Answer:</strong> Interrupt latency is the time between an interrupt request and the start of ISR execution.</p></div>
-
-<button class="accordion">Q24: What is context switching?</button>
-<div class="panel"><p><strong>Answer:</strong> Context switching is saving and restoring CPU states when switching between tasks or processes.</p></div>
-
-<button class="accordion">Q25: What is real-time system?</button>
-<div class="panel"><p><strong>Answer:</strong> A real-time system guarantees task completion within strict deadlines, often safety-critical.</p></div>
-
-<button class="accordion">Q26: Explain cache memory.</button>
-<div class="panel"><p><strong>Answer:</strong> Cache memory stores frequently used instructions/data closer to CPU, reducing access time.</p></div>
-
-<button class="accordion">Q27: What is an embedded C?</button>
-<div class="panel"><p><strong>Answer:</strong> Embedded C is a set of language extensions for C to program embedded systems efficiently.</p></div>
-
-<button class="accordion">Q28: Difference between malloc and calloc?</button>
-<div class="panel"><p><strong>Answer:</strong> malloc allocates uninitialized memory, calloc allocates and initializes memory to zero.</p></div>
-
-<button class="accordion">Q29: What is segmentation fault?</button>
-<div class="panel"><p><strong>Answer:</strong> Segmentation fault occurs when a program accesses restricted memory locations.</p></div>
-
-<button class="accordion">Q30: What is inline function in C?</button>
-<div class="panel"><p><strong>Answer:</strong> Inline functions request the compiler to replace function calls with code, reducing overhead.</p></div>
-
-<button class="accordion">Q31: What is volatile keyword?</button>
-<div class="panel"><p><strong>Answer:</strong> Volatile tells the compiler that a variable can change unexpectedly, preventing optimization.</p></div>
-
-<button class="accordion">Q32: What is const keyword?</button>
-<div class="panel"><p><strong>Answer:</strong> Const declares variables as read-only, preventing modification.</p></div>
-
-<button class="accordion">Q33: What are macros in C?</button>
-<div class="panel"><p><strong>Answer:</strong> Macros are preprocessor directives (#define) that replace code before compilation.</p></div>
-
-<button class="accordion">Q34: What is pointer in C?</button>
-<div class="panel"><p><strong>Answer:</strong> A pointer is a variable that stores the memory address of another variable.</p></div>
-
-<button class="accordion">Q35: What is dangling pointer?</button>
-<div class="panel"><p><strong>Answer:</strong> A dangling pointer points to freed or invalid memory, causing undefined behavior.</p></div>
-
-<button class="accordion">Q36: What is the difference between structure and union?</button>
-<div class="panel"><p><strong>Answer:</strong> Structures store all members separately, unions share the same memory for all members.</p></div>
-
-<button class="accordion">Q37: What is recursion?</button>
-<div class="panel"><p><strong>Answer:</strong> Recursion is when a function calls itself directly or indirectly.</p></div>
-
-<button class="accordion">Q38: What is segmentation in memory?</button>
-<div class="panel"><p><strong>Answer:</strong> Segmentation divides memory into segments like code, data, and stack, improving organization.</p></div>
-
-<button class="accordion">Q39: What is memory leak?</button>
-<div class="panel"><p><strong>Answer:</strong> Memory leak occurs when allocated memory is not freed, reducing available memory.</p></div>
-
-<button class="accordion">Q40: What is stack overflow?</button>
-<div class="panel"><p><strong>Answer:</strong> Stack overflow happens when the stack exceeds its limit, often due to deep recursion.</p></div>
-
-<button class="accordion">Q41: What is difference between embedded system and general-purpose computer?</button>
-<div class="panel"><p><strong>Answer:</strong> Embedded systems are application-specific with limited resources, while general-purpose computers are versatile and powerful.</p></div>
-
-<button class="accordion">Q42: What is cross compiler?</button>
-<div class="panel"><p><strong>Answer:</strong> A cross compiler generates code for a platform different from the one on which the compiler runs.</p></div>
-
-<button class="accordion">Q43: What is bootloader?</button>
-<div class="panel"><p><strong>Answer:</strong> A bootloader is a small program that initializes hardware and loads the main firmware or OS.</p></div>
-
-<button class="accordion">Q44: What is firmware?</button>
-<div class="panel"><p><strong>Answer:</strong> Firmware is software programmed into non-volatile memory that controls hardware functions.</p></div>
-
-<button class="accordion">Q45: What is bit-banding?</button>
-<div class="panel"><p><strong>Answer:</strong> Bit-banding maps individual bits of a memory region to entire words, allowing atomic bit operations.</p></div>
-
-<button class="accordion">Q46: What is ISR nesting?</button>
-<div class="panel"><p><strong>Answer:</strong> ISR nesting allows higher-priority interrupts to interrupt the execution of lower-priority ISRs.</p></div>
-
-<button class="accordion">Q47: What is JTAG?</button>
-<div class="panel"><p><strong>Answer:</strong> JTAG is a standard for testing and debugging integrated circuits, also used for programming microcontrollers.</p></div>
-
-<button class="accordion">Q48: What is race condition?</button>
-<div class="panel"><p><strong>Answer:</strong> A race condition occurs when multiple tasks access shared resources simultaneously, leading to unpredictable results.</p></div>
-
-<button class="accordion">Q49: What is memory fragmentation?</button>
-<div class="panel"><p><strong>Answer:</strong> Memory fragmentation occurs when free memory is divided into small blocks, making allocation inefficient.</p></div>
-
-<button class="accordion">Q50: What is embedded Linux?</button>
-<div class="panel"><p><strong>Answer:</strong> Embedded Linux is a lightweight version of Linux optimized for embedded devices with limited resources.</p></div>
-
+  <!-- ===== Advanced ===== -->
+  <h2>Advanced (Expert)</h2>
+  <div class="quiz-grid">
+    <a class="quiz-card" href="interview-set.html?set=advanced_embedded_1">
+      <h2>Embedded Systems<br>Set-1 (50 Q&A)</h2>
+    </a>
+    <a class="quiz-card" href="interview-set.html?set=advanced_linux_1">
+      <h2>Linux System<br>Set-1 (50 Q&A)</h2>
+    </a>
+    <a class="quiz-card" href="interview-set.html?set=advanced_cprogramming_1">
+      <h2>C Programming<br>Set-1 (50 Q&A)</h2>
+    </a>
+  </div>
 </main>
 
 <!-- ===== Footer ===== -->
-<footer class="site-footer" style="margin-top: 40px;">
+<footer class="site-footer">
   <div class="container">
     <p>© <span id="year"></span> Embedded Electronics</p>
   </div>
 </footer>
-
-<script>
-  // Accordion functionality
-  const acc = document.querySelectorAll(".accordion");
-  acc.forEach(btn => {
-    btn.addEventListener("click", function () {
-      this.classList.toggle("active");
-      let panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  });
-</script>
-
 </body>
 </html>

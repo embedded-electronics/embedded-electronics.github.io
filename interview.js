@@ -1,22 +1,38 @@
-// Get interview set name from URL
-const params = new URLSearchParams(window.location.search);
-const interviewSet = params.get('set');
+// ===== Interview Set Page Logic =====
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const setName = params.get("set");
+  const qaList = interviewData[setName] || [];
 
-// Load Q&A data from interviewData.js
-let questions = interviewData[interviewSet] || [];
+  const title = document.getElementById("set-title");
+  const container = document.getElementById("qa-container");
 
-// Set page title
-document.getElementById('interview-title').textContent = 
-  interviewSet ? interviewSet.replace(/_/g, ' ').toUpperCase() + " — Interview Q&A" : "Interview Q&A";
+  title.textContent = setName
+    ? setName.replace(/_/g, " ").toUpperCase() + " — Interview Q&A"
+    : "Interview Q&A";
 
-// Display questions
-const container = document.getElementById('interview-container');
-questions.forEach((q, index) => {
-  const qElem = document.createElement('div');
-  qElem.classList.add('interview-question');
-  qElem.innerHTML = `
-    <h3>${index + 1}. ${q.question}</h3>
-    <p><strong>Answer:</strong> ${q.answer}</p>
-  `;
-  container.appendChild(qElem);
+  qaList.forEach((item, i) => {
+    const qBtn = document.createElement("button");
+    qBtn.className = "accordion";
+    qBtn.innerHTML = `Q${i + 1}: ${item.question}`;
+
+    const panel = document.createElement("div");
+    panel.className = "panel";
+    panel.innerHTML = `<p><strong>Answer:</strong> ${item.answer}</p>`;
+
+    container.appendChild(qBtn);
+    container.appendChild(panel);
+  });
+
+  // Accordion Functionality
+  setTimeout(() => {
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+  }, 300);
 });

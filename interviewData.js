@@ -1240,5 +1240,380 @@ const interviewData = {
       question: "What is the importance of data structures?",
       answer: "Data structures improve efficiency, scalability, and organization of data for problem-solving."
     }
+  ],
+  // ===== BASIC MICROCONTROLLER SET 1 =====
+  basic_microcontroller_1: [
+    {
+      question: "What is a microcontroller?",
+      answer: "A microcontroller is a compact integrated circuit that contains a CPU, memory, and input/output peripherals on a single chip, used to control embedded systems."
+    },
+    {
+      question: "What are the main components of a microcontroller?",
+      answer: "A microcontroller consists of a processor (CPU), memory (RAM, ROM, EEPROM), I/O ports, timers, and communication interfaces like UART, SPI, and I2C."
+    },
+    {
+      question: "What is the difference between a microcontroller and a microprocessor?",
+      answer: "A microprocessor requires external components like RAM and I/O devices, while a microcontroller has all components integrated on one chip."
+    },
+    {
+      question: "What is the function of the CPU in a microcontroller?",
+      answer: "The CPU executes program instructions, performs arithmetic and logical operations, and controls other modules of the microcontroller."
+    },
+    {
+      question: "What types of memory are used in microcontrollers?",
+      answer: "Microcontrollers use Flash (program storage), SRAM (temporary data), and EEPROM (non-volatile storage)."
+    },
+    {
+      question: "What is Flash memory?",
+      answer: "Flash memory is non-volatile memory used to store the program code permanently."
+    },
+    {
+      question: "What is EEPROM used for?",
+      answer: "EEPROM is used to store data that must be retained even when power is turned off, such as calibration values."
+    },
+    {
+      question: "What is a timer in microcontrollers?",
+      answer: "A timer is a hardware module that counts clock cycles or external events, used for delays, measuring time, or generating waveforms."
+    },
+    {
+      question: "What are interrupts?",
+      answer: "Interrupts are events that temporarily halt the main program to execute a specific task immediately through an ISR (Interrupt Service Routine)."
+    },
+    {
+      question: "What is polling?",
+      answer: "Polling is the process of continuously checking the status of a device until it becomes ready for communication."
+    },
+    {
+      question: "What are GPIO pins?",
+      answer: "GPIO (General Purpose Input/Output) pins are used for digital input or output operations with external devices."
+    },
+    {
+      question: "What is PWM (Pulse Width Modulation)?",
+      answer: "PWM is a technique to control analog devices using digital signals by varying the duty cycle of pulses."
+    },
+    {
+      question: "What is ADC?",
+      answer: "ADC (Analog to Digital Converter) converts analog signals into digital values for processing by the microcontroller."
+    },
+    {
+      question: "What is DAC?",
+      answer: "DAC (Digital to Analog Converter) converts digital signals into analog voltage or current."
+    },
+    {
+      question: "What is a watchdog timer?",
+      answer: "A watchdog timer resets the microcontroller automatically if the program hangs or stops responding."
+    },
+    {
+      question: "What is clock frequency in a microcontroller?",
+      answer: "Clock frequency determines how fast a microcontroller executes instructions."
+    },
+    {
+      question: "What is a crystal oscillator?",
+      answer: "A crystal oscillator provides a stable clock signal for the microcontroller to synchronize operations."
+    },
+    {
+      question: "What is a reset circuit?",
+      answer: "A reset circuit initializes the microcontroller and sets it to a known state on power-up or fault."
+    },
+    {
+      question: "What is the use of the stack in a microcontroller?",
+      answer: "The stack stores temporary data like return addresses and local variables during function calls or interrupts."
+    },
+    {
+      question: "What is a register?",
+      answer: "Registers are small, fast memory locations inside the CPU used to store data temporarily during execution."
+    },
+    {
+      question: "What is machine cycle?",
+      answer: "A machine cycle is the time taken by the CPU to complete one basic operation like fetching or executing an instruction."
+    },
+    {
+      question: "What is instruction set?",
+      answer: "An instruction set is the collection of machine-level commands that a microcontroller can execute."
+    },
+    {
+      question: "What is the difference between Harvard and Von Neumann architecture?",
+      answer: "Harvard architecture separates data and program memory, while Von Neumann uses a single shared memory."
+    },
+    {
+      question: "What are serial communication protocols?",
+      answer: "Common serial protocols include UART, SPI, and I2C, used to communicate between microcontrollers and peripherals."
+    },
+    {
+      question: "What is UART?",
+      answer: "UART (Universal Asynchronous Receiver/Transmitter) enables serial communication using TX and RX lines."
+    },
+    {
+      question: "What is SPI?",
+      answer: "SPI (Serial Peripheral Interface) is a high-speed synchronous communication protocol using MOSI, MISO, SCK, and SS lines."
+    },
+    {
+      question: "What is I2C?",
+      answer: "I2C (Inter-Integrated Circuit) is a two-wire communication protocol using SDA (data) and SCL (clock) lines."
+    },
+    {
+      question: "What is GPIO direction register?",
+      answer: "It configures pins as input or output in the microcontroller."
+    },
+    {
+      question: "What is the importance of power management in microcontrollers?",
+      answer: "Power management features like sleep modes help reduce energy consumption in battery-powered devices."
+    },
+    {
+      question: "What are common 8-bit microcontrollers?",
+      answer: "Popular 8-bit microcontrollers include 8051, PIC16F, and ATmega series."
+    }
+  ],
+
+  // ===== BASIC MICROCONTROLLER SET 2 =====
+  basic_microcontroller_2: [
+    {
+      question: "What are the features of 8051 microcontroller?",
+      answer: "The 8051 has 8-bit CPU, 4KB ROM, 128B RAM, 32 I/O pins, timers, serial port, and interrupts."
+    },
+    {
+      question: "What are special function registers (SFR)?",
+      answer: "SFRs control the configuration and operation of various hardware features in microcontrollers."
+    },
+    {
+      question: "What is PSW in 8051?",
+      answer: "PSW (Program Status Word) stores the status of arithmetic operations and control flags."
+    },
+    {
+      question: "What is accumulator?",
+      answer: "Accumulator is a register used for arithmetic and logic operations in the CPU."
+    },
+    {
+      question: "What is program counter?",
+      answer: "Program counter holds the address of the next instruction to be executed."
+    },
+    {
+      question: "What is stack pointer?",
+      answer: "Stack pointer indicates the current position of the stack in RAM."
+    },
+    {
+      question: "What is interrupt vector table?",
+      answer: "It contains the starting addresses of different interrupt service routines."
+    },
+    {
+      question: "What are timers used for in 8051?",
+      answer: "Timers generate time delays, count external events, or control baud rate in serial communication."
+    },
+    {
+      question: "What is baud rate?",
+      answer: "Baud rate is the number of signal changes per second during serial communication."
+    },
+    {
+      question: "What is a flag bit?",
+      answer: "Flag bits indicate specific conditions like carry, zero, or overflow after arithmetic operations."
+    },
+    {
+      question: "What is bit-addressable memory?",
+      answer: "It allows individual bits of certain memory regions to be accessed or modified directly."
+    },
+    {
+      question: "What are addressing modes in microcontrollers?",
+      answer: "Addressing modes define how the operand of an instruction is specified — immediate, direct, indirect, or indexed."
+    },
+    {
+      question: "What is direct addressing mode?",
+      answer: "In direct mode, the address of the operand is given explicitly in the instruction."
+    },
+    {
+      question: "What is indirect addressing mode?",
+      answer: "In indirect mode, the address of the operand is held in a register or memory location."
+    },
+    {
+      question: "What is immediate addressing mode?",
+      answer: "In immediate mode, the operand is specified directly within the instruction."
+    },
+    {
+      question: "What is the difference between RISC and CISC architecture?",
+      answer: "RISC has simple, fixed-length instructions; CISC has complex, variable-length instructions."
+    },
+    {
+      question: "What is the use of bit manipulation instructions?",
+      answer: "They allow setting, clearing, toggling, or checking specific bits within a byte or register."
+    },
+    {
+      question: "What is machine cycle in 8051?",
+      answer: "A machine cycle in 8051 consists of 12 oscillator periods and executes one instruction."
+    },
+    {
+      question: "What is serial communication register (SCON)?",
+      answer: "SCON configures and controls serial communication in 8051 microcontroller."
+    },
+    {
+      question: "What is TCON register?",
+      answer: "TCON (Timer Control) register controls timer and interrupt operations."
+    },
+    {
+      question: "What are ports P0 to P3 used for in 8051?",
+      answer: "Ports P0–P3 are 8-bit bidirectional I/O ports used for data and control signals."
+    },
+    {
+      question: "What is the function of ALE pin?",
+      answer: "ALE (Address Latch Enable) separates address and data signals in multiplexed buses."
+    },
+    {
+      question: "What is EA pin in 8051?",
+      answer: "EA (External Access) pin selects whether the program memory is internal or external."
+    },
+    {
+      question: "What is PSEN pin?",
+      answer: "PSEN (Program Store Enable) is used to read data from external program memory."
+    },
+    {
+      question: "What is RST pin used for?",
+      answer: "RST pin resets the microcontroller when a high signal is applied for a certain duration."
+    },
+    {
+      question: "What is difference between polling and interrupt method?",
+      answer: "In polling, CPU continuously checks device status; in interrupts, CPU responds only when needed."
+    },
+    {
+      question: "What are real-time applications of microcontrollers?",
+      answer: "Microcontrollers are used in automotive systems, robotics, industrial automation, and home appliances."
+    },
+    {
+      question: "What is a bootloader?",
+      answer: "A bootloader is a small program that loads and executes main firmware from memory at startup."
+    },
+    {
+      question: "What is ISP and IAP?",
+      answer: "ISP (In-System Programming) and IAP (In-Application Programming) allow firmware updates without removing the chip."
+    },
+    {
+      question: "What is the difference between Harvard and Modified Harvard architecture?",
+      answer: "Modified Harvard allows limited data transfer between program and data memory for flexibility."
+    },
+    {
+      question: "What is the difference between 8051 and PIC microcontrollers?",
+      answer: "8051 is an 8-bit classic microcontroller, while PIC offers advanced features like ADC, PWM, and higher speeds."
+    }
+  ],
+
+  // ===== BASIC MICROCONTROLLER SET 3 =====
+  basic_microcontroller_3: [
+    {
+      question: "What are ARM microcontrollers?",
+      answer: "ARM microcontrollers are based on RISC architecture offering high performance and low power consumption."
+    },
+    {
+      question: "What are the advantages of ARM microcontrollers?",
+      answer: "They offer fast processing, low power, multiple modes, and rich peripherals."
+    },
+    {
+      question: "What is Cortex-M?",
+      answer: "Cortex-M is a family of ARM microcontrollers designed for embedded and IoT applications."
+    },
+    {
+      question: "What is NVIC in ARM?",
+      answer: "NVIC (Nested Vectored Interrupt Controller) manages interrupt priorities and enables nested interrupts."
+    },
+    {
+      question: "What is GPIO configuration in ARM?",
+      answer: "GPIO can be configured as input, output, alternate function, or analog mode using control registers."
+    },
+    {
+      question: "What is an RTOS used for in microcontrollers?",
+      answer: "RTOS manages multiple tasks, ensures deterministic behavior, and supports real-time scheduling."
+    },
+    {
+      question: "What is context switching?",
+      answer: "Context switching saves and restores CPU state during task switching in multitasking systems."
+    },
+    {
+      question: "What is interrupt latency?",
+      answer: "Interrupt latency is the time between an interrupt request and the start of its ISR execution."
+    },
+    {
+      question: "What are low-power modes in ARM?",
+      answer: "Modes like Sleep, Deep Sleep, and Stop reduce power consumption during idle periods."
+    },
+    {
+      question: "What is watchdog reset?",
+      answer: "It’s a system reset triggered when the watchdog timer is not refreshed within a predefined interval."
+    },
+    {
+      question: "What is DMA?",
+      answer: "DMA (Direct Memory Access) transfers data between peripherals and memory without CPU intervention."
+    },
+    {
+      question: "What is clock gating?",
+      answer: "Clock gating saves power by disabling clocks to unused peripherals."
+    },
+    {
+      question: "What is PLL?",
+      answer: "PLL (Phase Locked Loop) multiplies clock frequency for faster operation."
+    },
+    {
+      question: "What is boot mode in ARM?",
+      answer: "Boot mode determines from where the microcontroller starts execution — Flash, RAM, or external memory."
+    },
+    {
+      question: "What are interrupts priority levels?",
+      answer: "Different interrupts can be assigned priorities so that critical ones execute first."
+    },
+    {
+      question: "What is SysTick timer?",
+      answer: "SysTick is a built-in timer used in ARM Cortex-M for periodic interrupts, often in RTOS scheduling."
+    },
+    {
+      question: "What is vector table relocation?",
+      answer: "It allows changing the location of the interrupt vector table in memory."
+    },
+    {
+      question: "What is JTAG?",
+      answer: "JTAG is a standard debugging and testing interface used for programming and boundary scan testing."
+    },
+    {
+      question: "What is SWD?",
+      answer: "SWD (Serial Wire Debug) is a two-pin alternative to JTAG for ARM debugging."
+    },
+    {
+      question: "What is the function of MPU?",
+      answer: "MPU (Memory Protection Unit) controls memory access permissions for security and stability."
+    },
+    {
+      question: "What is Flash programming?",
+      answer: "It refers to writing firmware code into the microcontroller’s Flash memory."
+    },
+    {
+      question: "What are interrupts masking?",
+      answer: "Interrupt masking disables certain interrupts temporarily to protect critical sections."
+    },
+    {
+      question: "What is NV memory?",
+      answer: "Non-volatile memory retains data even after power is turned off."
+    },
+    {
+      question: "What are real-world applications of ARM microcontrollers?",
+      answer: "Used in IoT devices, drones, smartphones, and automotive systems."
+    },
+    {
+      question: "What is difference between ARM7 and Cortex-M?",
+      answer: "Cortex-M is more power-efficient and supports Thumb-2 instructions, unlike ARM7."
+    },
+    {
+      question: "What is firmware?",
+      answer: "Firmware is low-level software programmed into the microcontroller to control its operations."
+    },
+    {
+      question: "What is bootloader in ARM?",
+      answer: "A small program responsible for initializing hardware and loading the main application."
+    },
+    {
+      question: "What is difference between MCU and MPU?",
+      answer: "MCU integrates memory and peripherals; MPU requires external memory and is used in complex systems."
+    },
+    {
+      question: "What is ISP programming?",
+      answer: "ISP (In-System Programming) allows updating firmware directly via communication interfaces like UART or USB."
+    },
+    {
+      question: "What are advantages of using ARM Cortex-M0/M4 cores?",
+      answer: "They offer high performance, low power, built-in debugging, and support for DSP instructions."
+    }
   ]
 };

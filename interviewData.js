@@ -869,5 +869,376 @@ const interviewData = {
       question: "What are forward declarations?",
       answer: "Forward declarations declare a class or function before defining it, helping resolve dependencies."
     }
+  ],
+  // ===== BASIC DATA STRUCTURE SET 1 =====
+  basic_data_structure_1: [
+    {
+      question: "What is a data structure?",
+      answer: "A data structure is a way to organize and store data efficiently for performing operations like insertion, deletion, searching, and sorting."
+    },
+    {
+      question: "What are the types of data structures?",
+      answer: "Data structures are divided into linear (arrays, linked lists, stacks, queues) and non-linear (trees, graphs, heaps) types."
+    },
+    {
+      question: "What is an array?",
+      answer: "An array is a collection of elements of the same data type stored in contiguous memory locations."
+    },
+    {
+      question: "What are the advantages of arrays?",
+      answer: "Arrays allow random access, efficient traversal, and easy sorting/searching operations."
+    },
+    {
+      question: "What are the disadvantages of arrays?",
+      answer: "Arrays have fixed size and inserting/deleting elements is costly as it requires shifting elements."
+    },
+    {
+      question: "What is a linked list?",
+      answer: "A linked list is a linear data structure where elements (nodes) are connected using pointers."
+    },
+    {
+      question: "What are the types of linked lists?",
+      answer: "The main types are singly linked list, doubly linked list, and circular linked list."
+    },
+    {
+      question: "What is the difference between array and linked list?",
+      answer: "Arrays have fixed size and contiguous memory; linked lists are dynamic and use scattered memory."
+    },
+    {
+      question: "What is a stack?",
+      answer: "A stack is a linear data structure that follows LIFO (Last In, First Out) order."
+    },
+    {
+      question: "What are the basic stack operations?",
+      answer: "The main operations are push (insert), pop (delete), and peek (top element access)."
+    },
+    {
+      question: "What is a queue?",
+      answer: "A queue is a linear data structure that follows FIFO (First In, First Out) order."
+    },
+    {
+      question: "What are the operations on a queue?",
+      answer: "The main operations are enqueue (insert) and dequeue (delete)."
+    },
+    {
+      question: "What is a circular queue?",
+      answer: "A circular queue connects the last position back to the first, making use of all available space."
+    },
+    {
+      question: "What is a priority queue?",
+      answer: "A priority queue is a special queue where each element has a priority, and higher priority elements are served first."
+    },
+    {
+      question: "What is a doubly linked list?",
+      answer: "A doubly linked list is a list where each node has pointers to both the next and previous nodes."
+    },
+    {
+      question: "What is a circular linked list?",
+      answer: "In a circular linked list, the last node points back to the first node forming a circle."
+    },
+    {
+      question: "What is the difference between stack and queue?",
+      answer: "Stack uses LIFO order while queue uses FIFO order."
+    },
+    {
+      question: "What is a hash table?",
+      answer: "A hash table stores data in key-value pairs using a hash function to compute an index for each key."
+    },
+    {
+      question: "What is a hash collision?",
+      answer: "A collision occurs when two different keys produce the same hash index."
+    },
+    {
+      question: "How are collisions handled in hashing?",
+      answer: "Collisions can be handled using chaining, linear probing, or double hashing."
+    },
+    {
+      question: "What is the difference between linear and non-linear data structures?",
+      answer: "In linear structures, elements are arranged sequentially; in non-linear structures, elements are hierarchical (like trees)."
+    },
+    {
+      question: "What is Big O notation?",
+      answer: "Big O notation represents the time or space complexity of an algorithm in the worst case."
+    },
+    {
+      question: "What is time complexity?",
+      answer: "Time complexity measures the amount of time an algorithm takes based on input size."
+    },
+    {
+      question: "What is space complexity?",
+      answer: "Space complexity measures the amount of memory used by an algorithm."
+    },
+    {
+      question: "What is recursion?",
+      answer: "Recursion is a technique where a function calls itself until a base condition is met."
+    },
+    {
+      question: "What are advantages of recursion?",
+      answer: "Recursion simplifies problems like factorial, Fibonacci, and tree traversal."
+    },
+    {
+      question: "What are disadvantages of recursion?",
+      answer: "Recursion consumes more memory and may lead to stack overflow if not handled properly."
+    },
+    {
+      question: "What is linear search?",
+      answer: "Linear search checks each element sequentially until the target is found."
+    },
+    {
+      question: "What is binary search?",
+      answer: "Binary search divides the array into halves and eliminates one half on each iteration; works only on sorted arrays."
+    },
+    {
+      question: "What is sorting?",
+      answer: "Sorting arranges data in a specific order, such as ascending or descending."
+    }
+  ],
+
+  // ===== BASIC DATA STRUCTURE SET 2 =====
+  basic_data_structure_2: [
+    {
+      question: "What are common sorting algorithms?",
+      answer: "Common algorithms include Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, and Quick Sort."
+    },
+    {
+      question: "What is Bubble Sort?",
+      answer: "Bubble Sort repeatedly swaps adjacent elements if they are in the wrong order."
+    },
+    {
+      question: "What is Insertion Sort?",
+      answer: "Insertion Sort builds the final sorted array by inserting each element in its correct position."
+    },
+    {
+      question: "What is Selection Sort?",
+      answer: "Selection Sort repeatedly selects the smallest element and places it in the correct position."
+    },
+    {
+      question: "What is Merge Sort?",
+      answer: "Merge Sort divides the array into halves, sorts each, and merges them back together."
+    },
+    {
+      question: "What is Quick Sort?",
+      answer: "Quick Sort partitions the array using a pivot element and sorts subarrays recursively."
+    },
+    {
+      question: "What is Heap Sort?",
+      answer: "Heap Sort builds a heap and repeatedly extracts the maximum (or minimum) element to sort data."
+    },
+    {
+      question: "What is a binary tree?",
+      answer: "A binary tree is a hierarchical data structure where each node has at most two children — left and right."
+    },
+    {
+      question: "What is a binary search tree (BST)?",
+      answer: "A BST is a tree where the left child is smaller and the right child is larger than the parent node."
+    },
+    {
+      question: "What is tree traversal?",
+      answer: "Tree traversal is the process of visiting each node once using methods like inorder, preorder, or postorder."
+    },
+    {
+      question: "What is inorder traversal?",
+      answer: "Inorder traversal visits nodes in the order: left → root → right."
+    },
+    {
+      question: "What is preorder traversal?",
+      answer: "Preorder traversal visits nodes in the order: root → left → right."
+    },
+    {
+      question: "What is postorder traversal?",
+      answer: "Postorder traversal visits nodes in the order: left → right → root."
+    },
+    {
+      question: "What is level order traversal?",
+      answer: "Level order traversal visits nodes level by level using a queue."
+    },
+    {
+      question: "What is a balanced binary tree?",
+      answer: "A tree in which the height difference between left and right subtrees of every node is at most one."
+    },
+    {
+      question: "What is an AVL tree?",
+      answer: "An AVL tree is a self-balancing binary search tree where the balance factor is maintained as -1, 0, or 1."
+    },
+    {
+      question: "What is a heap?",
+      answer: "A heap is a complete binary tree used to implement priority queues efficiently."
+    },
+    {
+      question: "What is a min heap?",
+      answer: "A min heap is a heap where the parent node is always smaller than or equal to its children."
+    },
+    {
+      question: "What is a max heap?",
+      answer: "A max heap is a heap where the parent node is always larger than or equal to its children."
+    },
+    {
+      question: "What are graphs?",
+      answer: "A graph is a collection of nodes (vertices) connected by edges, used to represent networks."
+    },
+    {
+      question: "What are directed and undirected graphs?",
+      answer: "In directed graphs, edges have direction; in undirected graphs, edges are bidirectional."
+    },
+    {
+      question: "What is a weighted graph?",
+      answer: "A weighted graph has edges associated with weights representing costs or distances."
+    },
+    {
+      question: "What is BFS (Breadth-First Search)?",
+      answer: "BFS explores neighbors level by level using a queue."
+    },
+    {
+      question: "What is DFS (Depth-First Search)?",
+      answer: "DFS explores as far as possible along a branch before backtracking, usually using recursion or a stack."
+    },
+    {
+      question: "What is adjacency matrix?",
+      answer: "An adjacency matrix is a 2D array used to represent edges between vertices in a graph."
+    },
+    {
+      question: "What is adjacency list?",
+      answer: "An adjacency list represents a graph as an array of linked lists, storing neighbors of each vertex."
+    },
+    {
+      question: "What is topological sorting?",
+      answer: "Topological sorting orders vertices in a directed acyclic graph (DAG) such that each edge goes from earlier to later."
+    },
+    {
+      question: "What is a spanning tree?",
+      answer: "A spanning tree connects all vertices of a graph with minimum possible edges and no cycles."
+    },
+    {
+      question: "What is Kruskal’s algorithm?",
+      answer: "Kruskal’s algorithm finds a minimum spanning tree by adding edges in increasing order of weight."
+    },
+    {
+      question: "What is Prim’s algorithm?",
+      answer: "Prim’s algorithm builds a minimum spanning tree by adding the smallest edge that connects a new vertex."
+    }
+  ],
+
+  // ===== BASIC DATA STRUCTURE SET 3 =====
+  basic_data_structure_3: [
+    {
+      question: "What is Dijkstra’s algorithm?",
+      answer: "Dijkstra’s algorithm finds the shortest path from a source node to all other nodes in a weighted graph."
+    },
+    {
+      question: "What is Bellman-Ford algorithm?",
+      answer: "Bellman-Ford also finds shortest paths but works with graphs having negative weights."
+    },
+    {
+      question: "What is Floyd-Warshall algorithm?",
+      answer: "Floyd-Warshall finds shortest paths between all pairs of vertices in a weighted graph."
+    },
+    {
+      question: "What is dynamic programming?",
+      answer: "Dynamic programming solves problems by breaking them into overlapping subproblems and storing results."
+    },
+    {
+      question: "What is divide and conquer?",
+      answer: "It’s a paradigm that divides a problem into smaller parts, solves them recursively, and combines results."
+    },
+    {
+      question: "What is a trie data structure?",
+      answer: "A trie is a tree-like data structure used for efficient storage and retrieval of strings, such as in dictionaries."
+    },
+    {
+      question: "What is a disjoint set?",
+      answer: "A disjoint set keeps track of elements partitioned into non-overlapping subsets using union and find operations."
+    },
+    {
+      question: "What is path compression in union-find?",
+      answer: "Path compression flattens the tree structure for faster subsequent find operations."
+    },
+    {
+      question: "What is hashing used for?",
+      answer: "Hashing is used to map data to a fixed-size value for fast access and retrieval."
+    },
+    {
+      question: "What is load factor in hashing?",
+      answer: "Load factor is the ratio of the number of stored elements to the table size, affecting performance."
+    },
+    {
+      question: "What is rehashing?",
+      answer: "Rehashing resizes the hash table and recalculates hash indices to reduce collisions."
+    },
+    {
+      question: "What is the difference between BFS and DFS?",
+      answer: "BFS uses a queue and explores level by level; DFS uses recursion or stack and goes deep first."
+    },
+    {
+      question: "What is a self-balancing tree?",
+      answer: "A self-balancing tree automatically maintains its height after insertions and deletions for efficiency."
+    },
+    {
+      question: "What is a red-black tree?",
+      answer: "A red-black tree is a balanced binary search tree with additional color properties ensuring balance."
+    },
+    {
+      question: "What is a B-tree?",
+      answer: "A B-tree is a self-balancing search tree commonly used in databases and file systems."
+    },
+    {
+      question: "What is a B+ tree?",
+      answer: "B+ tree is an extension of B-tree with all data stored in leaf nodes and linked sequentially."
+    },
+    {
+      question: "What is a heap overflow?",
+      answer: "A heap overflow occurs when a program writes more data to a heap block than allocated."
+    },
+    {
+      question: "What is stack overflow?",
+      answer: "Stack overflow occurs when a program uses more stack memory than available, often due to deep recursion."
+    },
+    {
+      question: "What is amortized analysis?",
+      answer: "Amortized analysis calculates the average time per operation over a sequence of operations."
+    },
+    {
+      question: "What is a deque?",
+      answer: "A deque (double-ended queue) allows insertion and deletion from both ends."
+    },
+    {
+      question: "What is a priority queue implemented with?",
+      answer: "Priority queues are often implemented using heaps."
+    },
+    {
+      question: "What is circular buffer?",
+      answer: "A circular buffer uses fixed memory that wraps around when it reaches the end."
+    },
+    {
+      question: "What is sparse matrix?",
+      answer: "A sparse matrix contains mostly zero values, stored efficiently using coordinate or CSR format."
+    },
+    {
+      question: "What is a segment tree?",
+      answer: "A segment tree is a binary tree used for range queries and updates in logarithmic time."
+    },
+    {
+      question: "What is a Fenwick tree?",
+      answer: "A Fenwick tree (Binary Indexed Tree) supports efficient prefix sum and update operations."
+    },
+    {
+      question: "What is top-down vs bottom-up approach?",
+      answer: "Top-down uses recursion with memoization; bottom-up builds the solution iteratively."
+    },
+    {
+      question: "What is recursion tree method?",
+      answer: "It visualizes recursive calls as a tree structure for complexity analysis."
+    },
+    {
+      question: "What are graphs used for in real life?",
+      answer: "Graphs are used in social networks, maps, recommendation systems, and network routing."
+    },
+    {
+      question: "What is the adjacency representation of graphs?",
+      answer: "It can be represented using adjacency lists or matrices for storing relationships between vertices."
+    },
+    {
+      question: "What is the importance of data structures?",
+      answer: "Data structures improve efficiency, scalability, and organization of data for problem-solving."
+    }
   ]
 };

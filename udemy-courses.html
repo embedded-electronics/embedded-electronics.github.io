@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Electronics — Courses</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .course-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+    .course-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .course-card .content {
+      padding: 15px;
+    }
+    .course-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .course-card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .course-card a {
+      display: inline-block;
+      background: #ff5722;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .course-card a:hover {
+      background: #e64a19;
+    }
+
+    /* ⭐ Rating */
+    .rating {
+      display: inline-block;
+      color: #ff9800;
+      font-size: 13px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .rating span {
+      color: #333;
+      font-size: 13px;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Embedded Electronics" class="brand-logo" /> <!-- MODIFY HERE -->
+     <!-- <span class="brand-name">Embedded Electronics</span>  -->
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a class="active" href="course.html">Courses</a>
+      <a href="ebooks.html">E-Books</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="typing-game.html">Typing Test</a>
+      <a href="interview.html">Interview</a>
+      <a href="iq-test.html">IQ Test</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+  <!-- Main Section -->
+  <main class="container page">
+    <h1>🎓 Popular YouTube Courses</h1>
+    <p>Browse some popular YouTube courses below.</p>
+
+    <section class="courses-grid">
+      <!-- Sample course cards -->
+     <!-- YouTube Example -->
+      <article class="course-card youtube">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Python for Beginners (Full Course) @CodeWithHarry</h3>
+          <p>Python tutorial in Hindi for absolute beginners to advanced, covering all core concepts step by step.</p>
+          <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank">Watch on YouTube</a>
+        </div>
+      </article>
+
+      <article class="course-card youtube">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Python for Beginners (Full Course) @CodeWithHarry</h3>
+          <p>Python tutorial in Hindi for absolute beginners to advanced, covering all core concepts step by step.</p>
+          <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank">Watch on YouTube</a>
+        </div>
+      </article>
+
+      <article class="course-card youtube">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Python for Beginners (Full Course) @CodeWithHarry</h3>
+          <p>Python tutorial in Hindi for absolute beginners to advanced, covering all core concepts step by step.</p>
+          <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank">Watch on YouTube</a>
+        </div>
+      </article>
+
+      <article class="course-card youtube">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Python for Beginners (Full Course) @CodeWithHarry</h3>
+          <p>Python tutorial in Hindi for absolute beginners to advanced, covering all core concepts step by step.</p>
+          <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank">Watch on YouTube</a>
+        </div>
+      </article>
+
+      <article class="course-card youtube">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Python for Beginners (Full Course) @CodeWithHarry</h3>
+          <p>Python tutorial in Hindi for absolute beginners to advanced, covering all core concepts step by step.</p>
+          <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank">Watch on YouTube</a>
+        </div>
+      </article>
+
+      <article class="course-card youtube">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Python for Beginners (Full Course) @CodeWithHarry</h3>
+          <p>Python tutorial in Hindi for absolute beginners to advanced, covering all core concepts step by step.</p>
+          <a href="https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank">Watch on YouTube</a>
+        </div>
+      </article>
+
+  </main>
+
+  <!-- Main Udemy Section -->
+  <main class="container page">
+    <h1>🎓 Free Udemy Courses</h1>
+    <p>Browse some popular free Udemy courses below.</p>
+
+    <section class="courses-grid">
+      <!-- Sample course cards -->
+      <article class="course-card">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Introduction To Python Programming</h3>
+          <p>A Quick and Easy Intro to Python Programming.</p>
+          <a href="https://www.udemy.com/course/pythonforbeginnersintro/" target="_blank">Enroll Free</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span>4.5 (73,740 ratings)</span></div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Introduction To Python Programming</h3>
+          <p>A Quick and Easy Intro to Python Programming.</p>
+          <a href="https://www.udemy.com/course/pythonforbeginnersintro/" target="_blank">Enroll Free</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span>4.5 (73,740 ratings)</span></div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Introduction To Python Programming</h3>
+          <p>A Quick and Easy Intro to Python Programming.</p>
+          <a href="https://www.udemy.com/course/pythonforbeginnersintro/" target="_blank">Enroll Free</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span>4.5 (73,740 ratings)</span></div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Introduction To Python Programming</h3>
+          <p>A Quick and Easy Intro to Python Programming.</p>
+          <a href="https://www.udemy.com/course/pythonforbeginnersintro/" target="_blank">Enroll Free</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span>4.5 (73,740 ratings)</span></div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Introduction To Python Programming</h3>
+          <p>A Quick and Easy Intro to Python Programming.</p>
+          <a href="https://www.udemy.com/course/pythonforbeginnersintro/" target="_blank">Enroll Free</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span>4.5 (73,740 ratings)</span></div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/python_udemy-1280x720-1.png" alt="Python Programming">
+        <div class="content">
+          <h3>Introduction To Python Programming</h3>
+          <p>A Quick and Easy Intro to Python Programming.</p>
+          <a href="https://www.udemy.com/course/pythonforbeginnersintro/" target="_blank">Enroll Free</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span>4.5 (73,740 ratings)</span></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Embedded Electronics</p>
+    </div>
+  </footer>
+
+  <script>
+    // Auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

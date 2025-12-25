@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WhatsApp Message | Embedded Electronics</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .whatsapp-box {
+      max-width: 420px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .whatsapp-box h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .whatsapp-box input,
+    .whatsapp-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .whatsapp-box button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      background: #25D366;
+      color: #fff;
+      font-size: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .whatsapp-box button:hover {
+      background: #1ebe5d;
+    }
+
+    .whatsapp-note {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Header (SAME AS YOUR SITE) -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Embedded Electronics" class="brand-logo" />
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="whatsapp.html">WhatsApp</a>
+      <a href="ebooks.html">E-Books</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="blog.html">Blog</a>
+      <a href="typing-game.html">Typing Test</a>
+      <a href="interview.html">Interview</a>
+      <a href="iq-test.html">IQ Test</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Section -->
+<main class="container page">
+  <h1>📲 WhatsApp Message</h1>
+  <p>Send a quick WhatsApp message to connect with us.</p>
+
+  <div class="whatsapp-box">
+    <h2>Chat on WhatsApp</h2>
+
+    <input type="text" id="phone" placeholder="Enter phone number (91XXXXXXXXXX)">
+
+    <textarea id="message" rows="5">
+Hello 👋
+I am interested in Embedded Electronics courses.
+Please share more details.
+    </textarea>
+
+    <button onclick="sendWhatsApp()">Send via WhatsApp</button>
+
+    <div class="whatsapp-note">
+      WhatsApp Web / App will open. Click Send to continue.
+    </div>
+  </div>
+</main>
+
+<!-- Footer (SAME AS YOUR SITE) -->
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Embedded Electronics</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function sendWhatsApp() {
+    let phone = document.getElementById("phone").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if (!phone || !message) {
+      alert("Please enter phone number and message");
+      return;
+    }
+
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+  }
+</script>
+
+</body>
+</html>

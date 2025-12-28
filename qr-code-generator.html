@@ -22,7 +22,6 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 15px;
 }
 
 select, input, button {
@@ -40,8 +39,9 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background: #0d47a1;
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
 }
 
 .qr-box {
@@ -58,6 +58,12 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
 }
 </style>
 </head>
@@ -76,50 +82,49 @@ button:hover {
   <option value="upi">UPI Payment</option>
 </select>
 
-<!-- Common -->
 <input id="main" placeholder="Enter text or URL">
 
-<!-- WhatsApp -->
-<input id="wa" class="hidden" placeholder="WhatsApp Number (with country code)">
-
-<!-- Email -->
+<input id="wa" class="hidden" placeholder="WhatsApp number (country code)">
 <input id="email" class="hidden" placeholder="Email address">
 <input id="subject" class="hidden" placeholder="Email subject">
-
-<!-- Phone -->
 <input id="phone" class="hidden" placeholder="Phone number">
-
-<!-- WiFi -->
-<input id="ssid" class="hidden" placeholder="Wi-Fi Name (SSID)">
-<input id="pass" class="hidden" placeholder="Wi-Fi Password">
-
-<!-- UPI -->
+<input id="ssid" class="hidden" placeholder="Wi-Fi SSID">
+<input id="pass" class="hidden" placeholder="Wi-Fi password">
 <input id="upi" class="hidden" placeholder="UPI ID (example@bank)">
-<input id="name" class="hidden" placeholder="Payee Name">
+<input id="name" class="hidden" placeholder="Payee name">
 <input id="amount" class="hidden" placeholder="Amount (optional)">
 
+<div id="error" class="error"></div>
+
 <button onclick="generateQR()">Generate QR</button>
-<button onclick="downloadQR()">Download QR</button>
+<button id="downloadBtn" onclick="downloadQR()" disabled>Download QR</button>
 
 <div class="qr-box">
   <canvas id="qr"></canvas>
 </div>
 
 <div class="note">
-  Professional • Secure • GitHub Pages Compatible
+  QR is generated only after valid input
 </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 
 <script>
-let qr = new QRious({
+const qr = new QRious({
   element: document.getElementById("qr"),
   size: 240
 });
 
+let isGenerated = false;
+
 function updateFields() {
   document.querySelectorAll("input").forEach(i => i.classList.add("hidden"));
+  error.textContent = "";
+  downloadBtn.disabled = true;
+  isGenerated = false;
+  qr.value = "";
+
   let t = type.value;
 
   if (t === "text") main.classList.remove("hidden");
@@ -144,24 +149,52 @@ function generateQR() {
   let t = type.value;
   let value = "";
 
-  if (t === "text") value = main.value;
-  if (t === "whatsapp") value = "https://wa.me/" + wa.value;
-  if (t === "email") value = `mailto:${email.value}?subject=${subject.value}`;
-  if (t === "phone") value = "tel:" + phone.value;
-  if (t === "wifi")
-    value = `WIFI:T:WPA;S:${ssid.value};P:${pass.value};;`;
-  if (t === "upi")
-    value = `upi://pay?pa=${upi.value}&pn=${name.value}&am=${amount.value}`;
+  error.textContent = "";
 
-  if (!value) {
-    alert("Please fill required fields");
-    return;
+  if (t === "text") {
+    if (!main.value.trim()) return showError("Text or URL required");
+    value = main.value.trim();
+  }
+
+  if (t === "whatsapp") {
+    if (!/^\d{10,15}$/.test(wa.value)) return showError("Invalid WhatsApp number");
+    value = "https://wa.me/" + wa.value;
+  }
+
+  if (t === "email") {
+    if (!/^\S+@\S+\.\S+$/.test(email.value)) return showError("Invalid email");
+    value = `mailto:${email.value}?subject=${subject.value}`;
+  }
+
+  if (t === "phone") {
+    if (!/^\+?\d{7,15}$/.test(phone.value)) return showError("Invalid phone number");
+    value = "tel:" + phone.value;
+  }
+
+  if (t === "wifi") {
+    if (!ssid.value.trim()) return showError("Wi-Fi SSID required");
+    value = `WIFI:T:WPA;S:${ssid.value};P:${pass.value};;`;
+  }
+
+  if (t === "upi") {
+    if (!/^[\w.-]+@[\w.-]+$/.test(upi.value))
+      return showError("Invalid UPI ID");
+    value = `upi://pay?pa=${upi.value}&pn=${name.value}&am=${amount.value}`;
   }
 
   qr.value = value;
+  isGenerated = true;
+  downloadBtn.disabled = false;
+}
+
+function showError(msg) {
+  error.textContent = msg;
+  return;
 }
 
 function downloadQR() {
+  if (!isGenerated) return;
+
   let link = document.createElement("a");
   link.download = "qr-code.png";
   link.href = qr.element.toDataURL();

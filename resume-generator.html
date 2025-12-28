@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resume Generator | Embedded Electronics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ===== FORM ===== */
+.form-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-box h2 {
+  margin-bottom: 10px;
+}
+
+input, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0d47a1;
+}
+
+/* ===== RESUME ===== */
+.resume {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  min-height: 100%;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.title {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.section h3 {
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  color: #1976d2;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+/* PRINT */
+@media print {
+  body {
+    background: #fff;
+  }
+  .form-box {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- INPUT FORM -->
+<div class="form-box">
+<h2>📝 Resume Details</h2>
+
+<input id="name" placeholder="Full Name">
+<input id="role" placeholder="Job Title / Role">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+<input id="location" placeholder="Location">
+
+<textarea id="summary" placeholder="Professional Summary"></textarea>
+<textarea id="skills" placeholder="Skills (comma separated)"></textarea>
+<textarea id="experience" placeholder="Experience (one per line)"></textarea>
+<textarea id="education" placeholder="Education (one per line)"></textarea>
+<textarea id="projects" placeholder="Projects (one per line)"></textarea>
+
+<button onclick="generateResume()">Update Resume</button>
+<button onclick="window.print()">Print / Download PDF</button>
+</div>
+
+<!-- RESUME PREVIEW -->
+<div class="resume" id="resume">
+  <div class="name">Your Name</div>
+  <div class="title">Your Job Title</div>
+  <div id="contact"></div>
+
+  <div class="section">
+    <h3>Summary</h3>
+    <p id="r_summary">Professional summary goes here.</p>
+  </div>
+
+  <div class="section">
+    <h3>Skills</h3>
+    <ul id="r_skills"></ul>
+  </div>
+
+  <div class="section">
+    <h3>Experience</h3>
+    <ul id="r_experience"></ul>
+  </div>
+
+  <div class="section">
+    <h3>Education</h3>
+    <ul id="r_education"></ul>
+  </div>
+
+  <div class="section">
+    <h3>Projects</h3>
+    <ul id="r_projects"></ul>
+  </div>
+</div>
+
+</div>
+
+<script>
+function generateResume() {
+  document.querySelector(".name").textContent =
+    name.value || "Your Name";
+  document.querySelector(".title").textContent =
+    role.value || "Your Job Title";
+
+  document.getElementById("contact").innerHTML =
+    `${email.value || ""} | ${phone.value || ""} | ${location.value || ""}`;
+
+  r_summary.textContent =
+    summary.value || "Professional summary goes here.";
+
+  setList("skills", "r_skills", ",");
+  setList("experience", "r_experience", "\n");
+  setList("education", "r_education", "\n");
+  setList("projects", "r_projects", "\n");
+}
+
+function setList(inputId, outputId, splitBy) {
+  let data = document.getElementById(inputId).value;
+  let ul = document.getElementById(outputId);
+  ul.innerHTML = "";
+
+  if (!data) return;
+
+  data.split(splitBy).forEach(item => {
+    let li = document.createElement("li");
+    li.textContent = item.trim();
+    ul.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>

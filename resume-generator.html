@@ -97,18 +97,18 @@ li {
 <div class="form">
 <h2>📝 Resume Details</h2>
 
-<input id="name" placeholder="Full Name" oninput="updateResume()">
-<input id="email" placeholder="Email">
-<input id="phone" placeholder="Mobile">
+<input id="fullNameInput" placeholder="Full Name" oninput="updateResume()">
+<input id="emailInput" placeholder="Email">
+<input id="phoneInput" placeholder="Mobile">
 
-<textarea id="objective" placeholder="Career Objective"></textarea>
+<textarea id="objectiveInput" placeholder="Career Objective"></textarea>
 
-<textarea id="experience" placeholder="Professional Experience (one point per line)"></textarea>
-<textarea id="education" placeholder="Education / Scholastic (one point per line)"></textarea>
-<textarea id="skills" placeholder="Summary of Skills (one per line)"></textarea>
-<textarea id="extra" placeholder="Extra Curriculum (one per line)"></textarea>
-<textarea id="it" placeholder="IT Skills (one per line)"></textarea>
-<textarea id="personal" placeholder="Personal Details (Gender, DOB, Languages, Address – one per line)"></textarea>
+<textarea id="experienceInput" placeholder="Professional Experience (one point per line)"></textarea>
+<textarea id="educationInput" placeholder="Education / Scholastic (one point per line)"></textarea>
+<textarea id="skillsInput" placeholder="Summary of Skills (one per line)"></textarea>
+<textarea id="extraInput" placeholder="Extra Curriculum (one point per line)"></textarea>
+<textarea id="itInput" placeholder="IT Skills (one per line)"></textarea>
+<textarea id="personalInput" placeholder="Personal Details (one per line)"></textarea>
 
 <button onclick="updateResume()">Update Resume</button>
 <button onclick="downloadPDF()">Download as PDF</button>
@@ -117,45 +117,45 @@ li {
 <!-- ================= RESUME ================= -->
 <div class="resume" id="resume">
 
-<h1 id="r_name">Your Name</h1>
+<h1 id="resumeName">Your Name</h1>
 
-<div class="contact" id="r_contact">
+<div class="contact" id="resumeContact">
 E-Mail: example@gmail.com<br>
 Mobile: +91 XXXXXXXX
 </div>
 
-<p id="r_objective">
+<p id="resumeObjective">
 Seeking an industry to enhance my skills and where my talent is best put to use.
 </p>
 
 <div class="section">
 <h3>PROFESSIONAL EXPERIENCE</h3>
-<ul id="r_experience"></ul>
+<ul id="resumeExperience"></ul>
 </div>
 
 <div class="section">
 <h3>SCHOLASTIC</h3>
-<ul id="r_education"></ul>
+<ul id="resumeEducation"></ul>
 </div>
 
 <div class="section">
 <h3>SUMMARY OF SKILLS</h3>
-<ul id="r_skills"></ul>
+<ul id="resumeSkills"></ul>
 </div>
 
 <div class="section">
 <h3>EXTRA CURRICULUM</h3>
-<ul id="r_extra"></ul>
+<ul id="resumeExtra"></ul>
 </div>
 
 <div class="section">
 <h3>IT SKILLS</h3>
-<ul id="r_it"></ul>
+<ul id="resumeIT"></ul>
 </div>
 
 <div class="section">
 <h3>PERSONAL SNIPPETS</h3>
-<ul id="r_personal"></ul>
+<ul id="resumePersonal"></ul>
 </div>
 
 <div class="section">
@@ -165,7 +165,7 @@ I hereby declare that all the information given above is true to the best of my 
 <p>
 Date: _____________<br>
 Place: ___________<br><br>
-(<span id="r_sign">Your Name</span>)
+(<span id="resumeSign">Your Name</span>)
 </p>
 </div>
 
@@ -178,20 +178,26 @@ Place: ___________<br><br>
 
 <script>
 function updateResume() {
-  r_name.textContent = name.value || "Your Name";
-  r_sign.textContent = name.value || "Your Name";
+  const fullName = document.getElementById("fullNameInput").value.trim();
 
-  r_contact.innerHTML =
-    `E-Mail: ${email.value || ""}<br>Mobile: ${phone.value || ""}`;
+  document.getElementById("resumeName").textContent =
+    fullName || "Your Name";
 
-  r_objective.textContent = objective.value || "";
+  document.getElementById("resumeSign").textContent =
+    fullName || "Your Name";
 
-  setList("experience", "r_experience");
-  setList("education", "r_education");
-  setList("skills", "r_skills");
-  setList("extra", "r_extra");
-  setList("it", "r_it");
-  setList("personal", "r_personal");
+  document.getElementById("resumeContact").innerHTML =
+    `E-Mail: ${emailInput.value || ""}<br>Mobile: ${phoneInput.value || ""}`;
+
+  document.getElementById("resumeObjective").textContent =
+    objectiveInput.value || "";
+
+  setList("experienceInput", "resumeExperience");
+  setList("educationInput", "resumeEducation");
+  setList("skillsInput", "resumeSkills");
+  setList("extraInput", "resumeExtra");
+  setList("itInput", "resumeIT");
+  setList("personalInput", "resumePersonal");
 }
 
 function setList(inputId, outputId) {
@@ -247,3 +253,4 @@ async function downloadPDF() {
 
 </body>
 </html>
+

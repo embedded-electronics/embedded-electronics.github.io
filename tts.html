@@ -159,9 +159,7 @@ function playTTS() {
 /* ================= DOWNLOAD WAV (WORKING) ================= */
 async function downloadWAV() {
   alert(
-    "Note:\n" +
-    "Browser security blocks direct MP3 export.\n" +
-    "WAV download works reliably on all systems."
+    "Are you sure to download the audio?"
   );
 
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });

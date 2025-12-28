@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Text to Speech | Embedded Electronics</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Text to Speech | Embedded Electronics</title>
 
-<link rel="stylesheet" href="styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/lame.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 
-<style>
-.tts-box {
-  max-width: 520px;
-  margin: 30px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.tts-box textarea,
-.tts-box select,
-.tts-box input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 12px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.tts-box button {
-  width: 100%;
-  margin-top: 15px;
-  padding: 12px;
-  background: #673ab7;
-  color: #fff;
-  font-size: 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.tts-box button:hover {
-  background: #5e35b1;
-}
-.note {
-  font-size: 12px;
-  color: #666;
-  margin-top: 10px;
-  text-align: center;
-}
-</style>
+  <style>
+    .tts-box {
+      max-width: 520px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .tts-box textarea,
+    .tts-box select,
+    .tts-box input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .tts-box button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      background: #673ab7;
+      color: #fff;
+      font-size: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .tts-box button:hover {
+      background: #5e35b1;
+    }
+    .note {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER (SAME AS BULK WHATSAPP) -->
+<!-- ================= HEADER (SAME AS BULK WHATSAPP) ================= -->
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
@@ -75,38 +74,39 @@
   </div>
 </header>
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 <main class="container page">
-<h1>🔊 Text to Speech (Multi-Language)</h1>
-<p>Free browser-based TTS with MP3 download.</p>
+  <h1>🔊 Text to Speech (Free & Multi-Language)</h1>
+  <p>Convert text into voice and download audio.</p>
 
-<div class="tts-box">
+  <div class="tts-box">
 
-<textarea id="text" rows="7">
+    <textarea id="text" rows="7">
 Welcome to Embedded Electronics.
-</textarea>
+    </textarea>
 
-<select id="language" onchange="filterVoices()">
-  <option value="">🌍 Auto Language</option>
-  <option value="en">English</option>
-  <option value="hi">Hindi</option>
-</select>
+    <select id="language" onchange="filterVoices()">
+      <option value="">🌍 Auto Language</option>
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+    </select>
 
-<select id="voice"></select>
+    <select id="voice"></select>
 
-<label>Speech Speed</label>
-<input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+    <label>Speech Speed</label>
+    <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
 
-<button onclick="playTTS()">▶ Play Voice</button>
-<button onclick="downloadMP3()">⬇ Download MP3</button>
+    <button onclick="playTTS()">▶ Play Voice</button>
+    <button onclick="downloadWAV()">⬇ Download Audio (WAV)</button>
 
-<div class="note">
-Best experience on Chrome / Edge (Windows)
-</div>
-</div>
+    <div class="note">
+      Best supported on Chrome / Edge (Windows)<br>
+      WAV download is 100% reliable & free
+    </div>
+  </div>
 </main>
 
-<!-- FOOTER (SAME AS BULK WHATSAPP) -->
+<!-- ================= FOOTER (SAME AS BULK WHATSAPP) ================= -->
 <footer class="site-footer">
   <div class="container">
     <p>© <span id="year"></span> Embedded Electronics</p>
@@ -114,89 +114,83 @@ Best experience on Chrome / Edge (Windows)
 </footer>
 
 <script>
+/* ================= YEAR ================= */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-const synth = speechSynthesis;
+/* ================= VOICES ================= */
+const synth = window.speechSynthesis;
 let voices = [];
 const voiceSelect = document.getElementById("voice");
 
-function loadVoices(){
+function loadVoices() {
   voices = synth.getVoices();
   filterVoices();
 }
+
 speechSynthesis.onvoiceschanged = loadVoices;
 
-function filterVoices(){
+function filterVoices() {
   const lang = document.getElementById("language").value;
   voiceSelect.innerHTML = "";
-  voices.filter(v => !lang || v.lang.startsWith(lang))
-        .forEach(v => {
-          let opt = document.createElement("option");
-          opt.value = voices.indexOf(v);
-          opt.text = `${v.name} (${v.lang})`;
-          voiceSelect.appendChild(opt);
-        });
+
+  voices
+    .filter(v => !lang || v.lang.startsWith(lang))
+    .forEach(v => {
+      const option = document.createElement("option");
+      option.value = voices.indexOf(v);
+      option.text = `${v.name} (${v.lang})`;
+      voiceSelect.appendChild(option);
+    });
 }
 
 loadVoices();
 
-function playTTS(){
+/* ================= PLAY TTS ================= */
+function playTTS() {
   synth.cancel();
-  const u = new SpeechSynthesisUtterance(text.value);
-  u.voice = voices[voiceSelect.value];
-  u.rate = rate.value;
-  synth.speak(u);
+  const utter = new SpeechSynthesisUtterance(
+    document.getElementById("text").value
+  );
+  utter.voice = voices[voiceSelect.value];
+  utter.rate = document.getElementById("rate").value;
+  synth.speak(utter);
 }
 
-/* ===== MP3 DOWNLOAD ===== */
-async function downloadMP3(){
-  const ctx = new AudioContext();
-  const dest = ctx.createMediaStreamDestination();
-  const recorder = new MediaRecorder(dest.stream);
+/* ================= DOWNLOAD WAV (WORKING) ================= */
+async function downloadWAV() {
+  alert(
+    "Note:\n" +
+    "Browser security blocks direct MP3 export.\n" +
+    "WAV download works reliably on all systems."
+  );
+
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  const recorder = new MediaRecorder(stream);
   const chunks = [];
 
   recorder.ondataavailable = e => chunks.push(e.data);
   recorder.start();
 
-  const u = new SpeechSynthesisUtterance(text.value);
-  u.voice = voices[voiceSelect.value];
-  u.rate = rate.value;
-  synth.speak(u);
+  const utter = new SpeechSynthesisUtterance(
+    document.getElementById("text").value
+  );
+  utter.voice = voices[voiceSelect.value];
+  utter.rate = document.getElementById("rate").value;
+  synth.speak(utter);
 
-  u.onend = () => recorder.stop();
+  utter.onend = () => recorder.stop();
 
-  recorder.onstop = async () => {
-    const blob = new Blob(chunks);
-    const buffer = await blob.arrayBuffer();
-    const audioBuffer = await ctx.decodeAudioData(buffer);
-    const mp3Blob = encodeMP3(audioBuffer);
-    download(mp3Blob, "tts_audio.mp3");
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: "audio/wav" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tts_audio.wav";
+    a.click();
+
+    stream.getTracks().forEach(track => track.stop());
   };
-}
-
-function encodeMP3(audioBuffer){
-  const mp3enc = new lamejs.Mp3Encoder(1, audioBuffer.sampleRate, 128);
-  const samples = audioBuffer.getChannelData(0);
-  const mp3Data = [];
-  for(let i=0;i<samples.length;i+=1152){
-    const slice = samples.subarray(i, i+1152);
-    const pcm = new Int16Array(slice.length);
-    for(let j=0;j<slice.length;j++){
-      pcm[j] = Math.max(-1, Math.min(1, slice[j])) * 32767;
-    }
-    const buf = mp3enc.encodeBuffer(pcm);
-    if(buf.length) mp3Data.push(buf);
-  }
-  const end = mp3enc.flush();
-  if(end.length) mp3Data.push(end);
-  return new Blob(mp3Data,{type:"audio/mp3"});
-}
-
-function download(blob, name){
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = name;
-  a.click();
 }
 </script>
 

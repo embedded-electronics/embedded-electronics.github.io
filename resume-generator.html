@@ -48,7 +48,9 @@ button {
   cursor: pointer;
 }
 
-button:hover { background: #0d47a1; }
+button:hover {
+  background: #0d47a1;
+}
 
 /* ===== RESUME ===== */
 .resume {
@@ -91,13 +93,14 @@ li {
 
 <div class="wrapper">
 
-<!-- ===== FORM ===== -->
+<!-- ================= FORM ================= -->
 <div class="form">
 <h2>📝 Resume Details</h2>
 
-<input id="name" placeholder="Full Name">
+<input id="name" placeholder="Full Name" oninput="updateResume()">
 <input id="email" placeholder="Email">
 <input id="phone" placeholder="Mobile">
+
 <textarea id="objective" placeholder="Career Objective"></textarea>
 
 <textarea id="experience" placeholder="Professional Experience (one point per line)"></textarea>
@@ -105,73 +108,71 @@ li {
 <textarea id="skills" placeholder="Summary of Skills (one per line)"></textarea>
 <textarea id="extra" placeholder="Extra Curriculum (one per line)"></textarea>
 <textarea id="it" placeholder="IT Skills (one per line)"></textarea>
-
 <textarea id="personal" placeholder="Personal Details (Gender, DOB, Languages, Address – one per line)"></textarea>
 
 <button onclick="updateResume()">Update Resume</button>
 <button onclick="downloadPDF()">Download as PDF</button>
 </div>
 
-<!-- ===== RESUME PREVIEW ===== -->
+<!-- ================= RESUME ================= -->
 <div class="resume" id="resume">
-  <h1 id="r_name">Your Name</h1>
 
-  <div class="contact" id="r_contact">
-    E-Mail: example@gmail.com<br>
-    Mobile: +91 XXXXXXXX
-  </div>
+<h1 id="r_name">Your Name</h1>
 
-  <div class="section">
-    <p id="r_objective">
-      Seeking an industry to enhance my skills and where my talent is best put to use.
-    </p>
-  </div>
+<div class="contact" id="r_contact">
+E-Mail: example@gmail.com<br>
+Mobile: +91 XXXXXXXX
+</div>
 
-  <div class="section">
-    <h3>PROFESSIONAL EXPERIENCE</h3>
-    <ul id="r_experience"></ul>
-  </div>
+<p id="r_objective">
+Seeking an industry to enhance my skills and where my talent is best put to use.
+</p>
 
-  <div class="section">
-    <h3>SCHOLASTIC</h3>
-    <ul id="r_education"></ul>
-  </div>
+<div class="section">
+<h3>PROFESSIONAL EXPERIENCE</h3>
+<ul id="r_experience"></ul>
+</div>
 
-  <div class="section">
-    <h3>SUMMARY OF SKILLS</h3>
-    <ul id="r_skills"></ul>
-  </div>
+<div class="section">
+<h3>SCHOLASTIC</h3>
+<ul id="r_education"></ul>
+</div>
 
-  <div class="section">
-    <h3>EXTRA CURRICULUM</h3>
-    <ul id="r_extra"></ul>
-  </div>
+<div class="section">
+<h3>SUMMARY OF SKILLS</h3>
+<ul id="r_skills"></ul>
+</div>
 
-  <div class="section">
-    <h3>IT SKILLS</h3>
-    <ul id="r_it"></ul>
-  </div>
+<div class="section">
+<h3>EXTRA CURRICULUM</h3>
+<ul id="r_extra"></ul>
+</div>
 
-  <div class="section">
-    <h3>PERSONAL SNIPPETS</h3>
-    <ul id="r_personal"></ul>
-  </div>
+<div class="section">
+<h3>IT SKILLS</h3>
+<ul id="r_it"></ul>
+</div>
 
-  <div class="section">
-    <p>
-      I hereby declare that all the information given above is true to the best of my knowledge.
-    </p>
-    <p>
-      Date: _____________<br>
-      Place: ___________<br><br>
-      (<span id="r_sign">Your Name</span>)
-    </p>
-  </div>
+<div class="section">
+<h3>PERSONAL SNIPPETS</h3>
+<ul id="r_personal"></ul>
+</div>
+
+<div class="section">
+<p>
+I hereby declare that all the information given above is true to the best of my knowledge.
+</p>
+<p>
+Date: _____________<br>
+Place: ___________<br><br>
+(<span id="r_sign">Your Name</span>)
+</p>
 </div>
 
 </div>
+</div>
 
-<!-- PDF LIBRARIES -->
+<!-- ================= PDF LIBRARIES ================= -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
@@ -181,9 +182,9 @@ function updateResume() {
   r_sign.textContent = name.value || "Your Name";
 
   r_contact.innerHTML =
-    `E-Mail: ${email.value}<br>Mobile: ${phone.value}`;
+    `E-Mail: ${email.value || ""}<br>Mobile: ${phone.value || ""}`;
 
-  r_objective.textContent = objective.value;
+  r_objective.textContent = objective.value || "";
 
   setList("experience", "r_experience");
   setList("education", "r_education");
@@ -194,34 +195,55 @@ function updateResume() {
 }
 
 function setList(inputId, outputId) {
-  let input = document.getElementById(inputId).value;
-  let ul = document.getElementById(outputId);
+  const input = document.getElementById(inputId).value;
+  const ul = document.getElementById(outputId);
   ul.innerHTML = "";
+
   input.split("\n").forEach(line => {
     if (line.trim()) {
-      let li = document.createElement("li");
-      li.textContent = line;
+      const li = document.createElement("li");
+      li.textContent = line.trim();
       ul.appendChild(li);
     }
   });
 }
 
+/* ===== MULTI-PAGE PDF GENERATION ===== */
 async function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const resume = document.getElementById("resume");
 
-  const canvas = await html2canvas(resume, { scale: 2 });
+  const canvas = await html2canvas(resume, {
+    scale: 2,
+    useCORS: true
+  });
+
   const imgData = canvas.toDataURL("image/png");
 
   const pdf = new jsPDF("p", "mm", "a4");
-  const width = 210;
-  const height = (canvas.height * width) / canvas.width;
 
-  pdf.addImage(imgData, "PNG", 0, 0, width, height);
+  const pageWidth = 210;
+  const pageHeight = 297;
+
+  const imgWidth = pageWidth;
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  let heightLeft = imgHeight;
+  let position = 0;
+
+  pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+  heightLeft -= pageHeight;
+
+  while (heightLeft > 0) {
+    position = heightLeft - imgHeight;
+    pdf.addPage();
+    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+  }
+
   pdf.save("Resume.pdf");
 }
 </script>
 
 </body>
 </html>
-

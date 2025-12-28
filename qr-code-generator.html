@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QR Code Generator | Embedded Electronics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+}
+
+.container {
+  max-width: 420px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+select, input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0d47a1;
+}
+
+.qr-box {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.note {
+  font-size: 12px;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>🔳 QR Code Generator</h1>
+
+<select id="type" onchange="updateFields()">
+  <option value="text">Text / URL</option>
+  <option value="whatsapp">WhatsApp</option>
+  <option value="email">Email</option>
+  <option value="phone">Phone</option>
+  <option value="wifi">Wi-Fi</option>
+  <option value="upi">UPI Payment</option>
+</select>
+
+<!-- Common -->
+<input id="main" placeholder="Enter text or URL">
+
+<!-- WhatsApp -->
+<input id="wa" class="hidden" placeholder="WhatsApp Number (with country code)">
+
+<!-- Email -->
+<input id="email" class="hidden" placeholder="Email address">
+<input id="subject" class="hidden" placeholder="Email subject">
+
+<!-- Phone -->
+<input id="phone" class="hidden" placeholder="Phone number">
+
+<!-- WiFi -->
+<input id="ssid" class="hidden" placeholder="Wi-Fi Name (SSID)">
+<input id="pass" class="hidden" placeholder="Wi-Fi Password">
+
+<!-- UPI -->
+<input id="upi" class="hidden" placeholder="UPI ID (example@bank)">
+<input id="name" class="hidden" placeholder="Payee Name">
+<input id="amount" class="hidden" placeholder="Amount (optional)">
+
+<button onclick="generateQR()">Generate QR</button>
+<button onclick="downloadQR()">Download QR</button>
+
+<div class="qr-box">
+  <canvas id="qr"></canvas>
+</div>
+
+<div class="note">
+  Professional • Secure • GitHub Pages Compatible
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+<script>
+let qr = new QRious({
+  element: document.getElementById("qr"),
+  size: 240
+});
+
+function updateFields() {
+  document.querySelectorAll("input").forEach(i => i.classList.add("hidden"));
+  let t = type.value;
+
+  if (t === "text") main.classList.remove("hidden");
+  if (t === "whatsapp") wa.classList.remove("hidden");
+  if (t === "email") {
+    email.classList.remove("hidden");
+    subject.classList.remove("hidden");
+  }
+  if (t === "phone") phone.classList.remove("hidden");
+  if (t === "wifi") {
+    ssid.classList.remove("hidden");
+    pass.classList.remove("hidden");
+  }
+  if (t === "upi") {
+    upi.classList.remove("hidden");
+    name.classList.remove("hidden");
+    amount.classList.remove("hidden");
+  }
+}
+
+function generateQR() {
+  let t = type.value;
+  let value = "";
+
+  if (t === "text") value = main.value;
+  if (t === "whatsapp") value = "https://wa.me/" + wa.value;
+  if (t === "email") value = `mailto:${email.value}?subject=${subject.value}`;
+  if (t === "phone") value = "tel:" + phone.value;
+  if (t === "wifi")
+    value = `WIFI:T:WPA;S:${ssid.value};P:${pass.value};;`;
+  if (t === "upi")
+    value = `upi://pay?pa=${upi.value}&pn=${name.value}&am=${amount.value}`;
+
+  if (!value) {
+    alert("Please fill required fields");
+    return;
+  }
+
+  qr.value = value;
+}
+
+function downloadQR() {
+  let link = document.createElement("a");
+  link.download = "qr-code.png";
+  link.href = qr.element.toDataURL();
+  link.click();
+}
+
+updateFields();
+</script>
+
+</body>
+</html>

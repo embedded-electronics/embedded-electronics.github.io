@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Text to Speech | Embedded Electronics</title>
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+.tts-box {
+  max-width: 520px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.tts-box textarea,
+.tts-box select,
+.tts-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.tts-box button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: #673ab7;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.tts-box button:hover {
+  background: #5e35b1;
+}
+.note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<main class="container page">
+<h1>🔊 Text to Speech (Free & Multi-Language)</h1>
+<p>Convert text into voice and download audio.</p>
+
+<div class="tts-box">
+
+<textarea id="text" rows="7">
+Welcome to Embedded Electronics. Embedded Electronics is a platform for learning embedded systems, IoT, and electronics.
+</textarea>
+
+<select id="language" onchange="filterVoices()">
+  <option value="">🌍 Auto Language</option>
+  <option value="en">English</option>
+  <option value="hi">Hindi</option>
+</select>
+
+<select id="voice"></select>
+
+<label>Speech Speed</label>
+<input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+
+<button onclick="playTTS()">▶ Play Voice</button>
+<button onclick="downloadWAV()">⬇ Download Audio (LOUD WAV)</button>
+
+<div class="note">
+Best on Chrome / Edge (Windows)<br>
+Volume boosted using software gain
+</div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+<div class="container">
+<p>© <span id="year"></span> Embedded Electronics</p>
+</div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const synth = window.speechSynthesis;
+let voices = [];
+const voiceSelect = document.getElementById("voice");
+
+function loadVoices() {
+  voices = synth.getVoices();
+  filterVoices();
+}
+speechSynthesis.onvoiceschanged = loadVoices;
+
+function filterVoices() {
+  const lang = document.getElementById("language").value;
+  voiceSelect.innerHTML = "";
+  voices
+    .filter(v => !lang || v.lang.startsWith(lang))
+    .forEach(v => {
+      const opt = document.createElement("option");
+      opt.value = voices.indexOf(v);
+      opt.text = `${v.name} (${v.lang})`;
+      voiceSelect.appendChild(opt);
+    });
+}
+loadVoices();
+
+/* PLAY */
+function playTTS() {
+  synth.cancel();
+  const u = new SpeechSynthesisUtterance(text.value);
+  u.voice = voices[voiceSelect.value];
+  u.rate = rate.value;
+  synth.speak(u);
+}
+
+/* DOWNLOAD WAV – LOUD VERSION */
+async function downloadWAV() {
+
+  if (!text.value.trim()) {
+    alert("Please enter text");
+    return;
+  }
+
+  alert("Allow microphone access.\nAudio will download after speech ends.");
+
+  /* Mic stream */
+  const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+  /* Audio context */
+  const audioCtx = new AudioContext();
+
+  const micSource = audioCtx.createMediaStreamSource(micStream);
+
+  /* GAIN BOOST */
+  const gainNode = audioCtx.createGain();
+  gainNode.gain.value = 3.0;   // 🔊 Adjust 2.5 – 4.0
+
+  const destination = audioCtx.createMediaStreamDestination();
+
+  micSource.connect(gainNode);
+  gainNode.connect(destination);
+
+  const recorder = new MediaRecorder(destination.stream);
+  const chunks = [];
+
+  recorder.ondataavailable = e => chunks.push(e.data);
+  recorder.start();
+
+  const utter = new SpeechSynthesisUtterance(text.value);
+  utter.voice = voices[voiceSelect.value];
+  utter.rate = rate.value;
+  synth.speak(utter);
+
+  utter.onend = () => recorder.stop();
+
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: "audio/wav" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tts_audio.wav";
+    a.click();
+
+    micStream.getTracks().forEach(t => t.stop());
+    audioCtx.close();
+  };
+}
+</script>
+
+</body>
+</html>

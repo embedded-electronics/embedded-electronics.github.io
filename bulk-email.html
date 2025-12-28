@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bulk Email Sender | Embedded Electronics</title>
+  <title>Bulk Gmail Sender | Embedded Electronics</title>
 
+  <!-- Main site CSS -->
   <link rel="stylesheet" href="styles.css" />
 
   <style>
+    body {
+      background: #f5f7fa;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
     .bulk-box {
       max-width: 520px;
       margin: 30px auto;
@@ -16,10 +22,13 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
     .bulk-box h2 {
       text-align: center;
       margin-bottom: 15px;
+      color: #1976d2;
     }
+
     .bulk-box textarea,
     .bulk-box input {
       width: 100%;
@@ -28,7 +37,9 @@
       font-size: 14px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      box-sizing: border-box;
     }
+
     .bulk-box button {
       width: 100%;
       margin-top: 15px;
@@ -40,27 +51,32 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
     .bulk-box button:hover {
       background: #0d47a1;
     }
+
     .note {
       font-size: 12px;
-      color: #666;
+      color: #555;
       margin-top: 10px;
       text-align: center;
+      line-height: 1.5;
     }
   </style>
 </head>
 
 <body>
 
-<!-- Header (SAME AS YOUR SITE) -->
+<!-- HEADER -->
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
       <img src="assets/logo.png" alt="Embedded Electronics" class="brand-logo" />
     </a>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
     <nav id="nav" class="nav">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
@@ -77,18 +93,18 @@
   </div>
 </header>
 
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 <main class="container page">
-  <h1>📧 Bulk Email Sender</h1>
-  <p>Send emails to multiple recipients (safe web method).</p>
+  <h1>📧 Bulk Gmail Sender</h1>
+  <p>Send emails using Gmail Web (manual & safe).</p>
 
   <div class="bulk-box">
-    <h2>Bulk Email Tool</h2>
+    <h2>Gmail Bulk Email Tool</h2>
 
     <textarea id="emails" rows="5"
-      placeholder="Enter email IDs (one per line)
-example1@gmail.com
-example2@yahoo.com"></textarea>
+      placeholder="Enter Gmail IDs (one per line)
+example@gmail.com
+example2@gmail.com"></textarea>
 
     <input type="text" id="subject"
       placeholder="Email Subject"
@@ -109,10 +125,12 @@ Embedded Electronics Team
     <input type="number" id="delay" value="3"
       placeholder="Delay between emails (seconds)">
 
-    <button onclick="sendBulkEmail()">Send Bulk Emails</button>
+    <button onclick="sendBulkEmail()">Open Gmail Compose</button>
 
     <div class="note">
-      Your email app will open. Click Send manually.
+      ✔ Gmail must be logged in<br>
+      ✔ Each email opens in a new Gmail tab<br>
+      ✔ Click <b>Send</b> manually
     </div>
   </div>
 </main>
@@ -124,6 +142,7 @@ Embedded Electronics Team
   </div>
 </footer>
 
+<!-- SCRIPT -->
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -142,11 +161,13 @@ Embedded Electronics Team
       email = email.trim();
       if (email) {
         setTimeout(() => {
-          let mailto =
-            "mailto:" + email +
-            "?subject=" + encodeURIComponent(subject) +
+          let gmailURL =
+            "https://mail.google.com/mail/?view=cm&fs=1" +
+            "&to=" + encodeURIComponent(email) +
+            "&su=" + encodeURIComponent(subject) +
             "&body=" + encodeURIComponent(body);
-          window.open(mailto, "_blank");
+
+          window.open(gmailURL, "_blank");
         }, index * delay);
       }
     });

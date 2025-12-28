@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Google Translator TTS | Embedded Electronics</title>
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+.tts-box{
+  max-width:520px;
+  margin:30px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+textarea,select,button{
+  width:100%;
+  padding:10px;
+  margin-top:12px;
+}
+button{
+  background:#1a73e8;
+  color:#fff;
+  border:none;
+  font-size:15px;
+  cursor:pointer;
+}
+button:hover{background:#1669c1;}
+.note{
+  font-size:12px;
+  text-align:center;
+  color:#666;
+  margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER (reuse your existing header if needed) -->
+
+<main class="container page">
+<h1>🔊 Google Translator TTS</h1>
+<p>Free Google voice with direct audio download.</p>
+
+<div class="tts-box">
+
+<textarea id="text" rows="6">
+Welcome to Embedded Electronics.
+Learn Embedded Systems and IoT.
+</textarea>
+
+<select id="lang">
+  <option value="en">English</option>
+  <option value="hi">Hindi</option>
+  <option value="bn">Bengali</option>
+  <option value="ta">Tamil</option>
+  <option value="te">Telugu</option>
+</select>
+
+<button onclick="playAudio()">▶ Play Voice</button>
+<button onclick="downloadAudio()">⬇ Download Audio</button>
+
+<div class="note">
+Uses Google Translator voice (educational use)
+</div>
+
+</div>
+</main>
+
+<script>
+function getTTSUrl(text, lang){
+  return "https://translate.google.com/translate_tts" +
+         "?ie=UTF-8" +
+         "&q=" + encodeURIComponent(text) +
+         "&tl=" + lang +
+         "&client=tw-ob";
+}
+
+function playAudio(){
+  const text = document.getElementById("text").value;
+  const lang = document.getElementById("lang").value;
+  const audio = new Audio(getTTSUrl(text, lang));
+  audio.play();
+}
+
+function downloadAudio(){
+  const text = document.getElementById("text").value;
+  const lang = document.getElementById("lang").value;
+  const url = getTTSUrl(text, lang);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "google_tts.mp3";
+  a.click();
+}
+</script>
+
+</body>
+</html>

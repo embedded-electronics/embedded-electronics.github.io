@@ -56,6 +56,7 @@ button:hover {
 .resume {
   background: #fff;
   padding: 30px;
+  padding-bottom: 60px;   /* ✅ IMPORTANT: bottom margin space */
   color: #000;
 }
 
@@ -231,26 +232,31 @@ async function downloadPDF() {
   const pageWidth = 210;
   const pageHeight = 297;
 
+  const marginTop = 15;
+  const marginBottom = 15;
+  const usableHeight = pageHeight - marginTop - marginBottom;
+
   const imgWidth = pageWidth;
   const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
   let heightLeft = imgHeight;
-  let position = 0;
+  let position = marginTop;
 
+  // First page
   pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-  heightLeft -= pageHeight;
+  heightLeft -= usableHeight;
 
+  // Remaining pages
   while (heightLeft > 0) {
-    position = heightLeft - imgHeight;
     pdf.addPage();
+    position = marginTop - (imgHeight - heightLeft);
     pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    heightLeft -= pageHeight;
+    heightLeft -= usableHeight;
   }
 
   pdf.save("Resume.pdf");
 }
 </script>
-
 </body>
 </html>
 

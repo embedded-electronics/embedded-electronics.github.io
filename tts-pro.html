@@ -81,7 +81,7 @@ Welcome to Embedded Electronics. Embedded Electronics is a platform for learning
 <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
 
 <button onclick="playTTS()">▶ Play Voice</button>
-<button onclick="downloadWAV()">⬇ Download Audio (LOUD WAV)</button>
+<button onclick="downloadWAV()">⬇ Download Audio (WAV)</button>
 
 <div class="note">
 Best on Chrome / Edge (Windows)<br>
@@ -153,7 +153,7 @@ async function downloadWAV() {
 
   /* GAIN BOOST */
   const gainNode = audioCtx.createGain();
-  gainNode.gain.value = 3.0;   // 🔊 Adjust 2.5 – 4.0
+  gainNode.gain.value = 4.0;   // 🔊 Adjust 2.5 – 4.0
 
   const destination = audioCtx.createMediaStreamDestination();
 

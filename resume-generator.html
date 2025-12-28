@@ -6,44 +6,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Times New Roman", serif;
   background: #f4f6f9;
 }
 
-.container {
+.wrapper {
   max-width: 1100px;
   margin: 20px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 20px;
 }
 
 /* ===== FORM ===== */
-.form-box {
+.form {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
 }
 
-.form-box h2 {
+.form h2 {
   margin-bottom: 10px;
 }
 
 input, textarea, button {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 8px;
+  margin-top: 8px;
   font-size: 14px;
 }
 
-textarea {
-  resize: vertical;
-}
+textarea { resize: vertical; }
 
 button {
   background: #1976d2;
@@ -52,146 +48,180 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background: #0d47a1;
-}
+button:hover { background: #0d47a1; }
 
 /* ===== RESUME ===== */
 .resume {
   background: #fff;
   padding: 30px;
-  border-radius: 8px;
-  min-height: 100%;
+  color: #000;
 }
 
-.name {
-  font-size: 28px;
-  font-weight: bold;
+.resume h1 {
+  margin: 0;
+  font-size: 26px;
 }
 
-.title {
-  color: #555;
-  margin-bottom: 10px;
+.contact {
+  margin-bottom: 15px;
 }
 
 .section {
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .section h3 {
-  border-bottom: 2px solid #1976d2;
-  padding-bottom: 4px;
-  margin-bottom: 10px;
-  color: #1976d2;
+  font-size: 16px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 6px;
 }
 
 ul {
   padding-left: 18px;
+  margin: 0;
 }
 
-/* PRINT */
-@media print {
-  body {
-    background: #fff;
-  }
-  .form-box {
-    display: none;
-  }
+li {
+  margin-bottom: 4px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
-<!-- INPUT FORM -->
-<div class="form-box">
+<!-- ===== FORM ===== -->
+<div class="form">
 <h2>📝 Resume Details</h2>
 
 <input id="name" placeholder="Full Name">
-<input id="role" placeholder="Job Title / Role">
 <input id="email" placeholder="Email">
-<input id="phone" placeholder="Phone">
-<input id="location" placeholder="Location">
+<input id="phone" placeholder="Mobile">
+<textarea id="objective" placeholder="Career Objective"></textarea>
 
-<textarea id="summary" placeholder="Professional Summary"></textarea>
-<textarea id="skills" placeholder="Skills (comma separated)"></textarea>
-<textarea id="experience" placeholder="Experience (one per line)"></textarea>
-<textarea id="education" placeholder="Education (one per line)"></textarea>
-<textarea id="projects" placeholder="Projects (one per line)"></textarea>
+<textarea id="experience" placeholder="Professional Experience (one point per line)"></textarea>
+<textarea id="education" placeholder="Education / Scholastic (one point per line)"></textarea>
+<textarea id="skills" placeholder="Summary of Skills (one per line)"></textarea>
+<textarea id="extra" placeholder="Extra Curriculum (one per line)"></textarea>
+<textarea id="it" placeholder="IT Skills (one per line)"></textarea>
 
-<button onclick="generateResume()">Update Resume</button>
-<button onclick="window.print()">Print / Download PDF</button>
+<textarea id="personal" placeholder="Personal Details (Gender, DOB, Languages, Address – one per line)"></textarea>
+
+<button onclick="updateResume()">Update Resume</button>
+<button onclick="downloadPDF()">Download as PDF</button>
 </div>
 
-<!-- RESUME PREVIEW -->
+<!-- ===== RESUME PREVIEW ===== -->
 <div class="resume" id="resume">
-  <div class="name">Your Name</div>
-  <div class="title">Your Job Title</div>
-  <div id="contact"></div>
+  <h1 id="r_name">Your Name</h1>
 
-  <div class="section">
-    <h3>Summary</h3>
-    <p id="r_summary">Professional summary goes here.</p>
+  <div class="contact" id="r_contact">
+    E-Mail: example@gmail.com<br>
+    Mobile: +91 XXXXXXXX
   </div>
 
   <div class="section">
-    <h3>Skills</h3>
-    <ul id="r_skills"></ul>
+    <p id="r_objective">
+      Seeking an industry to enhance my skills and where my talent is best put to use.
+    </p>
   </div>
 
   <div class="section">
-    <h3>Experience</h3>
+    <h3>PROFESSIONAL EXPERIENCE</h3>
     <ul id="r_experience"></ul>
   </div>
 
   <div class="section">
-    <h3>Education</h3>
+    <h3>SCHOLASTIC</h3>
     <ul id="r_education"></ul>
   </div>
 
   <div class="section">
-    <h3>Projects</h3>
-    <ul id="r_projects"></ul>
+    <h3>SUMMARY OF SKILLS</h3>
+    <ul id="r_skills"></ul>
+  </div>
+
+  <div class="section">
+    <h3>EXTRA CURRICULUM</h3>
+    <ul id="r_extra"></ul>
+  </div>
+
+  <div class="section">
+    <h3>IT SKILLS</h3>
+    <ul id="r_it"></ul>
+  </div>
+
+  <div class="section">
+    <h3>PERSONAL SNIPPETS</h3>
+    <ul id="r_personal"></ul>
+  </div>
+
+  <div class="section">
+    <p>
+      I hereby declare that all the information given above is true to the best of my knowledge.
+    </p>
+    <p>
+      Date: _____________<br>
+      Place: ___________<br><br>
+      (<span id="r_sign">Your Name</span>)
+    </p>
   </div>
 </div>
 
 </div>
 
+<!-- PDF LIBRARIES -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
 <script>
-function generateResume() {
-  document.querySelector(".name").textContent =
-    name.value || "Your Name";
-  document.querySelector(".title").textContent =
-    role.value || "Your Job Title";
+function updateResume() {
+  r_name.textContent = name.value || "Your Name";
+  r_sign.textContent = name.value || "Your Name";
 
-  document.getElementById("contact").innerHTML =
-    `${email.value || ""} | ${phone.value || ""} | ${location.value || ""}`;
+  r_contact.innerHTML =
+    `E-Mail: ${email.value}<br>Mobile: ${phone.value}`;
 
-  r_summary.textContent =
-    summary.value || "Professional summary goes here.";
+  r_objective.textContent = objective.value;
 
-  setList("skills", "r_skills", ",");
-  setList("experience", "r_experience", "\n");
-  setList("education", "r_education", "\n");
-  setList("projects", "r_projects", "\n");
+  setList("experience", "r_experience");
+  setList("education", "r_education");
+  setList("skills", "r_skills");
+  setList("extra", "r_extra");
+  setList("it", "r_it");
+  setList("personal", "r_personal");
 }
 
-function setList(inputId, outputId, splitBy) {
-  let data = document.getElementById(inputId).value;
+function setList(inputId, outputId) {
+  let input = document.getElementById(inputId).value;
   let ul = document.getElementById(outputId);
   ul.innerHTML = "";
-
-  if (!data) return;
-
-  data.split(splitBy).forEach(item => {
-    let li = document.createElement("li");
-    li.textContent = item.trim();
-    ul.appendChild(li);
+  input.split("\n").forEach(line => {
+    if (line.trim()) {
+      let li = document.createElement("li");
+      li.textContent = line;
+      ul.appendChild(li);
+    }
   });
+}
+
+async function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const resume = document.getElementById("resume");
+
+  const canvas = await html2canvas(resume, { scale: 2 });
+  const imgData = canvas.toDataURL("image/png");
+
+  const pdf = new jsPDF("p", "mm", "a4");
+  const width = 210;
+  const height = (canvas.height * width) / canvas.width;
+
+  pdf.addImage(imgData, "PNG", 0, 0, width, height);
+  pdf.save("Resume.pdf");
 }
 </script>
 
 </body>
 </html>
+

@@ -159,7 +159,7 @@ function playTTS() {
 /* ================= DOWNLOAD WAV (WORKING) ================= */
 async function downloadWAV() {
   alert(
-    "Are you sure to download the audio?"
+    "Allow microphone access.\nAudio will download after speech ends."
   );
 
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });

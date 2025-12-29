@@ -66,6 +66,33 @@
       font-size: 13px;
       margin-left: 5px;
     }
+        /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 999;
+    }
+    
+    .whatsapp-float:hover {
+      background-color: #1ebe5d;
+    }
+    
+    .whatsapp-float img {
+      width: 22px;
+      height: 22px;
+    }
   </style>
 </head>
 <body>
@@ -181,6 +208,41 @@
         </div>
       </article>
     </section>
+
+      <section style="margin-top:40px">
+    <h2>📌 Important Information – Udemy Premium Courses</h2>
+  
+    <div style="
+      background:#fff;
+      padding:20px;
+      border-left:5px solid #ff5722;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      border-radius:6px;
+      font-size:15px;
+      line-height:1.7;
+    ">
+      <ul style="padding-left:18px; margin:0">
+        <li>This is <strong>Udemy Premium Course (English)</strong>.</li>
+        <li><strong>Lifetime access</strong> available.</li>
+        <li>You need to pay <strong>₹301</strong> for the user ID and one-time password.</li>
+        <li>Once payment is done, we will share the <strong>User ID & OTP</strong>.</li>
+        <li>You must login via 👉 <a href="https://www.udemy.com/" target="_blank">https://www.udemy.com/</a></li>
+        <li>For best experience, use the <strong>Google Chrome browser</strong>.</li>
+        <li><strong>Certificate will NOT be available</strong> (shared Udemy ID).</li>
+        <li>You will get <strong>full course material access</strong> and can learn anytime.</li>
+        <li>For OTP or support, WhatsApp us at <strong>9547394654</strong>.</li>
+        <li>
+          Course details 👉
+          <a href="https://embedded-electronics.github.io/udemy-courses.html" target="_blank">
+            View Here
+          </a>
+        </li>
+        <li>
+          <strong>₹301 offer valid up to 31st December</strong>.
+        </li>
+      </ul>
+    </div>
+  </section>
   </main>
 
   <!-- Footer -->
@@ -194,5 +256,15 @@
     // Auto update year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+  <!-- WhatsApp Chat Button -->
+  <a
+    href="https://wa.me/919547394654?text=Hi%20I%20want%20to%20buy%20Udemy%20Premium%20Courses"
+    class="whatsapp-float"
+    target="_blank"
+  >
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    Chat on WhatsApp
+  </a>
 </body>
 </html>

@@ -93,6 +93,23 @@
       width: 22px;
       height: 22px;
     }
+    .offer-highlight {
+    color: #d32f2f;
+    font-weight: 700;
+    animation: pulseGlow 1.5s ease-in-out infinite;
+   }
+
+  @keyframes pulseGlow {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   </style>
 </head>
 <body>
@@ -229,8 +246,8 @@
       <li>Login to Udemy via 👉 <a href="https://www.udemy.com/" target="_blank">https://www.udemy.com/</a></li>
       <li>For the best learning experience, we recommend using the <strong>Google Chrome browser</strong>.</li>
       <li>You will receive <strong>complete access to all course materials</strong> and can learn at your own pace.</li>
-      <li style="color:#c62828; font-weight:700;">
-        🔥 Special offer price: ₹301 (valid up to 31st December,2025)
+      <li class="offer-highlight">
+        Special offer price: ₹301 (valid up to 31st December,25)
       </li>
       </ul>
     </div>

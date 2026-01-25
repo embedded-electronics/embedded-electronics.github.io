@@ -5,102 +5,178 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Embedded Electronics — Embedded Systems Course</title>
   <link rel="stylesheet" href="styles.css" />
-
+  <script src="scripts.js"></script>
   <style>
-    body { background:#f4f6f9; }
+    /* ===============================
+   FIRST SECTION (HERO DESIGN)
+   =============================== */
 
-    .section-title {
-      margin-top: 50px;
-      border-bottom: 3px solid #ff5722;
-      display: inline-block;
-      padding-bottom: 6px;
+  .hero-section {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    margin-top: 30px;
+    align-items: center;
+  }
+  
+  /* LEFT SIDE */
+  .hero-left {
+    background: #fff;
+    padding: 20px;
+    border-left: 5px solid #ff5722;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  
+  .hero-left h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+  
+  /* RIGHT SIDE */
+  .hero-right {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  /* IMAGE SLIDER */
+  .slider {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 1080 x 1080 */
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  
+  .slider img.active {
+    display: block;
+  }
+  
+  /* BUTTONS BELOW SLIDER */
+  .hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 18px;
+  }
+  
+  .hero-buttons a {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* OUTLINE BUTTON */
+  .btn-outline {
+    border: 2px solid #ff5722;
+    color: #ff5722;
+    background: transparent;
+  }
+  
+  .btn-outline:hover {
+    background: #ff5722;
+    color: #fff;
+  }
+  
+  /* SOLID BUTTON */
+  .btn-solid {
+    background: #ff5722;
+    color: #fff;
+  }
+  
+  .btn-solid:hover {
+    background: #e64a19;
+  }
+  
+  /* ===============================
+     MOBILE RESPONSIVE
+     =============================== */
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      grid-template-columns: 1fr;
     }
-
-    .section-box {
-      background:#fff;
-      padding:20px;
-      border-left:5px solid #ff5722;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      border-radius:6px;
-      font-size:15px;
-      line-height:1.7;
+  
+    .hero-buttons {
+      flex-direction: column;
     }
-
+  }
     .courses-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
-      margin-top:20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
     }
-
     .course-card {
-      background:#fff;
-      border-radius:8px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      overflow:hidden;
-      transition:transform 0.2s ease;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
     }
-
-    .course-card:hover { transform:translateY(-5px); }
-
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
     .course-card img {
-      width:100%;
-      height:180px;
-      object-fit:cover;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
     }
-
-    .course-card .content { padding:15px; }
-
-    .course-card h3 { margin:0 0 6px; }
-
-    .course-card p { font-size:14px; color:#666; }
-
+    .course-card .content {
+      padding: 15px;
+    }
+    .course-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .course-card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
     .course-card a {
-      display:inline-block;
-      background:#ff5722;
-      color:#fff;
-      padding:8px 12px;
-      border-radius:4px;
-      text-decoration:none;
-      font-size:14px;
-      margin-top:6px;
+      display: inline-block;
+      background: #ff5722;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .course-card a:hover {
+      background: #e64a19;
     }
 
-    .rating { font-size:13px; color:#ff9800; }
-
-    .offer-highlight {
-      color:#d60000;
-      font-weight:800;
-      animation:pulseGlow 1s infinite;
+    /* ⭐ Rating */
+    .rating {
+      display: inline-block;
+      color: #ff9800;
+      font-size: 13px;
+      margin-left: 5px;
+      vertical-align: middle;
     }
-
-    @keyframes pulseGlow {
-      0%{opacity:1}
-      50%{opacity:.6}
-      100%{opacity:1}
+    .rating span {
+      color: #333;
+      font-size: 13px;
+      margin-left: 5px;
     }
-
-    /* CTA Buttons */
-    .cta-buttons {
-      display:flex;
-      gap:15px;
-      margin-top:20px;
-      flex-wrap:wrap;
-    }
-
-    .cta-buttons a {
-      background:#222;
-      color:#fff;
-      padding:10px 18px;
-      border-radius:4px;
-      text-decoration:none;
-      font-weight:600;
-    }
-
-    .cta-buttons a.primary {
-      background:#ff5722;
-    }
-
     /* WhatsApp Button */
     .whatsapp-float {
       position:fixed;
@@ -123,94 +199,198 @@
       width:22px;
       height:22px;
     }
+    .offer-highlight { 
+      color: #ff0000; 
+      font-weight: 800; 
+      animation: pulseGlow 1s ease-in-out infinite; 
+    }
+
+  @keyframes pulseGlow {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   </style>
 </head>
-
 <body>
-
-<!-- HEADER (ORIGINAL STYLE) -->
-<header class="site-header">
+  <!-- Header -->
+  <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Embedded Electronics" class="brand-logo" />
+      <img src="assets/logo.png" alt="Embedded Electronics" class="brand-logo" /> <!-- MODIFY HERE -->
+     <!-- <span class="brand-name">Embedded Electronics</span>  -->
     </a>
-
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
-      <a href="index.html">Home</a>
-      <a class="active" href="#">Courses</a>
-      <a href="ebooks.html">E-Books</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="interview.html">Interview</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
+        <a href="index.html">Home</a>
+        <a class="active" href="best-advanced-embedded-systems-online-course.html">Courses</a>
+        <a href="ebooks.html">E-Books</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="typing-game.html">Typing Test</a>
+        <a href="interview.html">Interview</a>
+        <a href="iq-test.html">IQ Test</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
+  <!-- Main Section -->
 
-<main class="container page">
+  <!-- Main Embedded Systems Course Section -->
+  <main class="container page">
+    <h1>🎓 Embedded Systems Course (Online)</h1>
+    <p>Build Industry-Ready Skills in Embedded & Microcontroller Systems.</p>
 
-<!-- ================= EMBEDDED COURSE ================= -->
-<h1 class="section-title">🎓 Embedded Systems Course (Online)</h1>
-<p>Build Industry-Ready Skills in Embedded & Microcontroller Systems.</p>
-
-<div class="cta-buttons">
-  <a href="assets/Embedded-Systems-Course-Brochure.pdf" download>📥 Download Course Brochure</a>
-  <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="primary">📝 Course Enrolment</a>
-</div>
-
-<section style="margin-top:30px">
-  <div class="section-box">
+    <!-- 🔥 FIRST SECTION (REDESIGNED) -->
+    <section class="hero-section">
+    
+    <div class="hero-left">
+    <h2>📌 Career Outcomes</h2>
     <ul>
-      <li>Diploma / BE / B.Tech / M.Tech Students</li>
-      <li>Embedded C & Microcontroller Programming</li>
-      <li>Hands-on Industry Projects</li>
-      <li class="offer-highlight">Special Offer: ₹4999 (Valid till 31 Jan 2026)</li>
+    <li>Develop real-time embedded applications</li>
+    <li>Program microcontrollers using Embedded C</li>
+    <li>Interface sensors and peripherals</li>
+    <li>Design and debug embedded projects</li>
+    <li>Build confidence for interviews and industry projects</li>
+    <li class="offer-highlight">Special offer price: ₹4999 (valid up to 28th Feb, 2026)</li>
     </ul>
-  </div>
-</section>
+    </div>
+    
+    <div class="hero-right">
+    <div class="slider">
+    <img src="assets/slider/slide1.jpg" class="active">
+    <img src="assets/slider/slide2.jpg">
+    <img src="assets/slider/slide3.jpg">
+    </div>
+    
+    <div class="hero-buttons">
+    <a href="course-brochure.pdf" class="btn-outline" target="_blank">📄 Course Brochure</a>
+    <a href="contact.html" class="btn-solid">🎓 Course Enrollment</a>
+    </div>
+    </div>
+    
+    </section>
 
-<!-- ================= PROJECTS SECTION ================= -->
-<h1 class="section-title">🛠️ Projects for Engineering Students</h1>
-<p>Mini, Final Year & Real-Time Embedded Projects with Full Support.</p>
+    <section class="courses-grid">
+      <!-- Sample course cards -->
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Smart Street Light Automation</h3>
+          <p>Automatic street light control using sensors to reduce power consumption.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.4 Ratings)</span></div>
+        </div>
+      </article>
 
-<section style="margin-top:30px">
-  <div class="section-box">
-    <ul>
-      <li>Final Year Engineering Projects</li>
-      <li>Arduino / PIC / ESP32 / IoT Projects</li>
-      <li>Project Report, PPT & Viva Guidance</li>
-      <li>IEEE & Industry-Oriented Topics</li>
-    </ul>
-  </div>
-</section>
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Temperature Monitoring System</h3>
+          <p>Real-time temperature monitoring using sensors and a microcontroller.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
+        </div>
+      </article>
 
-</main>
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Automatic Water Level Controller</h3>
+          <p>Prevents water overflow by automatically controlling the pump.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.6 Ratings)</span></div>
+        </div>
+      </article>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Embedded Electronics</p>
-  </div>
-</footer>
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Smart Irrigation System</h3>
+          <p>Automated irrigation system based on soil moisture levels.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.7 Ratings)</span></div>
+        </div>
+      </article>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+       <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Home Automation Using Bluetooth</h3>
+          <p>Control home appliances wirelessly using a mobile application.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.7 Ratings)</span></div>
+        </div>
+      </article>
 
-  function toggleMenu() {
-    document.getElementById("nav").classList.toggle("active");
-  }
-</script>
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Password Based Door Lock</h3>
+          <p>Secure access control system using keypad and microcontroller.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
+        </div>
+      </article>
 
-<!-- WHATSAPP BUTTON -->
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Fire Detection and Alarm System</h3>
+          <p>Early fire detection system with buzzer alert for safety.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>LED Intensity Control Using PWM</h3>
+          <p>Brightness control of LEDs using PWM techniques.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (3.8 Ratings)</span></div>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Mbed Projects">
+        <div class="content">
+          <h3>Smart Health Monitoring System</h3>
+          <p>Real-time patient health monitoring using IoT and sensors.</p>
+          <a href="#" target="_blank">Go to Project</a>
+          <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Embedded Electronics</p>
+    </div>
+  </footer>
+
+  <script>
+    // Auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+   <!-- WHATSAPP BUTTON -->
 <a
-  href="https://wa.me/919547394654?text=Hello%20I%20am%20interested%20in%20Embedded%20Courses%20and%20Projects"
+  href="https://wa.me/919547394654?text=Hello!%20I%20am%20interested%20in%20the%20Embedded%20Systems%20Course."
   class="whatsapp-float"
   target="_blank"
 >
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   Chat on WhatsApp
 </a>
-
 </body>
 </html>

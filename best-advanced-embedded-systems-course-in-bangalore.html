@@ -7,6 +7,116 @@
   <link rel="stylesheet" href="styles.css" />
   <script src="scripts.js"></script>
   <style>
+    /* ===============================
+   FIRST SECTION (HERO DESIGN) center
+   =============================== */
+
+  .hero-section {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    margin-top: 5px;
+    align-items: start;
+  }
+  
+  /* LEFT SIDE */
+  .hero-left {
+    background: #fff;
+    padding: 20px;
+    border-left: 5px solid #ff5722;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  
+  .hero-left h2 {
+    margin-top: 0px;
+    margin-bottom: 12px;
+  }
+  
+  /* RIGHT SIDE */
+  .hero-right {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  /* IMAGE SLIDER */
+  .slider {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 1080 x 1080 */
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  
+  .slider img.active {
+    display: block;
+  }
+  
+  /* BUTTONS BELOW SLIDER */
+  .hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 18px;
+  }
+  
+  .hero-buttons a {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* OUTLINE BUTTON */
+  .btn-outline {
+    border: 2px solid #ff5722;
+    color: #ff5722;
+    background: transparent;
+  }
+  
+  .btn-outline:hover {
+    background: #ff5722;
+    color: #fff;
+  }
+  
+  /* SOLID BUTTON */
+  .btn-solid {
+    background: #ff5722;
+    color: #fff;
+  }
+  
+  .btn-solid:hover {
+    background: #e64a19;
+  }
+  
+  /* ===============================
+     MOBILE RESPONSIVE
+     =============================== */
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      grid-template-columns: 1fr;
+    }
+  
+    .hero-buttons {
+      flex-direction: column;
+    }
+  }
     .courses-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -119,7 +229,7 @@
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="nav">
         <a href="index.html">Home</a>
-        <a class="active" href="best-advanced-embedded-systems-online-course.html">Courses</a>
+        <a class="active" href="best-advanced-embedded-systems-course-in-bangalore.html">Courses</a>
         <a href="ebooks.html">E-Books</a>
         <a href="quiz.html">Quiz</a>
         <a href="typing-game.html">Typing Test</a>
@@ -134,154 +244,50 @@
 
   <!-- Main Embedded Systems Course Section -->
   <main class="container page">
-    <h1>🎓 Embedded Systems Course (Online)</h1>
-    <p>Build Industry-Ready Skills in Embedded & Microcontroller Systems.</p>
+    <!-- 🔥 FIRST SECTION (REDESIGNED) -->
+    <section class="hero-section">
+    
+    <div class="hero-left">
+    <h2>🎓 Embedded Systems Course (Online)</h2>
+    <ul>
+    <li><strong>Build industry-ready skills</strong> in <strong>Embedded Systems.</strong></li>
+    <li>Develop <strong>real-time embedded applications.</strong></li>
+    <li>Program <strong>microcontrollers</strong> using <strong>Embedded C.</strong></li>
+    <li>Interface <strong>sensors</strong> and <strong>peripherals.</strong></li>
+    <li><strong>Design</strong> and <strong>debug embedded projects.</strong></li>
+    <li>Build <strong>confidence</strong> for <strong>interviews</strong> and <strong>industry projects.</strong></li>
+    <li class="offer-highlight">
+      <strong>Special Course Price:</strong> ₹4999 
+      (<strong>valid up to 28th Feb, 2026</strong>)
+    </li>
+    </ul>
 
-    <section style="margin-top:40px">
-    <h2>📌 Course Eligibility</h2>
-  
-    <div style="
-      background:#fff;
-      padding:20px;
-      border-left:5px solid #ff5722;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      border-radius:6px;
-      font-size:15px;
-      line-height:1.7;
-    ">
-      <ul style="padding-left:18px; margin:0">
-      <li>Diploma Students</li>
-      <li>BE / B.Tech Students</li>
-      <li>ME / M.Tech Students</li>
-      <li>BSc / MSc in Electronics</li>
-      </ul>
+    <h2>🚀 Electronics Engineering Projects</h2>
+    <ul>
+    <li><strong>Industry-oriented projects</strong> based on <strong>real-world applications.</strong></li>
+    <li><strong>Hands-on experience</strong> with <strong>microcontrollers and modules.</strong></li>
+    <li><strong>End-to-end project development</strong>: <strong>design, testing & debugging.</strong></li>
+    <li>Projects aligned with <strong>academic syllabus</strong> and <strong>industry standards.</strong></li>
+    <li><strong>Complete documentation</strong>: <strong>project report, PPT, and source code.</strong></li>
+    <li>Assistance for <strong>project explanation</strong> and <strong>viva preparation.</strong></li>
+    <li class="offer-highlight"><strong>Project Price starting from ₹4999</strong></li>
+    </ul>
     </div>
- </section>
-
-    <section style="margin-top:40px">
-    <h2>📌 Career Outcomes</h2>
-  
-    <div style="
-      background:#fff;
-      padding:20px;
-      border-left:5px solid #ff5722;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      border-radius:6px;
-      font-size:15px;
-      line-height:1.7;
-    ">
-      <ul style="padding-left:18px; margin:0">
-      <li>Develop real-time embedded applications</li>
-      <li>Program microcontrollers using Embedded C</li>
-      <li>Interface sensors and peripherals</li>
-      <li>Design and debug embedded projects</li>
-      <li>Build confidence for interviews and industry projects</li>
-      <li class="offer-highlight">
-        Special offer price: ₹4999 (valid up to 28th Feb, 2026)
-      </li>
-      </ul>
+    
+    <div class="hero-right">
+    <div class="slider">
+    <img src="assets/courses/embedded-systems-course_ads_01.png" class="active">
+    <img src="assets/courses/embedded-systems-course_ads_02.png">
+    <img src="assets/courses/embedded-systems-course_ads_01.png">
     </div>
-  </section>
-
-    <section style="margin-top:40px">
-    <h2>📌 Module 1: Basic Electronics (4 Weeks)</h2>
-  
-    <div style="
-      background:#fff;
-      padding:20px;
-      border-left:5px solid #ff5722;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      border-radius:6px;
-      font-size:15px;
-      line-height:1.7;
-    ">
-      <ul style="padding-left:18px; margin:0">
-      <li>Electrical fundamentals and resistor networks</li>
-      <li>AC circuit analysis and applications</li>
-      <li>Semiconductor basics and diode circuits</li>
-      <li>Bipolar Junction Transistors (BJT)</li>
-      <li>Field Effect Transistors (FET)</li>
-      <li>Operational amplifiers and applications</li>
-      <li>Oscillators and signal generation</li>
-      <li>Digital circuits and logic devices</li>
-      </ul>
+    
+    <div class="hero-buttons">
+    <a href="assets/courses/Embedded_Systems_Course_Online_Brochure.pdf" class="btn-outline" download>📄 Course Brochure</a>
+    <a href="#" class="btn-solid" target="_blank">🎓 Course Enrollment</a>
     </div>
-  </section>
-
-    <section style="margin-top:40px">
-    <h2>📌 Module 2:  C Programming (4 Weeks)</h2>
-  
-    <div style="
-      background:#fff;
-      padding:20px;
-      border-left:5px solid #ff5722;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      border-radius:6px;
-      font-size:15px;
-      line-height:1.7;
-    ">
-      <ul style="padding-left:18px; margin:0">
-      <li>Introduction to C programming</li>
-      <li>Data types, operators, and expressions</li>
-      <li>Control flow statements</li>
-      <li>Functions and program structure</li>
-      <li>Arrays and pointers</li>
-      <li>Structures and user-defined data types</li>
-      <li>Standard input and output operations</li>
-      </ul>
     </div>
-  </section>
-
-    <section style="margin-top:40px">
-    <h2>📌 Module 3: Embedded C (4 Weeks)</h2>
-  
-    <div style="
-      background:#fff;
-      padding:20px;
-      border-left:5px solid #ff5722;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      border-radius:6px;
-      font-size:15px;
-      line-height:1.7;
-    ">
-      <ul style="padding-left:18px; margin:0">
-      <li>Embedded programming fundamentals</li>
-      <li>Structure of an Embedded C program</li>
-      <li>Memory handling and optimization</li>
-      <li>Embedded data types and operators</li>
-      <li>Control structures for hardware control</li>
-      <li>Functions and modular programming</li>
-      <li>Complex data types in embedded systems</li>
-      </ul>
-    </div>
-  </section>
-
-    <section style="margin-top:40px">
-    <h2>📌 Module 4: Microcontrollers (6 Weeks)</h2>
-  
-    <div style="
-      background:#fff;
-      padding:20px;
-      border-left:5px solid #ff5722;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      border-radius:6px;
-      font-size:15px;
-      line-height:1.7;
-    ">
-      <ul style="padding-left:18px; margin:0">
-      <li>Microcontroller architecture and internal blocks</li>
-      <li>PIC microcontrollers overview (PIC16F, PIC18F)</li>
-      <li>Memory organization and addressing modes</li>
-      <li>Interrupt handling and priority management</li>
-      <li>Peripheral interfacing</li>
-      <li>Power management (Brown-out, Idle modes)</li>
-      <li>Digital I/O ports and serial communication</li>
-      <li>Analog-to-Digital Conversion (ADC)</li>
-      <li>Clock monitoring and special features</li>
-      <li>Hands-on mini project</li>
-      </ul>
-    </div>
-  </section>
+    
+    </section>
 
     <section class="courses-grid">
       <!-- Sample course cards -->
@@ -290,7 +296,7 @@
         <div class="content">
           <h3>Smart Street Light Automation</h3>
           <p>Automatic street light control using sensors to reduce power consumption.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.4 Ratings)</span></div>
         </div>
       </article>
@@ -300,7 +306,7 @@
         <div class="content">
           <h3>Temperature Monitoring System</h3>
           <p>Real-time temperature monitoring using sensors and a microcontroller.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
         </div>
       </article>
@@ -310,7 +316,7 @@
         <div class="content">
           <h3>Automatic Water Level Controller</h3>
           <p>Prevents water overflow by automatically controlling the pump.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.6 Ratings)</span></div>
         </div>
       </article>
@@ -320,7 +326,7 @@
         <div class="content">
           <h3>Smart Irrigation System</h3>
           <p>Automated irrigation system based on soil moisture levels.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.7 Ratings)</span></div>
         </div>
       </article>
@@ -330,7 +336,7 @@
         <div class="content">
           <h3>Home Automation Using Bluetooth</h3>
           <p>Control home appliances wirelessly using a mobile application.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.7 Ratings)</span></div>
         </div>
       </article>
@@ -340,7 +346,7 @@
         <div class="content">
           <h3>Password Based Door Lock</h3>
           <p>Secure access control system using keypad and microcontroller.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
         </div>
       </article>
@@ -350,7 +356,7 @@
         <div class="content">
           <h3>Fire Detection and Alarm System</h3>
           <p>Early fire detection system with buzzer alert for safety.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
         </div>
       </article>
@@ -360,7 +366,7 @@
         <div class="content">
           <h3>LED Intensity Control Using PWM</h3>
           <p>Brightness control of LEDs using PWM techniques.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (3.8 Ratings)</span></div>
         </div>
       </article>
@@ -370,7 +376,7 @@
         <div class="content">
           <h3>Smart Health Monitoring System</h3>
           <p>Real-time patient health monitoring using IoT and sensors.</p>
-          <a href="#" target="_blank">Go to Project</a>
+          <a href="#" >Go to Project</a>
           <div class="rating">⭐⭐⭐⭐☆ <span> (4.5 Ratings)</span></div>
         </div>
       </article>
@@ -398,5 +404,15 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   Chat on WhatsApp
 </a>
+<script>
+  const slides = document.querySelectorAll(".slider img");
+  let currentSlide = 0;
+
+  setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }, 3000); // 3 seconds
+</script>
 </body>
 </html>

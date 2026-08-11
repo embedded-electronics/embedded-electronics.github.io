@@ -2,21 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Embedded Electronics — Challenge Game</title>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        Embedded Electronics — Challenge Game
+    </title>
 
     <!-- Existing Website CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
 
     <!-- Existing Website JavaScript -->
-    <script defer src="scripts.js"></script>
+    <script
+        defer
+        src="scripts.js">
+    </script>
+
 
     <style>
 
         /* =====================================================
-           PAGE STYLE
+           PAGE
         ===================================================== */
 
         body {
@@ -24,415 +38,892 @@
             font-family: "Segoe UI", Roboto, sans-serif;
         }
 
+
         /* =====================================================
            GAME CARD
         ===================================================== */
 
         .game-card {
+
             max-width: 820px;
+
             margin: 2rem auto;
-            background: #fff;
+
+            background: #ffffff;
+
             border-radius: 16px;
+
             padding: 24px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.08);
+
+            transition:
+                all 0.3s ease;
         }
 
+
         .game-card:hover {
-            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+
+            box-shadow:
+                0 12px 28px rgba(0, 0, 0, 0.12);
         }
+
 
         /* =====================================================
            START SCREEN
         ===================================================== */
 
         .game-start {
+
             text-align: center;
-            padding: 20px 10px;
+
+            padding:
+                20px 10px;
         }
+
 
         .game-icon {
+
             font-size: 4rem;
+
             margin-bottom: 10px;
         }
+
 
         .game-start h2 {
+
             color: #1f2937;
+
             margin-bottom: 10px;
         }
 
+
         .game-start p {
+
             color: #6c7a90;
+
             line-height: 1.6;
         }
+
 
         /* =====================================================
            GAME CONTROLS
         ===================================================== */
 
         .game-controls {
+
             display: flex;
+
             gap: 14px;
+
             flex-wrap: wrap;
+
             align-items: center;
+
             margin-bottom: 16px;
         }
 
+
         .badge {
+
             display: inline-flex;
+
             align-items: center;
+
             gap: 6px;
-            background: linear-gradient(135deg, #e0f2ff, #f0faff);
-            border: 1px solid #cce4ff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e0f2ff,
+                    #f0faff
+                );
+
+            border:
+                1px solid #cce4ff;
+
             color: #0a58a3;
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-weight: 600;
+
+            padding:
+                8px 14px;
+
+            border-radius:
+                999px;
+
+            font-weight:
+                600;
         }
+
 
         /* =====================================================
            BUTTONS
         ===================================================== */
 
         .game-btn {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #3b82f6,
+                    #2563eb
+                );
+
             color: white;
+
             border: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-weight: 600;
+
+            padding:
+                8px 18px;
+
+            border-radius:
+                8px;
+
+            font-weight:
+                600;
+
             cursor: pointer;
-            transition: all 0.2s;
+
+            transition:
+                all 0.2s;
         }
+
 
         .game-btn:hover {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            transform: translateY(-1px);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            transform:
+                translateY(-1px);
         }
+
 
         .game-btn.secondary {
-            background: #fff;
+
+            background: #ffffff;
+
             color: #2563eb;
-            border: 1px solid #2563eb;
+
+            border:
+                1px solid #2563eb;
         }
 
+
         .game-btn.secondary:hover {
+
             background: #f0f6ff;
         }
+
 
         /* =====================================================
            INSTRUCTIONS
         ===================================================== */
 
         .instructions {
-            margin: 20px 0;
-            padding: 16px;
-            background: #fafcff;
-            border: 1px solid #e0e6ed;
-            border-radius: 10px;
-            text-align: left;
+
+            margin:
+                20px 0;
+
+            padding:
+                16px;
+
+            background:
+                #fafcff;
+
+            border:
+                1px solid #e0e6ed;
+
+            border-radius:
+                10px;
+
+            text-align:
+                left;
         }
+
 
         .instructions h3 {
-            color: #2563eb;
-            margin-bottom: 10px;
+
+            color:
+                #2563eb;
+
+            margin-bottom:
+                10px;
         }
+
 
         .instructions ul {
-            margin: 0;
-            padding-left: 20px;
+
+            margin:
+                0;
+
+            padding-left:
+                20px;
         }
+
 
         .instructions li {
-            margin: 7px 0;
-            color: #5f6f85;
+
+            margin:
+                7px 0;
+
+            color:
+                #5f6f85;
         }
 
+
         /* =====================================================
-           GAME STATUS
+           GAME STATS
         ===================================================== */
 
         .game-stats {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin: 16px 0;
+
+            display:
+                flex;
+
+            gap:
+                14px;
+
+            flex-wrap:
+                wrap;
+
+            margin:
+                16px 0;
         }
+
 
         .stat {
-            flex: 1;
-            min-width: 130px;
-            background: #f9fafc;
-            border: 1px solid #e4ebf2;
-            padding: 10px 14px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 0.95rem;
+
+            flex:
+                1;
+
+            min-width:
+                130px;
+
+            background:
+                #f9fafc;
+
+            border:
+                1px solid #e4ebf2;
+
+            padding:
+                10px 14px;
+
+            border-radius:
+                10px;
+
+            text-align:
+                center;
+
+            font-size:
+                0.95rem;
         }
 
+
         .stat strong {
-            color: #2563eb;
+
+            color:
+                #2563eb;
         }
+
 
         /* =====================================================
            TIMER
         ===================================================== */
 
         .timer-section {
-            margin: 15px 0 20px;
+
+            margin:
+                15px 0 20px;
         }
+
 
         .timer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #6c7a90;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            color:
+                #6c7a90;
+
+            font-size:
+                0.9rem;
+
+            margin-bottom:
+                5px;
         }
+
 
         .timer-bar {
-            width: 100%;
-            height: 6px;
-            border-radius: 4px;
-            background: #e0ecff;
-            overflow: hidden;
+
+            width:
+                100%;
+
+            height:
+                6px;
+
+            border-radius:
+                4px;
+
+            background:
+                #e0ecff;
+
+            overflow:
+                hidden;
         }
 
+
         .timer-bar-inner {
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(
-                90deg,
-                #0ea5e9,
-                #3b82f6
-            );
-            transition: width 1s linear;
+
+            height:
+                100%;
+
+            width:
+                100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0ea5e9,
+                    #3b82f6
+                );
+
+            transition:
+                width 1s linear;
         }
+
 
         /* =====================================================
            QUESTION
         ===================================================== */
 
         .question-number {
-            color: #2563eb;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+
+            color:
+                #2563eb;
+
+            font-size:
+                0.9rem;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                8px;
         }
+
 
         .difficulty {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+
+            display:
+                inline-block;
+
+            padding:
+                5px 10px;
+
+            border-radius:
+                999px;
+
+            font-size:
+                0.75rem;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                12px;
         }
+
 
         .difficulty.easy {
-            background: #eafbea;
-            color: #16803c;
-            border: 1px solid #bde8c8;
+
+            background:
+                #eafbea;
+
+            color:
+                #16803c;
+
+            border:
+                1px solid #bde8c8;
         }
+
 
         .difficulty.medium {
-            background: #fff8df;
-            color: #a16207;
-            border: 1px solid #f5df91;
+
+            background:
+                #fff8df;
+
+            color:
+                #a16207;
+
+            border:
+                1px solid #f5df91;
         }
+
 
         .difficulty.hard {
-            background: #ffecec;
-            color: #b42318;
-            border: 1px solid #f3b4b4;
+
+            background:
+                #ffecec;
+
+            color:
+                #b42318;
+
+            border:
+                1px solid #f3b4b4;
         }
 
+
         #question {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: #1f2937;
-            margin: 5px 0 20px;
+
+            font-size:
+                1.25rem;
+
+            line-height:
+                1.6;
+
+            color:
+                #1f2937;
+
+            margin:
+                5px 0 20px;
         }
+
 
         /* =====================================================
            OPTIONS
         ===================================================== */
 
         .options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                12px;
         }
+
 
         .option {
-            width: 100%;
-            background: #fafcff;
-            border: 1px solid #dbe3ec;
-            border-radius: 10px;
-            padding: 13px;
-            text-align: left;
-            color: #334155;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.95rem;
+
+            width:
+                100%;
+
+            background:
+                #fafcff;
+
+            border:
+                1px solid #dbe3ec;
+
+            border-radius:
+                10px;
+
+            padding:
+                13px;
+
+            text-align:
+                left;
+
+            color:
+                #334155;
+
+            cursor:
+                pointer;
+
+            transition:
+                all 0.2s;
+
+            font-size:
+                0.95rem;
         }
+
 
         .option:hover {
-            border-color: #3b82f6;
-            background: #f0f6ff;
-            transform: translateY(-1px);
+
+            border-color:
+                #3b82f6;
+
+            background:
+                #f0f6ff;
+
+            transform:
+                translateY(-1px);
         }
+
 
         .option-key {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 7px;
-            background: #e0ecff;
-            color: #2563eb;
-            font-weight: 700;
-            margin-right: 8px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                28px;
+
+            height:
+                28px;
+
+            border-radius:
+                7px;
+
+            background:
+                #e0ecff;
+
+            color:
+                #2563eb;
+
+            font-weight:
+                700;
+
+            margin-right:
+                8px;
         }
+
 
         .option.correct {
-            background: #eafbea;
-            border-color: #4caf50;
-            color: #166534;
+
+            background:
+                #eafbea;
+
+            border-color:
+                #4caf50;
+
+            color:
+                #166534;
         }
+
 
         .option.correct .option-key {
-            background: #c9f2d0;
-            color: #166534;
+
+            background:
+                #c9f2d0;
+
+            color:
+                #166534;
         }
+
 
         .option.wrong {
-            background: #ffecec;
-            border-color: #ef4444;
-            color: #991b1b;
+
+            background:
+                #ffecec;
+
+            border-color:
+                #ef4444;
+
+            color:
+                #991b1b;
         }
+
 
         .option.wrong .option-key {
-            background: #ffd0d0;
-            color: #991b1b;
+
+            background:
+                #ffd0d0;
+
+            color:
+                #991b1b;
         }
 
+
         .option.disabled {
-            cursor: default;
+
+            cursor:
+                default;
         }
+
 
         /* =====================================================
            FEEDBACK
         ===================================================== */
 
         .feedback {
-            min-height: 28px;
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
+
+            min-height:
+                28px;
+
+            margin-top:
+                15px;
+
+            padding:
+                10px;
+
+            border-radius:
+                8px;
+
+            text-align:
+                center;
+
+            font-weight:
+                600;
         }
+
 
         .correct-text {
-            color: #16803c;
-            background: #eafbea;
+
+            color:
+                #16803c;
+
+            background:
+                #eafbea;
         }
 
+
         .wrong-text {
-            color: #b42318;
-            background: #ffecec;
+
+            color:
+                #b42318;
+
+            background:
+                #ffecec;
         }
+
 
         /* =====================================================
            NEXT BUTTON
         ===================================================== */
 
         .next-container {
-            display: none;
-            text-align: center;
-            margin-top: 18px;
+
+            display:
+                none;
+
+            text-align:
+                center;
+
+            margin-top:
+                18px;
         }
+
 
         /* =====================================================
            RESULT
         ===================================================== */
 
         .result {
-            display: none;
-            text-align: center;
-            padding: 10px;
+
+            display:
+                none;
+
+            text-align:
+                center;
+
+            padding:
+                10px;
         }
+
 
         .result-icon {
-            font-size: 4rem;
-            margin-bottom: 10px;
+
+            font-size:
+                4rem;
+
+            margin-bottom:
+                10px;
         }
+
 
         .result h2 {
-            color: #1f2937;
-            margin-bottom: 8px;
+
+            color:
+                #1f2937;
+
+            margin-bottom:
+                8px;
         }
+
 
         .result-message {
-            color: #6c7a90;
-            margin-bottom: 20px;
+
+            color:
+                #6c7a90;
+
+            margin-bottom:
+                20px;
         }
+
 
         .final-score {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #2563eb;
-            margin: 15px 0;
+
+            font-size:
+                3rem;
+
+            font-weight:
+                700;
+
+            color:
+                #2563eb;
+
+            margin:
+                15px 0;
         }
+
 
         .final-score small {
-            font-size: 1rem;
-            color: #6c7a90;
+
+            font-size:
+                1rem;
+
+            color:
+                #6c7a90;
         }
+
+
+        /* =====================================================
+           RESULT STATISTICS
+        ===================================================== */
 
         .result-stats {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin: 20px 0;
+
+            display:
+                flex;
+
+            gap:
+                14px;
+
+            flex-wrap:
+                wrap;
+
+            margin:
+                20px 0;
         }
+
 
         .result-stat {
-            flex: 1;
-            min-width: 130px;
-            background: #f9fafc;
-            border: 1px solid #e4ebf2;
-            padding: 14px;
-            border-radius: 10px;
+
+            flex:
+                1;
+
+            min-width:
+                130px;
+
+            background:
+                #f9fafc;
+
+            border:
+                1px solid #e4ebf2;
+
+            padding:
+                14px;
+
+            border-radius:
+                10px;
         }
+
 
         .result-stat strong {
-            display: block;
-            font-size: 1.4rem;
-            color: #2563eb;
-            margin-bottom: 4px;
+
+            display:
+                block;
+
+            font-size:
+                1.4rem;
+
+            color:
+                #2563eb;
+
+            margin-bottom:
+                4px;
         }
+
 
         .result-stat span {
-            color: #6c7a90;
-            font-size: 0.85rem;
+
+            color:
+                #6c7a90;
+
+            font-size:
+                0.85rem;
         }
+
+
+        /* =====================================================
+           SOCIAL ACTION BUTTONS
+        ===================================================== */
+
+        .social-result-actions {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                10px;
+
+            flex-wrap:
+                wrap;
+
+            margin:
+                18px 0 10px;
+        }
+
+
+        .social-result-actions .game-btn {
+
+            min-width:
+                195px;
+        }
+
+
+        .social-tip {
+
+            margin-top:
+                14px;
+        }
+
+
+        /* =====================================================
+           RESULT BUTTONS
+        ===================================================== */
 
         .result-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 20px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                10px;
+
+            flex-wrap:
+                wrap;
+
+            margin-top:
+                15px;
         }
 
+
         .muted-sm {
-            color: #6c7a90;
-            font-size: 0.9rem;
+
+            color:
+                #6c7a90;
+
+            font-size:
+                0.9rem;
         }
+
 
         /* =====================================================
            RESPONSIVE
@@ -441,41 +932,84 @@
         @media (max-width: 650px) {
 
             .game-card {
-                margin: 1rem auto;
-                padding: 18px;
+
+                margin:
+                    1rem auto;
+
+                padding:
+                    18px;
             }
+
 
             .game-controls {
-                align-items: stretch;
+
+                align-items:
+                    stretch;
             }
+
 
             .game-controls .game-btn {
-                flex: 1;
+
+                flex:
+                    1;
             }
+
 
             .options {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
             }
+
 
             .game-stats {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+
+                display:
+                    grid;
+
+                grid-template-columns:
+                    1fr 1fr;
             }
+
 
             .stat {
-                min-width: 0;
+
+                min-width:
+                    0;
             }
+
 
             #question {
-                font-size: 1.1rem;
+
+                font-size:
+                    1.1rem;
             }
 
+
             .final-score {
-                font-size: 2.5rem;
+
+                font-size:
+                    2.5rem;
             }
+
+
+            .social-result-actions {
+
+                flex-direction:
+                    column;
+            }
+
+
+            .social-result-actions .game-btn {
+
+                width:
+                    100%;
+            }
+
         }
 
     </style>
+
 </head>
 
 
@@ -490,13 +1024,16 @@
 
     <div class="container">
 
-        <a class="brand" href="index.html">
+
+        <a
+            class="brand"
+            href="index.html">
 
             <img
                 src="assets/logo.png"
                 alt="Embedded Electronics Logo"
                 class="brand-logo"
-            />
+            >
 
         </a>
 
@@ -511,51 +1048,81 @@
         </button>
 
 
-        <nav id="nav" class="nav">
+        <nav
+            id="nav"
+            class="nav">
+
 
             <a href="index.html">
                 Home
             </a>
 
-            <a href="free-advanced-embedded-systems-courses-with-certification.html">
+
+            <a
+                href="free-advanced-embedded-systems-courses-with-certification.html">
+
                 Certification
+
             </a>
 
-            <!-- <a href="course.html">Courses</a> -->
+
+            <!--
+            <a href="course.html">
+                Courses
+            </a>
+            -->
+
 
             <a href="ebooks.html">
                 E-Books
             </a>
 
+
             <a href="quiz.html">
                 Quiz
             </a>
 
-            <!-- <a href="blog.html">Blog</a> -->
 
-            <a class="active" href="game.html">
-                Game
+            <!--
+            <a href="blog.html">
+                Blog
             </a>
+            -->
+
+
+            <a
+                class="active"
+                href="game.html">
+
+                Game
+
+            </a>
+
 
             <a href="typing-game.html">
                 Typing Test
             </a>
 
+
             <a href="interview.html">
                 Interview
             </a>
+
 
             <a href="iq-test.html">
                 IQ Test
             </a>
 
+
             <a href="faq.html">
                 FAQ
             </a>
 
+
             <a href="contact.html">
                 Contact
             </a>
+
 
         </nav>
 
@@ -577,9 +1144,13 @@
             Embedded Electronics Challenge
         </h1>
 
+
         <p class="muted-sm">
-            Test your knowledge of Electronics, C Programming,
-            Microcontrollers and Embedded Systems.
+
+            Test your knowledge of Electronics,
+            C Programming, Microcontrollers
+            and Embedded Systems.
+
         </p>
 
     </header>
@@ -596,27 +1167,36 @@
              START SCREEN
         ================================================== -->
 
-        <div id="startScreen" class="game-start">
+        <div
+            id="startScreen"
+            class="game-start">
+
 
             <div class="game-icon">
                 🎮
             </div>
 
+
             <h2>
                 Ready for the Challenge?
             </h2>
 
+
             <p>
-                Answer 10 technical questions and try
-                to achieve the highest score!
+
+                Answer 10 technical questions
+                and try to achieve the highest score!
+
             </p>
 
 
             <div class="instructions">
 
+
                 <h3>
                     🎯 How to Play
                 </h3>
+
 
                 <ul>
 
@@ -648,6 +1228,10 @@
                         Your highest score is saved automatically.
                     </li>
 
+                    <li>
+                        Download and share your result after the game.
+                    </li>
+
                 </ul>
 
             </div>
@@ -661,6 +1245,7 @@
 
             </button>
 
+
         </div>
 
 
@@ -668,21 +1253,32 @@
              GAME SCREEN
         ================================================== -->
 
-        <div id="gameScreen" style="display:none;">
+        <div
+            id="gameScreen"
+            style="display:none;">
 
 
             <!-- GAME CONTROLS -->
 
             <div class="game-controls">
 
-                <span class="badge">
-                    ⚡ Embedded Electronics
-                </span>
 
                 <span class="badge">
-                    🏆 High Score:
-                    <span id="highScore">0</span>
+
+                    ⚡ Embedded Electronics
+
                 </span>
+
+
+                <span class="badge">
+
+                    🏆 High Score:
+                    <span id="highScore">
+                        0
+                    </span>
+
+                </span>
+
 
                 <button
                     class="game-btn secondary"
@@ -692,12 +1288,14 @@
 
                 </button>
 
+
             </div>
 
 
             <!-- GAME STATS -->
 
             <div class="game-stats">
+
 
                 <div class="stat">
 
@@ -708,6 +1306,7 @@
 
                 </div>
 
+
                 <div class="stat">
 
                     Lives:
@@ -716,6 +1315,7 @@
                     </strong>
 
                 </div>
+
 
                 <div class="stat">
 
@@ -726,6 +1326,7 @@
 
                 </div>
 
+
                 <div class="stat">
 
                     Question:
@@ -735,6 +1336,7 @@
 
                 </div>
 
+
             </div>
 
 
@@ -742,17 +1344,20 @@
 
             <div class="timer-section">
 
+
                 <div class="timer-header">
 
                     <span>
                         ⏱ Time Remaining
                     </span>
 
+
                     <strong id="timerText">
                         15s
                     </strong>
 
                 </div>
+
 
                 <div class="timer-bar">
 
@@ -769,6 +1374,7 @@
             <!-- QUESTION -->
 
             <div>
+
 
                 <span
                     class="question-number"
@@ -797,6 +1403,7 @@
 
                 </h2>
 
+
             </div>
 
 
@@ -805,7 +1412,6 @@
             <div
                 class="options"
                 id="options">
-
             </div>
 
 
@@ -814,7 +1420,6 @@
             <div
                 id="feedback"
                 class="feedback">
-
             </div>
 
 
@@ -824,6 +1429,7 @@
                 class="next-container"
                 id="nextContainer">
 
+
                 <button
                     class="game-btn"
                     onclick="nextQuestion()">
@@ -831,6 +1437,7 @@
                     Next Question →
 
                 </button>
+
 
             </div>
 
@@ -845,6 +1452,7 @@
         <div
             id="resultScreen"
             class="result">
+
 
             <div
                 id="resultIcon"
@@ -869,11 +1477,14 @@
             </p>
 
 
+            <!-- FINAL SCORE -->
+
             <div class="final-score">
 
                 <span id="finalScore">
                     0
                 </span>
+
 
                 <small>
                     points
@@ -882,13 +1493,17 @@
             </div>
 
 
+            <!-- RESULT STATISTICS -->
+
             <div class="result-stats">
+
 
                 <div class="result-stat">
 
                     <strong id="correctAnswers">
                         0
                     </strong>
+
 
                     <span>
                         Correct Answers
@@ -903,6 +1518,7 @@
                         0
                     </strong>
 
+
                     <span>
                         Wrong Answers
                     </span>
@@ -916,16 +1532,57 @@
                         0
                     </strong>
 
+
                     <span>
                         Best Streak
                     </span>
 
                 </div>
 
+
             </div>
 
 
+            <!-- =================================================
+                 SOCIAL SHARE BUTTONS
+            ================================================== -->
+
+            <div class="social-result-actions">
+
+
+                <button
+                    class="game-btn"
+                    onclick="downloadScoreCard()">
+
+                    📥 Download Score Card
+
+                </button>
+
+
+                <button
+                    class="game-btn secondary"
+                    onclick="shareScoreCard()">
+
+                    📤 Share Result
+
+                </button>
+
+
+            </div>
+
+
+            <p class="muted-sm social-tip">
+
+                📱 Download your achievement card
+                and share it on social media.
+
+            </p>
+
+
+            <!-- PLAY AGAIN / HOME -->
+
             <div class="result-buttons">
+
 
                 <button
                     class="game-btn"
@@ -944,7 +1601,9 @@
 
                 </button>
 
+
             </div>
+
 
         </div>
 
@@ -961,263 +1620,370 @@
 
 <footer class="site-footer">
 
+
     <div class="container">
 
+
         <p>
-            © <span id="year"></span>
+
+            ©
+            <span id="year"></span>
             Embedded Electronics
+
         </p>
 
+
     </div>
+
 
 </footer>
 
 
 <script>
 
+
 /* =====================================================
    QUESTION DATABASE
-====================================================== */
+===================================================== */
 
 const questions = [
 
     {
-        question: "What is the basic unit of electric current?",
+        question:
+            "What is the basic unit of electric current?",
+
         options: [
             "Volt",
             "Ampere",
             "Ohm",
             "Watt"
         ],
+
         answer: 1,
+
         difficulty: "easy"
     },
 
+
     {
-        question: "Which component is commonly used to limit current in a circuit?",
+        question:
+            "Which component is commonly used to limit current in a circuit?",
+
         options: [
             "Capacitor",
             "Inductor",
             "Resistor",
             "Diode"
         ],
+
         answer: 2,
+
         difficulty: "easy"
     },
 
+
     {
-        question: "What does ADC stand for?",
+        question:
+            "What does ADC stand for?",
+
         options: [
             "Analog Digital Controller",
             "Analog-to-Digital Converter",
             "Automatic Data Controller",
             "Advanced Digital Circuit"
         ],
+
         answer: 1,
+
         difficulty: "easy"
     },
 
+
     {
-        question: "Which language is widely used for embedded systems programming?",
+        question:
+            "Which language is widely used for embedded systems programming?",
+
         options: [
             "HTML",
             "CSS",
             "C",
             "SQL"
         ],
+
         answer: 2,
+
         difficulty: "easy"
     },
 
+
     {
-        question: "What is the main function of a microcontroller?",
+        question:
+            "What is the main function of a microcontroller?",
+
         options: [
             "Only store files",
             "Control electronic systems",
             "Only generate electricity",
             "Only display images"
         ],
+
         answer: 1,
+
         difficulty: "medium"
     },
 
+
     {
-        question: "Which protocol is commonly used for short-distance serial communication between ICs?",
+        question:
+            "Which protocol is commonly used for short-distance serial communication between ICs?",
+
         options: [
             "I2C",
             "HTTP",
             "FTP",
             "SMTP"
         ],
+
         answer: 0,
+
         difficulty: "medium"
     },
 
+
     {
-        question: "What does PWM stand for?",
+        question:
+            "What does PWM stand for?",
+
         options: [
             "Power Wave Mode",
             "Pulse Width Modulation",
             "Programmable Wire Module",
             "Pulse Wire Management"
         ],
+
         answer: 1,
+
         difficulty: "medium"
     },
 
+
     {
-        question: "Which memory is normally used to store firmware in a microcontroller?",
+        question:
+            "Which memory is normally used to store firmware in a microcontroller?",
+
         options: [
             "Flash",
             "Cache",
             "Register",
             "Stack"
         ],
+
         answer: 0,
+
         difficulty: "medium"
     },
 
+
     {
-        question: "What is the purpose of an interrupt in an embedded system?",
+        question:
+            "What is the purpose of an interrupt in an embedded system?",
+
         options: [
             "Stop the power supply",
             "Handle an event immediately",
             "Increase RAM size",
             "Change the processor physically"
         ],
+
         answer: 1,
+
         difficulty: "hard"
     },
 
+
     {
-        question: "Which communication protocol uses MOSI, MISO, SCLK and SS signals?",
+        question:
+            "Which communication protocol uses MOSI, MISO, SCLK and SS signals?",
+
         options: [
             "UART",
             "I2C",
             "SPI",
             "CAN"
         ],
+
         answer: 2,
+
         difficulty: "hard"
     },
 
+
     {
-        question: "Which register generally stores the address of the next instruction?",
+        question:
+            "Which register generally stores the address of the next instruction?",
+
         options: [
             "Program Counter",
             "Accumulator",
             "Status Register",
             "Stack Pointer"
         ],
+
         answer: 0,
+
         difficulty: "hard"
     },
 
+
     {
-        question: "What is the primary purpose of a watchdog timer?",
+        question:
+            "What is the primary purpose of a watchdog timer?",
+
         options: [
             "Measure temperature",
             "Reset the system if software becomes unresponsive",
             "Increase CPU speed",
             "Store program code"
         ],
+
         answer: 1,
+
         difficulty: "hard"
     },
 
+
     {
-        question: "Which keyword is commonly used to indicate that a variable may change unexpectedly due to hardware?",
+        question:
+            "Which keyword is commonly used to indicate that a variable may change unexpectedly due to hardware?",
+
         options: [
             "static",
             "extern",
             "volatile",
             "register"
         ],
+
         answer: 2,
+
         difficulty: "hard"
     },
 
+
     {
-        question: "Which device converts electrical energy into mechanical motion?",
+        question:
+            "Which device converts electrical energy into mechanical motion?",
+
         options: [
             "Sensor",
             "Motor",
             "Resistor",
             "Capacitor"
         ],
+
         answer: 1,
+
         difficulty: "medium"
     },
 
+
     {
-        question: "Which sensor can commonly be used to measure temperature?",
+        question:
+            "Which sensor can commonly be used to measure temperature?",
+
         options: [
             "LM35",
             "LDR",
             "IR LED",
             "Relay"
         ],
+
         answer: 0,
+
         difficulty: "easy"
     },
 
+
     {
-        question: "What does UART stand for?",
+        question:
+            "What does UART stand for?",
+
         options: [
             "Universal Asynchronous Receiver Transmitter",
             "Universal Analog Response Technology",
             "Unified Automatic Register Transfer",
             "Universal Address Routing Tool"
         ],
+
         answer: 0,
+
         difficulty: "medium"
     },
 
+
     {
-        question: "Which component allows current to flow primarily in one direction?",
+        question:
+            "Which component allows current to flow primarily in one direction?",
+
         options: [
             "Resistor",
             "Capacitor",
             "Diode",
             "Transformer"
         ],
+
         answer: 2,
+
         difficulty: "easy"
     },
 
+
     {
-        question: "Which logic gate produces HIGH only when all inputs are HIGH?",
+        question:
+            "Which logic gate produces HIGH only when all inputs are HIGH?",
+
         options: [
             "OR",
             "NOT",
             "AND",
             "XOR"
         ],
+
         answer: 2,
+
         difficulty: "easy"
     },
 
+
     {
-        question: "Which logic gate produces HIGH when inputs are different?",
+        question:
+            "Which logic gate produces HIGH when inputs are different?",
+
         options: [
             "AND",
             "OR",
             "XOR",
             "NOR"
         ],
+
         answer: 2,
+
         difficulty: "medium"
     },
 
+
     {
-        question: "What is the purpose of a pull-up resistor?",
+        question:
+            "What is the purpose of a pull-up resistor?",
+
         options: [
             "Keep a digital input at a defined HIGH state",
             "Increase motor speed",
             "Convert AC to DC",
             "Store electrical energy"
         ],
+
         answer: 0,
+
         difficulty: "medium"
     }
 
@@ -1225,22 +1991,38 @@ const questions = [
 
 
 /* =====================================================
-   GAME VARIABLES
+   GAME SETTINGS
 ===================================================== */
 
 const TOTAL_QUESTIONS = 10;
+
 const QUESTION_TIME = 15;
 
+
+/* =====================================================
+   GAME VARIABLES
+===================================================== */
+
 let gameQuestions = [];
+
 let currentQuestion = 0;
+
 let score = 0;
+
 let lives = 3;
+
 let streak = 0;
+
 let bestStreak = 0;
+
 let correctAnswers = 0;
+
 let wrongAnswers = 0;
+
 let timeLeft = QUESTION_TIME;
+
 let timer = null;
+
 let questionAnswered = false;
 
 
@@ -1249,52 +2031,99 @@ let questionAnswered = false;
 ===================================================== */
 
 const startScreen =
-    document.getElementById("startScreen");
+    document.getElementById(
+        "startScreen"
+    );
+
 
 const gameScreen =
-    document.getElementById("gameScreen");
+    document.getElementById(
+        "gameScreen"
+    );
+
 
 const resultScreen =
-    document.getElementById("resultScreen");
+    document.getElementById(
+        "resultScreen"
+    );
+
 
 const scoreElement =
-    document.getElementById("score");
+    document.getElementById(
+        "score"
+    );
+
 
 const livesElement =
-    document.getElementById("lives");
+    document.getElementById(
+        "lives"
+    );
+
 
 const streakElement =
-    document.getElementById("streak");
+    document.getElementById(
+        "streak"
+    );
+
 
 const highScoreElement =
-    document.getElementById("highScore");
+    document.getElementById(
+        "highScore"
+    );
+
 
 const questionNumberElement =
-    document.getElementById("questionNumber");
+    document.getElementById(
+        "questionNumber"
+    );
+
 
 const questionNumberText =
-    document.getElementById("questionNumberText");
+    document.getElementById(
+        "questionNumberText"
+    );
+
 
 const questionElement =
-    document.getElementById("question");
+    document.getElementById(
+        "question"
+    );
+
 
 const optionsElement =
-    document.getElementById("options");
+    document.getElementById(
+        "options"
+    );
+
 
 const feedbackElement =
-    document.getElementById("feedback");
+    document.getElementById(
+        "feedback"
+    );
+
 
 const nextContainer =
-    document.getElementById("nextContainer");
+    document.getElementById(
+        "nextContainer"
+    );
+
 
 const timerText =
-    document.getElementById("timerText");
+    document.getElementById(
+        "timerText"
+    );
+
 
 const timerProgress =
-    document.getElementById("timerProgress");
+    document.getElementById(
+        "timerProgress"
+    );
+
 
 const difficultyElement =
-    document.getElementById("difficulty");
+    document.getElementById(
+        "difficulty"
+    );
 
 
 /* =====================================================
@@ -1304,9 +2133,11 @@ const difficultyElement =
 function getHighScore() {
 
     return parseInt(
+
         localStorage.getItem(
             "embeddedElectronicsGameHighScore"
         ) || "0"
+
     );
 
 }
@@ -1328,6 +2159,7 @@ function shuffleArray(array) {
 
     const result = [...array];
 
+
     for (
         let i = result.length - 1;
         i > 0;
@@ -1339,6 +2171,7 @@ function shuffleArray(array) {
                 Math.random() * (i + 1)
             );
 
+
         [
             result[i],
             result[j]
@@ -1348,6 +2181,7 @@ function shuffleArray(array) {
         ];
 
     }
+
 
     return result;
 
@@ -1361,25 +2195,49 @@ function shuffleArray(array) {
 function startGame() {
 
     gameQuestions =
-        shuffleArray(questions)
-        .slice(0, TOTAL_QUESTIONS);
+        shuffleArray(
+            questions
+        ).slice(
+            0,
+            TOTAL_QUESTIONS
+        );
+
 
     currentQuestion = 0;
+
     score = 0;
+
     lives = 3;
+
     streak = 0;
+
     bestStreak = 0;
+
     correctAnswers = 0;
+
     wrongAnswers = 0;
 
-    startScreen.style.display = "none";
-    resultScreen.style.display = "none";
-    gameScreen.style.display = "block";
+
+    startScreen.style.display =
+        "none";
+
+
+    resultScreen.style.display =
+        "none";
+
+
+    gameScreen.style.display =
+        "block";
+
 
     updateScore();
+
     updateLives();
+
     updateStreak();
+
     updateHighScoreDisplay();
+
 
     loadQuestion();
 
@@ -1394,21 +2252,35 @@ function loadQuestion() {
 
     clearInterval(timer);
 
+
     questionAnswered = false;
 
-    feedbackElement.textContent = "";
-    feedbackElement.className = "feedback";
 
-    nextContainer.style.display = "none";
+    feedbackElement.textContent =
+        "";
+
+
+    feedbackElement.className =
+        "feedback";
+
+
+    nextContainer.style.display =
+        "none";
+
 
     const q =
-        gameQuestions[currentQuestion];
+        gameQuestions[
+            currentQuestion
+        ];
+
 
     questionNumberElement.textContent =
         `${currentQuestion + 1} / ${TOTAL_QUESTIONS}`;
 
+
     questionNumberText.textContent =
         `Question ${currentQuestion + 1} of ${TOTAL_QUESTIONS}`;
+
 
     questionElement.textContent =
         q.question;
@@ -1417,35 +2289,53 @@ function loadQuestion() {
     difficultyElement.textContent =
         q.difficulty.toUpperCase();
 
+
     difficultyElement.className =
         `difficulty ${q.difficulty}`;
 
 
-    optionsElement.innerHTML = "";
+    optionsElement.innerHTML =
+        "";
 
 
     q.options.forEach(
         (option, index) => {
 
+
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             button.className =
                 "option";
 
+
             button.innerHTML = `
+
                 <span class="option-key">
+
                     ${index + 1}
+
                 </span>
+
                 ${option}
+
             `;
 
+
             button.onclick =
-                () => selectAnswer(index);
+                () =>
+                    selectAnswer(
+                        index
+                    );
+
 
             optionsElement.appendChild(
                 button
             );
+
 
         }
     );
@@ -1462,60 +2352,96 @@ function loadQuestion() {
 
 function startTimer() {
 
-    timeLeft = QUESTION_TIME;
+    timeLeft =
+        QUESTION_TIME;
+
 
     updateTimer();
 
-    timer = setInterval(
-        () => {
 
-            timeLeft--;
+    timer =
+        setInterval(
+            () => {
 
-            updateTimer();
 
-            if (timeLeft <= 0) {
+                timeLeft--;
 
-                clearInterval(timer);
 
-                timeOut();
+                updateTimer();
 
-            }
 
-        },
-        1000
-    );
+                if (
+                    timeLeft <= 0
+                ) {
+
+
+                    clearInterval(
+                        timer
+                    );
+
+
+                    timeOut();
+
+
+                }
+
+
+            },
+            1000
+        );
 
 }
 
+
+/* =====================================================
+   UPDATE TIMER
+===================================================== */
 
 function updateTimer() {
 
     timerText.textContent =
         `${timeLeft}s`;
 
+
     const percentage =
-        (timeLeft / QUESTION_TIME) * 100;
+        (
+            timeLeft /
+            QUESTION_TIME
+        ) * 100;
+
 
     timerProgress.style.width =
         `${percentage}%`;
 
 
-    if (timeLeft <= 5) {
+    if (
+        timeLeft <= 5
+    ) {
+
 
         timerProgress.style.background =
             "linear-gradient(90deg,#ef4444,#dc2626)";
 
+
     }
-    else if (timeLeft <= 9) {
+
+    else if (
+        timeLeft <= 9
+    ) {
+
 
         timerProgress.style.background =
             "linear-gradient(90deg,#f59e0b,#d97706)";
 
+
     }
+
     else {
+
 
         timerProgress.style.background =
             "linear-gradient(90deg,#0ea5e9,#3b82f6)";
+
 
     }
 
@@ -1526,50 +2452,85 @@ function updateTimer() {
    SELECT ANSWER
 ===================================================== */
 
-function selectAnswer(selectedIndex) {
+function selectAnswer(
+    selectedIndex
+) {
 
-    if (questionAnswered) {
+    if (
+        questionAnswered
+    ) {
+
         return;
+
     }
 
-    questionAnswered = true;
 
-    clearInterval(timer);
+    questionAnswered =
+        true;
+
+
+    clearInterval(
+        timer
+    );
+
 
     const question =
-        gameQuestions[currentQuestion];
+        gameQuestions[
+            currentQuestion
+        ];
+
 
     const buttons =
-        document.querySelectorAll(".option");
+        document.querySelectorAll(
+            ".option"
+        );
 
 
     buttons.forEach(
         (button, index) => {
 
-            button.classList.add("disabled");
+
+            button.classList.add(
+                "disabled"
+            );
+
 
             if (
-                index === question.answer
+                index ===
+                question.answer
             ) {
 
-                button.classList.add("correct");
+
+                button.classList.add(
+                    "correct"
+                );
+
 
             }
+
 
         }
     );
 
 
     if (
-        selectedIndex === question.answer
+        selectedIndex ===
+        question.answer
     ) {
+
 
         handleCorrectAnswer();
 
+
     }
+
     else {
 
-        handleWrongAnswer(selectedIndex);
+
+        handleWrongAnswer(
+            selectedIndex
+        );
+
 
     }
 
@@ -1577,33 +2538,52 @@ function selectAnswer(selectedIndex) {
 
 
 /* =====================================================
-   CORRECT
+   CORRECT ANSWER
 ===================================================== */
 
 function handleCorrectAnswer() {
 
     correctAnswers++;
 
+
     streak++;
 
-    if (streak > bestStreak) {
-        bestStreak = streak;
+
+    if (
+        streak >
+        bestStreak
+    ) {
+
+
+        bestStreak =
+            streak;
+
+
     }
 
 
     const points =
         100 +
-        (timeLeft * 5) +
-        (streak * 10);
+        (
+            timeLeft * 5
+        ) +
+        (
+            streak * 10
+        );
 
-    score += points;
+
+    score +=
+        points;
+
 
     updateScore();
+
     updateStreak();
 
 
     feedbackElement.textContent =
         `✅ Correct! +${points} points`;
+
 
     feedbackElement.className =
         "feedback correct-text";
@@ -1616,34 +2596,56 @@ function handleCorrectAnswer() {
 
 
 /* =====================================================
-   WRONG
+   WRONG ANSWER
 ===================================================== */
 
-function handleWrongAnswer(selectedIndex) {
+function handleWrongAnswer(
+    selectedIndex
+) {
 
     wrongAnswers++;
 
+
     lives--;
+
 
     streak = 0;
 
+
     updateLives();
+
     updateStreak();
 
 
     const question =
-        gameQuestions[currentQuestion];
+        gameQuestions[
+            currentQuestion
+        ];
+
 
     const buttons =
-        document.querySelectorAll(".option");
+        document.querySelectorAll(
+            ".option"
+        );
 
 
-    buttons[selectedIndex]
-        .classList.add("wrong");
+    if (
+        buttons[selectedIndex]
+    ) {
+
+
+        buttons[selectedIndex]
+            .classList.add(
+                "wrong"
+            );
+
+
+    }
 
 
     feedbackElement.textContent =
         `❌ Wrong! Correct answer: ${question.options[question.answer]}`;
+
 
     feedbackElement.className =
         "feedback wrong-text";
@@ -1653,11 +2655,18 @@ function handleWrongAnswer(selectedIndex) {
         "block";
 
 
-    if (lives <= 0) {
+    if (
+        lives <= 0
+    ) {
 
-        nextContainer.querySelector("button")
+
+        nextContainer
+            .querySelector(
+                "button"
+            )
             .textContent =
             "See Results →";
+
 
     }
 
@@ -1670,41 +2679,67 @@ function handleWrongAnswer(selectedIndex) {
 
 function timeOut() {
 
-    if (questionAnswered) {
+    if (
+        questionAnswered
+    ) {
+
         return;
+
     }
 
-    questionAnswered = true;
+
+    questionAnswered =
+        true;
+
 
     wrongAnswers++;
 
+
     lives--;
+
 
     streak = 0;
 
+
     updateLives();
+
     updateStreak();
 
 
     const question =
-        gameQuestions[currentQuestion];
+        gameQuestions[
+            currentQuestion
+        ];
+
 
     const buttons =
-        document.querySelectorAll(".option");
+        document.querySelectorAll(
+            ".option"
+        );
 
 
     buttons.forEach(
         (button, index) => {
 
-            button.classList.add("disabled");
+
+            button.classList.add(
+                "disabled"
+            );
+
 
             if (
-                index === question.answer
+                index ===
+                question.answer
             ) {
 
-                button.classList.add("correct");
+
+                button.classList.add(
+                    "correct"
+                );
+
 
             }
+
 
         }
     );
@@ -1712,6 +2747,7 @@ function timeOut() {
 
     feedbackElement.textContent =
         `⏰ Time's up! Correct answer: ${question.options[question.answer]}`;
+
 
     feedbackElement.className =
         "feedback wrong-text";
@@ -1721,11 +2757,18 @@ function timeOut() {
         "block";
 
 
-    if (lives <= 0) {
+    if (
+        lives <= 0
+    ) {
 
-        nextContainer.querySelector("button")
+
+        nextContainer
+            .querySelector(
+                "button"
+            )
             .textContent =
             "See Results →";
+
 
     }
 
@@ -1738,7 +2781,10 @@ function timeOut() {
 
 function nextQuestion() {
 
-    if (lives <= 0) {
+    if (
+        lives <= 0
+    ) {
+
 
         showResults();
 
@@ -1751,8 +2797,10 @@ function nextQuestion() {
 
 
     if (
-        currentQuestion >= TOTAL_QUESTIONS
+        currentQuestion >=
+        TOTAL_QUESTIONS
     ) {
+
 
         showResults();
 
@@ -1761,7 +2809,10 @@ function nextQuestion() {
     }
 
 
-    nextContainer.querySelector("button")
+    nextContainer
+        .querySelector(
+            "button"
+        )
         .textContent =
         "Next Question →";
 
@@ -1791,12 +2842,22 @@ function updateLives() {
 
     let hearts = "";
 
-    for (let i = 0; i < 3; i++) {
+
+    for (
+        let i = 0;
+        i < 3;
+        i++
+    ) {
+
 
         hearts +=
-            i < lives ? "❤️" : "🖤";
+            i < lives
+                ? "❤️"
+                : "🖤";
+
 
     }
+
 
     livesElement.textContent =
         hearts;
@@ -1817,15 +2878,19 @@ function updateStreak() {
 
 
 /* =====================================================
-   RESULTS
+   SHOW RESULTS
 ===================================================== */
 
 function showResults() {
 
-    clearInterval(timer);
+    clearInterval(
+        timer
+    );
+
 
     gameScreen.style.display =
         "none";
+
 
     resultScreen.style.display =
         "block";
@@ -1859,78 +2924,103 @@ function showResults() {
         getHighScore();
 
 
-    if (score > oldHighScore) {
+    if (
+        score >
+        oldHighScore
+    ) {
+
 
         localStorage.setItem(
             "embeddedElectronicsGameHighScore",
             score
         );
 
+
         document.getElementById(
             "resultIcon"
         ).textContent =
             "🏆";
+
 
         document.getElementById(
             "resultMessage"
         ).textContent =
             "🎉 New High Score! Excellent work!";
 
+
     }
 
-    else if (score >= 800) {
+    else if (
+        score >= 800
+    ) {
+
 
         document.getElementById(
             "resultIcon"
         ).textContent =
             "🥇";
 
+
         document.getElementById(
             "resultMessage"
         ).textContent =
             "Outstanding! You have excellent technical knowledge.";
 
+
     }
 
-    else if (score >= 500) {
+    else if (
+        score >= 500
+    ) {
+
 
         document.getElementById(
             "resultIcon"
         ).textContent =
             "🥈";
 
+
         document.getElementById(
             "resultMessage"
         ).textContent =
             "Great job! Keep learning and improving.";
 
+
     }
 
-    else if (score >= 300) {
+    else if (
+        score >= 300
+    ) {
+
 
         document.getElementById(
             "resultIcon"
         ).textContent =
             "🥉";
 
+
         document.getElementById(
             "resultMessage"
         ).textContent =
             "Good attempt! Practice more to improve your score.";
 
+
     }
 
     else {
+
 
         document.getElementById(
             "resultIcon"
         ).textContent =
             "📚";
 
+
         document.getElementById(
             "resultMessage"
         ).textContent =
             "Keep learning! Try again and beat your score.";
+
 
     }
 
@@ -1943,16 +3033,22 @@ function showResults() {
 
 function goHome() {
 
-    clearInterval(timer);
+    clearInterval(
+        timer
+    );
+
 
     resultScreen.style.display =
         "none";
 
+
     gameScreen.style.display =
         "none";
 
+
     startScreen.style.display =
         "block";
+
 
     updateHighScoreDisplay();
 
@@ -1967,37 +3063,639 @@ document.addEventListener(
     "keydown",
     function(event) {
 
+
         if (
-            gameScreen.style.display !== "block"
+            gameScreen.style.display !==
+            "block"
         ) {
+
             return;
+
         }
 
-        if (questionAnswered) {
+
+        if (
+            questionAnswered
+        ) {
+
             return;
+
         }
+
 
         if (
             event.key >= "1" &&
             event.key <= "4"
         ) {
 
-            const answer =
-                parseInt(event.key) - 1;
 
-            selectAnswer(answer);
+            const answer =
+                parseInt(
+                    event.key
+                ) - 1;
+
+
+            selectAnswer(
+                answer
+            );
+
 
         }
+
 
     }
 );
 
 
 /* =====================================================
-   YEAR
+   SOCIAL MEDIA SCORE CARD
 ===================================================== */
 
-document.getElementById("year").textContent =
+function createScoreCard() {
+
+    /*
+       1200 × 630
+
+       Good general-purpose size for
+       social-media sharing.
+    */
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    canvas.width =
+        1200;
+
+
+    canvas.height =
+        630;
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    /* =================================================
+       BACKGROUND
+    ================================================= */
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            1200,
+            630
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "#eff6ff"
+    );
+
+
+    gradient.addColorStop(
+        1,
+        "#ffffff"
+    );
+
+
+    ctx.fillStyle =
+        gradient;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        1200,
+        630
+    );
+
+
+    /* =================================================
+       TOP BRAND LINE
+    ================================================= */
+
+    ctx.fillStyle =
+        "#2563eb";
+
+
+    ctx.fillRect(
+        0,
+        0,
+        1200,
+        10
+    );
+
+
+    /* =================================================
+       BRAND
+    ================================================= */
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.fillStyle =
+        "#1e3a8a";
+
+
+    ctx.font =
+        "bold 42px Arial";
+
+
+    ctx.fillText(
+        "Embedded Electronics",
+        600,
+        78
+    );
+
+
+    /* =================================================
+       TITLE
+    ================================================= */
+
+    ctx.fillStyle =
+        "#1f2937";
+
+
+    ctx.font =
+        "bold 34px Arial";
+
+
+    ctx.fillText(
+        "Challenge Game Result",
+        600,
+        130
+    );
+
+
+    /* =================================================
+       TROPHY
+    ================================================= */
+
+    ctx.font =
+        "64px Arial";
+
+
+    ctx.fillText(
+        "🏆",
+        600,
+        220
+    );
+
+
+    /* =================================================
+       SCORE
+    ================================================= */
+
+    ctx.fillStyle =
+        "#2563eb";
+
+
+    ctx.font =
+        "bold 72px Arial";
+
+
+    ctx.fillText(
+        String(score),
+        600,
+        310
+    );
+
+
+    ctx.fillStyle =
+        "#64748b";
+
+
+    ctx.font =
+        "bold 22px Arial";
+
+
+    ctx.fillText(
+        "POINTS",
+        600,
+        345
+    );
+
+
+    /* =================================================
+       STAT BOXES
+    ================================================= */
+
+    const boxWidth =
+        300;
+
+
+    const boxHeight =
+        105;
+
+
+    const boxY =
+        380;
+
+
+    const boxX = [
+        105,
+        450,
+        795
+    ];
+
+
+    const labels = [
+        "Correct Answers",
+        "Wrong Answers",
+        "Best Streak"
+    ];
+
+
+    const values = [
+        correctAnswers,
+        wrongAnswers,
+        bestStreak
+    ];
+
+
+    const icons = [
+        "✓",
+        "✕",
+        "★"
+    ];
+
+
+    for (
+        let i = 0;
+        i < 3;
+        i++
+    ) {
+
+
+        /* Box background */
+
+        ctx.fillStyle =
+            "#f9fafc";
+
+
+        ctx.strokeStyle =
+            "#dbe3ec";
+
+
+        ctx.lineWidth =
+            2;
+
+
+        roundRect(
+            ctx,
+            boxX[i],
+            boxY,
+            boxWidth,
+            boxHeight,
+            14
+        );
+
+
+        ctx.fill();
+
+
+        ctx.stroke();
+
+
+        /* Icon */
+
+        ctx.fillStyle =
+            "#2563eb";
+
+
+        ctx.font =
+            "bold 25px Arial";
+
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.fillText(
+            icons[i],
+            boxX[i] + 45,
+            boxY + 45
+        );
+
+
+        /* Value */
+
+        ctx.fillStyle =
+            "#2563eb";
+
+
+        ctx.font =
+            "bold 28px Arial";
+
+
+        ctx.fillText(
+            String(values[i]),
+            boxX[i] +
+                boxWidth / 2,
+            boxY + 43
+        );
+
+
+        /* Label */
+
+        ctx.fillStyle =
+            "#64748b";
+
+
+        ctx.font =
+            "16px Arial";
+
+
+        ctx.fillText(
+            labels[i],
+            boxX[i] +
+                boxWidth / 2,
+            boxY + 77
+        );
+
+    }
+
+
+    /* =================================================
+       FOOTER
+    ================================================= */
+
+    ctx.fillStyle =
+        "#64748b";
+
+
+    ctx.font =
+        "18px Arial";
+
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.fillText(
+        "Can you beat my score?",
+        600,
+        535
+    );
+
+
+    ctx.fillStyle =
+        "#2563eb";
+
+
+    ctx.font =
+        "bold 18px Arial";
+
+
+    ctx.fillText(
+        "embedded-electronics.github.io",
+        600,
+        575
+    );
+
+
+    return canvas;
+
+}
+
+
+/* =====================================================
+   ROUNDED RECTANGLE
+===================================================== */
+
+function roundRect(
+    ctx,
+    x,
+    y,
+    width,
+    height,
+    radius
+) {
+
+
+    ctx.beginPath();
+
+
+    ctx.moveTo(
+        x + radius,
+        y
+    );
+
+
+    ctx.lineTo(
+        x + width - radius,
+        y
+    );
+
+
+    ctx.quadraticCurveTo(
+        x + width,
+        y,
+        x + width,
+        y + radius
+    );
+
+
+    ctx.lineTo(
+        x + width,
+        y + height - radius
+    );
+
+
+    ctx.quadraticCurveTo(
+        x + width,
+        y + height,
+        x + width - radius,
+        y + height
+    );
+
+
+    ctx.lineTo(
+        x + radius,
+        y + height
+    );
+
+
+    ctx.quadraticCurveTo(
+        x,
+        y + height,
+        x,
+        y + height - radius
+    );
+
+
+    ctx.lineTo(
+        x,
+        y + radius
+    );
+
+
+    ctx.quadraticCurveTo(
+        x,
+        y,
+        x + radius,
+        y
+    );
+
+
+    ctx.closePath();
+
+}
+
+
+/* =====================================================
+   DOWNLOAD SCORE CARD
+===================================================== */
+
+function downloadScoreCard() {
+
+    const canvas =
+        createScoreCard();
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.download =
+        "embedded-electronics-game-result.png";
+
+
+    link.href =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+
+    link.click();
+
+}
+
+
+/* =====================================================
+   SHARE SCORE CARD
+===================================================== */
+
+async function shareScoreCard() {
+
+    const canvas =
+        createScoreCard();
+
+
+    canvas.toBlob(
+        async function(blob) {
+
+
+            if (!blob) {
+
+                alert(
+                    "Unable to create the score card."
+                );
+
+                return;
+
+            }
+
+
+            const file =
+                new File(
+                    [
+                        blob
+                    ],
+                    "embedded-electronics-game-result.png",
+                    {
+                        type:
+                            "image/png"
+                    }
+                );
+
+
+            /* ==========================================
+               NATIVE MOBILE SHARE
+            ========================================== */
+
+            if (
+                navigator.share &&
+                navigator.canShare &&
+                navigator.canShare({
+                    files: [file]
+                })
+            ) {
+
+
+                try {
+
+
+                    await navigator.share({
+
+                        title:
+                            "Embedded Electronics Challenge",
+
+                        text:
+                            `I scored ${score} points in the Embedded Electronics Challenge! Can you beat my score?`,
+
+                        files:
+                            [file]
+
+                    });
+
+
+                }
+
+                catch (error) {
+
+                    /*
+                       User cancelled sharing.
+                    */
+
+                    console.log(
+                        "Share cancelled."
+                    );
+
+                }
+
+
+                return;
+
+            }
+
+
+            /* ==========================================
+               DESKTOP / UNSUPPORTED BROWSER
+            ========================================== */
+
+            downloadScoreCard();
+
+
+            alert(
+                "Your score card has been downloaded. You can now share the PNG on social media."
+            );
+
+
+        },
+        "image/png"
+    );
+
+}
+
+
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
+
+document.getElementById(
+    "year"
+).textContent =
     new Date().getFullYear();
 
 
@@ -2007,7 +3705,10 @@ document.getElementById("year").textContent =
 
 updateHighScoreDisplay();
 
+
 </script>
 
+
 </body>
+
 </html>

@@ -1,807 +1,1110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
 
-  <title>Embedded Electronics LMS — Student Learning Portal</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="Embedded Electronics Student Learning Portal for Embedded Systems Professional Training."
-  />
+    <meta name="description"
+          content="Embedded Electronics - Embedded Systems Professional Training LMS">
 
-  <link rel="stylesheet" href="lms.css" />
+    <meta name="keywords"
+          content="Embedded Systems, Embedded C, 8051, Arduino, PIC, IoT, Embedded Electronics">
+
+    <title>Embedded Systems Professional Training | Embedded Electronics</title>
+
+    <link rel="stylesheet" href="lms.css">
 </head>
 
 <body>
 
-  <!-- =====================================================
-       LMS HEADER
-       ===================================================== -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-  <header class="lms-header">
+<header class="lms-header">
 
-    <div class="lms-header-inner">
+    <div class="lms-header-container">
 
-      <!-- Brand -->
-      <a href="index.html" class="lms-brand">
-
-        <img
-          src="../assets/logo.png"
-          alt="Embedded Electronics"
-        />
-
-      </a>
-
-
-      <!-- Mobile Menu Button -->
-      <button
-        class="lms-menu-toggle"
-        type="button"
-        aria-label="Open LMS navigation"
-        aria-expanded="false"
-        onclick="toggleLmsMenu()"
-      >
-        ☰
-      </button>
-
-
-      <!-- LMS Navigation -->
-      <nav id="lmsNav" class="lms-nav">
-
-        <a class="active" href="index.html">
-          Home
+        <!-- Logo -->
+        <a href="#home" class="lms-logo">
+            <img src="../assets/logo.png"
+                 alt="Embedded Electronics">
         </a>
 
-        <a href="#modules">
-          Course Modules
-        </a>
+        <!-- Navigation -->
+        <nav class="lms-nav">
 
-        <a href="#resources">
-          Resources
-        </a>
+            <button class="lms-menu-toggle"
+                    aria-label="Toggle menu">
+                ☰
+            </button>
 
-        <a href="#classroom">
-          Classroom
-        </a>
+            <ul class="lms-menu">
 
-        <a href="#about">
-          About
-        </a>
+                <li>
+                    <a href="#home">Home</a>
+                </li>
 
-        <a href="#contact">
-          Contact
-        </a>
+                <li>
+                    <a href="#course">Course</a>
+                </li>
 
-      </nav>
+                <li>
+                    <a href="#modules">Modules</a>
+                </li>
 
-    </div>
+                <li>
+                    <a href="#resources">Resources</a>
+                </li>
 
-  </header>
+                <li>
+                    <a href="#classroom">Classroom</a>
+                </li>
 
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
 
-  <!-- =====================================================
-       HERO
-       ===================================================== -->
-
-  <section class="lms-hero">
-
-    <div class="lms-hero-inner">
-
-      <div class="lms-hero-content">
-
-        <div class="lms-eyebrow">
-          WELCOME TO
-        </div>
-
-        <h1>
-          Student Learning Portal
-        </h1>
-
-        <h2>
-          Embedded Systems Professional Training
-        </h2>
-
-        <p class="lms-hero-subtitle">
-          Learn &nbsp; • &nbsp; Practice &nbsp; • &nbsp; Build
-        </p>
-
-
-        <!-- Hero Features -->
-
-        <div class="lms-hero-features">
-
-          <div class="lms-hero-feature">
-
-            <div class="lms-hero-icon">
-              📖
-            </div>
-
-            <span>
-              Structured<br />Learning
-            </span>
-
-          </div>
-
-
-          <div class="lms-hero-feature">
-
-            <div class="lms-hero-icon">
-              ⚙
-            </div>
-
-            <span>
-              Hands-on<br />Practice
-            </span>
-
-          </div>
-
-
-          <div class="lms-hero-feature">
-
-            <div class="lms-hero-icon">
-              📊
-            </div>
-
-            <span>
-              Real-world<br />Projects
-            </span>
-
-          </div>
-
-
-          <div class="lms-hero-feature">
-
-            <div class="lms-hero-icon">
-              👥
-            </div>
-
-            <span>
-              Continuous<br />Support
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       COURSE MODULES
-       ===================================================== -->
-
-  <section id="modules" class="lms-section">
-
-    <div class="lms-section-heading">
-
-      <h2>
-        Our Course Modules
-      </h2>
-
-      <div class="lms-heading-line"></div>
-
-      <p>
-        A complete six-month learning path from fundamentals to advanced embedded systems projects
-      </p>
-
-    </div>
-
-
-    <div class="lms-module-grid">
-
-
-      <!-- =================================================
-           MODULE 01
-           ================================================= -->
-
-      <article class="lms-module-card">
-
-        <div class="lms-module-icon module-01">
-          &lt;/&gt;
-        </div>
-
-        <h3>
-          Module 01
-        </h3>
-
-        <div class="lms-module-title">
-          Embedded C &amp; 8051 Fundamentals
-        </div>
-
-        <p>
-          Build a strong foundation in Embedded C programming,
-          microcontroller concepts, registers, memory,
-          and 8051 architecture.
-        </p>
-
-        <a
-          class="lms-module-btn"
-          href="#"
-        >
-          Start Learning →
-        </a>
-
-      </article>
-
-
-      <!-- =================================================
-           MODULE 02
-           ================================================= -->
-
-      <article class="lms-module-card">
-
-        <div class="lms-module-icon module-02">
-          ▣
-        </div>
-
-        <h3>
-          Module 02
-        </h3>
-
-        <div class="lms-module-title">
-          8051 Interfacing &amp; Peripherals
-        </div>
-
-        <p>
-          Develop practical skills in 8051 interfacing,
-          timers, interrupts, serial communication,
-          ADC/PWM fundamentals, and sensors.
-        </p>
-
-        <a
-          class="lms-module-btn"
-          href="#"
-        >
-          Start Learning →
-        </a>
-
-      </article>
-
-
-      <!-- =================================================
-           MODULE 03
-           ================================================= -->
-
-      <article class="lms-module-card">
-
-        <div class="lms-module-icon module-03">
-          ⊕
-        </div>
-
-        <h3>
-          Module 03
-        </h3>
-
-        <div class="lms-module-title">
-          Arduino Fundamentals &amp; Hardware Interfacing
-        </div>
-
-        <p>
-          Learn Arduino Uno architecture, programming,
-          sensors, actuators, PWM, and practical
-          hardware interfacing.
-        </p>
-
-        <a
-          class="lms-module-btn"
-          href="#"
-        >
-          Start Learning →
-        </a>
-
-      </article>
-
-
-      <!-- =================================================
-           MODULE 04
-           ================================================= -->
-
-      <article class="lms-module-card">
-
-        <div class="lms-module-icon module-04">
-          ▦
-        </div>
-
-        <h3>
-          Module 04
-        </h3>
-
-        <div class="lms-module-title">
-          Communication Protocols &amp; Arduino Projects
-        </div>
-
-        <p>
-          Learn UART, I²C, SPI, and CAN communication
-          protocols and apply them to practical
-          Arduino projects.
-        </p>
-
-        <a
-          class="lms-module-btn"
-          href="#"
-        >
-          Start Learning →
-        </a>
-
-      </article>
-
-
-      <!-- =================================================
-           MODULE 05
-           ================================================= -->
-
-      <article class="lms-module-card">
-
-        <div class="lms-module-icon module-05">
-          ▣
-        </div>
-
-        <h3>
-          Module 05
-        </h3>
-
-        <div class="lms-module-title">
-          PIC Microcontroller
-        </div>
-
-        <p>
-          Learn PIC16F877A architecture, programming,
-          peripherals, communication, and practical
-          microcontroller interfacing.
-        </p>
-
-        <a
-          class="lms-module-btn"
-          href="#"
-        >
-          Start Learning →
-        </a>
-
-      </article>
-
-
-      <!-- =================================================
-           MODULE 06
-           ================================================= -->
-
-      <article class="lms-module-card">
-
-        <div class="lms-module-icon module-06">
-          💡
-        </div>
-
-        <h3>
-          Module 06
-        </h3>
-
-        <div class="lms-module-title">
-          Advanced Concepts &amp; Final Project
-        </div>
-
-        <p>
-          Apply advanced embedded concepts, communication
-          protocols, debugging, system design, and practical
-          skills to a complete final project.
-        </p>
-
-        <a
-          class="lms-module-btn"
-          href="#"
-        >
-          Start Learning →
-        </a>
-
-      </article>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       LEARNING BENEFITS
-       ===================================================== -->
-
-  <section class="lms-benefits">
-
-
-    <!-- Benefit 01 -->
-
-    <div class="lms-benefit">
-
-      <div class="lms-benefit-icon">
-        🎓
-      </div>
-
-      <h3>
-        Learn at Your Pace
-      </h3>
-
-      <p>
-        Access structured learning materials and
-        follow the course module by module.
-      </p>
-
-    </div>
-
-
-    <!-- Benefit 02 -->
-
-    <div class="lms-benefit">
-
-      <div class="lms-benefit-icon">
-        💻
-      </div>
-
-      <h3>
-        Practice with Projects
-      </h3>
-
-      <p>
-        Apply concepts through practical labs,
-        mini-projects, and hardware interfacing.
-      </p>
-
-    </div>
-
-
-    <!-- Benefit 03 -->
-
-    <div class="lms-benefit">
-
-      <div class="lms-benefit-icon">
-        📝
-      </div>
-
-      <h3>
-        Assess Your Progress
-      </h3>
-
-      <p>
-        Take weekly tests, complete assignments,
-        and participate in practical evaluations.
-      </p>
-
-    </div>
-
-
-    <!-- Benefit 04 -->
-
-    <div class="lms-benefit">
-
-      <div class="lms-benefit-icon">
-        📈
-      </div>
-
-      <h3>
-        Build Your Career
-      </h3>
-
-      <p>
-        Develop practical embedded systems skills
-        through projects and real-world applications.
-      </p>
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =====================================================
-       RESOURCES & CLASSROOM
-       ===================================================== -->
-
-  <section id="resources" class="lms-resource-grid">
-
-
-    <!-- =================================================
-         LEARNING RESOURCES
-         ================================================= -->
-
-    <article class="lms-resource-card">
-
-      <div class="lms-resource-icon">
-        📚
-      </div>
-
-      <div class="lms-resource-content">
-
-        <h2>
-          Learning Resources
-        </h2>
-
-        <p>
-          Access study materials, reference documents,
-          programs, datasheets, practical resources,
-          and supporting learning content.
-        </p>
-
-        <a
-          href="#"
-          class="lms-resource-btn"
-        >
-          Explore Resources →
-        </a>
-
-      </div>
-
-    </article>
-
-
-    <!-- =================================================
-         GOOGLE CLASSROOM
-         ================================================= -->
-
-    <article
-      id="classroom"
-      class="lms-resource-card classroom"
-    >
-
-      <div class="lms-resource-icon">
-        👨‍🏫
-      </div>
-
-      <div class="lms-resource-content">
-
-        <h2>
-          Join the Classroom
-        </h2>
-
-        <p>
-          Access video lessons, assignments, quizzes,
-          announcements, assessments, and classroom activities.
-        </p>
-
-        <a
-          href="#"
-          class="lms-resource-btn"
-        >
-          Go to Classroom →
-        </a>
-
-      </div>
-
-    </article>
-
-
-  </section>
-
-
-  <!-- =====================================================
-       LEARNING APPROACH
-       ===================================================== -->
-
-  <section
-    id="about"
-    class="lms-section"
-    style="padding-top: 10px;"
-  >
-
-    <div
-      class="lms-resource-card"
-      style="background:#eaf5ff;"
-    >
-
-      <div class="lms-resource-icon">
-        🎯
-      </div>
-
-      <div class="lms-resource-content">
-
-        <h2>
-          Our Learning Approach
-        </h2>
-
-        <p>
-          Learn the fundamentals, practice through hands-on
-          labs, build mini-projects, complete assessments,
-          and apply your knowledge through a final embedded
-          systems project.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       STUDENT SUPPORT
-       ===================================================== -->
-
-  <section
-    id="contact"
-    class="lms-section"
-    style="padding-top: 0;"
-  >
-
-    <div class="lms-section-heading">
-
-      <h2>
-        Student Support
-      </h2>
-
-      <div class="lms-heading-line"></div>
-
-      <p>
-        Get guidance throughout your learning journey through
-        classroom communication, practical support, resources,
-        and project assistance.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       LMS FOOTER
-       ===================================================== -->
-
-  <footer class="lms-footer">
-
-    <div class="lms-footer-inner">
-
-
-      <!-- Footer Top -->
-
-      <div class="lms-footer-top">
-
-
-        <!-- Footer Brand -->
-
-        <div class="lms-footer-brand">
-
-          <img
-            src="../assets/logo.png"
-            alt="Embedded Electronics"
-          />
-
-          <div>
-
-            <div class="lms-footer-brand-title">
-              Embedded Electronics
-            </div>
-
-            <div class="lms-footer-brand-tagline">
-              Learn • Build • Innovate
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- Footer Navigation -->
-
-        <nav class="lms-footer-nav">
-
-          <a href="index.html">
-            Home
-          </a>
-
-          <span>|</span>
-
-          <a href="#modules">
-            Course Modules
-          </a>
-
-          <span>|</span>
-
-          <a href="#resources">
-            Resources
-          </a>
-
-          <span>|</span>
-
-          <a href="#classroom">
-            Classroom
-          </a>
-
-          <span>|</span>
-
-          <a href="#about">
-            About
-          </a>
-
-          <span>|</span>
-
-          <a href="#contact">
-            Contact
-          </a>
+            </ul>
 
         </nav>
 
+    </div>
 
-      </div>
+</header>
 
 
-      <!-- Footer Bottom -->
+<!-- =========================================================
+     HERO / HOME
+========================================================= -->
 
-      <div class="lms-footer-bottom">
+<main>
 
-        <p>
-          © <span id="lmsYear"></span>
-          Embedded Electronics. All rights reserved.
-        </p>
+<section id="home" class="lms-hero">
 
-        <p>
-          Learn &nbsp; • &nbsp; Build &nbsp; • &nbsp; Innovate
-        </p>
+    <div class="lms-hero-overlay">
 
-      </div>
+        <div class="lms-hero-content">
 
+            <p class="lms-eyebrow">
+                EMBEDDED ELECTRONICS
+            </p>
+
+            <h1>
+                Embedded Systems
+                <span>Professional Training</span>
+            </h1>
+
+            <p class="lms-hero-text">
+                Learn Embedded C, 8051, Arduino, PIC,
+                communication protocols, interfacing,
+                debugging and practical embedded-system
+                development through a structured learning path.
+            </p>
+
+            <div class="lms-hero-buttons">
+
+                <a href="#course"
+                   class="lms-btn lms-btn-primary">
+                    Explore Course
+                </a>
+
+                <a href="#modules"
+                   class="lms-btn lms-btn-secondary">
+                    View Modules
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
-  </footer>
+</section>
 
 
-  <!-- =====================================================
-       LMS JAVASCRIPT
-       ===================================================== -->
+<!-- =========================================================
+     COURSE OVERVIEW
+========================================================= -->
 
-  <script>
+<section id="course" class="lms-section lms-course-section">
 
-    function toggleLmsMenu() {
+    <div class="lms-container">
 
-      const nav = document.getElementById("lmsNav");
-      const button = document.querySelector(".lms-menu-toggle");
+        <div class="lms-section-heading">
 
-      if (!nav) return;
+            <p class="lms-section-label">
+                COURSE OVERVIEW
+            </p>
 
-      nav.classList.toggle("show");
+            <h2>
+                Embedded Systems Professional Training
+            </h2>
 
-      const expanded =
-        nav.classList.contains("show");
+            <p>
+                A structured 6-month professional training program
+                focused on practical embedded-system development.
+            </p>
 
-      button.setAttribute(
-        "aria-expanded",
-        expanded ? "true" : "false"
-      );
+        </div>
+
+
+        <!-- Course Information -->
+
+        <div class="lms-info-grid">
+
+            <div class="lms-info-card">
+
+                <h3>Duration</h3>
+
+                <p>
+                    6 Months
+                </p>
+
+            </div>
+
+
+            <div class="lms-info-card">
+
+                <h3>Training Style</h3>
+
+                <p>
+                    70% Practical + 30% Theory
+                </p>
+
+            </div>
+
+
+            <div class="lms-info-card">
+
+                <h3>Learning Approach</h3>
+
+                <p>
+                    Hands-on Labs + Mini Projects +
+                    Weekly Assessments + Final Project
+                </p>
+
+            </div>
+
+
+            <div class="lms-info-card">
+
+                <h3>Core Technologies</h3>
+
+                <p>
+                    Embedded C/C++, 8051, Arduino Uno
+                    and PIC16F877A
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Learning Path -->
+
+        <div class="lms-subsection">
+
+            <h3>
+                Six-Month Learning Path
+            </h3>
+
+            <div class="lms-learning-path">
+
+                <div class="lms-path-item">
+
+                    <span class="lms-path-number">01</span>
+
+                    <div>
+                        <h4>Month 1</h4>
+                        <p>
+                            Embedded C &amp; 8051 Fundamentals
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="lms-path-item">
+
+                    <span class="lms-path-number">02</span>
+
+                    <div>
+                        <h4>Month 2</h4>
+                        <p>
+                            8051 Interfacing &amp; Peripherals
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="lms-path-item">
+
+                    <span class="lms-path-number">03</span>
+
+                    <div>
+                        <h4>Month 3</h4>
+                        <p>
+                            Arduino Fundamentals &amp;
+                            Hardware Interfacing
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="lms-path-item">
+
+                    <span class="lms-path-number">04</span>
+
+                    <div>
+                        <h4>Month 4</h4>
+                        <p>
+                            Communication Protocols &
+                            Arduino Projects
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="lms-path-item">
+
+                    <span class="lms-path-number">05</span>
+
+                    <div>
+                        <h4>Month 5</h4>
+                        <p>
+                            PIC Microcontroller
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="lms-path-item">
+
+                    <span class="lms-path-number">06</span>
+
+                    <div>
+                        <h4>Month 6</h4>
+                        <p>
+                            Advanced Concepts &amp;
+                            Final Project
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Tools -->
+
+        <div class="lms-subsection">
+
+            <h3>
+                Tools &amp; Platforms
+            </h3>
+
+            <div class="lms-tag-list">
+
+                <span>Keil</span>
+                <span>Proteus</span>
+                <span>Arduino IDE</span>
+                <span>Wokwi</span>
+                <span>MPLAB X</span>
+                <span>XC8</span>
+                <span>PICSimLab</span>
+                <span>Git</span>
+                <span>GitHub</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Learning Approach -->
+
+        <div class="lms-subsection">
+
+            <h3>
+                Learning Approach
+            </h3>
+
+            <div class="lms-feature-grid">
+
+                <div class="lms-feature-card">
+
+                    <h4>
+                        Foundation
+                    </h4>
+
+                    <p>
+                        Build a strong foundation in Embedded C,
+                        microcontroller concepts, architecture,
+                        registers and memory.
+                    </p>
+
+                </div>
+
+
+                <div class="lms-feature-card">
+
+                    <h4>
+                        Interfacing
+                    </h4>
+
+                    <p>
+                        Work with displays, keypads, sensors,
+                        actuators, timers, interrupts and
+                        communication peripherals.
+                    </p>
+
+                </div>
+
+
+                <div class="lms-feature-card">
+
+                    <h4>
+                        Rapid Prototyping
+                    </h4>
+
+                    <p>
+                        Develop practical applications using
+                        Arduino, sensors, actuators and simulation
+                        platforms.
+                    </p>
+
+                </div>
+
+
+                <div class="lms-feature-card">
+
+                    <h4>
+                        Communication
+                    </h4>
+
+                    <p>
+                        Learn UART, I2C, SPI and CAN fundamentals
+                        and apply communication concepts in
+                        embedded projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODULES
+========================================================= -->
+
+<section id="modules" class="lms-section lms-modules-section">
+
+    <div class="lms-container">
+
+        <div class="lms-section-heading">
+
+            <p class="lms-section-label">
+                COURSE MODULES
+            </p>
+
+            <h2>
+                Six-Month Learning Journey
+            </h2>
+
+            <p>
+                Follow the modules step by step from Embedded C
+                fundamentals to complete embedded-system projects.
+            </p>
+
+        </div>
+
+
+        <div class="lms-module-grid">
+
+
+            <!-- MODULE 01 -->
+
+            <article class="lms-module-card">
+
+                <div class="lms-module-number">
+                    Module 01
+                </div>
+
+                <h3>
+                    Embedded C &amp; 8051 Fundamentals
+                </h3>
+
+                <p>
+                    Build a strong foundation in Embedded C,
+                    microcontroller concepts, registers, memory
+                    and 8051 architecture.
+                </p>
+
+                <div class="lms-module-meta">
+
+                    <span>Embedded C</span>
+                    <span>8051</span>
+
+                </div>
+
+                <a href="#resources"
+                   class="lms-module-link">
+                    Study Resources →
+                </a>
+
+            </article>
+
+
+            <!-- MODULE 02 -->
+
+            <article class="lms-module-card">
+
+                <div class="lms-module-number">
+                    Module 02
+                </div>
+
+                <h3>
+                    8051 Interfacing &amp; Peripherals
+                </h3>
+
+                <p>
+                    Explore LCD, keypad, timers, counters,
+                    interrupts, UART, ADC, PWM and sensor
+                    interfacing using the 8051.
+                </p>
+
+                <div class="lms-module-meta">
+
+                    <span>Interfacing</span>
+                    <span>Peripherals</span>
+
+                </div>
+
+                <a href="#resources"
+                   class="lms-module-link">
+                    Study Resources →
+                </a>
+
+            </article>
+
+
+            <!-- MODULE 03 -->
+
+            <article class="lms-module-card">
+
+                <div class="lms-module-number">
+                    Module 03
+                </div>
+
+                <h3>
+                    Arduino Fundamentals &amp;
+                    Hardware Interfacing
+                </h3>
+
+                <p>
+                    Learn Arduino Uno architecture, Arduino IDE,
+                    digital and analog I/O, PWM, sensors,
+                    actuators and rapid prototyping.
+                </p>
+
+                <div class="lms-module-meta">
+
+                    <span>Arduino Uno</span>
+                    <span>Wokwi</span>
+
+                </div>
+
+                <a href="#resources"
+                   class="lms-module-link">
+                    Study Resources →
+                </a>
+
+            </article>
+
+
+            <!-- MODULE 04 -->
+
+            <article class="lms-module-card">
+
+                <div class="lms-module-number">
+                    Module 04
+                </div>
+
+                <h3>
+                    Communication Protocols &amp;
+                    Arduino Projects
+                </h3>
+
+                <p>
+                    Learn UART, I2C, SPI and CAN fundamentals
+                    and develop Arduino-based multi-device
+                    communication projects.
+                </p>
+
+                <div class="lms-module-meta">
+
+                    <span>UART</span>
+                    <span>I2C</span>
+                    <span>SPI</span>
+                    <span>CAN</span>
+
+                </div>
+
+                <a href="#resources"
+                   class="lms-module-link">
+                    Study Resources →
+                </a>
+
+            </article>
+
+
+            <!-- MODULE 05 -->
+
+            <article class="lms-module-card">
+
+                <div class="lms-module-number">
+                    Module 05
+                </div>
+
+                <h3>
+                    PIC Microcontroller
+                </h3>
+
+                <p>
+                    Learn PIC16F877A architecture, GPIO,
+                    ADC, timers, interrupts, PWM, LCD,
+                    keypad, UART and sensor interfacing.
+                </p>
+
+                <div class="lms-module-meta">
+
+                    <span>PIC16F877A</span>
+                    <span>XC8</span>
+
+                </div>
+
+                <a href="#resources"
+                   class="lms-module-link">
+                    Study Resources →
+                </a>
+
+            </article>
+
+
+            <!-- MODULE 06 -->
+
+            <article class="lms-module-card">
+
+                <div class="lms-module-number">
+                    Module 06
+                </div>
+
+                <h3>
+                    Advanced Concepts &amp; Final Project
+                </h3>
+
+                <p>
+                    Integrate microcontrollers, peripherals,
+                    communication protocols, debugging,
+                    documentation, RTOS concepts and Git/GitHub.
+                </p>
+
+                <div class="lms-module-meta">
+
+                    <span>Debugging</span>
+                    <span>RTOS</span>
+                    <span>Git/GitHub</span>
+
+                </div>
+
+                <a href="#resources"
+                   class="lms-module-link">
+                    Study Resources →
+                </a>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
+
+<section class="lms-benefits">
+
+    <div class="lms-container">
+
+        <div class="lms-benefits-grid">
+
+            <div class="lms-benefit">
+
+                <div class="lms-benefit-icon">
+                    01
+                </div>
+
+                <h3>
+                    Learn at Your Pace
+                </h3>
+
+                <p>
+                    Access structured learning resources
+                    and follow the course module by module.
+                </p>
+
+            </div>
+
+
+            <div class="lms-benefit">
+
+                <div class="lms-benefit-icon">
+                    02
+                </div>
+
+                <h3>
+                    Practice with Projects
+                </h3>
+
+                <p>
+                    Apply concepts through practical labs,
+                    mini projects and a final project.
+                </p>
+
+            </div>
+
+
+            <div class="lms-benefit">
+
+                <div class="lms-benefit-icon">
+                    03
+                </div>
+
+                <h3>
+                    Assess Your Progress
+                </h3>
+
+                <p>
+                    Track your learning through assignments,
+                    weekly tests and practical evaluations.
+                </p>
+
+            </div>
+
+
+            <div class="lms-benefit">
+
+                <div class="lms-benefit-icon">
+                    04
+                </div>
+
+                <h3>
+                    Build Your Career
+                </h3>
+
+                <p>
+                    Develop practical embedded-system skills
+                    through structured hands-on learning.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESOURCES
+========================================================= -->
+
+<section id="resources" class="lms-section lms-resources-section">
+
+    <div class="lms-container">
+
+        <div class="lms-section-heading">
+
+            <p class="lms-section-label">
+                LEARNING RESOURCES
+            </p>
+
+            <h2>
+                Study &amp; Practice Resources
+            </h2>
+
+            <p>
+                Access course materials, study resources,
+                practical references and supporting learning content.
+            </p>
+
+        </div>
+
+
+        <div class="lms-resource-grid">
+
+            <div class="lms-resource-card">
+
+                <div class="lms-resource-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Learning Resources
+                </h3>
+
+                <p>
+                    Access module-wise study materials,
+                    notes, practical references and
+                    supporting resources.
+                </p>
+
+                <a href="#"
+                   class="lms-btn lms-btn-primary">
+                    Open Resources
+                </a>
+
+            </div>
+
+
+            <div class="lms-resource-card">
+
+                <div class="lms-resource-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Practical Resources
+                </h3>
+
+                <p>
+                    Use simulation and development tools
+                    including Keil, Proteus, Arduino IDE,
+                    Wokwi, MPLAB X and PICSimLab.
+                </p>
+
+                <a href="#"
+                   class="lms-btn lms-btn-secondary">
+                    View Tools
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CLASSROOM
+========================================================= -->
+
+<section id="classroom" class="lms-section lms-classroom-section">
+
+    <div class="lms-container">
+
+        <div class="lms-classroom-box">
+
+            <div class="lms-classroom-content">
+
+                <p class="lms-section-label">
+                    ONLINE CLASSROOM
+                </p>
+
+                <h2>
+                    Join the Classroom
+                </h2>
+
+                <p>
+                    Access your online classroom for course
+                    communication, assignments, announcements
+                    and learning activities.
+                </p>
+
+                <a href="#"
+                   class="lms-btn lms-btn-primary">
+                    Open Google Classroom
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT / SUPPORT
+========================================================= -->
+
+<section id="contact" class="lms-section lms-contact-section">
+
+    <div class="lms-container">
+
+        <div class="lms-section-heading">
+
+            <p class="lms-section-label">
+                STUDENT SUPPORT
+            </p>
+
+            <h2>
+                Need Support?
+            </h2>
+
+            <p>
+                For course-related questions, learning support
+                or other enquiries, connect with Embedded Electronics.
+            </p>
+
+        </div>
+
+
+        <div class="lms-contact-grid">
+
+            <div class="lms-contact-card">
+
+                <h3>
+                    Embedded Electronics
+                </h3>
+
+                <p>
+                    Embedded Systems Training
+                </p>
+
+                <a href="https://embedded-electronics.github.io/"
+                   target="_blank"
+                   rel="noopener">
+                    Visit Website
+                </a>
+
+            </div>
+
+
+            <div class="lms-contact-card">
+
+                <h3>
+                    Learning Community
+                </h3>
+
+                <p>
+                    Stay connected for course updates,
+                    learning resources and announcements.
+                </p>
+
+                <a href="#"
+                   class="lms-contact-link">
+                    Contact Support
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="lms-footer">
+
+    <div class="lms-container">
+
+        <div class="lms-footer-grid">
+
+
+            <!-- Footer About -->
+
+            <div class="lms-footer-about">
+
+                <img src="../assets/logo.png"
+                     alt="Embedded Electronics"
+                     class="lms-footer-logo">
+
+                <p>
+                    Embedded Electronics provides practical
+                    learning resources and professional training
+                    in embedded systems and electronics.
+                </p>
+
+            </div>
+
+
+            <!-- Footer Navigation -->
+
+            <div class="lms-footer-links">
+
+                <h3>
+                    LMS
+                </h3>
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#course">
+                    Course
+                </a>
+
+                <a href="#modules">
+                    Modules
+                </a>
+
+                <a href="#resources">
+                    Resources
+                </a>
+
+                <a href="#classroom">
+                    Classroom
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- Footer Course -->
+
+            <div class="lms-footer-links">
+
+                <h3>
+                    Course
+                </h3>
+
+                <a href="#modules">
+                    Module 01
+                </a>
+
+                <a href="#modules">
+                    Module 02
+                </a>
+
+                <a href="#modules">
+                    Module 03
+                </a>
+
+                <a href="#modules">
+                    Module 04
+                </a>
+
+                <a href="#modules">
+                    Module 05
+                </a>
+
+                <a href="#modules">
+                    Module 06
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="lms-footer-bottom">
+
+            <p>
+                © <span id="currentYear"></span>
+                Embedded Electronics.
+                All Rights Reserved.
+            </p>
+
+            <p>
+                Embedded Systems Professional Training
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* Mobile Menu */
+
+    const menuToggle =
+        document.querySelector(".lms-menu-toggle");
+
+    const menu =
+        document.querySelector(".lms-menu");
+
+
+    if (menuToggle && menu) {
+
+        menuToggle.addEventListener("click", function () {
+
+            menu.classList.toggle("active");
+
+        });
+
+
+        /* Close menu after selecting a link */
+
+        document
+            .querySelectorAll(".lms-menu a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    menu.classList.remove("active");
+
+                });
+
+            });
+
     }
 
 
-    /* Current year */
+    /* Current Year */
 
-    document.getElementById("lmsYear").textContent =
-      new Date().getFullYear();
+    const currentYear =
+        document.getElementById("currentYear");
 
+    if (currentYear) {
 
-    /* Close mobile menu after clicking a link */
+        currentYear.textContent =
+            new Date().getFullYear();
 
-    document.querySelectorAll(".lms-nav a").forEach(link => {
+    }
 
-      link.addEventListener("click", () => {
-
-        const nav =
-          document.getElementById("lmsNav");
-
-        const button =
-          document.querySelector(".lms-menu-toggle");
-
-        nav.classList.remove("show");
-
-        button.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-      });
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>

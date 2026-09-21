@@ -1,14 +1,778 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Electronics LMS</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Embedded Electronics LMS — Student Learning Portal</title>
+
+  <meta
+    name="description"
+    content="Embedded Electronics Student Learning Portal for Embedded Systems Professional Training."
+  />
+
+  <link rel="stylesheet" href="lms.css" />
 </head>
+
 <body>
 
-    <h1>Embedded Electronics LMS</h1>
-    <p>Student Learning Portal</p>
+  <!-- =====================================================
+       LMS HEADER
+       ===================================================== -->
+
+  <header class="lms-header">
+
+    <div class="lms-header-inner">
+
+      <!-- Brand -->
+      <a href="index.html" class="lms-brand">
+
+        <img
+          src="../assets/logo.png"
+          alt="Embedded Electronics Logo"
+        />
+
+        <span class="lms-brand-text">
+          <span class="lms-brand-title">
+            Embedded Electronics
+          </span>
+
+          <span class="lms-brand-tagline">
+            Learn • Build • Innovate
+          </span>
+        </span>
+
+      </a>
+
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="lms-menu-toggle"
+        type="button"
+        aria-label="Open LMS navigation"
+        aria-expanded="false"
+        onclick="toggleLmsMenu()"
+      >
+        ☰
+      </button>
+
+
+      <!-- LMS Navigation -->
+      <nav id="lmsNav" class="lms-nav">
+
+        <a class="active" href="index.html">
+          Home
+        </a>
+
+        <a href="#modules">
+          Course Modules
+        </a>
+
+        <a href="#resources">
+          Resources
+        </a>
+
+        <a href="#classroom">
+          Classroom
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section class="lms-hero">
+
+    <div class="lms-hero-inner">
+
+      <div class="lms-hero-content">
+
+        <div class="lms-eyebrow">
+          WELCOME TO
+        </div>
+
+        <h1>
+          Student Learning Portal
+        </h1>
+
+        <h2>
+          Embedded Systems Professional Training
+        </h2>
+
+        <p class="lms-hero-subtitle">
+          Learn &nbsp; • &nbsp; Practice &nbsp; • &nbsp; Build
+        </p>
+
+
+        <!-- Hero Features -->
+
+        <div class="lms-hero-features">
+
+          <div class="lms-hero-feature">
+
+            <div class="lms-hero-icon">
+              📖
+            </div>
+
+            <span>
+              Structured<br />Learning
+            </span>
+
+          </div>
+
+
+          <div class="lms-hero-feature">
+
+            <div class="lms-hero-icon">
+              ⚙
+            </div>
+
+            <span>
+              Hands-on<br />Practice
+            </span>
+
+          </div>
+
+
+          <div class="lms-hero-feature">
+
+            <div class="lms-hero-icon">
+              📊
+            </div>
+
+            <span>
+              Real-world<br />Projects
+            </span>
+
+          </div>
+
+
+          <div class="lms-hero-feature">
+
+            <div class="lms-hero-icon">
+              👥
+            </div>
+
+            <span>
+              Continuous<br />Support
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       COURSE MODULES
+       ===================================================== -->
+
+  <section id="modules" class="lms-section">
+
+    <div class="lms-section-heading">
+
+      <h2>
+        Our Course Modules
+      </h2>
+
+      <div class="lms-heading-line"></div>
+
+      <p>
+        A complete learning path from fundamentals to advanced projects
+      </p>
+
+    </div>
+
+
+    <div class="lms-module-grid">
+
+
+      <!-- MODULE 01 -->
+
+      <article class="lms-module-card">
+
+        <div class="lms-module-icon module-01">
+          &lt;/&gt;
+        </div>
+
+        <h3>
+          Module 01
+        </h3>
+
+        <div class="lms-module-title">
+          Embedded C &amp; 8051 Fundamentals
+        </div>
+
+        <p>
+          Learn Embedded C programming and 8051
+          architecture from the fundamentals.
+        </p>
+
+        <a
+          class="lms-module-btn"
+          href="#"
+        >
+          Start Learning →
+        </a>
+
+      </article>
+
+
+      <!-- MODULE 02 -->
+
+      <article class="lms-module-card">
+
+        <div class="lms-module-icon module-02">
+          ▣
+        </div>
+
+        <h3>
+          Module 02
+        </h3>
+
+        <div class="lms-module-title">
+          8051 Interfacing &amp; Peripherals
+        </div>
+
+        <p>
+          Work with sensors, displays, GPIO,
+          timers, and peripheral interfaces.
+        </p>
+
+        <a
+          class="lms-module-btn"
+          href="#"
+        >
+          Start Learning →
+        </a>
+
+      </article>
+
+
+      <!-- MODULE 03 -->
+
+      <article class="lms-module-card">
+
+        <div class="lms-module-icon module-03">
+          ⊕
+        </div>
+
+        <h3>
+          Module 03
+        </h3>
+
+        <div class="lms-module-title">
+          Arduino Fundamentals &amp; Hardware Interfacing
+        </div>
+
+        <p>
+          Learn Arduino programming through practical
+          projects and hardware integration.
+        </p>
+
+        <a
+          class="lms-module-btn"
+          href="#"
+        >
+          Start Learning →
+        </a>
+
+      </article>
+
+
+      <!-- PIC16F877A -->
+
+      <article class="lms-module-card">
+
+        <div class="lms-module-icon module-04">
+          ▦
+        </div>
+
+        <h3>
+          PIC16F877A
+        </h3>
+
+        <div class="lms-module-title">
+          Microcontroller
+        </div>
+
+        <p>
+          Learn PIC architecture, programming,
+          peripherals, and applications.
+        </p>
+
+        <a
+          class="lms-module-btn"
+          href="#"
+        >
+          Start Learning →
+        </a>
+
+      </article>
+
+
+      <!-- PICSimLab -->
+
+      <article class="lms-module-card">
+
+        <div class="lms-module-icon module-05">
+          ▣
+        </div>
+
+        <h3>
+          PICSimLab
+        </h3>
+
+        <div class="lms-module-title">
+          Simulation &amp; Practice
+        </div>
+
+        <p>
+          Practice and simulate microcontroller
+          programs using PICSimLab.
+        </p>
+
+        <a
+          class="lms-module-btn"
+          href="#"
+        >
+          Start Learning →
+        </a>
+
+      </article>
+
+
+      <!-- PROJECTS -->
+
+      <article class="lms-module-card">
+
+        <div class="lms-module-icon module-06">
+          💡
+        </div>
+
+        <h3>
+          Projects
+        </h3>
+
+        <div class="lms-module-title">
+          Practical Embedded Projects
+        </div>
+
+        <p>
+          Build real-world embedded projects
+          and apply your knowledge.
+        </p>
+
+        <a
+          class="lms-module-btn"
+          href="#"
+        >
+          Start Learning →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       BENEFITS
+       ===================================================== -->
+
+  <section class="lms-benefits">
+
+
+    <div class="lms-benefit">
+
+      <div class="lms-benefit-icon">
+        🎓
+      </div>
+
+      <h3>
+        Learn at Your Pace
+      </h3>
+
+      <p>
+        Access study materials anytime
+      </p>
+
+    </div>
+
+
+    <div class="lms-benefit">
+
+      <div class="lms-benefit-icon">
+        💻
+      </div>
+
+      <h3>
+        Practice with Projects
+      </h3>
+
+      <p>
+        Gain hands-on experience
+      </p>
+
+    </div>
+
+
+    <div class="lms-benefit">
+
+      <div class="lms-benefit-icon">
+        👥
+      </div>
+
+      <h3>
+        Join the Community
+      </h3>
+
+      <p>
+        Get support and interact
+      </p>
+
+    </div>
+
+
+    <div class="lms-benefit">
+
+      <div class="lms-benefit-icon">
+        📈
+      </div>
+
+      <h3>
+        Build Your Career
+      </h3>
+
+      <p>
+        Develop industry-ready skills
+      </p>
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================================
+       RESOURCES & CLASSROOM
+       ===================================================== -->
+
+  <section id="resources" class="lms-resource-grid">
+
+
+    <!-- RESOURCES -->
+
+    <article class="lms-resource-card">
+
+      <div class="lms-resource-icon">
+        📚
+      </div>
+
+      <div class="lms-resource-content">
+
+        <h2>
+          Learning Resources
+        </h2>
+
+        <p>
+          Access study materials, reference documents,
+          datasheets, code, and useful learning resources.
+        </p>
+
+        <a
+          href="#"
+          class="lms-resource-btn"
+        >
+          Explore Resources →
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- CLASSROOM -->
+
+    <article
+      id="classroom"
+      class="lms-resource-card classroom"
+    >
+
+      <div class="lms-resource-icon">
+        👨‍🏫
+      </div>
+
+      <div class="lms-resource-content">
+
+        <h2>
+          Join the Classroom
+        </h2>
+
+        <p>
+          Access video lessons, assignments, quizzes,
+          announcements, and classroom activities.
+        </p>
+
+        <a
+          href="#"
+          class="lms-resource-btn"
+        >
+          Go to Classroom →
+        </a>
+
+      </div>
+
+    </article>
+
+
+  </section>
+
+
+  <!-- =====================================================
+       ABOUT / MISSION
+       ===================================================== -->
+
+  <section
+    id="about"
+    class="lms-section"
+    style="padding-top: 10px;"
+  >
+
+    <div
+      class="lms-resource-card"
+      style="background:#eaf5ff;"
+    >
+
+      <div class="lms-resource-icon">
+        🎯
+      </div>
+
+      <div class="lms-resource-content">
+
+        <h2>
+          Our Learning Approach
+        </h2>
+
+        <p>
+          Learn the fundamentals, practice with
+          hardware and simulation, and build practical
+          embedded systems projects.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       CONTACT
+       ===================================================== -->
+
+  <section
+    id="contact"
+    class="lms-section"
+    style="padding-top: 0;"
+  >
+
+    <div class="lms-section-heading">
+
+      <h2>
+        Student Support
+      </h2>
+
+      <div class="lms-heading-line"></div>
+
+      <p>
+        Need help with your learning journey?
+        Use the support channels provided by your classroom.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       LMS FOOTER
+       ===================================================== -->
+
+  <footer class="lms-footer">
+
+    <div class="lms-footer-inner">
+
+
+      <div class="lms-footer-top">
+
+
+        <!-- Footer Brand -->
+
+        <div class="lms-footer-brand">
+
+          <img
+            src="../assets/logo.png"
+            alt="Embedded Electronics Logo"
+          />
+
+          <div>
+
+            <div class="lms-footer-brand-title">
+              Embedded Electronics
+            </div>
+
+            <div class="lms-footer-brand-tagline">
+              Learn • Build • Innovate
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Footer Navigation -->
+
+        <nav class="lms-footer-nav">
+
+          <a href="index.html">
+            Home
+          </a>
+
+          <span>|</span>
+
+          <a href="#modules">
+            Course Modules
+          </a>
+
+          <span>|</span>
+
+          <a href="#resources">
+            Resources
+          </a>
+
+          <span>|</span>
+
+          <a href="#classroom">
+            Classroom
+          </a>
+
+          <span>|</span>
+
+          <a href="#about">
+            About
+          </a>
+
+          <span>|</span>
+
+          <a href="#contact">
+            Contact
+          </a>
+
+        </nav>
+
+
+      </div>
+
+
+      <!-- Footer Bottom -->
+
+      <div class="lms-footer-bottom">
+
+        <p>
+          © <span id="lmsYear"></span>
+          Embedded Electronics. All rights reserved.
+        </p>
+
+        <p>
+          Learn &nbsp; • &nbsp; Build &nbsp; • &nbsp; Innovate
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       LMS JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    function toggleLmsMenu() {
+
+      const nav = document.getElementById("lmsNav");
+      const button = document.querySelector(".lms-menu-toggle");
+
+      if (!nav) return;
+
+      nav.classList.toggle("show");
+
+      const expanded =
+        nav.classList.contains("show");
+
+      button.setAttribute(
+        "aria-expanded",
+        expanded ? "true" : "false"
+      );
+    }
+
+
+    /* Current year */
+
+    document.getElementById("lmsYear").textContent =
+      new Date().getFullYear();
+
+
+    /* Close mobile menu after clicking a link */
+
+    document.querySelectorAll(".lms-nav a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        const nav =
+          document.getElementById("lmsNav");
+
+        const button =
+          document.querySelector(".lms-menu-toggle");
+
+        nav.classList.remove("show");
+
+        button.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+  </script>
 
 </body>
 </html>

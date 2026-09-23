@@ -1,4 +1,6 @@
-import { EdgeTTS } from "https://unpkg.com/@andresaya/edge-tts@latest/dist/browser/edge-tts.esm.min.js";
+import {
+    UniversalEdgeTTS
+} from "https://esm.sh/edge-tts-universal";
 
 const textInput = document.getElementById("textInput");
 const charCount = document.getElementById("charCount");
@@ -20,149 +22,93 @@ const downloadBtn = document.getElementById("downloadBtn");
 let currentAudioUrl = null;
 
 
-// ---------------------------------------------
-// Character Counter
-// ---------------------------------------------
-
+// Character counter
 textInput.addEventListener("input", () => {
-
     charCount.textContent = textInput.value.length;
-
 });
 
 
-// ---------------------------------------------
-// Speech Rate
-// ---------------------------------------------
-
+// Speech rate
 rate.addEventListener("input", () => {
-
     rateValue.textContent = `${rate.value}%`;
-
 });
 
 
-// ---------------------------------------------
 // Pitch
-// ---------------------------------------------
-
 pitch.addEventListener("input", () => {
-
     pitchValue.textContent = `${pitch.value}Hz`;
-
 });
 
 
-// ---------------------------------------------
 // Generate MP3
-// ---------------------------------------------
-
 generateBtn.addEventListener("click", async () => {
 
     const text = textInput.value.trim();
 
     if (!text) {
-
         alert("Please enter some text.");
-
         return;
     }
 
-
     generateBtn.disabled = true;
-
     generateBtn.textContent = "Generating...";
-
 
     try {
 
         const voice = voiceSelect.value;
 
-        const rateValueNumber = Number(rate.value);
+        const rateValue = Number(rate.value);
+        const pitchValue = Number(pitch.value);
 
-        const pitchValueNumber = Number(pitch.value);
-
-
-        const tts = new EdgeTTS();
-
-
-        await tts.synthesize(
-
+        const tts = new UniversalEdgeTTS(
             text,
-
             voice,
-
             {
-
-                rate: rateValueNumber,
-
-                pitch: pitchValueNumber,
-
-                volume: 0,
-
-                outputFormat:
-                    "audio-24khz-96kbitrate-mono-mp3"
-
+                rate: rateValue,
+                pitch: pitchValue,
+                volume: 0
             }
-
         );
 
+        const result = await tts.synthesize();
 
-        const audioData = tts.getAudioData();
-
+        const audioData = result.audio;
 
         const audioBlob = new Blob(
-
             [audioData],
-
             {
                 type: "audio/mpeg"
             }
-
         );
 
-
-        // Remove previous audio URL
-
         if (currentAudioUrl) {
-
             URL.revokeObjectURL(currentAudioUrl);
-
         }
-
 
         currentAudioUrl =
             URL.createObjectURL(audioBlob);
 
-
-        // Audio player
-
         audioPlayer.src = currentAudioUrl;
-
         audioPlayer.load();
-
-
-        // Download link
 
         downloadBtn.href = currentAudioUrl;
 
         downloadBtn.download =
             "embedded-electronics-tts.mp3";
 
-
-        downloadBtn.style.display = "inline-block";
-
-
-        // Start playback
+        downloadBtn.style.display =
+            "inline-block";
 
         await audioPlayer.play();
-
 
     }
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "TTS Error:",
+            error
+        );
 
         alert(
             "TTS generation failed.\n\n" +
@@ -175,17 +121,15 @@ generateBtn.addEventListener("click", async () => {
 
         generateBtn.disabled = false;
 
-        generateBtn.textContent = "Generate MP3";
+        generateBtn.textContent =
+            "Generate MP3";
 
     }
 
 });
 
 
-// ---------------------------------------------
 // Clear
-// ---------------------------------------------
-
 clearBtn.addEventListener("click", () => {
 
     textInput.value = "";
@@ -193,11 +137,9 @@ clearBtn.addEventListener("click", () => {
     charCount.textContent = "0";
 
     rate.value = 0;
-
     pitch.value = 0;
 
     rateValue.textContent = "0%";
-
     pitchValue.textContent = "0Hz";
 
     audioPlayer.removeAttribute("src");
@@ -205,5 +147,14 @@ clearBtn.addEventListener("click", () => {
     audioPlayer.load();
 
     downloadBtn.removeAttribute("href");
+
+    if (currentAudioUrl) {
+
+        URL.revokeObjectURL(
+            currentAudioUrl
+        );
+
+        currentAudioUrl = null;
+    }
 
 });

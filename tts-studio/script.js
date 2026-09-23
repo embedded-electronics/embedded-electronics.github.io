@@ -1,3 +1,4 @@
+console.log("TTS SCRIPT LOADED");
 import {
     UniversalEdgeTTS
 } from "https://esm.sh/edge-tts-universal";

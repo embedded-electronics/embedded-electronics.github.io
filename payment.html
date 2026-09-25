@@ -1,0 +1,698 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Student Payment | Embedded Electronics</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <!-- Your existing CSS -->
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+    /* ===== Payment Page ===== */
+
+    .payment-page {
+      padding: 25px 0 50px;
+    }
+
+    .payment-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .payment-header h1 {
+      margin-bottom: 10px;
+    }
+
+    .payment-header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .payment-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+      border: 1px solid #e5e5e5;
+    }
+
+    .payment-card h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .payment-card h3 {
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== QR Section ===== */
+
+    .qr-section {
+      text-align: center;
+    }
+
+    .qr-container {
+      display: inline-block;
+      padding: 15px;
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin: 10px 0 15px;
+    }
+
+    .qr-container img {
+      width: 250px;
+      height: 250px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .download-qr {
+      display: inline-block;
+      padding: 11px 20px;
+      background: #007bff;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .download-qr:hover {
+      background: #0056b3;
+    }
+
+    /* ===== UPI ===== */
+
+    .upi-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .upi-value {
+      flex: 1;
+      padding: 11px;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      padding: 11px 15px;
+      border: none;
+      background: #28a745;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .copy-btn:hover {
+      background: #218838;
+    }
+
+    /* ===== Bank Details ===== */
+
+    .bank-details {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .bank-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 9px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .bank-row:last-child {
+      border-bottom: none;
+    }
+
+    .bank-label {
+      font-weight: 600;
+    }
+
+    .bank-value {
+      text-align: right;
+      word-break: break-word;
+    }
+
+    /* ===== Instructions ===== */
+
+    .instructions {
+      background: #fff8e1;
+      border-left: 5px solid #ffc107;
+      padding: 15px 18px;
+      border-radius: 6px;
+    }
+
+    .instructions ol {
+      margin-bottom: 0;
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+    }
+
+    /* ===== Amount ===== */
+
+    .amount-box {
+      background: #e8f5e9;
+      border: 1px solid #b7dfb9;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .amount-box span {
+      display: block;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .amount-box strong {
+      display: block;
+      font-size: 28px;
+      color: #198754;
+      margin-top: 5px;
+    }
+
+    /* ===== Google Form ===== */
+
+    .form-section {
+      margin-top: 30px;
+    }
+
+    .form-section iframe {
+      width: 100%;
+      min-height: 750px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .form-note {
+      background: #e7f1ff;
+      border-left: 5px solid #007bff;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    /* ===== Support ===== */
+
+    .support-box {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .support-box a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 11px 20px;
+      background: #25D366;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    /* ===== Responsive ===== */
+
+    @media (max-width: 768px) {
+
+      .payment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-card {
+        padding: 18px;
+      }
+
+      .qr-container img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .upi-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .copy-btn {
+        width: 100%;
+      }
+
+      .bank-row {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .bank-value {
+        text-align: left;
+      }
+
+      .form-section iframe {
+        min-height: 800px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Header ===== -->
+
+  <header class="site-header">
+
+    <div class="container">
+
+      <a class="brand" href="index.html">
+        <img
+          src="assets/logo.png"
+          alt="Embedded Electronics Logo"
+          class="brand-logo"
+        />
+      </a>
+
+      <button
+        class="menu-toggle"
+        aria-label="Toggle navigation"
+        onclick="toggleMenu()"
+      >
+        ☰
+      </button>
+
+      <nav id="nav" class="nav">
+
+        <a href="index.html">Home</a>
+
+        <a href="free-advanced-embedded-systems-courses-with-certification.html">
+          Certification
+        </a>
+
+        <a href="ebooks.html">E-Books</a>
+
+        <a href="quiz.html">Quiz</a>
+
+        <a href="typing-game.html">Typing Test</a>
+
+        <a href="interview.html">Interview</a>
+
+        <a href="iq-test.html">IQ Test</a>
+
+        <a href="faq.html">FAQ</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a class="active" href="payment.html">Payment</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- ===== Payment Page ===== -->
+
+  <main class="container payment-page">
+
+    <!-- Page Header -->
+
+    <div class="payment-header">
+
+      <h1>Student Payment</h1>
+
+      <p>
+        Make your course payment using UPI or Bank Transfer.
+      </p>
+
+    </div>
+
+
+    <!-- ===== Payment Information ===== -->
+
+    <div class="payment-grid">
+
+
+      <!-- ===== QR / UPI ===== -->
+
+      <section class="payment-card">
+
+        <h2>
+          <i class="fas fa-qrcode"></i>
+          Pay Using UPI
+        </h2>
+
+        <div class="qr-section">
+
+          <p>
+            Scan the QR code using any supported UPI application.
+          </p>
+
+          <div class="qr-container">
+
+            <!-- Replace this image with your actual QR code -->
+            <img
+              src="assets/payment-qr.png"
+              alt="Student Payment QR Code"
+              id="paymentQR"
+            />
+
+          </div>
+
+          <br>
+
+          <!-- Download QR -->
+
+          <a
+            href="assets/payment-qr.png"
+            download="Embedded-Electronics-Payment-QR.png"
+            class="download-qr"
+          >
+            <i class="fas fa-download"></i>
+            Download QR Code
+          </a>
+
+        </div>
+
+
+        <!-- UPI ID -->
+
+        <h3>
+          <i class="fas fa-mobile-screen-button"></i>
+          UPI ID
+        </h3>
+
+        <div class="upi-box">
+
+          <div
+            class="upi-value"
+            id="upiId"
+          >
+            mbedelectronics@upi
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyUPI()"
+          >
+            <i class="fas fa-copy"></i>
+            Copy
+          </button>
+
+        </div>
+
+
+        <!-- Course Fee -->
+
+        <div class="amount-box">
+
+          <span>Sample Course Fee</span>
+
+          <strong>₹3,000</strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===== Bank Details ===== -->
+
+      <section class="payment-card">
+
+        <h2>
+          <i class="fas fa-building-columns"></i>
+          Bank Transfer
+        </h2>
+
+        <p>
+          You can also make the payment directly through bank transfer.
+        </p>
+
+        <div class="bank-details">
+
+          <div class="bank-row">
+
+            <span class="bank-label">
+              Account Holder
+            </span>
+
+            <span class="bank-value">
+              Embedded Electronics
+            </span>
+
+          </div>
+
+
+          <div class="bank-row">
+
+            <span class="bank-label">
+              Bank Name
+            </span>
+
+            <span class="bank-value">
+              Sample Bank
+            </span>
+
+          </div>
+
+
+          <div class="bank-row">
+
+            <span class="bank-label">
+              Account Number
+            </span>
+
+            <span class="bank-value">
+              123456789012
+            </span>
+
+          </div>
+
+
+          <div class="bank-row">
+
+            <span class="bank-label">
+              IFSC Code
+            </span>
+
+            <span class="bank-value">
+              SAMPLE0001234
+            </span>
+
+          </div>
+
+
+          <div class="bank-row">
+
+            <span class="bank-label">
+              Branch
+            </span>
+
+            <span class="bank-value">
+              Sample Branch
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- Payment Instructions -->
+
+        <h3>
+          <i class="fas fa-circle-info"></i>
+          Payment Instructions
+        </h3>
+
+        <div class="instructions">
+
+          <ol>
+
+            <li>
+              Select your preferred payment method.
+            </li>
+
+            <li>
+              Make the required course payment.
+            </li>
+
+            <li>
+              Save the payment screenshot.
+            </li>
+
+            <li>
+              Note down your Transaction ID / UTR Number.
+            </li>
+
+            <li>
+              Complete the Payment Confirmation Form below.
+            </li>
+
+            <li>
+              Upload your payment screenshot in the form.
+            </li>
+
+          </ol>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- ===== Payment Confirmation Form ===== -->
+
+    <section class="payment-card form-section">
+
+      <h2>
+        <i class="fas fa-file-circle-check"></i>
+        Payment Confirmation Form
+      </h2>
+
+      <div class="form-note">
+
+        <strong>Important:</strong>
+
+        After completing your payment, please fill out the form below
+        with your correct details and upload your payment screenshot.
+
+      </div>
+
+
+      <!-- Replace this URL with your Google Form embed URL -->
+
+      <iframe
+        src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true"
+        loading="lazy"
+      >
+        Loading…
+      </iframe>
+
+    </section>
+
+
+    <!-- ===== Contact / Support ===== -->
+
+    <section class="support-box">
+
+      <h2>
+        Need Help With Payment?
+      </h2>
+
+      <p>
+        If you have any questions regarding the payment process,
+        please contact us.
+      </p>
+
+      <a
+        href="https://wa.me/917864963943?text=Hello%21%20I%20need%20help%20with%20course%20payment."
+        target="_blank"
+      >
+        <i class="fab fa-whatsapp"></i>
+        Contact on WhatsApp
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <!-- ===== Footer ===== -->
+
+  <footer
+    class="site-footer"
+    style="margin-top: 40px;"
+  >
+
+    <div class="container">
+
+      <p>
+        © <span id="year"></span> Embedded Electronics
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ===== JavaScript ===== -->
+
+  <script>
+
+    /* Current Year */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* Copy UPI ID */
+
+    function copyUPI() {
+
+      const upiId =
+        document.getElementById("upiId").textContent.trim();
+
+      navigator.clipboard.writeText(upiId)
+        .then(function () {
+
+          alert("UPI ID copied: " + upiId);
+
+        })
+        .catch(function () {
+
+          alert("Unable to copy UPI ID. Please copy it manually.");
+
+        });
+
+    }
+
+
+    /* Mobile Menu */
+
+    function toggleMenu() {
+
+      const nav =
+        document.getElementById("nav");
+
+      nav.classList.toggle("open");
+
+    }
+
+  </script>
+
+</body>
+</html>
+```

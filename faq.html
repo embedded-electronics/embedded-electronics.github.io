@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embedded Electronics — FAQ</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* FAQ accordion styles */
+    .faq-container {
+      max-width: 900px;
+      margin: 0px auto;
+      padding: 20px;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .faq-question {
+      background: #0a3d62;
+      color: #fff;
+      padding: 15px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .faq-answer {
+      display: none;
+      padding: 15px;
+      background: #f9f9f9;
+      line-height: 1.6;
+    }
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Logo" class="brand-logo" />
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+      <nav id="nav" class="nav">
+        <a href="index.html">Home</a>
+        <a href="professional-course.html">Professional Course</a>
+        <!-- <a href="free-advanced-embedded-systems-courses-with-certification.html">Certification</a> -->
+        <!-- <a href="course.html">Courses</a> -->
+        <a href="ebooks.html">E-Books</a>
+        <a href="quiz.html">Quiz</a>
+        <!-- <a href="blog.html">Blog</a> -->
+        <a href="typing-game.html">Typing Test</a>
+        <a href="interview.html">Interview</a>
+        <a href="iq-test.html">IQ Test</a>
+        <a class="active" href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== FAQ Section ===== -->
+  <main class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-item"><div class="faq-question"><span>What is the Embedded Systems Professional Training Programme?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The Embedded Systems Professional Training Programme is a structured online live training programme by Embedded Electronics, designed for college students and working professionals who want to develop practical and technical skills in Embedded Systems.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>When does the October 2026 batch start?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The October 2026 batch will begin on <strong>2 October 2026</strong>.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>How long is the Professional Training Programme?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The training programme has a duration of <strong>6 months</strong>.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Who can join the Professional Training Programme?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The programme is designed for <strong>college students and working professionals</strong> interested in Embedded Systems and practical electronics.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>What is the mode of training?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The training is conducted through <strong>online live classes</strong>.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>What is the course fee?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The Professional Training Programme fee is <strong>₹3,000</strong>.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Is an EMI option available?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 Yes. A monthly EMI option of <strong>₹550/month</strong> is available.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>When are the live classes conducted?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 <strong>Weekdays:</strong> Evening<br><strong>Weekends:</strong> Afternoon</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>What happens if I miss a live class?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 <strong>Class recordings will be available for later viewing</strong>, so you can catch up on missed sessions.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Is this programme self-paced?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The programme follows <strong>scheduled online live classes</strong>. Recorded classes are available for review or catching up on missed sessions.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>What kind of learning approach does the training follow?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The training follows a <strong>structured and practical learning approach</strong>, supported by live instruction and technical demonstrations.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Can I see demo classes before joining?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 Yes. Selected demo classes are available from our <strong>Basic Arduino, Advanced Arduino, and PIC16F877A Microcontroller</strong> playlists. They can help you understand our teaching style and practical approach.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Where can I find the course syllabus?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 The course syllabus is provided with the Professional Training Programme information. You can also contact us if you need clarification about the syllabus.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Do I need to register if I have already completed registration?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 No. If you have <strong>already completed your registration</strong>, no further registration action is required at this time.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>How can I register for the Professional Training Programme?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 If you are interested in joining and have not yet registered, please complete the <a href="https://forms.gle/4DRK45DMnJ1FDwYV8" target="_blank" rel="noopener">Professional Training Registration Form</a>.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Is the Professional Training Programme the same as the earlier free certification programme?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 No. The Professional Training Programme is a <strong>structured 6-month paid training programme</strong> with online live classes. It is different from the earlier free certification initiative.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Do you still provide free learning resources?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 Yes. Embedded Electronics continues to provide <strong>free tutorials, projects, quizzes, e-books, and other learning resources</strong>. These resources are separate from the Professional Training Programme.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>Will I receive a certificate after completing the Professional Training Programme?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 Certificate details for the Professional Training Programme should be confirmed with Embedded Electronics during registration or through the official course communication.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>What if I have questions about payment or registration?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 For questions regarding the <strong>course, schedule, registration, or payment</strong>, please contact Embedded Electronics for assistance.</div></div>
+
+    <div class="faq-item"><div class="faq-question"><span>How can I contact Embedded Electronics?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">👉 Visit our <a href="contact.html">Contact Page</a> or email us at <strong>info@mbedelectronics.com</strong>.</div></div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer" style="margin-top: 40px;">
+    <div class="container">
+      <p>© <span id="year"></span> Embedded Electronics</p>
+    </div>
+  </footer>
+
+  <!-- Accordion Script -->
+  <script>
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>

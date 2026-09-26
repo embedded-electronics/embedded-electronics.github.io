@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Embedded Electronics — Embedded Systems Professional Training</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts.js"></script>
+  <style>
+    /* ===============================
+   FIRST SECTION (HERO DESIGN) center
+   =============================== */
+
+  .hero-section {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    margin-top: 5px;
+    align-items: start;
+  }
+  
+  /* LEFT SIDE */
+  .hero-left {
+    background: #fff;
+    padding: 5px;
+    border-left: 5px solid #ff5722;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  
+  .hero-left h2 {
+    margin-top: 0px;
+    margin-bottom: 12px;
+  }
+  
+  /* RIGHT SIDE */
+  .hero-right {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  /* IMAGE SLIDER */
+  .slider {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 1080 x 1080 */
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  
+  .slider img.active {
+    display: block;
+  }
+  
+  /* BUTTONS BELOW SLIDER */
+  .hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 18px;
+  }
+  
+  .hero-buttons a {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* OUTLINE BUTTON */
+  .btn-outline {
+    border: 2px solid #ff5722;
+    color: #ff5722;
+    background: transparent;
+  }
+  
+  .btn-outline:hover {
+    background: #ff5722;
+    color: #fff;
+  }
+  
+  /* SOLID BUTTON */
+  .btn-solid {
+    background: #ff5722;
+    color: #fff;
+  }
+  
+  .btn-solid:hover {
+    background: #e64a19;
+  }
+  
+  /* ===============================
+     MOBILE RESPONSIVE
+     =============================== */
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      grid-template-columns: 1fr;
+    }
+  
+    .hero-buttons {
+      flex-direction: column;
+    }
+  }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .course-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+    .course-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .course-card .content {
+      padding: 15px;
+    }
+    .course-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .course-card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .course-card a {
+      display: inline-block;
+      background: #ff5722;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .course-card a:hover {
+      background: #e64a19;
+    }
+
+    /* ⭐ Rating */
+    .rating {
+      display: inline-block;
+      color: #ff9800;
+      font-size: 13px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .rating span {
+      color: #333;
+      font-size: 13px;
+      margin-left: 5px;
+    }
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#25D366;
+      color:#fff;
+      border-radius:50px;
+      padding:12px 18px;
+      font-weight:600;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      box-shadow:0 4px 10px rgba(0,0,0,.25);
+      z-index:999;
+    }
+
+    .whatsapp-float img {
+      width:22px;
+      height:22px;
+    }
+    .offer-highlight { 
+      color: #ff0000; 
+      font-weight: 800; 
+      animation: pulseGlow 1s ease-in-out infinite; 
+    }
+
+  @keyframes pulseGlow {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+    /* PROFESSIONAL COURSE PAGE */
+    .professional-note {
+      margin-top: 20px;
+    }
+
+    .hero-left p {
+      margin: 8px 0 0;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .hero-left {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Embedded Electronics" class="brand-logo" /> <!-- MODIFY HERE -->
+     <!-- <span class="brand-name">Embedded Electronics</span>  -->
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="professional-course.html">Professional Course</a>
+        <a href="ebooks.html">E-Books</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="typing-game.html">Typing Test</a>
+        <a href="interview.html">Interview</a>
+        <a href="iq-test.html">IQ Test</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+  <!-- Main Section -->
+
+  <!-- Main Embedded Systems Professional Training Section -->
+  <main class="container page">
+
+    <section class="hero-section">
+
+      <div class="hero-left">
+        <h2>🎓 Embedded Systems Professional Training</h2>
+
+        <ul>
+          <li><strong>October 2026 Batch</strong> starts on <strong>2 October 2026</strong>.</li>
+          <li><strong>Duration:</strong> 6 Months</li>
+          <li><strong>Mode:</strong> Online Live Classes</li>
+          <li><strong>Course Fee:</strong> ₹3,000</li>
+          <li><strong>Monthly EMI:</strong> ₹550/month</li>
+          <li>Designed for <strong>college students and working professionals.</strong></li>
+          <li>Structured learning with <strong>live online classes</strong> and a practical approach.</li>
+        </ul>
+
+        <h2>🕒 Class Schedule</h2>
+        <ul>
+          <li><strong>Weekdays:</strong> Evening</li>
+          <li><strong>Weekends:</strong> Afternoon</li>
+          <li><strong>Missed Live Classes:</strong> Class recordings will be available for later viewing.</li>
+        </ul>
+
+        <h2>📋 Registration</h2>
+        <ul>
+          <li>If you have <strong>already completed your registration</strong>, no further action is required at this time.</li>
+          <li>If you are interested in joining, complete the registration form using the button on this page.</li>
+          <li>The <strong>course syllabus</strong> is available for reference.</li>
+        </ul>
+      </div>
+
+      <div class="hero-right">
+        <div class="slider">
+          <img src="assets/courses/embedded-systems-course_ads_00.png" class="active" alt="Embedded Systems Professional Training">
+          <img src="assets/courses/embedded-systems-course_ads_05.png" alt="Embedded Systems Professional Training">
+          <img src="assets/courses/embedded-systems-course_ads_00.png" alt="Embedded Systems Professional Training">
+          <img src="assets/courses/embedded-systems-course_ads_05.png" alt="Embedded Systems Professional Training">
+        </div>
+
+        <div class="hero-buttons">
+          <a href="assets/courses/Embedded_Systems_Course_Online_Brochure.pdf" class="btn-outline" download>📄 Course Brochure</a>
+          <a href="https://forms.gle/4DRK45DMnJ1FDwYV8" class="btn-solid" target="_blank" rel="noopener">🎓 Complete Registration</a>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="courses-grid">
+
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Basic Arduino Demo Classes">
+        <div class="content">
+          <h3>Basic Arduino – Demo Classes</h3>
+          <p>Explore selected Basic Arduino practical videos before starting the professional training.</p>
+          <a href="https://www.youtube.com/playlist?list=PLd3kpRM70CG8" target="_blank" rel="noopener">▶ Watch Demo</a>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="Advanced Arduino Demo Classes">
+        <div class="content">
+          <h3>Advanced Arduino – Demo Classes</h3>
+          <p>Explore selected Advanced Arduino practical videos and understand the hands-on learning approach.</p>
+          <a href="https://www.youtube.com/playlist?list=PLDmiZ9ntLIhs" target="_blank" rel="noopener">▶ Watch Demo</a>
+        </div>
+      </article>
+
+      <article class="course-card">
+        <img src="assets/courses/premium_mbed_projects-1280x720-1.png" alt="PIC16F877A Demo Classes">
+        <div class="content">
+          <h3>PIC16F877A Microcontroller</h3>
+          <p>Explore selected PIC16F877A practical classes from the existing Embedded Electronics playlist.</p>
+          <a href="https://www.youtube.com/playlist?list=PLJR_qSjM8ygfl-aeJokflZqKpcfpbt9G9" target="_blank" rel="noopener">▶ Watch Demo</a>
+        </div>
+      </article>
+
+
+    </section>
+
+    <section style="margin-top:20px;">
+      <div class="hero-left">
+        <h2>🚀 Why Explore the Demo Classes?</h2>
+        <ul>
+          <li>Understand our <strong>teaching style</strong> before joining the training.</li>
+          <li>Experience our <strong>practical learning approach</strong>.</li>
+          <li>Explore the type of <strong>technical content</strong> covered in our existing playlists.</li>
+          <li>Get familiar with our <strong>Arduino and microcontroller-based practical demonstrations</strong>.</li>
+        </ul>
+
+        <h2>📧 Need More Information?</h2>
+        <p>
+          For questions regarding the course, schedule, registration, payment, or training,
+          please contact <strong>info@mbedelectronics.com</strong>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Embedded Electronics</p>
+    </div>
+  </footer>
+
+  <script>
+    // Auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+   <!-- WHATSAPP BUTTON -->
+<a
+  href="https://wa.me/917864963943?text=Hello!%20I%20am%20interested%20in%20the%20Embedded%20Systems%20Professional%20Training."
+  class="whatsapp-float"
+  target="_blank"
+>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  Chat on WhatsApp
+</a>
+<script>
+  const slides = document.querySelectorAll(".slider img");
+  let currentSlide = 0;
+
+  setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }, 3000); // 3 seconds
+</script>
+</body>
+</html>

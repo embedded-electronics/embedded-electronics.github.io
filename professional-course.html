@@ -11,6 +11,50 @@
    FIRST SECTION (HERO DESIGN) center
    =============================== */
 
+    /* YOUTUBE DEMO VIDEO SECTION */
+  .youtube-demo-section {
+      margin-top: 25px;
+  }
+  
+  .youtube-demo-section h2 {
+      margin-bottom: 15px;
+  }
+  
+  .youtube-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+  }
+  
+  .youtube-demo-card {
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+  }
+  
+  .youtube-demo-card iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 6px;
+      display: block;
+  }
+  
+  .youtube-demo-card h3 {
+      font-size: 16px;
+      margin: 12px 5px 5px;
+      color: #333;
+  }
+  
+  /* MOBILE RESPONSIVE */
+  @media (max-width: 768px) {
+      .youtube-demo-grid {
+          grid-template-columns: 1fr;
+      }
+  }
+
   .hero-section {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -310,7 +354,57 @@
       </div>
 
     </section>
-
+    
+    <!-- YOUTUBE DEMO VIDEOS SECTION -->
+    <section class="youtube-demo-section">
+    
+        <div class="hero-left">
+            <h2>🎬 Embedded Systems – Video Demo Classes</h2>
+            <p>
+                Explore our selected Embedded Systems demo videos
+                and experience our practical teaching approach.
+            </p>
+        </div>
+    
+        <div class="youtube-demo-grid">
+    
+            <!-- VIDEO 1 -->
+            <div class="youtube-demo-card">
+                <iframe
+                    src="https://www.youtube.com/embed/VIDEO_ID_1"
+                    title="Embedded Systems Demo Video 1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>Embedded Systems Demo – 01</h3>
+            </div>
+    
+            <!-- VIDEO 2 -->
+            <div class="youtube-demo-card">
+                <iframe
+                    src="https://www.youtube.com/embed/VIDEO_ID_2"
+                    title="Embedded Systems Demo Video 2"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>Embedded Systems Demo – 02</h3>
+            </div>
+    
+            <!-- VIDEO 3 -->
+            <div class="youtube-demo-card">
+                <iframe
+                    src="https://www.youtube.com/embed/VIDEO_ID_3"
+                    title="Embedded Systems Demo Video 3"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>Embedded Systems Demo – 03</h3>
+            </div>
+    
+        </div>
+    
+    </section>
+    
     <section class="courses-grid">
 
       <article class="course-card">
